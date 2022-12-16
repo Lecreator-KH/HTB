@@ -1,0 +1,5 @@
+https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+https://highon.coffee/blog/reverse-shell-cheat-sheet/#python-reverse-shell
+https://github.com/21y4d/nmapAutomator
+https://book.hacktricks.xyz/network-services-pentesting/nfs-service-pentesting
+https://sushant747.gitbooks.io/total-oscp-guide/content/spawning_shells.html

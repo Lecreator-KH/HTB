@@ -1,0 +1,196 @@
+                                                                                                                                                                                                                                                            
+┌──(kali㉿kali)-[~/Desktop/nmapAutomator]
+└─$ ./nmapAutomator.sh -H 10.10.10.5 --type All
+
+Running all scans on 10.10.10.5
+
+Host is likely running Windows
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT   STATE SERVICE
+21/tcp open  ftp
+80/tcp open  http
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     Microsoft ftpd
+| ftp-syst: 
+|_  SYST: Windows_NT
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| 03-18-17  01:06AM       <DIR>          aspnet_client
+| 03-17-17  04:37PM                  689 iisstart.htm
+|_03-17-17  04:37PM               184946 welcome.png
+80/tcp open  http    Microsoft IIS httpd 7.5
+|_http-title: IIS7
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/7.5
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+
+---------------------Starting Full Scan------------------------
+
+
+
+PORT   STATE SERVICE
+21/tcp open  ftp
+80/tcp open  http
+
+
+
+No new ports
+
+
+
+
+----------------------Starting UDP Scan------------------------
+                                                                                                                                                                                                                                                            
+UDP needs to be run as root, running with sudo...
+
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: UDP Scan (0:00:03 elapsed - 0:00:47 remaining)   
+                                                             [#>                                    In progress: UDP Scan (0:00:06 elapsed - 0:00:33 remaining)     ] 0% done                                                                 [######>                               In progress: UDP Scan (0:00:06 elapsed - 0:00:33 remaining)    ] 6% done                                                                 [###############>                       In progress: UDP Scan (0:00:12 elapsed - 0:00:22 remaining)   ] 15% done                                                                 [###############>                       In progress: UDP Scan (0:00:15 elapsed - 0:00:19 remaining)   ] 15% done   
+            [#########################>             In progress: UDP Scan (0:00:18 elapsed - 0:00:15 remaining)   ] 25% done                                                                 [#######################################In progress: UDP Scan (0:00:21 elapsed - 0:00:12 remaining)   ] 44% done                                                                 [#######################################In progress: UDP Scan (0:00:24 elapsed - 0:00:09 remaining)   ] 54% done   
+                                       [#######################################In progress: UDP Scan (0:00:27 elapsed - 0:00:06 remaining)   ] 63% done                                                                 [#######################################In progress: UDP Scan (0:00:30 elapsed - 0:00:03 remaining)   ] 73% done                                                                 [#######################################
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                            
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                            
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                            
+
+
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     Microsoft ftpd
+80/tcp open  http    Microsoft IIS httpd 7.5
+|_http-server-header: Microsoft-IIS/7.5
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                       
+                                                                                                                                                                                                                                                            
+
+
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     Microsoft ftpd
+80/tcp open  http    Microsoft IIS httpd 7.5
+|_http-server-header: Microsoft-IIS/7.5
+| vulners: 
+|   cpe:/a:microsoft:internet_information_server:7.5: 
+|       VERACODE:21774  5.0     https://vulners.com/veracode/VERACODE:21774
+|       VERACODE:20937  4.3     https://vulners.com/veracode/VERACODE:20937
+|       VERACODE:34570  4.0     https://vulners.com/veracode/VERACODE:34570
+|       VERACODE:31557  4.0     https://vulners.com/veracode/VERACODE:31557
+|_      VERACODE:27647  3.5     https://vulners.com/veracode/VERACODE:27647
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                            
+
+Web Servers Recon:
+                                                                                                                                                                                                                                                            
+nikto -host "http://10.10.10.5:80" | tee "recon/nikto_10.10.10.5_80.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '' -u "http://10.10.10.5:80/FUZZ" | tee "recon/ffuf_10.10.10.5_80.txt"
+
+
+
+
+
+Which commands would you like to run?                                                                                                                                                                                                                       
+All (Default), ffuf, nikto, Skip <!>
+
+Running Default in (1)s: 
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                            
+
+Starting nikto scan
+                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.5
++ Target Hostname:    10.10.10.5
++ Target Port:        80
++ Start Time:         2022-12-17 01:06:24 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Microsoft-IIS/7.5
++ Retrieved x-powered-by header: ASP.NET
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ Retrieved x-aspnet-version header: 2.0.50727
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Allowed HTTP Methods: OPTIONS, TRACE, GET, HEAD, POST 
++ Public HTTP Methods: OPTIONS, TRACE, GET, HEAD, POST 
++ /: Appears to be a default IIS 7 install.
++ 7863 requests: 0 error(s) and 8 item(s) reported on remote host
++ End Time:           2022-12-17 01:10:58 (GMT-5) (274 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://10.10.10.5:80/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+                        [Status: 200, Size: 689, Words: 25, Lines: 32, Duration: 34ms]
+aspnet_client           [Status: 301, Size: 158, Words: 9, Lines: 2, Duration: 37ms]
+:: Progress: [4614/4614] :: Job [1/1] :: 1132 req/sec :: Duration: [0:00:04] :: Errors: 0 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                            
+---------------------Finished all scans------------------------                                                                                                                                                                                             
+                                                                                                                                                                                                                                                            
+
+Completed in 13 minute(s) and 47 second(s)

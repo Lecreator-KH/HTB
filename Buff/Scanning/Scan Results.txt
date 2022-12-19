@@ -1,0 +1,399 @@
+                                                                                                                                                                                                                                                                                                                            
+┌──(kali㉿kali)-[~/Desktop/nmapAutomator]
+└─$ sudo ./nmapAutomator.sh -H 10.10.10.198 --type All
+
+Running all scans on 10.10.10.198
+
+Host is likely running Windows
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT     STATE SERVICE
+8080/tcp open  http-proxy
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT     STATE SERVICE VERSION
+8080/tcp open  http    Apache httpd 2.4.43 ((Win64) OpenSSL/1.1.1g PHP/7.4.6)
+|_http-title: mrb3n's Bro Hut
+| http-open-proxy: Potentially OPEN proxy.
+|_Methods supported:CONNECTION
+|_http-server-header: Apache/2.4.43 (Win64) OpenSSL/1.1.1g PHP/7.4.6
+
+
+
+
+---------------------Starting Full Scan------------------------
+
+
+
+PORT     STATE SERVICE
+7680/tcp open  pando-pub
+8080/tcp open  http-proxy
+
+
+
+Making a script scan on extra ports: 7680
+
+
+
+PORT     STATE SERVICE    VERSION
+7680/tcp open  pando-pub?
+
+
+
+
+----------------------Starting UDP Scan------------------------
+
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)   
+                                    In progress: UDP Scan (0:00:03 elapsed - 0:00:00 remaining)                                                                     ] 0% done                                        In progress: UDP Scan (0:00:07 elapsed - 0:07:40 remaining)                                                                    ] 0% done                                        In progress: UDP Scan (0:00:10 elapsed - 0:07:09 remaining)                                                                     ] 0% done                                       In progress: UDP Scan (0:00:12 elapsed - 0:06:28 remaining)                                                                     ] 1% done                                       In progress: UDP Scan (0:00:16 elapsed - 0:06:24 remaining)                                                                     ] 2% done                                       In progress: UDP Scan (0:00:18 elapsed - 0:06:22 remaining)                                                                     ] 3% done                                       In progress: UDP Scan (0:00:22 elapsed - 0:06:18 remaining)                                                                     ] 4% done   
+     In progress: UDP Scan (0:00:25 elapsed - 0:06:14 remaining)                                                                     ] 4% done                                       In progress: UDP Scan (0:00:27 elapsed - 0:05:59 remaining)                                                                     ] 5% done                                       In progress: UDP Scan (0:00:31 elapsed - 0:05:57 remaining)                                                                     ] 6% done                                       In progress: UDP Scan (0:00:33 elapsed - 0:05:55 remaining)                                                                     ] 7% done                                       In progress: UDP Scan (0:00:37 elapsed - 0:05:52 remaining)                                                                     ] 8% done                                       In progress: UDP Scan (0:00:40 elapsed - 0:05:49 remaining)                                                                     ] 8% done                                        In progress: UDP Scan (0:00:42 elapsed - 0:05:40 remaining)                                                                    ] 9% done                                         In progress: UDP Scan (0:00:48 elapsed - 0:05:36 remaining)                                                                   ] 10% done                                         In progress: UDP Scan (0:00:48 elapsed - 0:05:36 remaining)                                                                   ] 11% done   
+             In progress: UDP Scan (0:00:52 elapsed - 0:05:33 remaining)                                                                   ] 12% done                                         In progress: UDP Scan (0:00:55 elapsed - 0:05:24 remaining)                                                                   ] 12% done                                         In progress: UDP Scan (0:00:57 elapsed - 0:05:23 remaining)                                                                   ] 13% done                                         In progress: UDP Scan (0:01:03 elapsed - 0:05:19 remaining)                                                                   ] 14% done                                         In progress: UDP Scan (0:01:03 elapsed - 0:05:19 remaining)                                                                   ] 15% done                                         In progress: UDP Scan (0:01:06 elapsed - 0:05:16 remaining)                                                                   ] 16% done                                         In progress: UDP Scan (0:01:10 elapsed - 0:05:08 remaining)                                                                   ] 16% done                                         In progress: UDP Scan (0:01:12 elapsed - 0:05:07 remaining)                                                                   ] 17% done                                         In progress: UDP Scan (0:01:18 elapsed - 0:05:02 remaining)                                                                   ] 18% done   
+                          In progress: UDP Scan (0:01:18 elapsed - 0:05:02 remaining)                                                                   ] 19% done                                         In progress: UDP Scan (0:01:21 elapsed - 0:04:59 remaining)                                                                   ] 20% done                                         In progress: UDP Scan (0:01:25 elapsed - 0:04:53 remaining)                                                                   ] 20% done                                         In progress: UDP Scan (0:01:27 elapsed - 0:04:51 remaining)                                                                   ] 21% done                                         In progress: UDP Scan (0:01:33 elapsed - 0:04:47 remaining)                                                                   ] 22% done                                         In progress: UDP Scan (0:01:33 elapsed - 0:04:47 remaining)                                                                   ] 23% done                                         In progress: UDP Scan (0:01:36 elapsed - 0:04:43 remaining)                                                                   ] 24% done   
+ In progress: UDP Scan (0:01:42 elapsed - 0:04:36 remaining)                                                                   ] 24% done                                         In progress: UDP Scan (0:01:42 elapsed - 0:04:36 remaining)                                                                   ] 25% done                                         In progress: UDP Scan (0:01:48 elapsed - 0:04:31 remaining)                                                                   ] 27% done                                         In progress: UDP Scan (0:01:48 elapsed - 0:04:31 remaining)                                                                   ] 27% done                                         In progress: UDP Scan (0:01:51 elapsed - 0:04:28 remaining)                                                                   ] 28% done                                         In progress: UDP Scan (0:01:57 elapsed - 0:04:20 remaining)                                                                   ] 28% done                                         In progress: UDP Scan (0:01:57 elapsed - 0:04:20 remaining)                                                                   ] 29% done                                         In progress: UDP Scan (0:02:03 elapsed - 0:04:15 remaining)                                                                   ] 31% done                                         In progress: UDP Scan (0:02:03 elapsed - 0:04:15 remaining)                                                                   ] 31% done   
+              In progress: UDP Scan (0:02:06 elapsed - 0:04:12 remaining)                                                                   ] 32% done                                         In progress: UDP Scan (0:02:12 elapsed - 0:04:05 remaining)                                                                   ] 32% done                                         In progress: UDP Scan (0:02:12 elapsed - 0:04:05 remaining)                                                                   ] 33% done                                         In progress: UDP Scan (0:02:18 elapsed - 0:04:00 remaining)                                                                   ] 35% done                                         In progress: UDP Scan (0:02:21 elapsed - 0:03:57 remaining)                                                                   ] 35% done                                         In progress: UDP Scan (0:02:21 elapsed - 0:03:57 remaining)                                                                   ] 36% done                                         In progress: UDP Scan (0:02:27 elapsed - 0:03:50 remaining)   >                                                               ] 37% done                                         In progress: UDP Scan (0:02:27 elapsed - 0:03:50 remaining)   >                                                               ] 37% done                                         In progress: UDP Scan (0:02:33 elapsed - 0:03:45 remaining)   ##>                                                             ] 39% done   
+                           In progress: UDP Scan (0:02:36 elapsed - 0:03:41 remaining)   ##>                                                             ] 39% done                                         In progress: UDP Scan (0:02:36 elapsed - 0:03:41 remaining)   ###>                                                            ] 40% done                                         In progress: UDP Scan (0:02:42 elapsed - 0:03:35 remaining)   ####>                                                           ] 41% done                                         In progress: UDP Scan (0:02:42 elapsed - 0:03:35 remaining)   ####>                                                           ] 41% done                                         In progress: UDP Scan (0:02:48 elapsed - 0:03:30 remaining)   ######>                                                         ] 43% done                                         In progress: UDP Scan (0:02:51 elapsed - 0:03:26 remaining)   ######>                                                         ] 43% done                                         In progress: UDP Scan (0:02:51 elapsed - 0:03:26 remaining)   #######>                                                        ] 44% done   
+  In progress: UDP Scan (0:02:57 elapsed - 0:03:20 remaining)   ########>                                                       ] 45% done                                         In progress: UDP Scan (0:02:57 elapsed - 0:03:20 remaining)   ########>                                                       ] 45% done                                         In progress: UDP Scan (0:03:03 elapsed - 0:03:14 remaining)   ##########>                                                     ] 47% done                                         In progress: UDP Scan (0:03:06 elapsed - 0:03:10 remaining)   ##########>                                                     ] 47% done                                         In progress: UDP Scan (0:03:06 elapsed - 0:03:10 remaining)   ###########>                                                    ] 48% done                                         In progress: UDP Scan (0:03:12 elapsed - 0:03:04 remaining)   ############>                                                   ] 49% done                                         In progress: UDP Scan (0:03:16 elapsed - 0:03:01 remaining)   ############>                                                   ] 49% done                                         In progress: UDP Scan (0:03:16 elapsed - 0:03:01 remaining)   ##############>                                                 ] 51% done                                         In progress: UDP Scan (0:03:21 elapsed - 0:02:55 remaining)   ###############>                                                ] 52% done   
+               In progress: UDP Scan (0:03:21 elapsed - 0:02:55 remaining)   ###############>                                                ] 52% done                                         In progress: UDP Scan (0:03:27 elapsed - 0:02:49 remaining)   ################>                                               ] 53% done                                         In progress: UDP Scan (0:03:31 elapsed - 0:02:46 remaining)   ################>                                               ] 53% done                                         In progress: UDP Scan (0:03:31 elapsed - 0:02:46 remaining)   ##################>                                             ] 55% done                                         In progress: UDP Scan (0:03:36 elapsed - 0:02:40 remaining)   ###################>                                            ] 56% done                                         In progress: UDP Scan (0:03:36 elapsed - 0:02:40 remaining)   ###################>                                            ] 56% done                                         In progress: UDP Scan (0:03:42 elapsed - 0:02:34 remaining)   ####################>                                           ] 57% done                                         In progress: UDP Scan (0:03:46 elapsed - 0:02:31 remaining)   ####################>                                           ] 57% done                                         In progress: UDP Scan (0:03:46 elapsed - 0:02:31 remaining)   ######################>                                         ] 59% done   
+                            In progress: UDP Scan (0:03:51 elapsed - 0:02:25 remaining)   #######################>                                        ] 60% done                                         In progress: UDP Scan (0:03:55 elapsed - 0:02:21 remaining)   #######################>                                        ] 60% done                                         In progress: UDP Scan (0:03:57 elapsed - 0:02:19 remaining)   ########################>                                       ] 61% done                                         In progress: UDP Scan (0:04:01 elapsed - 0:02:16 remaining)   #########################>                                      ] 62% done                                         In progress: UDP Scan (0:04:01 elapsed - 0:02:16 remaining)   ##########################>                                     ] 63% done                                         In progress: UDP Scan (0:04:06 elapsed - 0:02:10 remaining)   ###########################>                                    ] 64% done                                         In progress: UDP Scan (0:04:10 elapsed - 0:02:06 remaining)   ###########################>                                    ] 64% done   
+   In progress: UDP Scan (0:04:12 elapsed - 0:02:04 remaining)   ############################>                                   ] 65% done                                         In progress: UDP Scan (0:04:15 elapsed - 0:02:00 remaining)   #############################>                                  ] 66% done                                         In progress: UDP Scan (0:04:15 elapsed - 0:02:00 remaining)   ##############################>                                 ] 67% done                                         In progress: UDP Scan (0:04:21 elapsed - 0:01:55 remaining)   ###############################>                                ] 68% done                                         In progress: UDP Scan (0:04:25 elapsed - 0:01:51 remaining)   ###############################>                                ] 68% done                                         In progress: UDP Scan (0:04:27 elapsed - 0:01:49 remaining)   ################################>                               ] 69% done                                         In progress: UDP Scan (0:04:30 elapsed - 0:01:45 remaining)   #################################>                              ] 70% done                                         In progress: UDP Scan (0:04:30 elapsed - 0:01:45 remaining)   ##################################>                             ] 71% done                                         In progress: UDP Scan (0:04:36 elapsed - 0:01:40 remaining)   ###################################>                            ] 72% done   
+                In progress: UDP Scan (0:04:40 elapsed - 0:01:36 remaining)   ###################################>                            ] 72% done                                         In progress: UDP Scan (0:04:42 elapsed - 0:01:34 remaining)   ####################################>                           ] 73% done                                         In progress: UDP Scan (0:04:45 elapsed - 0:01:30 remaining)   #####################################>                          ] 74% done                                         In progress: UDP Scan (0:04:49 elapsed - 0:01:26 remaining)   ######################################>                         ] 75% done                                         In progress: UDP Scan (0:04:51 elapsed - 0:01:24 remaining)   #######################################>                        ] 76% done                                         In progress: UDP Scan (0:04:55 elapsed - 0:01:21 remaining)   ########################################>                       ] 77% done                                         In progress: UDP Scan (0:04:57 elapsed - 0:01:19 remaining)   ########################################>                       ] 77% done                                         In progress: UDP Scan (0:05:00 elapsed - 0:01:15 remaining)   #########################################>                      ] 78% done                                         In progress: UDP Scan (0:05:04 elapsed - 0:01:11 remaining)   ##########################################>                     ] 79% done   
+                             In progress: UDP Scan (0:05:06 elapsed - 0:01:09 remaining)   ###########################################>                    ] 80% done                                         In progress: UDP Scan (0:05:10 elapsed - 0:01:06 remaining)   ############################################>                   ] 81% done                                         In progress: UDP Scan (0:05:12 elapsed - 0:01:04 remaining)   ############################################>                   ] 81% done                                         In progress: UDP Scan (0:05:15 elapsed - 0:01:00 remaining)   #############################################>                  ] 82% done                                         In progress: UDP Scan (0:05:19 elapsed - 0:00:56 remaining)   ##############################################>                 ] 83% done                                         In progress: UDP Scan (0:05:21 elapsed - 0:00:54 remaining)   ###############################################>                ] 84% done                                         In progress: UDP Scan (0:05:25 elapsed - 0:00:51 remaining)   ################################################>               ] 85% done   
+    In progress: UDP Scan (0:05:27 elapsed - 0:00:49 remaining)   ################################################>               ] 85% done                                         In progress: UDP Scan (0:05:30 elapsed - 0:00:45 remaining)   #################################################>              ] 86% done                                         In progress: UDP Scan (0:05:34 elapsed - 0:00:41 remaining)   ##################################################>             ] 87% done                                         In progress: UDP Scan (0:05:36 elapsed - 0:00:39 remaining)   ###################################################>            ] 88% done                                         In progress: UDP Scan (0:05:40 elapsed - 0:00:36 remaining)   ####################################################>           ] 89% done                                         In progress: UDP Scan (0:05:42 elapsed - 0:00:34 remaining)   ####################################################>           ] 89% done                                         In progress: UDP Scan (0:05:45 elapsed - 0:00:30 remaining)   #####################################################>          ] 90% done                                         In progress: UDP Scan (0:05:49 elapsed - 0:00:26 remaining)   ######################################################>         ] 91% done                                         In progress: UDP Scan (0:05:51 elapsed - 0:00:24 remaining)   #######################################################>        ] 92% done   
+                 In progress: UDP Scan (0:05:55 elapsed - 0:00:21 remaining)   ########################################################>       ] 93% done                                         In progress: UDP Scan (0:05:57 elapsed - 0:00:19 remaining)   ########################################################>       ] 93% done                                         In progress: UDP Scan (0:06:00 elapsed - 0:00:15 remaining)   #########################################################>      ] 94% done                                         In progress: UDP Scan (0:06:04 elapsed - 0:00:11 remaining)   ##########################################################>     ] 95% done                                         In progress: UDP Scan (0:06:06 elapsed - 0:00:09 remaining)   ###########################################################>    ] 96% done                                         In progress: UDP Scan (0:06:10 elapsed - 0:00:06 remaining)   ############################################################>   ] 97% done                                         In progress: UDP Scan (0:06:12 elapsed - 0:00:04 remaining)   ############################################################>   ] 97% done                                         
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                                                                                            
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT     STATE SERVICE    VERSION
+7680/tcp open  pando-pub?
+8080/tcp open  http       Apache httpd 2.4.43 ((Win64) OpenSSL/1.1.1g PHP/7.4.6)
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.43: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2020-11984  7.5     https://vulners.com/cve/CVE-2020-11984
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       1337DAY-ID-34882        7.5     https://vulners.com/zdt/1337DAY-ID-34882        *EXPLOIT*
+|       FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8    6.8     https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8  *EXPLOIT*
+|       8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2    6.8     https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2  *EXPLOIT*
+|       4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332    6.8     https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332  *EXPLOIT*
+|       4373C92A-2755-5538-9C91-0469C995AA9B    6.8     https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B  *EXPLOIT*
+|       0095E929-7573-5E4A-A7FA-F6598A35E8DE    6.8     https://vulners.com/githubexploit/0095E929-7573-5E4A-A7FA-F6598A35E8DE  *EXPLOIT*
+|_      1337DAY-ID-35422        4.3     https://vulners.com/zdt/1337DAY-ID-35422        *EXPLOIT*
+|_http-server-header: Apache/2.4.43 (Win64) OpenSSL/1.1.1g PHP/7.4.6
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT     STATE SERVICE    VERSION
+7680/tcp open  pando-pub?
+8080/tcp open  http       Apache httpd 2.4.43 ((Win64) OpenSSL/1.1.1g PHP/7.4.6)
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+| http-csrf: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=buff.nz
+|   Found the following possible CSRF vulnerabilities: 
+|     
+|     Path: http://buff.nz:8080/
+|     Form id: 
+|     Form action: include/process_login.php
+|     
+|     Path: http://buff.nz:8080/contact.php
+|     Form id: 
+|     Form action: include/process_login.php
+|     
+|     Path: http://buff.nz:8080/facilities.php
+|     Form id: 
+|     Form action: include/process_login.php
+|     
+|     Path: http://buff.nz:8080/packages.php
+|     Form id: 
+|     Form action: include/process_login.php
+|     
+|     Path: http://buff.nz:8080/about.php
+|     Form id: 
+|     Form action: include/process_login.php
+|     
+|     Path: http://buff.nz:8080/index.php
+|     Form id: 
+|_    Form action: include/process_login.php
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-server-header: Apache/2.4.43 (Win64) OpenSSL/1.1.1g PHP/7.4.6
+|_http-trace: TRACE is enabled
+| http-enum: 
+|_  /icons/: Potentially interesting folder w/ directory listing
+|_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.43: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2020-11984  7.5     https://vulners.com/cve/CVE-2020-11984
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       1337DAY-ID-34882        7.5     https://vulners.com/zdt/1337DAY-ID-34882        *EXPLOIT*
+|       FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8    6.8     https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8  *EXPLOIT*
+|       CVE-2021-40438  6.8     https://vulners.com/cve/CVE-2021-40438
+|       CVE-2020-35452  6.8     https://vulners.com/cve/CVE-2020-35452
+|       CNVD-2022-03224 6.8     https://vulners.com/cnvd/CNVD-2022-03224
+|       8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2    6.8     https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2  *EXPLOIT*
+|       4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332    6.8     https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332  *EXPLOIT*
+|       4373C92A-2755-5538-9C91-0469C995AA9B    6.8     https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B  *EXPLOIT*
+|       0095E929-7573-5E4A-A7FA-F6598A35E8DE    6.8     https://vulners.com/githubexploit/0095E929-7573-5E4A-A7FA-F6598A35E8DE  *EXPLOIT*
+|       CVE-2022-28615  6.4     https://vulners.com/cve/CVE-2022-28615
+|       CVE-2021-44224  6.4     https://vulners.com/cve/CVE-2021-44224
+|       CVE-2022-22721  5.8     https://vulners.com/cve/CVE-2022-22721
+|       CVE-2022-30556  5.0     https://vulners.com/cve/CVE-2022-30556
+|       CVE-2022-29404  5.0     https://vulners.com/cve/CVE-2022-29404
+|       CVE-2022-28614  5.0     https://vulners.com/cve/CVE-2022-28614
+|       CVE-2022-26377  5.0     https://vulners.com/cve/CVE-2022-26377
+|       CVE-2022-22719  5.0     https://vulners.com/cve/CVE-2022-22719
+|       CVE-2021-36160  5.0     https://vulners.com/cve/CVE-2021-36160
+|       CVE-2021-34798  5.0     https://vulners.com/cve/CVE-2021-34798
+|       CVE-2021-33193  5.0     https://vulners.com/cve/CVE-2021-33193
+|       CVE-2021-30641  5.0     https://vulners.com/cve/CVE-2021-30641
+|       CVE-2021-26690  5.0     https://vulners.com/cve/CVE-2021-26690
+|       CVE-2020-9490   5.0     https://vulners.com/cve/CVE-2020-9490
+|       CVE-2020-13950  5.0     https://vulners.com/cve/CVE-2020-13950
+|       CVE-2019-17567  5.0     https://vulners.com/cve/CVE-2019-17567
+|       CNVD-2022-73122 5.0     https://vulners.com/cnvd/CNVD-2022-73122
+|       CNVD-2022-53584 5.0     https://vulners.com/cnvd/CNVD-2022-53584
+|       CNVD-2022-53582 5.0     https://vulners.com/cnvd/CNVD-2022-53582
+|       CNVD-2022-03223 5.0     https://vulners.com/cnvd/CNVD-2022-03223
+|       CVE-2020-11993  4.3     https://vulners.com/cve/CVE-2020-11993
+|_      1337DAY-ID-35422        4.3     https://vulners.com/zdt/1337DAY-ID-35422        *EXPLOIT*
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Web Servers Recon:
+                                                                                                                                                                                                                                                                                                                            
+nikto -host "http://10.10.10.198:8080" | tee "recon/nikto_10.10.10.198_8080.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '.php' -u "http://10.10.10.198:8080/FUZZ" | tee "recon/ffuf_10.10.10.198_8080.txt"
+
+nikto -host "http://10.10.10.198:| http-open-proxy: Potentially OPEN proxy." | tee "recon/nikto_10.10.10.198_| http-open-proxy: Potentially OPEN proxy..txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '' -u "http://10.10.10.198:| http-open-proxy: Potentially OPEN proxy./FUZZ" | tee "recon/ffuf_10.10.10.198_| http-open-proxy: Potentially OPEN proxy..txt"
+
+
+
+
+
+Which commands would you like to run?                                                                                                                                                                                                                                                                                       
+All (Default), ffuf, nikto, Skip <!>
+
+Running Default in (24)s: 
+
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.198
++ Target Hostname:    10.10.10.198
++ Target Port:        8080
++ Start Time:         2022-12-18 21:00:59 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.43 (Win64) OpenSSL/1.1.1g PHP/7.4.6
++ Retrieved x-powered-by header: PHP/7.4.6
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ Apache mod_negotiation is enabled with MultiViews, which allows attackers to easily brute force file names. See http://www.wisec.it/sectou.php?id=4698ebdc59d15. The following alternatives for 'index' were found: HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var, HTTP_NOT_FOUND.html.var
++ Web Server returns a valid response with junk HTTP methods, this may cause false positives.
++ OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
++ OSVDB-3268: /icons/: Directory indexing found.
++ OSVDB-3233: /icons/README: Apache default file found.
++ 9485 requests: 0 error(s) and 9 item(s) reported on remote host
++ End Time:           2022-12-18 21:27:14 (GMT-5) (1575 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+
+      *********************************************************************
+      Portions of the server's headers (PHP/7.4.6 Apache/2.4.43) are not in
+      the Nikto 2.1.6 database or are newer than the known string. Would you like
+      to submit this information (*no server specific data*) to CIRT.net
+      for a Nikto update (or you may email to sullo@cirt.net) (y/n)? y
+
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The site uses SSL and the Strict-Transport-Security HTTP header is not defined.
++ The site uses SSL and Expect-CT header is not present.
+- Sent updated info to cirt.net -- Thank you!
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://10.10.10.198:8080/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       : .php 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+.htaccess               [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 271ms]
+.htpasswd               [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 370ms]
+.hta                    [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 1251ms]
+                        [Status: 200, Size: 4969, Words: 935, Lines: 134, Duration: 2769ms]
+.hta.php                [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 2505ms]
+about.php               [Status: 200, Size: 5337, Words: 999, Lines: 142, Duration: 2831ms]
+About.php               [Status: 200, Size: 5337, Words: 999, Lines: 142, Duration: 3196ms]
+admin.pl                [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 718ms]
+.htaccess.php           [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 393ms]
+.htpasswd.php           [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 477ms]
+admin.cgi               [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 3356ms]
+aux                     [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 64ms]
+aux.php                 [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 61ms]
+AT-admin.cgi            [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 2330ms]
+boot                    [Status: 301, Size: 342, Words: 22, Lines: 10, Duration: 36ms]
+cachemgr.cgi            [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 67ms]
+cgi-bin/                [Status: 403, Size: 1058, Words: 103, Lines: 43, Duration: 792ms]
+com1                    [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 316ms]
+com1.php                [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 318ms]
+com3                    [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 291ms]
+com3.php                [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 288ms]
+com2.php                [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 322ms]
+con                     [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 641ms]
+con.php                 [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 646ms]
+com2                    [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 2003ms]
+Contact.php             [Status: 200, Size: 4169, Words: 798, Lines: 119, Duration: 3367ms]
+contact.php             [Status: 200, Size: 4169, Words: 798, Lines: 119, Duration: 3804ms]
+edit.php                [Status: 200, Size: 4282, Words: 844, Lines: 122, Duration: 1228ms]
+ex                      [Status: 301, Size: 340, Words: 22, Lines: 10, Duration: 41ms]
+feedback.php            [Status: 200, Size: 4252, Words: 760, Lines: 114, Duration: 9818ms]
+Home.php                [Status: 200, Size: 143, Words: 18, Lines: 3, Duration: 48ms]
+home.php                [Status: 200, Size: 143, Words: 18, Lines: 3, Duration: 1382ms]
+img                     [Status: 301, Size: 341, Words: 22, Lines: 10, Duration: 37ms]
+include                 [Status: 301, Size: 345, Words: 22, Lines: 10, Duration: 36ms]
+Index.php               [Status: 200, Size: 4969, Words: 935, Lines: 134, Duration: 1831ms]
+index.php               [Status: 200, Size: 4969, Words: 935, Lines: 134, Duration: 4186ms]
+index.php               [Status: 200, Size: 4969, Words: 935, Lines: 134, Duration: 4183ms]
+licenses                [Status: 403, Size: 1203, Words: 127, Lines: 46, Duration: 53ms]
+license                 [Status: 200, Size: 18025, Words: 3098, Lines: 339, Duration: 1671ms]
+LICENSE                 [Status: 200, Size: 18025, Words: 3098, Lines: 339, Duration: 1993ms]
+lpt2.php                [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 202ms]
+lpt1                    [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 256ms]
+lpt2                    [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 927ms]
+lpt1.php                [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 283ms]
+nul                     [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 980ms]
+nul.php                 [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 1571ms]
+packages.php            [Status: 200, Size: 7791, Words: 2315, Lines: 169, Duration: 3317ms]
+phpmyadmin              [Status: 403, Size: 1203, Words: 127, Lines: 46, Duration: 973ms]
+prn.php                 [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 58ms]
+profile                 [Status: 301, Size: 345, Words: 22, Lines: 10, Duration: 38ms]
+prn                     [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 3962ms]
+register.php            [Status: 200, Size: 137, Words: 23, Lines: 4, Duration: 2742ms]
+server-status           [Status: 403, Size: 1203, Words: 127, Lines: 46, Duration: 469ms]
+server-info             [Status: 403, Size: 1203, Words: 127, Lines: 46, Duration: 56ms]
+upload                  [Status: 301, Size: 344, Words: 22, Lines: 10, Duration: 38ms]
+up.php                  [Status: 200, Size: 209, Words: 23, Lines: 5, Duration: 2154ms]
+upload.php              [Status: 200, Size: 107, Words: 12, Lines: 3, Duration: 4064ms]
+webalizer               [Status: 403, Size: 1044, Words: 102, Lines: 43, Duration: 605ms]
+:: Progress: [9228/9228] :: Job [1/1] :: 201 req/sec :: Duration: [0:02:32] :: Errors: 0 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ ERROR: SKIPPORTS (nikto.conf) contains |http-open-proxy -- not checking
++ 0 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://10.10.10.198:| http-open-proxy: Potentially OPEN proxy./FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+:: Progress: [4614/4614] :: Job [1/1] :: 0 req/sec :: Duration: [0:00:00] :: Errors: 4614 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+---------------------Finished all scans------------------------                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+
+Completed in 52 minute(s) and 29 second(s)

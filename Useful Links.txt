@@ -5,3 +5,5 @@ https://book.hacktricks.xyz/network-services-pentesting/nfs-service-pentesting
 https://sushant747.gitbooks.io/total-oscp-guide/content/spawning_shells.html
 https://docs.metasploit.com/docs/using-metasploit/basics/how-to-use-a-reverse-shell-in-metasploit.html
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/msfvenom
+https://github.com/int0x33/nc.exe/
+https://0xdf.gitlab.io/2020/08/10/tunneling-with-chisel-and-ssf-update.html

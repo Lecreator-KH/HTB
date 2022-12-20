@@ -7,3 +7,4 @@ https://docs.metasploit.com/docs/using-metasploit/basics/how-to-use-a-reverse-sh
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/msfvenom
 https://github.com/int0x33/nc.exe/
 https://0xdf.gitlab.io/2020/08/10/tunneling-with-chisel-and-ssf-update.html
+https://www.tarlogic.com/blog/how-to-attack-kerberos/

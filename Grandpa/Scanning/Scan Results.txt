@@ -1,0 +1,276 @@
+┌──(kali㉿kali)-[~/Desktop/nmapAutomator]
+└─$ sudo ./nmapAutomator.sh -H Grandpa.nz --type All
+
+Running all scans on Grandpa.nz with IP 3(NXDOMAIN)
+
+
+No ping detected.. Will not use ping scans!
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT   STATE SERVICE
+80/tcp open  http
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Microsoft IIS httpd 6.0
+|_http-title: Under Construction
+| http-methods: 
+|_  Potentially risky methods: TRACE COPY PROPFIND SEARCH LOCK UNLOCK DELETE PUT MOVE MKCOL PROPPATCH
+| http-webdav-scan: 
+|   Public Options: OPTIONS, TRACE, GET, HEAD, DELETE, PUT, POST, COPY, MOVE, MKCOL, PROPFIND, PROPPATCH, LOCK, UNLOCK, SEARCH
+|   Allowed Methods: OPTIONS, TRACE, GET, HEAD, COPY, PROPFIND, SEARCH, LOCK, UNLOCK
+|   WebDAV type: Unknown
+|   Server Date: Mon, 19 Dec 2022 07:12:28 GMT
+|_  Server Type: Microsoft-IIS/6.0
+|_http-server-header: Microsoft-IIS/6.0
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+OS Detection modified to: Windows
+
+
+
+
+---------------------Starting Full Scan------------------------
+
+
+
+PORT   STATE SERVICE
+80/tcp open  http
+
+
+
+No new ports
+
+
+
+
+----------------------Starting UDP Scan------------------------
+
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)   
+                                     In progress: UDP Scan (0:00:03 elapsed - 0:04:57 remaining)                                                                    ] 0% done                                        In progress: UDP Scan (0:00:09 elapsed - 0:03:36 remaining)                                                                    ] 0% done                                        In progress: UDP Scan (0:00:12 elapsed - 0:03:26 remaining)                                                                    ] 1% done                                        In progress: UDP Scan (0:00:15 elapsed - 0:03:19 remaining)                                                                    ] 2% done                                        In progress: UDP Scan (0:00:18 elapsed - 0:03:14 remaining)                                                                    ] 5% done                                        In progress: UDP Scan (0:00:21 elapsed - 0:03:09 remaining)                                                                    ] 7% done                                         In progress: UDP Scan (0:00:24 elapsed - 0:03:05 remaining)                                                                   ] 8% done   
+           In progress: UDP Scan (0:00:27 elapsed - 0:03:01 remaining)                                                                  ] 10% done                                          In progress: UDP Scan (0:00:30 elapsed - 0:02:57 remaining)                                                                  ] 11% done                                          In progress: UDP Scan (0:00:33 elapsed - 0:02:53 remaining)                                                                  ] 13% done                                          In progress: UDP Scan (0:00:36 elapsed - 0:02:50 remaining)                                                                  ] 14% done                                          In progress: UDP Scan (0:00:39 elapsed - 0:02:46 remaining)                                                                  ] 16% done                                          In progress: UDP Scan (0:00:42 elapsed - 0:02:43 remaining)                                                                  ] 17% done                                          In progress: UDP Scan (0:00:45 elapsed - 0:02:40 remaining)                                                                  ] 19% done                                          In progress: UDP Scan (0:00:48 elapsed - 0:02:36 remaining)                                                                  ] 20% done                                          In progress: UDP Scan (0:00:51 elapsed - 0:02:33 remaining)                                                                  ] 22% done   
+                             In progress: UDP Scan (0:00:54 elapsed - 0:02:30 remaining)                                                                  ] 23% done                                          In progress: UDP Scan (0:00:57 elapsed - 0:02:27 remaining)                                                                  ] 25% done                                          In progress: UDP Scan (0:01:00 elapsed - 0:02:23 remaining)                                                                  ] 26% done                                          In progress: UDP Scan (0:01:03 elapsed - 0:02:20 remaining)                                                                  ] 28% done                                          In progress: UDP Scan (0:01:06 elapsed - 0:02:17 remaining)                                                                  ] 29% done                                          In progress: UDP Scan (0:01:09 elapsed - 0:02:14 remaining)                                                                  ] 31% done                                          In progress: UDP Scan (0:01:12 elapsed - 0:02:11 remaining)                                                                  ] 32% done   
+        In progress: UDP Scan (0:01:15 elapsed - 0:02:08 remaining)                                                                  ] 34% done                                          In progress: UDP Scan (0:01:18 elapsed - 0:02:05 remaining)                                                                  ] 35% done                                          In progress: UDP Scan (0:01:21 elapsed - 0:02:02 remaining)                                                                  ] 37% done                                          In progress: UDP Scan (0:01:24 elapsed - 0:01:58 remaining)   >                                                              ] 38% done                                          In progress: UDP Scan (0:01:27 elapsed - 0:01:55 remaining)   ##>                                                            ] 40% done                                          In progress: UDP Scan (0:01:30 elapsed - 0:01:52 remaining)   ###>                                                           ] 41% done                                          In progress: UDP Scan (0:01:33 elapsed - 0:01:49 remaining)   #####>                                                         ] 43% done                                          In progress: UDP Scan (0:01:36 elapsed - 0:01:46 remaining)   ######>                                                        ] 44% done                                          In progress: UDP Scan (0:01:39 elapsed - 0:01:43 remaining)   ########>                                                      ] 46% done   
+                          In progress: UDP Scan (0:01:42 elapsed - 0:01:40 remaining)   #########>                                                     ] 47% done                                          In progress: UDP Scan (0:01:45 elapsed - 0:01:37 remaining)   ###########>                                                   ] 49% done                                          In progress: UDP Scan (0:01:48 elapsed - 0:01:34 remaining)   ############>                                                  ] 50% done                                          In progress: UDP Scan (0:01:51 elapsed - 0:01:31 remaining)   ##############>                                                ] 52% done                                          In progress: UDP Scan (0:01:54 elapsed - 0:01:28 remaining)   ###############>                                               ] 53% done                                          In progress: UDP Scan (0:01:57 elapsed - 0:01:25 remaining)   #################>                                             ] 55% done                                          In progress: UDP Scan (0:02:00 elapsed - 0:01:22 remaining)   ##################>                                            ] 56% done   
+     In progress: UDP Scan (0:02:03 elapsed - 0:01:19 remaining)   ####################>                                          ] 58% done                                          In progress: UDP Scan (0:02:06 elapsed - 0:01:16 remaining)   #####################>                                         ] 59% done                                          In progress: UDP Scan (0:02:09 elapsed - 0:01:13 remaining)   #######################>                                       ] 61% done                                          In progress: UDP Scan (0:02:12 elapsed - 0:01:10 remaining)   ########################>                                      ] 62% done                                          In progress: UDP Scan (0:02:15 elapsed - 0:01:06 remaining)   ##########################>                                    ] 64% done                                          In progress: UDP Scan (0:02:18 elapsed - 0:01:03 remaining)   ###########################>                                   ] 65% done                                          In progress: UDP Scan (0:02:21 elapsed - 0:01:00 remaining)   #############################>                                 ] 67% done                                          In progress: UDP Scan (0:02:24 elapsed - 0:00:57 remaining)   ##############################>                                ] 68% done                                          In progress: UDP Scan (0:02:27 elapsed - 0:00:54 remaining)   ################################>                              ] 70% done   
+                       In progress: UDP Scan (0:02:30 elapsed - 0:00:51 remaining)   #################################>                             ] 71% done                                          In progress: UDP Scan (0:02:33 elapsed - 0:00:48 remaining)   ###################################>                           ] 73% done                                          In progress: UDP Scan (0:02:36 elapsed - 0:00:45 remaining)   ####################################>                          ] 74% done                                          In progress: UDP Scan (0:02:39 elapsed - 0:00:42 remaining)   ######################################>                        ] 76% done                                          In progress: UDP Scan (0:02:42 elapsed - 0:00:39 remaining)   #######################################>                       ] 77% done                                          In progress: UDP Scan (0:02:45 elapsed - 0:00:36 remaining)   #########################################>                     ] 79% done                                          In progress: UDP Scan (0:02:48 elapsed - 0:00:33 remaining)   ##########################################>                    ] 80% done   
+  In progress: UDP Scan (0:02:51 elapsed - 0:00:30 remaining)   ############################################>                  ] 82% done                                          In progress: UDP Scan (0:02:54 elapsed - 0:00:27 remaining)   #############################################>                 ] 83% done                                          In progress: UDP Scan (0:02:57 elapsed - 0:00:24 remaining)   ###############################################>               ] 85% done                                          In progress: UDP Scan (0:03:00 elapsed - 0:00:21 remaining)   ################################################>              ] 86% done                                          In progress: UDP Scan (0:03:03 elapsed - 0:00:18 remaining)   ##################################################>            ] 88% done                                          In progress: UDP Scan (0:03:06 elapsed - 0:00:15 remaining)   ###################################################>           ] 89% done                                          In progress: UDP Scan (0:03:09 elapsed - 0:00:12 remaining)   #####################################################>         ] 91% done                                          In progress: UDP Scan (0:03:12 elapsed - 0:00:09 remaining)   ######################################################>        ] 92% done                                          In progress: UDP Scan (0:03:15 elapsed - 0:00:06 remaining)   ########################################################>      ] 94% done   
+                    In progress: UDP Scan (0:03:18 elapsed - 0:00:03 remaining)   #########################################################>     ] 95% done                                          
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                                                                                           
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                                                                                           
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                                                                                           
+
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Microsoft IIS httpd 6.0
+| vulners: 
+|   cpe:/a:microsoft:internet_information_server:6.0: 
+|       SSV:2903        10.0    https://vulners.com/seebug/SSV:2903     *EXPLOIT*
+|       PACKETSTORM:82956       10.0    https://vulners.com/packetstorm/PACKETSTORM:82956       *EXPLOIT*
+|       MS01_033        10.0    https://vulners.com/canvas/MS01_033     *EXPLOIT*
+|       CVE-2008-0075   10.0    https://vulners.com/cve/CVE-2008-0075
+|       CVE-2001-0500   10.0    https://vulners.com/cve/CVE-2001-0500
+|       SSV:30067       7.5     https://vulners.com/seebug/SSV:30067    *EXPLOIT*
+|       CVE-2007-2897   7.5     https://vulners.com/cve/CVE-2007-2897
+|       SSV:2902        7.2     https://vulners.com/seebug/SSV:2902     *EXPLOIT*
+|       CVE-2008-0074   7.2     https://vulners.com/cve/CVE-2008-0074
+|_      SSV:20121       4.3     https://vulners.com/seebug/SSV:20121    *EXPLOIT*
+|_http-server-header: Microsoft-IIS/6.0
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                           
+
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Microsoft IIS httpd 6.0
+|_http-server-header: Microsoft-IIS/6.0
+| http-enum: 
+|   /postinfo.html: Frontpage file or folder
+|   /_vti_bin/_vti_aut/author.dll: Frontpage file or folder
+|   /_vti_bin/_vti_aut/author.exe: Frontpage file or folder
+|   /_vti_bin/_vti_adm/admin.dll: Frontpage file or folder
+|   /_vti_bin/_vti_adm/admin.exe: Frontpage file or folder
+|   /_vti_bin/fpcount.exe?Page=default.asp|Image=3: Frontpage file or folder
+|   /_vti_bin/shtml.dll: Frontpage file or folder
+|_  /_vti_bin/shtml.exe: Frontpage file or folder
+| http-frontpage-login: 
+|   VULNERABLE:
+|   Frontpage extension anonymous login
+|     State: VULNERABLE
+|       Default installations of older versions of frontpage extensions allow anonymous logins which can lead to server compromise.
+|       
+|     References:
+|_      http://insecure.org/sploits/Microsoft.frontpage.insecurities.html
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+| vulners: 
+|   cpe:/a:microsoft:internet_information_server:6.0: 
+|       SSV:2903        10.0    https://vulners.com/seebug/SSV:2903     *EXPLOIT*
+|       PACKETSTORM:82956       10.0    https://vulners.com/packetstorm/PACKETSTORM:82956       *EXPLOIT*
+|       MS01_033        10.0    https://vulners.com/canvas/MS01_033     *EXPLOIT*
+|       CVE-2008-0075   10.0    https://vulners.com/cve/CVE-2008-0075
+|       CVE-2001-0500   10.0    https://vulners.com/cve/CVE-2001-0500
+|       SSV:30067       7.5     https://vulners.com/seebug/SSV:30067    *EXPLOIT*
+|       CVE-2007-2897   7.5     https://vulners.com/cve/CVE-2007-2897
+|       SSV:2902        7.2     https://vulners.com/seebug/SSV:2902     *EXPLOIT*
+|       CVE-2008-0074   7.2     https://vulners.com/cve/CVE-2008-0074
+|       CVE-2006-0026   6.5     https://vulners.com/cve/CVE-2006-0026
+|       VERACODE:21774  5.0     https://vulners.com/veracode/VERACODE:21774
+|       CVE-2005-2678   5.0     https://vulners.com/cve/CVE-2005-2678
+|       CVE-2003-0718   5.0     https://vulners.com/cve/CVE-2003-0718
+|       VERACODE:20937  4.3     https://vulners.com/veracode/VERACODE:20937
+|       SSV:20121       4.3     https://vulners.com/seebug/SSV:20121    *EXPLOIT*
+|       CVE-2010-1899   4.3     https://vulners.com/cve/CVE-2010-1899
+|       CVE-2005-2089   4.3     https://vulners.com/cve/CVE-2005-2089
+|       VERACODE:31557  4.0     https://vulners.com/veracode/VERACODE:31557
+|       VERACODE:27647  3.5     https://vulners.com/veracode/VERACODE:27647
+|_      CVE-2003-1582   2.6     https://vulners.com/cve/CVE-2003-1582
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                                                                                           
+
+Web Servers Recon:
+                                                                                                                                                                                                                                                                                                                           
+nikto -host "http://Grandpa.nz:80" | tee "recon/nikto_Grandpa.nz_80.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '' -u "http://Grandpa.nz:80/FUZZ" | tee "recon/ffuf_Grandpa.nz_80.txt"
+
+
+
+
+
+Which commands would you like to run?                                                                                                                                                                                                                                                                                      
+All (Default), ffuf, nikto, Skip <!>
+
+Running Default in (1)s: 
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                                                                                           
+
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                           
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.14
++ Target Hostname:    Grandpa.nz
++ Target Port:        80
++ Start Time:         2022-12-19 02:24:09 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Microsoft-IIS/6.0
++ Retrieved microsoftofficewebserver header: 5.0_Pub
++ Retrieved x-powered-by header: ASP.NET
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ Uncommon header 'microsoftofficewebserver' found, with contents: 5.0_Pub
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ Retrieved x-aspnet-version header: 1.1.4322
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Retrieved dasl header: <DAV:sql>
++ Retrieved dav header: 1, 2
++ Retrieved ms-author-via header: MS-FP/4.0,DAV
++ Uncommon header 'ms-author-via' found, with contents: MS-FP/4.0,DAV
++ Allowed HTTP Methods: OPTIONS, TRACE, GET, HEAD, DELETE, PUT, POST, COPY, MOVE, MKCOL, PROPFIND, PROPPATCH, LOCK, UNLOCK, SEARCH 
++ OSVDB-5646: HTTP method ('Allow' Header): 'DELETE' may allow clients to remove files on the web server.
++ OSVDB-397: HTTP method ('Allow' Header): 'PUT' method could allow clients to save files on the web server.
++ OSVDB-5647: HTTP method ('Allow' Header): 'MOVE' may allow clients to change file locations on the web server.
++ Public HTTP Methods: OPTIONS, TRACE, GET, HEAD, DELETE, PUT, POST, COPY, MOVE, MKCOL, PROPFIND, PROPPATCH, LOCK, UNLOCK, SEARCH 
++ OSVDB-5646: HTTP method ('Public' Header): 'DELETE' may allow clients to remove files on the web server.
++ OSVDB-397: HTTP method ('Public' Header): 'PUT' method could allow clients to save files on the web server.
++ OSVDB-5647: HTTP method ('Public' Header): 'MOVE' may allow clients to change file locations on the web server.
++ WebDAV enabled (MKCOL COPY SEARCH UNLOCK PROPFIND PROPPATCH LOCK listed as allowed)
++ OSVDB-13431: PROPFIND HTTP verb may show the server's internal IP address: http://10.10.10.14/
++ OSVDB-396: /_vti_bin/shtml.exe: Attackers may be able to crash FrontPage by requesting a DOS device, like shtml.exe/aux.htm -- a DoS was not attempted.
++ OSVDB-3233: /postinfo.html: Microsoft FrontPage default file found.
++ OSVDB-3233: /_vti_inf.html: FrontPage/SharePoint is installed and reveals its version number (check HTML source for more information).
++ OSVDB-3500: /_vti_bin/fpcount.exe: Frontpage counter CGI has been found. FP Server version 97 allows remote users to execute arbitrary system commands, though a vulnerability in this version could not be confirmed. http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-1999-1376. http://www.securityfocus.com/bid/2252.
++ OSVDB-67: /_vti_bin/shtml.dll/_vti_rpc: The anonymous FrontPage user is revealed through a crafted POST.
++ /_vti_bin/_vti_adm/admin.dll: FrontPage/SharePoint file found.
++ 7937 requests: 0 error(s) and 27 item(s) reported on remote host
++ End Time:           2022-12-19 02:29:24 (GMT-5) (315 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                           
+=========================
+                                                                                                                                                                                                                                                                                                                           
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                           
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://Grandpa.nz:80/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+                        [Status: 200, Size: 1433, Words: 131, Lines: 40, Duration: 38ms]
+_private                [Status: 403, Size: 1529, Words: 173, Lines: 30, Duration: 68ms]
+_vti_bin                [Status: 301, Size: 157, Words: 9, Lines: 2, Duration: 43ms]
+_vti_bin/shtml.dll      [Status: 200, Size: 96, Words: 11, Lines: 1, Duration: 49ms]
+_vti_bin/_vti_adm/admin.dll [Status: 200, Size: 195, Words: 5, Lines: 13, Duration: 49ms]
+_vti_bin/_vti_aut/author.dll [Status: 200, Size: 195, Words: 5, Lines: 13, Duration: 49ms]
+_vti_cnf                [Status: 403, Size: 1529, Words: 173, Lines: 30, Duration: 53ms]
+_vti_log                [Status: 403, Size: 1529, Words: 173, Lines: 30, Duration: 45ms]
+_vti_pvt                [Status: 403, Size: 1529, Words: 173, Lines: 30, Duration: 55ms]
+_vti_txt                [Status: 403, Size: 1529, Words: 173, Lines: 30, Duration: 60ms]
+aspnet_client           [Status: 403, Size: 218, Words: 14, Lines: 2, Duration: 37ms]
+images                  [Status: 301, Size: 151, Words: 9, Lines: 2, Duration: 38ms]
+Images                  [Status: 301, Size: 151, Words: 9, Lines: 2, Duration: 37ms]
+:: Progress: [4614/4614] :: Job [1/1] :: 1030 req/sec :: Duration: [0:00:05] :: Errors: 0 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                           
+=========================
+                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                           
+---------------------Finished all scans------------------------                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                           
+
+Completed in 17 minute(s) and 28 second(s)

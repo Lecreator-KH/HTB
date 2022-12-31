@@ -12,3 +12,4 @@ https://gtfobins.github.io/
 https://www.coderrocketfuel.com/article/default-nginx-configuration-file-inside-sites-available-default
 https://github.com/trickster0/Enyx
 https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/icacls
+https://www.mend.io/resources/blog/new-vulnerability-in-sudo-cve-2019-14287/

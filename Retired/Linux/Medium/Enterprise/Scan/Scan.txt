@@ -1,0 +1,1106 @@
+┌──(kali㉿kali)-[~/Downloads/nmapAutomator]
+└─$ sudo ./nmapAutomator.sh -H enterprise.htb --type All
+[sudo] password for kali: 
+
+Running all scans on enterprise.htb with IP 3(NXDOMAIN)
+
+
+No ping detected.. Will not use ping scans!
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+443/tcp  open  https
+8080/tcp open  http-proxy
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT     STATE SERVICE  VERSION
+22/tcp   open  ssh      OpenSSH 7.4p1 Ubuntu 10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 c4:e9:8c:c5:b5:52:23:f4:b8:ce:d1:96:4a:c0:fa:ac (RSA)
+|   256 f3:9a:85:58:aa:d9:81:38:2d:ea:15:18:f7:8e:dd:42 (ECDSA)
+|_  256 de:bf:11:6d:c0:27:e3:fc:1b:34:c0:4f:4f:6c:76:8b (ED25519)
+80/tcp   open  http     Apache httpd 2.4.10 ((Debian))
+|_http-server-header: Apache/2.4.10 (Debian)
+|_http-title: USS Enterprise &#8211; Ships Log
+|_http-generator: WordPress 4.8.1
+443/tcp  open  ssl/http Apache httpd 2.4.25
+|_ssl-date: TLS randomness does not represent time
+| ssl-cert: Subject: commonName=enterprise.local/organizationName=USS Enterprise/stateOrProvinceName=United Federation of Planets/countryName=UK
+| Not valid before: 2017-08-25T10:35:14
+|_Not valid after:  2017-09-24T10:35:14
+|_http-server-header: Apache/2.4.25 (Ubuntu)
+| tls-alpn: 
+|_  http/1.1
+|_http-title: Apache2 Ubuntu Default Page: It works
+8080/tcp open  http     Apache httpd 2.4.10 ((Debian))
+| http-open-proxy: Potentially OPEN proxy.
+|_Methods supported:CONNECTION
+|_http-server-header: Apache/2.4.10 (Debian)
+|_http-generator: Joomla! - Open Source Content Management
+| http-robots.txt: 15 disallowed entries 
+| /joomla/administrator/ /administrator/ /bin/ /cache/ 
+| /cli/ /components/ /includes/ /installation/ /language/ 
+|_/layouts/ /libraries/ /logs/ /modules/ /plugins/ /tmp/
+|_http-title: Home
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+OS Detection modified to: Linux
+
+
+
+
+---------------------Starting Full Scan------------------------
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE
+22/tcp    open  ssh
+80/tcp    open  http
+443/tcp   open  https
+8080/tcp  open  http-proxy
+32812/tcp open  unknown
+
+
+
+Making a script scan on extra ports: 32812
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE VERSION
+32812/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, GetRequest, HTTPOptions: 
+|     _______ _______ ______ _______
+|     |_____| |_____/ |______
+|     |_____ |_____ | | | _ ______|
+|     Welcome to the Library Computer Access and Retrieval System
+|     Enter Bridge Access Code: 
+|     Invalid Code
+|     Terminating Console
+|   NULL: 
+|     _______ _______ ______ _______
+|     |_____| |_____/ |______
+|     |_____ |_____ | | | _ ______|
+|     Welcome to the Library Computer Access and Retrieval System
+|_    Enter Bridge Access Code:
+
+
+
+
+----------------------Starting UDP Scan------------------------
+                                                                                                                                                                                                                                                                                                                            
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)   
+                                    In progress: UDP Scan (0:00:03 elapsed - 0:01:25 remaining)                                                                     ] 0% done                                       In progress: UDP Scan (0:00:09 elapsed - 0:00:56 remaining)                                                                     ] 0% done                                        In progress: UDP Scan (0:00:12 elapsed - 0:00:40 remaining)                                                                    ] 3% done                                         In progress: UDP Scan (0:00:15 elapsed - 0:00:43 remaining)                                                                   ] 13% done                                         In progress: UDP Scan (0:00:18 elapsed - 0:00:32 remaining)                                                                   ] 22% done                                         In progress: UDP Scan (0:00:21 elapsed - 0:00:33 remaining)                                                                   ] 25% done                                         In progress: UDP Scan (0:00:24 elapsed - 0:00:33 remaining)                                                                   ] 35% done   
+          In progress: UDP Scan (0:00:27 elapsed - 0:00:33 remaining)   #>                                                              ] 38% done                                         In progress: UDP Scan (0:00:30 elapsed - 0:00:32 remaining)   ####>                                                           ] 41% done                                         In progress: UDP Scan (0:00:33 elapsed - 0:00:33 remaining)   ########>                                                       ] 45% done                                         In progress: UDP Scan (0:00:36 elapsed - 0:00:34 remaining)   ###########>                                                    ] 48% done                                         In progress: UDP Scan (0:00:39 elapsed - 0:00:35 remaining)   ############>                                                   ] 49% done                                         In progress: UDP Scan (0:00:42 elapsed - 0:00:35 remaining)   ##############>                                                 ] 51% done                                         In progress: UDP Scan (0:00:45 elapsed - 0:00:36 remaining)   ################>                                               ] 53% done                                         In progress: UDP Scan (0:00:48 elapsed - 0:00:37 remaining)   #################>                                              ] 54% done                                         In progress: UDP Scan (0:00:51 elapsed - 0:00:37 remaining)   ##################>                                             ] 55% done   
+                       In progress: UDP Scan (0:00:54 elapsed - 0:00:38 remaining)   ###################>                                            ] 56% done                                         In progress: UDP Scan (0:00:57 elapsed - 0:00:39 remaining)   ####################>                                           ] 57% done                                         In progress: UDP Scan (0:01:00 elapsed - 0:00:39 remaining)   #####################>                                          ] 58% done                                         In progress: UDP Scan (0:01:03 elapsed - 0:00:40 remaining)   ######################>                                         ] 59% done                                         In progress: UDP Scan (0:01:06 elapsed - 0:00:40 remaining)   #######################>                                        ] 60% done                                         In progress: UDP Scan (0:01:09 elapsed - 0:00:40 remaining)   ########################>                                       ] 61% done                                         In progress: UDP Scan (0:01:12 elapsed - 0:00:41 remaining)   #########################>                                      ] 62% done                                         In progress: UDP Scan (0:01:15 elapsed - 0:00:41 remaining)   ##########################>                                     ] 63% done                                         In progress: UDP Scan (0:01:18 elapsed - 0:00:41 remaining)   ##########################>                                     ] 63% done   
+                                    In progress: UDP Scan (0:01:21 elapsed - 0:00:41 remaining)   ###########################>                                    ] 64% done                                         In progress: UDP Scan (0:01:24 elapsed - 0:00:40 remaining)   ############################>                                   ] 65% done                                         In progress: UDP Scan (0:01:27 elapsed - 0:00:40 remaining)   #############################>                                  ] 66% done                                         In progress: UDP Scan (0:01:30 elapsed - 0:00:40 remaining)   ##############################>                                 ] 67% done                                         In progress: UDP Scan (0:01:33 elapsed - 0:00:39 remaining)   ###############################>                                ] 68% done                                         In progress: UDP Scan (0:01:36 elapsed - 0:00:39 remaining)   ################################>                               ] 69% done                                         In progress: UDP Scan (0:01:39 elapsed - 0:00:39 remaining)   #################################>                              ] 70% done   
+           In progress: UDP Scan (0:01:42 elapsed - 0:00:38 remaining)   ##################################>                             ] 71% done                                         In progress: UDP Scan (0:01:45 elapsed - 0:00:37 remaining)   ###################################>                            ] 72% done                                         In progress: UDP Scan (0:01:48 elapsed - 0:00:37 remaining)   ###################################>                            ] 72% done                                         In progress: UDP Scan (0:01:51 elapsed - 0:00:36 remaining)   ####################################>                           ] 73% done                                         In progress: UDP Scan (0:01:54 elapsed - 0:00:35 remaining)   #####################################>                          ] 74% done                                         In progress: UDP Scan (0:01:57 elapsed - 0:00:34 remaining)   ######################################>                         ] 75% done                                         In progress: UDP Scan (0:02:00 elapsed - 0:00:33 remaining)   #######################################>                        ] 76% done                                         In progress: UDP Scan (0:02:03 elapsed - 0:00:32 remaining)   ########################################>                       ] 77% done                                         In progress: UDP Scan (0:02:06 elapsed - 0:00:31 remaining)   #########################################>                      ] 78% done   
+                        In progress: UDP Scan (0:02:09 elapsed - 0:00:30 remaining)   ##########################################>                     ] 79% done                                         In progress: UDP Scan (0:02:12 elapsed - 0:00:29 remaining)   ###########################################>                    ] 80% done                                         In progress: UDP Scan (0:02:15 elapsed - 0:00:28 remaining)   ###########################################>                    ] 80% done                                         In progress: UDP Scan (0:02:18 elapsed - 0:00:27 remaining)   ############################################>                   ] 81% done                                         In progress: UDP Scan (0:02:21 elapsed - 0:00:26 remaining)   #############################################>                  ] 82% done                                         In progress: UDP Scan (0:02:24 elapsed - 0:00:25 remaining)   ##############################################>                 ] 83% done                                         In progress: UDP Scan (0:02:27 elapsed - 0:00:23 remaining)   ###############################################>                ] 84% done                                         In progress: UDP Scan (0:02:30 elapsed - 0:00:22 remaining)   ################################################>               ] 85% done                                         In progress: UDP Scan (0:02:33 elapsed - 0:00:21 remaining)   #################################################>              ] 86% done   
+                                     In progress: UDP Scan (0:02:36 elapsed - 0:00:19 remaining)   ##################################################>             ] 87% done                                         In progress: UDP Scan (0:02:39 elapsed - 0:00:18 remaining)   ###################################################>            ] 88% done                                         In progress: UDP Scan (0:02:42 elapsed - 0:00:16 remaining)   ####################################################>           ] 89% done                                         In progress: UDP Scan (0:02:45 elapsed - 0:00:15 remaining)   ####################################################>           ] 89% done                                         In progress: UDP Scan (0:02:48 elapsed - 0:00:13 remaining)   #####################################################>          ] 90% done                                         In progress: UDP Scan (0:02:51 elapsed - 0:00:12 remaining)   ######################################################>         ] 91% done                                         In progress: UDP Scan (0:02:54 elapsed - 0:00:10 remaining)   #######################################################>        ] 92% done   
+            In progress: UDP Scan (0:02:57 elapsed - 0:00:09 remaining)   ########################################################>       ] 93% done                                         In progress: UDP Scan (0:03:00 elapsed - 0:00:07 remaining)   #########################################################>      ] 94% done                                         In progress: UDP Scan (0:03:03 elapsed - 0:00:05 remaining)   ##########################################################>     ] 95% done                                         In progress: UDP Scan (0:03:06 elapsed - 0:00:04 remaining)   ###########################################################>    ] 96% done                                         In progress: UDP Scan (0:03:09 elapsed - 0:00:02 remaining)   ############################################################>   ] 97% done                                         In progress: UDP Scan (0:03:12 elapsed - 0:00:00 remaining)   #############################################################>  ] 98% done                                         In progress: UDP Scan (0:03:15 elapsed - 0:00:00 remaining)   #############################################################>  ] 98% done                                         
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                                                                                            
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE  VERSION
+22/tcp    open  ssh      OpenSSH 7.4p1 Ubuntu 10 (Ubuntu Linux; protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:7.4p1: 
+|       EXPLOITPACK:98FE96309F9524B8C84C508837551A19    5.8     https://vulners.com/exploitpack/EXPLOITPACK:98FE96309F9524B8C84C508837551A19    *EXPLOIT*
+|       EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97    5.8     https://vulners.com/exploitpack/EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97    *EXPLOIT*
+|       EDB-ID:46516    5.8     https://vulners.com/exploitdb/EDB-ID:46516      *EXPLOIT*
+|       EDB-ID:46193    5.8     https://vulners.com/exploitdb/EDB-ID:46193      *EXPLOIT*
+|       1337DAY-ID-32328        5.8     https://vulners.com/zdt/1337DAY-ID-32328        *EXPLOIT*
+|       1337DAY-ID-32009        5.8     https://vulners.com/zdt/1337DAY-ID-32009        *EXPLOIT*
+|       SSH_ENUM        5.0     https://vulners.com/canvas/SSH_ENUM     *EXPLOIT*
+|       PACKETSTORM:150621      5.0     https://vulners.com/packetstorm/PACKETSTORM:150621      *EXPLOIT*
+|       EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0    5.0     https://vulners.com/exploitpack/EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0    *EXPLOIT*
+|       EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283    5.0     https://vulners.com/exploitpack/EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283    *EXPLOIT*
+|       EDB-ID:45939    5.0     https://vulners.com/exploitdb/EDB-ID:45939      *EXPLOIT*
+|       EDB-ID:45233    5.0     https://vulners.com/exploitdb/EDB-ID:45233      *EXPLOIT*
+|       1337DAY-ID-31730        5.0     https://vulners.com/zdt/1337DAY-ID-31730        *EXPLOIT*
+|       PACKETSTORM:151227      0.0     https://vulners.com/packetstorm/PACKETSTORM:151227      *EXPLOIT*
+|       MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS-        0.0     https://vulners.com/metasploit/MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS- *EXPLOIT*
+|_      1337DAY-ID-30937        0.0     https://vulners.com/zdt/1337DAY-ID-30937        *EXPLOIT*
+80/tcp    open  http     Apache httpd 2.4.10 ((Debian))
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.10: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8    6.8     https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8  *EXPLOIT*
+|       8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2    6.8     https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2  *EXPLOIT*
+|       4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332    6.8     https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332  *EXPLOIT*
+|       4373C92A-2755-5538-9C91-0469C995AA9B    6.8     https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B  *EXPLOIT*
+|       0095E929-7573-5E4A-A7FA-F6598A35E8DE    6.8     https://vulners.com/githubexploit/0095E929-7573-5E4A-A7FA-F6598A35E8DE  *EXPLOIT*
+|       1337DAY-ID-33577        5.8     https://vulners.com/zdt/1337DAY-ID-33577        *EXPLOIT*
+|       SSV:96537       5.0     https://vulners.com/seebug/SSV:96537    *EXPLOIT*
+|       SSV:62058       5.0     https://vulners.com/seebug/SSV:62058    *EXPLOIT*
+|       EXPLOITPACK:DAED9B9E8D259B28BF72FC7FDC4755A7    5.0     https://vulners.com/exploitpack/EXPLOITPACK:DAED9B9E8D259B28BF72FC7FDC4755A7    *EXPLOIT*
+|       EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    5.0     https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    *EXPLOIT*
+|       EDB-ID:42745    5.0     https://vulners.com/exploitdb/EDB-ID:42745      *EXPLOIT*
+|       1337DAY-ID-28573        5.0     https://vulners.com/zdt/1337DAY-ID-28573        *EXPLOIT*
+|       1337DAY-ID-26574        5.0     https://vulners.com/zdt/1337DAY-ID-26574        *EXPLOIT*
+|       4013EC74-B3C1-5D95-938A-54197A58586D    4.3     https://vulners.com/githubexploit/4013EC74-B3C1-5D95-938A-54197A58586D  *EXPLOIT*
+|       1337DAY-ID-33575        4.3     https://vulners.com/zdt/1337DAY-ID-33575        *EXPLOIT*
+|_      PACKETSTORM:140265      0.0     https://vulners.com/packetstorm/PACKETSTORM:140265      *EXPLOIT*
+|_http-server-header: Apache/2.4.10 (Debian)
+443/tcp   open  ssl/http Apache httpd 2.4.25
+|_http-server-header: Apache/2.4.25 (Ubuntu)
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.25: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       EXPLOITPACK:44C5118F831D55FAF4259C41D8BDA0AB    7.2     https://vulners.com/exploitpack/EXPLOITPACK:44C5118F831D55FAF4259C41D8BDA0AB    *EXPLOIT*
+|       EDB-ID:46676    7.2     https://vulners.com/exploitdb/EDB-ID:46676      *EXPLOIT*
+|       CVE-2019-0211   7.2     https://vulners.com/cve/CVE-2019-0211
+|       1337DAY-ID-32502        7.2     https://vulners.com/zdt/1337DAY-ID-32502        *EXPLOIT*
+|       FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8    6.8     https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8  *EXPLOIT*
+|       8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2    6.8     https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2  *EXPLOIT*
+|       4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332    6.8     https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332  *EXPLOIT*
+|       4373C92A-2755-5538-9C91-0469C995AA9B    6.8     https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B  *EXPLOIT*
+|       0095E929-7573-5E4A-A7FA-F6598A35E8DE    6.8     https://vulners.com/githubexploit/0095E929-7573-5E4A-A7FA-F6598A35E8DE  *EXPLOIT*
+|       1337DAY-ID-33577        5.8     https://vulners.com/zdt/1337DAY-ID-33577        *EXPLOIT*
+|       SSV:96537       5.0     https://vulners.com/seebug/SSV:96537    *EXPLOIT*
+|       EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    5.0     https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    *EXPLOIT*
+|       EDB-ID:42745    5.0     https://vulners.com/exploitdb/EDB-ID:42745      *EXPLOIT*
+|       1337DAY-ID-28573        5.0     https://vulners.com/zdt/1337DAY-ID-28573        *EXPLOIT*
+|       4013EC74-B3C1-5D95-938A-54197A58586D    4.3     https://vulners.com/githubexploit/4013EC74-B3C1-5D95-938A-54197A58586D  *EXPLOIT*
+|       1337DAY-ID-35422        4.3     https://vulners.com/zdt/1337DAY-ID-35422        *EXPLOIT*
+|       1337DAY-ID-33575        4.3     https://vulners.com/zdt/1337DAY-ID-33575        *EXPLOIT*
+|_      PACKETSTORM:152441      0.0     https://vulners.com/packetstorm/PACKETSTORM:152441      *EXPLOIT*
+8080/tcp  open  http     Apache httpd 2.4.10 ((Debian))
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.10: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8    6.8     https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8  *EXPLOIT*
+|       8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2    6.8     https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2  *EXPLOIT*
+|       4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332    6.8     https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332  *EXPLOIT*
+|       4373C92A-2755-5538-9C91-0469C995AA9B    6.8     https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B  *EXPLOIT*
+|       0095E929-7573-5E4A-A7FA-F6598A35E8DE    6.8     https://vulners.com/githubexploit/0095E929-7573-5E4A-A7FA-F6598A35E8DE  *EXPLOIT*
+|       1337DAY-ID-33577        5.8     https://vulners.com/zdt/1337DAY-ID-33577        *EXPLOIT*
+|       SSV:96537       5.0     https://vulners.com/seebug/SSV:96537    *EXPLOIT*
+|       SSV:62058       5.0     https://vulners.com/seebug/SSV:62058    *EXPLOIT*
+|       EXPLOITPACK:DAED9B9E8D259B28BF72FC7FDC4755A7    5.0     https://vulners.com/exploitpack/EXPLOITPACK:DAED9B9E8D259B28BF72FC7FDC4755A7    *EXPLOIT*
+|       EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    5.0     https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    *EXPLOIT*
+|       EDB-ID:42745    5.0     https://vulners.com/exploitdb/EDB-ID:42745      *EXPLOIT*
+|       1337DAY-ID-28573        5.0     https://vulners.com/zdt/1337DAY-ID-28573        *EXPLOIT*
+|       1337DAY-ID-26574        5.0     https://vulners.com/zdt/1337DAY-ID-26574        *EXPLOIT*
+|       4013EC74-B3C1-5D95-938A-54197A58586D    4.3     https://vulners.com/githubexploit/4013EC74-B3C1-5D95-938A-54197A58586D  *EXPLOIT*
+|       1337DAY-ID-33575        4.3     https://vulners.com/zdt/1337DAY-ID-33575        *EXPLOIT*
+|_      PACKETSTORM:140265      0.0     https://vulners.com/packetstorm/PACKETSTORM:140265      *EXPLOIT*
+|_http-server-header: Apache/2.4.10 (Debian)
+32812/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, GetRequest, HTTPOptions: 
+|     _______ _______ ______ _______
+|     |_____| |_____/ |______
+|     |_____ |_____ | | | _ ______|
+|     Welcome to the Library Computer Access and Retrieval System
+|     Enter Bridge Access Code: 
+|     Invalid Code
+|     Terminating Console
+|   NULL: 
+|     _______ _______ ______ _______
+|     |_____| |_____/ |______
+|     |_____ |_____ | | | _ ______|
+|     Welcome to the Library Computer Access and Retrieval System
+|_    Enter Bridge Access Code:
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE  VERSION
+22/tcp    open  ssh      OpenSSH 7.4p1 Ubuntu 10 (Ubuntu Linux; protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:7.4p1: 
+|       EXPLOITPACK:98FE96309F9524B8C84C508837551A19    5.8     https://vulners.com/exploitpack/EXPLOITPACK:98FE96309F9524B8C84C508837551A19    *EXPLOIT*
+|       EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97    5.8     https://vulners.com/exploitpack/EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97    *EXPLOIT*
+|       EDB-ID:46516    5.8     https://vulners.com/exploitdb/EDB-ID:46516      *EXPLOIT*
+|       EDB-ID:46193    5.8     https://vulners.com/exploitdb/EDB-ID:46193      *EXPLOIT*
+|       CVE-2019-6111   5.8     https://vulners.com/cve/CVE-2019-6111
+|       1337DAY-ID-32328        5.8     https://vulners.com/zdt/1337DAY-ID-32328        *EXPLOIT*
+|       1337DAY-ID-32009        5.8     https://vulners.com/zdt/1337DAY-ID-32009        *EXPLOIT*
+|       SSH_ENUM        5.0     https://vulners.com/canvas/SSH_ENUM     *EXPLOIT*
+|       PACKETSTORM:150621      5.0     https://vulners.com/packetstorm/PACKETSTORM:150621      *EXPLOIT*
+|       EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0    5.0     https://vulners.com/exploitpack/EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0    *EXPLOIT*
+|       EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283    5.0     https://vulners.com/exploitpack/EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283    *EXPLOIT*
+|       EDB-ID:45939    5.0     https://vulners.com/exploitdb/EDB-ID:45939      *EXPLOIT*
+|       EDB-ID:45233    5.0     https://vulners.com/exploitdb/EDB-ID:45233      *EXPLOIT*
+|       CVE-2018-15919  5.0     https://vulners.com/cve/CVE-2018-15919
+|       CVE-2018-15473  5.0     https://vulners.com/cve/CVE-2018-15473
+|       CVE-2017-15906  5.0     https://vulners.com/cve/CVE-2017-15906
+|       1337DAY-ID-31730        5.0     https://vulners.com/zdt/1337DAY-ID-31730        *EXPLOIT*
+|       CVE-2021-41617  4.4     https://vulners.com/cve/CVE-2021-41617
+|       CVE-2020-14145  4.3     https://vulners.com/cve/CVE-2020-14145
+|       CVE-2019-6110   4.0     https://vulners.com/cve/CVE-2019-6110
+|       CVE-2019-6109   4.0     https://vulners.com/cve/CVE-2019-6109
+|       CVE-2018-20685  2.6     https://vulners.com/cve/CVE-2018-20685
+|       PACKETSTORM:151227      0.0     https://vulners.com/packetstorm/PACKETSTORM:151227      *EXPLOIT*
+|       MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS-        0.0     https://vulners.com/metasploit/MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS- *EXPLOIT*
+|_      1337DAY-ID-30937        0.0     https://vulners.com/zdt/1337DAY-ID-30937        *EXPLOIT*
+80/tcp    open  http     Apache httpd 2.4.10 ((Debian))
+| http-enum: 
+|   /wp-login.php: Possible admin folder
+|   /readme.html: Wordpress version: 2 
+|   /: WordPress version: 4.8.1
+|   /wp-includes/images/rss.png: Wordpress version 2.2 found.
+|   /wp-includes/js/jquery/suggest.js: Wordpress version 2.5 found.
+|   /wp-includes/images/blank.gif: Wordpress version 2.6 found.
+|   /wp-includes/js/comment-reply.js: Wordpress version 2.7 found.
+|   /wp-login.php: Wordpress login page.
+|   /wp-admin/upgrade.php: Wordpress login page.
+|_  /readme.html: Interesting, a readme.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.10: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8    6.8     https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8  *EXPLOIT*
+|       CVE-2021-40438  6.8     https://vulners.com/cve/CVE-2021-40438
+|       CVE-2020-35452  6.8     https://vulners.com/cve/CVE-2020-35452
+|       CVE-2018-1312   6.8     https://vulners.com/cve/CVE-2018-1312
+|       CVE-2017-15715  6.8     https://vulners.com/cve/CVE-2017-15715
+|       CVE-2016-5387   6.8     https://vulners.com/cve/CVE-2016-5387
+|       CVE-2014-0226   6.8     https://vulners.com/cve/CVE-2014-0226
+|       CNVD-2022-03224 6.8     https://vulners.com/cnvd/CNVD-2022-03224
+|       8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2    6.8     https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2  *EXPLOIT*
+|       4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332    6.8     https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332  *EXPLOIT*
+|       4373C92A-2755-5538-9C91-0469C995AA9B    6.8     https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B  *EXPLOIT*
+|       0095E929-7573-5E4A-A7FA-F6598A35E8DE    6.8     https://vulners.com/githubexploit/0095E929-7573-5E4A-A7FA-F6598A35E8DE  *EXPLOIT*
+|       CVE-2022-28615  6.4     https://vulners.com/cve/CVE-2022-28615
+|       CVE-2021-44224  6.4     https://vulners.com/cve/CVE-2021-44224
+|       CVE-2017-9788   6.4     https://vulners.com/cve/CVE-2017-9788
+|       CVE-2019-0217   6.0     https://vulners.com/cve/CVE-2019-0217
+|       CVE-2022-22721  5.8     https://vulners.com/cve/CVE-2022-22721
+|       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+|       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+|       1337DAY-ID-33577        5.8     https://vulners.com/zdt/1337DAY-ID-33577        *EXPLOIT*
+|       SSV:96537       5.0     https://vulners.com/seebug/SSV:96537    *EXPLOIT*
+|       SSV:62058       5.0     https://vulners.com/seebug/SSV:62058    *EXPLOIT*
+|       EXPLOITPACK:DAED9B9E8D259B28BF72FC7FDC4755A7    5.0     https://vulners.com/exploitpack/EXPLOITPACK:DAED9B9E8D259B28BF72FC7FDC4755A7    *EXPLOIT*
+|       EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    5.0     https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    *EXPLOIT*
+|       EDB-ID:42745    5.0     https://vulners.com/exploitdb/EDB-ID:42745      *EXPLOIT*
+|       CVE-2022-30556  5.0     https://vulners.com/cve/CVE-2022-30556
+|       CVE-2022-29404  5.0     https://vulners.com/cve/CVE-2022-29404
+|       CVE-2022-28614  5.0     https://vulners.com/cve/CVE-2022-28614
+|       CVE-2022-26377  5.0     https://vulners.com/cve/CVE-2022-26377
+|       CVE-2022-22719  5.0     https://vulners.com/cve/CVE-2022-22719
+|       CVE-2021-34798  5.0     https://vulners.com/cve/CVE-2021-34798
+|       CVE-2021-26690  5.0     https://vulners.com/cve/CVE-2021-26690
+|       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+|       CVE-2019-17567  5.0     https://vulners.com/cve/CVE-2019-17567
+|       CVE-2019-0220   5.0     https://vulners.com/cve/CVE-2019-0220
+|       CVE-2018-17199  5.0     https://vulners.com/cve/CVE-2018-17199
+|       CVE-2018-1303   5.0     https://vulners.com/cve/CVE-2018-1303
+|       CVE-2017-9798   5.0     https://vulners.com/cve/CVE-2017-9798
+|       CVE-2017-15710  5.0     https://vulners.com/cve/CVE-2017-15710
+|       CVE-2016-8743   5.0     https://vulners.com/cve/CVE-2016-8743
+|       CVE-2016-2161   5.0     https://vulners.com/cve/CVE-2016-2161
+|       CVE-2016-0736   5.0     https://vulners.com/cve/CVE-2016-0736
+|       CVE-2015-3183   5.0     https://vulners.com/cve/CVE-2015-3183
+|       CVE-2015-0228   5.0     https://vulners.com/cve/CVE-2015-0228
+|       CVE-2014-3583   5.0     https://vulners.com/cve/CVE-2014-3583
+|       CVE-2014-3581   5.0     https://vulners.com/cve/CVE-2014-3581
+|       CVE-2013-5704   5.0     https://vulners.com/cve/CVE-2013-5704
+|       CNVD-2022-73122 5.0     https://vulners.com/cnvd/CNVD-2022-73122
+|       CNVD-2022-53584 5.0     https://vulners.com/cnvd/CNVD-2022-53584
+|       CNVD-2022-53582 5.0     https://vulners.com/cnvd/CNVD-2022-53582
+|       CNVD-2022-03223 5.0     https://vulners.com/cnvd/CNVD-2022-03223
+|       1337DAY-ID-28573        5.0     https://vulners.com/zdt/1337DAY-ID-28573        *EXPLOIT*
+|       1337DAY-ID-26574        5.0     https://vulners.com/zdt/1337DAY-ID-26574        *EXPLOIT*
+|       CVE-2020-11985  4.3     https://vulners.com/cve/CVE-2020-11985
+|       CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+|       CVE-2018-1302   4.3     https://vulners.com/cve/CVE-2018-1302
+|       CVE-2018-1301   4.3     https://vulners.com/cve/CVE-2018-1301
+|       CVE-2016-4975   4.3     https://vulners.com/cve/CVE-2016-4975
+|       CVE-2015-3185   4.3     https://vulners.com/cve/CVE-2015-3185
+|       CVE-2014-8109   4.3     https://vulners.com/cve/CVE-2014-8109
+|       CVE-2014-0118   4.3     https://vulners.com/cve/CVE-2014-0118
+|       4013EC74-B3C1-5D95-938A-54197A58586D    4.3     https://vulners.com/githubexploit/4013EC74-B3C1-5D95-938A-54197A58586D  *EXPLOIT*
+|       1337DAY-ID-33575        4.3     https://vulners.com/zdt/1337DAY-ID-33575        *EXPLOIT*
+|       CVE-2018-1283   3.5     https://vulners.com/cve/CVE-2018-1283
+|       CVE-2016-8612   3.3     https://vulners.com/cve/CVE-2016-8612
+|_      PACKETSTORM:140265      0.0     https://vulners.com/packetstorm/PACKETSTORM:140265      *EXPLOIT*
+|_http-server-header: Apache/2.4.10 (Debian)
+443/tcp   open  ssl/http Apache httpd 2.4.25
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.25: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       EXPLOITPACK:44C5118F831D55FAF4259C41D8BDA0AB    7.2     https://vulners.com/exploitpack/EXPLOITPACK:44C5118F831D55FAF4259C41D8BDA0AB    *EXPLOIT*
+|       EDB-ID:46676    7.2     https://vulners.com/exploitdb/EDB-ID:46676      *EXPLOIT*
+|       CVE-2019-0211   7.2     https://vulners.com/cve/CVE-2019-0211
+|       1337DAY-ID-32502        7.2     https://vulners.com/zdt/1337DAY-ID-32502        *EXPLOIT*
+|       FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8    6.8     https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8  *EXPLOIT*
+|       CVE-2021-40438  6.8     https://vulners.com/cve/CVE-2021-40438
+|       CVE-2020-35452  6.8     https://vulners.com/cve/CVE-2020-35452
+|       CVE-2018-1312   6.8     https://vulners.com/cve/CVE-2018-1312
+|       CVE-2017-15715  6.8     https://vulners.com/cve/CVE-2017-15715
+|       CNVD-2022-03224 6.8     https://vulners.com/cnvd/CNVD-2022-03224
+|       8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2    6.8     https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2  *EXPLOIT*
+|       4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332    6.8     https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332  *EXPLOIT*
+|       4373C92A-2755-5538-9C91-0469C995AA9B    6.8     https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B  *EXPLOIT*
+|       0095E929-7573-5E4A-A7FA-F6598A35E8DE    6.8     https://vulners.com/githubexploit/0095E929-7573-5E4A-A7FA-F6598A35E8DE  *EXPLOIT*
+|       CVE-2022-28615  6.4     https://vulners.com/cve/CVE-2022-28615
+|       CVE-2021-44224  6.4     https://vulners.com/cve/CVE-2021-44224
+|       CVE-2019-10082  6.4     https://vulners.com/cve/CVE-2019-10082
+|       CVE-2017-9788   6.4     https://vulners.com/cve/CVE-2017-9788
+|       CVE-2019-0217   6.0     https://vulners.com/cve/CVE-2019-0217
+|       CVE-2022-22721  5.8     https://vulners.com/cve/CVE-2022-22721
+|       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+|       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+|       1337DAY-ID-33577        5.8     https://vulners.com/zdt/1337DAY-ID-33577        *EXPLOIT*
+|       SSV:96537       5.0     https://vulners.com/seebug/SSV:96537    *EXPLOIT*
+|       EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    5.0     https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    *EXPLOIT*
+|       EDB-ID:42745    5.0     https://vulners.com/exploitdb/EDB-ID:42745      *EXPLOIT*
+|       CVE-2022-30556  5.0     https://vulners.com/cve/CVE-2022-30556
+|       CVE-2022-29404  5.0     https://vulners.com/cve/CVE-2022-29404
+|       CVE-2022-28614  5.0     https://vulners.com/cve/CVE-2022-28614
+|       CVE-2022-26377  5.0     https://vulners.com/cve/CVE-2022-26377
+|       CVE-2022-22719  5.0     https://vulners.com/cve/CVE-2022-22719
+|       CVE-2021-34798  5.0     https://vulners.com/cve/CVE-2021-34798
+|       CVE-2021-33193  5.0     https://vulners.com/cve/CVE-2021-33193
+|       CVE-2021-26690  5.0     https://vulners.com/cve/CVE-2021-26690
+|       CVE-2020-9490   5.0     https://vulners.com/cve/CVE-2020-9490
+|       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+|       CVE-2019-17567  5.0     https://vulners.com/cve/CVE-2019-17567
+|       CVE-2019-10081  5.0     https://vulners.com/cve/CVE-2019-10081
+|       CVE-2019-0220   5.0     https://vulners.com/cve/CVE-2019-0220
+|       CVE-2019-0196   5.0     https://vulners.com/cve/CVE-2019-0196
+|       CVE-2018-17199  5.0     https://vulners.com/cve/CVE-2018-17199
+|       CVE-2018-17189  5.0     https://vulners.com/cve/CVE-2018-17189
+|       CVE-2018-1333   5.0     https://vulners.com/cve/CVE-2018-1333
+|       CVE-2018-1303   5.0     https://vulners.com/cve/CVE-2018-1303
+|       CVE-2017-9798   5.0     https://vulners.com/cve/CVE-2017-9798
+|       CVE-2017-7668   5.0     https://vulners.com/cve/CVE-2017-7668
+|       CVE-2017-7659   5.0     https://vulners.com/cve/CVE-2017-7659
+|       CVE-2017-15710  5.0     https://vulners.com/cve/CVE-2017-15710
+|       CNVD-2022-73122 5.0     https://vulners.com/cnvd/CNVD-2022-73122
+|       CNVD-2022-53584 5.0     https://vulners.com/cnvd/CNVD-2022-53584
+|       CNVD-2022-53582 5.0     https://vulners.com/cnvd/CNVD-2022-53582
+|       CNVD-2022-03223 5.0     https://vulners.com/cnvd/CNVD-2022-03223
+|       1337DAY-ID-28573        5.0     https://vulners.com/zdt/1337DAY-ID-28573        *EXPLOIT*
+|       CVE-2020-11993  4.3     https://vulners.com/cve/CVE-2020-11993
+|       CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+|       CVE-2018-1302   4.3     https://vulners.com/cve/CVE-2018-1302
+|       CVE-2018-1301   4.3     https://vulners.com/cve/CVE-2018-1301
+|       CVE-2018-11763  4.3     https://vulners.com/cve/CVE-2018-11763
+|       4013EC74-B3C1-5D95-938A-54197A58586D    4.3     https://vulners.com/githubexploit/4013EC74-B3C1-5D95-938A-54197A58586D  *EXPLOIT*
+|       1337DAY-ID-35422        4.3     https://vulners.com/zdt/1337DAY-ID-35422        *EXPLOIT*
+|       1337DAY-ID-33575        4.3     https://vulners.com/zdt/1337DAY-ID-33575        *EXPLOIT*
+|       CVE-2018-1283   3.5     https://vulners.com/cve/CVE-2018-1283
+|_      PACKETSTORM:152441      0.0     https://vulners.com/packetstorm/PACKETSTORM:152441      *EXPLOIT*
+|_http-server-header: Apache/2.4.25 (Ubuntu)
+| http-enum: 
+|_  /files/: Potentially interesting directory w/ listing on 'apache/2.4.25 (ubuntu)'
+8080/tcp  open  http     Apache httpd 2.4.10 ((Debian))
+| http-enum: 
+|   /administrator/: Possible admin folder
+|   /administrator/index.php: Possible admin folder
+|   /1.sql: Possible database backup
+|   /robots.txt: Robots file
+|   /administrator/manifests/files/joomla.xml: Joomla version 3.7.5
+|   /language/en-GB/en-GB.xml: Joomla version 3.7.5
+|   /htaccess.txt: Joomla!
+|   /README.txt: Interesting, a readme.
+|   /0/: Potentially interesting folder
+|   /1/: Potentially interesting folder
+|   /2/: Potentially interesting folder
+|   /bin/: Potentially interesting folder
+|   /cache/: Potentially interesting folder
+|   /home/: Potentially interesting folder
+|   /images/: Potentially interesting folder
+|   /includes/: Potentially interesting folder
+|   /libraries/: Potentially interesting folder
+|   /modules/: Potentially interesting folder
+|   /templates/: Potentially interesting folder
+|_  /tmp/: Potentially interesting folder
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.10: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8    6.8     https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8  *EXPLOIT*
+|       CVE-2021-40438  6.8     https://vulners.com/cve/CVE-2021-40438
+|       CVE-2020-35452  6.8     https://vulners.com/cve/CVE-2020-35452
+|       CVE-2018-1312   6.8     https://vulners.com/cve/CVE-2018-1312
+|       CVE-2017-15715  6.8     https://vulners.com/cve/CVE-2017-15715
+|       CVE-2016-5387   6.8     https://vulners.com/cve/CVE-2016-5387
+|       CVE-2014-0226   6.8     https://vulners.com/cve/CVE-2014-0226
+|       CNVD-2022-03224 6.8     https://vulners.com/cnvd/CNVD-2022-03224
+|       8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2    6.8     https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2  *EXPLOIT*
+|       4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332    6.8     https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332  *EXPLOIT*
+|       4373C92A-2755-5538-9C91-0469C995AA9B    6.8     https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B  *EXPLOIT*
+|       0095E929-7573-5E4A-A7FA-F6598A35E8DE    6.8     https://vulners.com/githubexploit/0095E929-7573-5E4A-A7FA-F6598A35E8DE  *EXPLOIT*
+|       CVE-2022-28615  6.4     https://vulners.com/cve/CVE-2022-28615
+|       CVE-2021-44224  6.4     https://vulners.com/cve/CVE-2021-44224
+|       CVE-2017-9788   6.4     https://vulners.com/cve/CVE-2017-9788
+|       CVE-2019-0217   6.0     https://vulners.com/cve/CVE-2019-0217
+|       CVE-2022-22721  5.8     https://vulners.com/cve/CVE-2022-22721
+|       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+|       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+|       1337DAY-ID-33577        5.8     https://vulners.com/zdt/1337DAY-ID-33577        *EXPLOIT*
+|       SSV:96537       5.0     https://vulners.com/seebug/SSV:96537    *EXPLOIT*
+|       SSV:62058       5.0     https://vulners.com/seebug/SSV:62058    *EXPLOIT*
+|       EXPLOITPACK:DAED9B9E8D259B28BF72FC7FDC4755A7    5.0     https://vulners.com/exploitpack/EXPLOITPACK:DAED9B9E8D259B28BF72FC7FDC4755A7    *EXPLOIT*
+|       EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    5.0     https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    *EXPLOIT*
+|       EDB-ID:42745    5.0     https://vulners.com/exploitdb/EDB-ID:42745      *EXPLOIT*
+|       CVE-2022-30556  5.0     https://vulners.com/cve/CVE-2022-30556
+|       CVE-2022-29404  5.0     https://vulners.com/cve/CVE-2022-29404
+|       CVE-2022-28614  5.0     https://vulners.com/cve/CVE-2022-28614
+|       CVE-2022-26377  5.0     https://vulners.com/cve/CVE-2022-26377
+|       CVE-2022-22719  5.0     https://vulners.com/cve/CVE-2022-22719
+|       CVE-2021-34798  5.0     https://vulners.com/cve/CVE-2021-34798
+|       CVE-2021-26690  5.0     https://vulners.com/cve/CVE-2021-26690
+|       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+|       CVE-2019-17567  5.0     https://vulners.com/cve/CVE-2019-17567
+|       CVE-2019-0220   5.0     https://vulners.com/cve/CVE-2019-0220
+|       CVE-2018-17199  5.0     https://vulners.com/cve/CVE-2018-17199
+|       CVE-2018-1303   5.0     https://vulners.com/cve/CVE-2018-1303
+|       CVE-2017-9798   5.0     https://vulners.com/cve/CVE-2017-9798
+|       CVE-2017-15710  5.0     https://vulners.com/cve/CVE-2017-15710
+|       CVE-2016-8743   5.0     https://vulners.com/cve/CVE-2016-8743
+|       CVE-2016-2161   5.0     https://vulners.com/cve/CVE-2016-2161
+|       CVE-2016-0736   5.0     https://vulners.com/cve/CVE-2016-0736
+|       CVE-2015-3183   5.0     https://vulners.com/cve/CVE-2015-3183
+|       CVE-2015-0228   5.0     https://vulners.com/cve/CVE-2015-0228
+|       CVE-2014-3583   5.0     https://vulners.com/cve/CVE-2014-3583
+|       CVE-2014-3581   5.0     https://vulners.com/cve/CVE-2014-3581
+|       CVE-2013-5704   5.0     https://vulners.com/cve/CVE-2013-5704
+|       CNVD-2022-73122 5.0     https://vulners.com/cnvd/CNVD-2022-73122
+|       CNVD-2022-53584 5.0     https://vulners.com/cnvd/CNVD-2022-53584
+|       CNVD-2022-53582 5.0     https://vulners.com/cnvd/CNVD-2022-53582
+|       CNVD-2022-03223 5.0     https://vulners.com/cnvd/CNVD-2022-03223
+|       1337DAY-ID-28573        5.0     https://vulners.com/zdt/1337DAY-ID-28573        *EXPLOIT*
+|       1337DAY-ID-26574        5.0     https://vulners.com/zdt/1337DAY-ID-26574        *EXPLOIT*
+|       CVE-2020-11985  4.3     https://vulners.com/cve/CVE-2020-11985
+|       CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+|       CVE-2018-1302   4.3     https://vulners.com/cve/CVE-2018-1302
+|       CVE-2018-1301   4.3     https://vulners.com/cve/CVE-2018-1301
+|       CVE-2016-4975   4.3     https://vulners.com/cve/CVE-2016-4975
+|       CVE-2015-3185   4.3     https://vulners.com/cve/CVE-2015-3185
+|       CVE-2014-8109   4.3     https://vulners.com/cve/CVE-2014-8109
+|       CVE-2014-0118   4.3     https://vulners.com/cve/CVE-2014-0118
+|       4013EC74-B3C1-5D95-938A-54197A58586D    4.3     https://vulners.com/githubexploit/4013EC74-B3C1-5D95-938A-54197A58586D  *EXPLOIT*
+|       1337DAY-ID-33575        4.3     https://vulners.com/zdt/1337DAY-ID-33575        *EXPLOIT*
+|       CVE-2018-1283   3.5     https://vulners.com/cve/CVE-2018-1283
+|       CVE-2016-8612   3.3     https://vulners.com/cve/CVE-2016-8612
+|_      PACKETSTORM:140265      0.0     https://vulners.com/packetstorm/PACKETSTORM:140265      *EXPLOIT*
+| http-internal-ip-disclosure: 
+|_  Internal IP Leaked: 172.17.0.3
+|_http-server-header: Apache/2.4.10 (Debian)
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+| http-csrf: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=enterprise.htb
+|   Found the following possible CSRF vulnerabilities: 
+|     
+|     Path: http://enterprise.htb:8080/
+|     Form id: login-form
+|     Form action: /index.php
+|     
+|     Path: http://enterprise.htb:8080/index.php/component/users/?view=remind&amp;Itemid=101
+|     Form id: user-registration
+|     Form action: /index.php/component/users/?task=remind.remind&Itemid=101
+|     
+|     Path: http://enterprise.htb:8080/index.php/component/users/?view=remind&amp;Itemid=101
+|     Form id: login-form
+|     Form action: /index.php/component/users/?Itemid=101
+|     
+|     Path: http://enterprise.htb:8080/index.php/about
+|     Form id: login-form
+|     Form action: /index.php/about
+|     
+|     Path: http://enterprise.htb:8080/index.php/component/users/?view=reset&amp;Itemid=101
+|     Form id: user-registration
+|     Form action: /index.php/component/users/?task=reset.request&Itemid=101
+|     
+|     Path: http://enterprise.htb:8080/index.php/component/users/?view=reset&amp;Itemid=101
+|     Form id: login-form
+|     Form action: /index.php/component/users/?Itemid=101
+|     
+|     Path: http://enterprise.htb:8080/index.php/2-uncategorised/1-romulan-ale
+|     Form id: login-form
+|     Form action: /index.php
+|     
+|     Path: http://enterprise.htb:8080/index.php
+|     Form id: login-form
+|_    Form action: /index.php
+32812/tcp open  unknown
+| fingerprint-strings: 
+|   GenericLines, GetRequest, HTTPOptions: 
+|     _______ _______ ______ _______
+|     |_____| |_____/ |______
+|     |_____ |_____ | | | _ ______|
+|     Welcome to the Library Computer Access and Retrieval System
+|     Enter Bridge Access Code: 
+|     Invalid Code
+|     Terminating Console
+|   NULL: 
+|     _______ _______ ______ _______
+|     |_____| |_____/ |______
+|     |_____ |_____ | | | _ ______|
+|     Welcome to the Library Computer Access and Retrieval System
+|_    Enter Bridge Access Code:
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Web Servers Recon:
+                                                                                                                                                                                                                                                                                                                            
+sslscan "enterprise.htb" | tee "recon/sslscan_enterprise.htb_443.txt"
+nikto -host "https://enterprise.htb:443" -ssl | tee "recon/nikto_enterprise.htb_443.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '.html' -u "https://enterprise.htb:443/FUZZ" | tee "recon/ffuf_enterprise.htb_443.txt"
+
+nikto -host "http://enterprise.htb:8080" | tee "recon/nikto_enterprise.htb_8080.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '.php' -u "http://enterprise.htb:8080/FUZZ" | tee "recon/ffuf_enterprise.htb_8080.txt"
+
+nikto -host "http://enterprise.htb:80" | tee "recon/nikto_enterprise.htb_80.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '' -u "http://enterprise.htb:80/FUZZ" | tee "recon/ffuf_enterprise.htb_80.txt"
+
+nikto -host "http://enterprise.htb:| http-open-proxy: Potentially OPEN proxy." | tee "recon/nikto_enterprise.htb_| http-open-proxy: Potentially OPEN proxy..txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '' -u "http://enterprise.htb:| http-open-proxy: Potentially OPEN proxy./FUZZ" | tee "recon/ffuf_enterprise.htb_| http-open-proxy: Potentially OPEN proxy..txt"
+
+
+
+
+
+Which commands would you like to run?                                                                                                                                                                                                                                                                                       
+All (Default), ffuf, nikto, sslscan, Skip <!>
+
+Running Default in (1)s: 
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Starting sslscan scan
+                                                                                                                                                                                                                                                                                                                            
+Version: 2.0.15-static
+OpenSSL 1.1.1q-dev  xx XXX xxxx
+
+Connected to 10.10.10.61
+
+Testing SSL server enterprise.htb on port 443 using SNI name enterprise.htb
+
+  SSL/TLS Protocols:
+SSLv2     disabled
+SSLv3     disabled
+TLSv1.0   enabled
+TLSv1.1   enabled
+TLSv1.2   enabled
+TLSv1.3   disabled
+
+  TLS Fallback SCSV:
+Server supports TLS Fallback SCSV
+
+  TLS renegotiation:
+Secure session renegotiation supported
+
+  TLS Compression:
+Compression disabled
+
+  Heartbleed:
+TLSv1.2 not vulnerable to heartbleed
+TLSv1.1 not vulnerable to heartbleed
+TLSv1.0 not vulnerable to heartbleed
+
+  Supported Server Cipher(s):
+Preferred TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384   Curve P-256 DHE 256
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-GCM-SHA384     DHE 2048 bits
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-GCM-SHA256   Curve P-256 DHE 256
+Accepted  TLSv1.2  128 bits  DHE-RSA-AES128-GCM-SHA256     DHE 2048 bits
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA384       Curve P-256 DHE 256
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-SHA256         DHE 2048 bits
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-SHA256       Curve P-256 DHE 256
+Accepted  TLSv1.2  128 bits  DHE-RSA-AES128-SHA256         DHE 2048 bits
+Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.2  256 bits  DHE-RSA-AES256-SHA            DHE 2048 bits
+Accepted  TLSv1.2  256 bits  DHE-RSA-CAMELLIA256-SHA       DHE 2048 bits
+Accepted  TLSv1.2  128 bits  ECDHE-RSA-AES128-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.2  128 bits  DHE-RSA-AES128-SHA            DHE 2048 bits
+Accepted  TLSv1.2  128 bits  DHE-RSA-CAMELLIA128-SHA       DHE 2048 bits
+Accepted  TLSv1.2  256 bits  AES256-GCM-SHA384            
+Accepted  TLSv1.2  128 bits  AES128-GCM-SHA256            
+Accepted  TLSv1.2  256 bits  AES256-SHA256                
+Accepted  TLSv1.2  128 bits  AES128-SHA256                
+Accepted  TLSv1.2  256 bits  AES256-SHA                   
+Accepted  TLSv1.2  256 bits  CAMELLIA256-SHA              
+Accepted  TLSv1.2  128 bits  AES128-SHA                   
+Accepted  TLSv1.2  128 bits  CAMELLIA128-SHA              
+Preferred TLSv1.1  256 bits  ECDHE-RSA-AES256-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.1  256 bits  DHE-RSA-AES256-SHA            DHE 2048 bits
+Accepted  TLSv1.1  256 bits  DHE-RSA-CAMELLIA256-SHA       DHE 2048 bits
+Accepted  TLSv1.1  128 bits  ECDHE-RSA-AES128-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.1  128 bits  DHE-RSA-AES128-SHA            DHE 2048 bits
+Accepted  TLSv1.1  128 bits  DHE-RSA-CAMELLIA128-SHA       DHE 2048 bits
+Accepted  TLSv1.1  256 bits  AES256-SHA                   
+Accepted  TLSv1.1  256 bits  CAMELLIA256-SHA              
+Accepted  TLSv1.1  128 bits  AES128-SHA                   
+Accepted  TLSv1.1  128 bits  CAMELLIA128-SHA              
+Preferred TLSv1.0  256 bits  ECDHE-RSA-AES256-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.0  256 bits  DHE-RSA-AES256-SHA            DHE 2048 bits
+Accepted  TLSv1.0  256 bits  DHE-RSA-CAMELLIA256-SHA       DHE 2048 bits
+Accepted  TLSv1.0  128 bits  ECDHE-RSA-AES128-SHA          Curve P-256 DHE 256
+Accepted  TLSv1.0  128 bits  DHE-RSA-AES128-SHA            DHE 2048 bits
+Accepted  TLSv1.0  128 bits  DHE-RSA-CAMELLIA128-SHA       DHE 2048 bits
+Accepted  TLSv1.0  256 bits  AES256-SHA                   
+Accepted  TLSv1.0  256 bits  CAMELLIA256-SHA              
+Accepted  TLSv1.0  128 bits  AES128-SHA                   
+Accepted  TLSv1.0  128 bits  CAMELLIA128-SHA              
+
+  Server Key Exchange Group(s):
+TLSv1.2  141 bits  sect283k1
+TLSv1.2  141 bits  sect283r1
+TLSv1.2  204 bits  sect409k1
+TLSv1.2  204 bits  sect409r1
+TLSv1.2  285 bits  sect571k1
+TLSv1.2  285 bits  sect571r1
+TLSv1.2  128 bits  secp256k1
+TLSv1.2  128 bits  secp256r1 (NIST P-256)
+TLSv1.2  192 bits  secp384r1 (NIST P-384)
+TLSv1.2  260 bits  secp521r1 (NIST P-521)
+TLSv1.2  128 bits  brainpoolP256r1
+TLSv1.2  192 bits  brainpoolP384r1
+TLSv1.2  256 bits  brainpoolP512r1
+
+  SSL Certificate:
+Signature Algorithm: sha256WithRSAEncryption
+RSA Key Strength:    2048
+
+Subject:  enterprise.local
+Issuer:   enterprise.local
+
+Not valid before: Aug 25 10:35:14 2017 GMT
+Not valid after:  Sep 24 10:35:14 2017 GMT
+
+Finished sslscan scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.61
++ Target Hostname:    enterprise.htb
++ Target Port:        443
+---------------------------------------------------------------------------
++ SSL Info:        Subject:  /C=UK/ST=United Federation of Planets/L=Earth/O=USS Enterprise/OU=Bridge/CN=enterprise.local/emailAddress=jeanlucpicard@enterprise.local
+                   Ciphers:  ECDHE-RSA-AES256-GCM-SHA384
+                   Issuer:   /C=UK/ST=United Federation of Planets/L=Earth/O=USS Enterprise/OU=Bridge/CN=enterprise.local/emailAddress=jeanlucpicard@enterprise.local
++ Start Time:         2022-12-27 19:17:38 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.25 (Ubuntu)
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The site uses SSL and the Strict-Transport-Security HTTP header is not defined.
++ The site uses SSL and Expect-CT header is not present.
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Server may leak inodes via ETags, header found with file /, inode: 2aa6, size: 5579166a49cfd, mtime: gzip
++ The Content-Encoding header is set to "deflate" this may mean that the server is vulnerable to the BREACH attack.
++ Apache/2.4.25 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Hostname 'enterprise.htb' does not match certificate's names: enterprise.local
++ Allowed HTTP Methods: GET, HEAD, POST, OPTIONS 
++ OSVDB-3268: /files/: Directory indexing found.
++ OSVDB-3092: /files/: This might be interesting...
++ OSVDB-3233: /icons/README: Apache default file found.
++ 7789 requests: 0 error(s) and 13 item(s) reported on remote host
++ End Time:           2022-12-27 20:08:07 (GMT-5) (3029 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : https://enterprise.htb:443/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       : .html 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+.htaccess.html          [Status: 403, Size: 304, Words: 22, Lines: 12, Duration: 38ms]
+.hta.html               [Status: 403, Size: 299, Words: 22, Lines: 12, Duration: 69ms]
+.htpasswd.html          [Status: 403, Size: 304, Words: 22, Lines: 12, Duration: 70ms]
+.htaccess               [Status: 403, Size: 299, Words: 22, Lines: 12, Duration: 71ms]
+.htpasswd               [Status: 403, Size: 299, Words: 22, Lines: 12, Duration: 76ms]
+                        [Status: 200, Size: 10918, Words: 3499, Lines: 376, Duration: 43ms]
+.hta                    [Status: 403, Size: 294, Words: 22, Lines: 12, Duration: 65ms]
+.html                   [Status: 403, Size: 295, Words: 22, Lines: 12, Duration: 71ms]
+files                   [Status: 301, Size: 318, Words: 20, Lines: 10, Duration: 87ms]
+index.html              [Status: 200, Size: 10918, Words: 3499, Lines: 376, Duration: 66ms]
+index.html              [Status: 200, Size: 10918, Words: 3499, Lines: 376, Duration: 66ms]
+server-status           [Status: 403, Size: 303, Words: 22, Lines: 12, Duration: 62ms]
+:: Progress: [9228/9228] :: Job [1/1] :: 634 req/sec :: Duration: [0:05:10] :: Errors: 0 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.61
++ Target Hostname:    enterprise.htb
++ Target Port:        8080
++ Start Time:         2022-12-27 20:13:19 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.10 (Debian)
++ Retrieved x-powered-by header: PHP/7.0.23
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ Entry '/administrator/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/bin/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/cache/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/cli/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/components/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/includes/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/language/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/layouts/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/libraries/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/modules/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/plugins/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ Entry '/tmp/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ "robots.txt" contains 14 entries which should be manually viewed.
++ RFC-1918 IP address found in the 'location' header. The IP is "172.17.0.3".
++ OSVDB-630: The web server may reveal its internal or real IP in the Location header via a request to /images over HTTP/1.0. The value is "172.17.0.3".
++ Apache/2.4.10 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Web Server returns a valid response with junk HTTP methods, this may cause false positives.
++ DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.
++ /contents/extensions/asp/1: The IIS system may be vulnerable to a DOS, see https://docs.microsoft.com/en-us/security-updates/securitybulletins/2002/MS02-018 for details.
++ OSVDB-8193: /index.php?module=ew_filemanager&type=admin&func=manager&pathext=../../../etc: EW FileManager for PostNuke allows arbitrary file retrieval.
++ OSVDB-3092: /administrator/: This might be interesting...
++ OSVDB-3092: /bin/: This might be interesting...
++ OSVDB-3092: /home/: This might be interesting...
++ OSVDB-3092: /includes/: This might be interesting...
++ OSVDB-3092: /tmp/: This might be interesting...
++ OSVDB-4908: /securelogin/1,2345,A,00.html: Vignette Story Server v4.1, 6, may disclose sensitive information via a buffer overflow.
++ OSVDB-3092: /LICENSE.txt: License file found may identify site software.
++ OSVDB-3233: /icons/README: Apache default file found.
++ OSVDB-3092: /www/2: This might be interesting...
++ /htaccess.txt: Default Joomla! htaccess.txt file found. This should be removed or renamed.
++ /administrator/index.php: Admin login page/section found.
++ 8612 requests: 0 error(s) and 35 item(s) reported on remote host
++ End Time:           2022-12-27 20:45:06 (GMT-5) (1907 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://enterprise.htb:8080/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       : .php 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+.hta                    [Status: 403, Size: 295, Words: 22, Lines: 12, Duration: 41ms]
+.hta.php                [Status: 403, Size: 299, Words: 22, Lines: 12, Duration: 42ms]
+.htaccess               [Status: 403, Size: 300, Words: 22, Lines: 12, Duration: 43ms]
+.htpasswd               [Status: 403, Size: 300, Words: 22, Lines: 12, Duration: 56ms]
+.htaccess.php           [Status: 403, Size: 304, Words: 22, Lines: 12, Duration: 56ms]
+.htpasswd.php           [Status: 403, Size: 304, Words: 22, Lines: 12, Duration: 4005ms]
+                        [Status: 200, Size: 7683, Words: 345, Lines: 210, Duration: 7088ms]
+0                       [Status: 200, Size: 7688, Words: 345, Lines: 210, Duration: 4111ms]
+01                      [Status: 200, Size: 8296, Words: 370, Lines: 218, Duration: 3975ms]
+02.php                  [Status: 200, Size: 8613, Words: 418, Lines: 221, Duration: 3918ms]
+1.php                   [Status: 200, Size: 8303, Words: 370, Lines: 218, Duration: 3923ms]
+02                      [Status: 200, Size: 8605, Words: 418, Lines: 221, Duration: 5930ms]
+01.php                  [Status: 200, Size: 8304, Words: 370, Lines: 218, Duration: 8758ms]
+2.php                   [Status: 200, Size: 8612, Words: 418, Lines: 221, Duration: 4508ms]
+1x1.php                 [Status: 200, Size: 8309, Words: 370, Lines: 218, Duration: 4929ms]
+1                       [Status: 200, Size: 8295, Words: 370, Lines: 218, Duration: 4776ms]
+2                       [Status: 200, Size: 8604, Words: 418, Lines: 221, Duration: 7925ms]
+2g                      [Status: 200, Size: 8605, Words: 418, Lines: 221, Duration: 3784ms]
+2g.php                  [Status: 200, Size: 8613, Words: 418, Lines: 221, Duration: 3805ms]
+1x1                     [Status: 200, Size: 8297, Words: 370, Lines: 218, Duration: 4354ms]
+About                   [Status: 200, Size: 8170, Words: 402, Lines: 211, Duration: 7086ms]
+about                   [Status: 200, Size: 8170, Words: 402, Lines: 211, Duration: 4000ms]
+administrator           [Status: 301, Size: 331, Words: 20, Lines: 10, Duration: 62ms]
+bin                     [Status: 301, Size: 321, Words: 20, Lines: 10, Duration: 74ms]
+cache                   [Status: 301, Size: 323, Words: 20, Lines: 10, Duration: 77ms]
+components              [Status: 301, Size: 328, Words: 20, Lines: 10, Duration: 466ms]
+configuration.php       [Status: 200, Size: 0, Words: 1, Lines: 1, Duration: 103ms]
+files                   [Status: 301, Size: 323, Words: 20, Lines: 10, Duration: 87ms]
+home                    [Status: 200, Size: 7695, Words: 345, Lines: 210, Duration: 6173ms]
+Home                    [Status: 200, Size: 7695, Words: 345, Lines: 210, Duration: 4217ms]
+images                  [Status: 301, Size: 324, Words: 20, Lines: 10, Duration: 66ms]
+includes                [Status: 301, Size: 326, Words: 20, Lines: 10, Duration: 229ms]
+index.php               [Status: 200, Size: 7704, Words: 345, Lines: 210, Duration: 5536ms]
+index.php               [Status: 200, Size: 7704, Words: 345, Lines: 210, Duration: 7403ms]
+language                [Status: 301, Size: 326, Words: 20, Lines: 10, Duration: 265ms]
+layouts                 [Status: 301, Size: 325, Words: 20, Lines: 10, Duration: 102ms]
+libraries               [Status: 301, Size: 327, Words: 20, Lines: 10, Duration: 247ms]
+media                   [Status: 301, Size: 323, Words: 20, Lines: 10, Duration: 77ms]
+modules                 [Status: 301, Size: 325, Words: 20, Lines: 10, Duration: 103ms]
+plugins                 [Status: 301, Size: 325, Words: 20, Lines: 10, Duration: 88ms]
+robots.txt              [Status: 200, Size: 836, Words: 88, Lines: 33, Duration: 120ms]
+server-status           [Status: 403, Size: 304, Words: 22, Lines: 12, Duration: 91ms]
+templates               [Status: 301, Size: 327, Words: 20, Lines: 10, Duration: 81ms]
+tmp                     [Status: 301, Size: 321, Words: 20, Lines: 10, Duration: 45ms]
+:: Progress: [9228/9228] :: Job [1/1] :: 11 req/sec :: Duration: [0:19:37] :: Errors: 63 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.61
++ Target Hostname:    enterprise.htb
++ Target Port:        80
++ Start Time:         2022-12-27 21:04:46 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.10 (Debian)
++ Retrieved x-powered-by header: PHP/5.6.31
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ Uncommon header 'link' found, with contents: <http://enterprise.htb/index.php?rest_route=/>; rel="https://api.w.org/"
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Apache/2.4.10 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Web Server returns a valid response with junk HTTP methods, this may cause false positives.
++ OSVDB-3233: /icons/README: Apache default file found.
++ OSVDB-62684: /wp-content/plugins/hello.php: The WordPress hello.php plugin reveals a file system path
++ /wp-links-opml.php: This WordPress script reveals the installed version.
++ OSVDB-3092: /license.txt: License file found may identify site software.
++ /: A Wordpress installation was found.
++ Cookie wordpress_test_cookie created without the httponly flag
++ /wp-login.php: Wordpress login found
++ 7793 requests: 0 error(s) and 14 item(s) reported on remote host
++ End Time:           2022-12-27 21:12:22 (GMT-5) (456 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://enterprise.htb:80/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+                        [Status: 301, Size: 0, Words: 1, Lines: 1, Duration: 915ms]
+.htaccess               [Status: 403, Size: 298, Words: 22, Lines: 12, Duration: 4815ms]
+.htpasswd               [Status: 403, Size: 298, Words: 22, Lines: 12, Duration: 4818ms]
+.hta                    [Status: 403, Size: 293, Words: 22, Lines: 12, Duration: 4819ms]
+index.php               [Status: 301, Size: 0, Words: 1, Lines: 1, Duration: 179ms]
+server-status           [Status: 403, Size: 302, Words: 22, Lines: 12, Duration: 40ms]
+wp-admin                [Status: 301, Size: 319, Words: 20, Lines: 10, Duration: 36ms]
+wp-content              [Status: 301, Size: 321, Words: 20, Lines: 10, Duration: 36ms]
+wp-includes             [Status: 301, Size: 322, Words: 20, Lines: 10, Duration: 36ms]
+xmlrpc.php              [Status: 405, Size: 42, Words: 6, Lines: 1, Duration: 190ms]
+:: Progress: [4614/4614] :: Job [1/1] :: 850 req/sec :: Duration: [0:00:08] :: Errors: 0 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ ERROR: SKIPPORTS (nikto.conf) contains |http-open-proxy -- not checking
++ 0 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://enterprise.htb:| http-open-proxy: Potentially OPEN proxy./FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+:: Progress: [4614/4614] :: Job [1/1] :: 0 req/sec :: Duration: [0:00:00] :: Errors: 4614 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+---------------------Finished all scans------------------------                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+
+Completed in 2 hour(s), 8 minute(s) and 56 second(s)

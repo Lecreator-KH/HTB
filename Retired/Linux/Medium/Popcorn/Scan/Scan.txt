@@ -1,0 +1,458 @@
+└─$ sudo ./nmapAutomator.sh -H popcorn.htb --type All
+
+Running all scans on popcorn.htb with IP 3(NXDOMAIN)
+
+
+No ping detected.. Will not use ping scans!
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 5.1p1 Debian 6ubuntu2 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   1024 3e:c8:1b:15:21:15:50:ec:6e:63:bc:c5:6b:80:7b:38 (DSA)
+|_  2048 aa:1f:79:21:b8:42:f4:8a:38:bd:b8:05:ef:1a:07:4d (RSA)
+80/tcp open  http    Apache httpd 2.2.12 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache/2.2.12 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+OS Detection modified to: Linux
+
+
+
+
+---------------------Starting Full Scan------------------------
+
+
+
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+
+
+No new ports
+
+
+
+
+----------------------Starting UDP Scan------------------------
+
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)   
+                                     In progress: UDP Scan (0:00:03 elapsed - 0:01:20 remaining)                                                                    ] 0% done                                        In progress: UDP Scan (0:00:09 elapsed - 0:00:50 remaining)                                                                    ] 0% done                                         In progress: UDP Scan (0:00:09 elapsed - 0:00:50 remaining)                                                                   ] 3% done                                          In progress: UDP Scan (0:00:15 elapsed - 0:00:23 remaining)                                                                  ] 15% done                                          In progress: UDP Scan (0:00:18 elapsed - 0:00:22 remaining)                                                                  ] 15% done                                          In progress: UDP Scan (0:00:21 elapsed - 0:00:23 remaining)   #>                                                             ] 39% done                                          In progress: UDP Scan (0:00:24 elapsed - 0:00:23 remaining)   ######>                                                        ] 44% done   
+               In progress: UDP Scan (0:00:27 elapsed - 0:00:23 remaining)   #########>                                                     ] 47% done                                          In progress: UDP Scan (0:00:30 elapsed - 0:00:22 remaining)   #############>                                                 ] 51% done                                          In progress: UDP Scan (0:00:33 elapsed - 0:00:23 remaining)   ################>                                              ] 54% done                                          In progress: UDP Scan (0:00:36 elapsed - 0:00:23 remaining)   ###################>                                           ] 57% done                                          In progress: UDP Scan (0:00:39 elapsed - 0:00:23 remaining)   #####################>                                         ] 59% done                                          In progress: UDP Scan (0:00:42 elapsed - 0:00:23 remaining)   #######################>                                       ] 61% done                                          In progress: UDP Scan (0:00:45 elapsed - 0:00:23 remaining)   ########################>                                      ] 62% done                                          In progress: UDP Scan (0:00:48 elapsed - 0:00:24 remaining)   ##########################>                                    ] 64% done                                          In progress: UDP Scan (0:00:51 elapsed - 0:00:24 remaining)   ###########################>                                   ] 65% done   
+                                 In progress: UDP Scan (0:00:54 elapsed - 0:00:25 remaining)   ############################>                                  ] 66% done                                          In progress: UDP Scan (0:00:57 elapsed - 0:00:25 remaining)   #############################>                                 ] 67% done                                          In progress: UDP Scan (0:01:00 elapsed - 0:00:25 remaining)   ##############################>                                ] 68% done                                          In progress: UDP Scan (0:01:03 elapsed - 0:00:26 remaining)   ###############################>                               ] 69% done                                          In progress: UDP Scan (0:01:06 elapsed - 0:00:26 remaining)   ################################>                              ] 70% done                                          In progress: UDP Scan (0:01:09 elapsed - 0:00:26 remaining)   #################################>                             ] 71% done                                          In progress: UDP Scan (0:01:12 elapsed - 0:00:26 remaining)   ##################################>                            ] 72% done   
+            In progress: UDP Scan (0:01:15 elapsed - 0:00:25 remaining)   ##################################>                            ] 72% done                                          In progress: UDP Scan (0:01:18 elapsed - 0:00:25 remaining)   ###################################>                           ] 73% done                                          In progress: UDP Scan (0:01:21 elapsed - 0:00:25 remaining)   ####################################>                          ] 74% done                                          In progress: UDP Scan (0:01:24 elapsed - 0:00:25 remaining)   #####################################>                         ] 75% done                                          In progress: UDP Scan (0:01:27 elapsed - 0:00:24 remaining)   ######################################>                        ] 76% done                                          In progress: UDP Scan (0:01:30 elapsed - 0:00:24 remaining)   #######################################>                       ] 77% done                                          In progress: UDP Scan (0:01:33 elapsed - 0:00:23 remaining)   ########################################>                      ] 78% done                                          In progress: UDP Scan (0:01:36 elapsed - 0:00:23 remaining)   #########################################>                     ] 79% done                                          In progress: UDP Scan (0:01:39 elapsed - 0:00:22 remaining)   ##########################################>                    ] 80% done   
+                              In progress: UDP Scan (0:01:42 elapsed - 0:00:21 remaining)   ###########################################>                   ] 81% done                                          In progress: UDP Scan (0:01:45 elapsed - 0:00:20 remaining)   ###########################################>                   ] 81% done                                          In progress: UDP Scan (0:01:48 elapsed - 0:00:20 remaining)   ############################################>                  ] 82% done                                          In progress: UDP Scan (0:01:51 elapsed - 0:00:19 remaining)   #############################################>                 ] 83% done                                          In progress: UDP Scan (0:01:54 elapsed - 0:00:18 remaining)   ##############################################>                ] 84% done                                          In progress: UDP Scan (0:01:57 elapsed - 0:00:17 remaining)   ###############################################>               ] 85% done                                          In progress: UDP Scan (0:02:00 elapsed - 0:00:16 remaining)   ################################################>              ] 86% done   
+         In progress: UDP Scan (0:02:03 elapsed - 0:00:15 remaining)   #################################################>             ] 87% done                                          In progress: UDP Scan (0:02:06 elapsed - 0:00:14 remaining)   ##################################################>            ] 88% done                                          In progress: UDP Scan (0:02:09 elapsed - 0:00:13 remaining)   ###################################################>           ] 89% done                                          In progress: UDP Scan (0:02:12 elapsed - 0:00:12 remaining)   ###################################################>           ] 89% done                                          In progress: UDP Scan (0:02:15 elapsed - 0:00:11 remaining)   ####################################################>          ] 90% done                                          In progress: UDP Scan (0:02:18 elapsed - 0:00:10 remaining)   #####################################################>         ] 91% done                                          In progress: UDP Scan (0:02:21 elapsed - 0:00:08 remaining)   ######################################################>        ] 92% done                                          In progress: UDP Scan (0:02:24 elapsed - 0:00:07 remaining)   #######################################################>       ] 93% done                                          In progress: UDP Scan (0:02:27 elapsed - 0:00:06 remaining)   ########################################################>      ] 94% done   
+                           In progress: UDP Scan (0:02:30 elapsed - 0:00:04 remaining)   #########################################################>     ] 95% done                                          In progress: UDP Scan (0:02:33 elapsed - 0:00:03 remaining)   ##########################################################>    ] 96% done                                          In progress: UDP Scan (0:02:36 elapsed - 0:00:02 remaining)   ###########################################################>   ] 97% done                                          In progress: UDP Scan (0:02:39 elapsed - 0:00:00 remaining)   ##########                                                                                                        In progress: UDP Scan (0:02:42 elapsed - 0:00:00 remaining)   #############################################################>  ] 98% done                                         
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                                                                                            
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 5.1p1 Debian 6ubuntu2 (Ubuntu Linux; protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:5.1p1: 
+|       CVE-2010-4478   7.5     https://vulners.com/cve/CVE-2010-4478
+|       SSV:60656       5.0     https://vulners.com/seebug/SSV:60656    *EXPLOIT*
+|_      SSV:90447       4.6     https://vulners.com/seebug/SSV:90447    *EXPLOIT*
+80/tcp open  http    Apache httpd 2.2.12 ((Ubuntu))
+| vulners: 
+|   cpe:/a:apache:http_server:2.2.12: 
+|       SSV:72403       7.8     https://vulners.com/seebug/SSV:72403    *EXPLOIT*
+|       SSV:26043       7.8     https://vulners.com/seebug/SSV:26043    *EXPLOIT*
+|       SSV:20899       7.8     https://vulners.com/seebug/SSV:20899    *EXPLOIT*
+|       PACKETSTORM:126851      7.8     https://vulners.com/packetstorm/PACKETSTORM:126851      *EXPLOIT*
+|       PACKETSTORM:123527      7.8     https://vulners.com/packetstorm/PACKETSTORM:123527      *EXPLOIT*
+|       PACKETSTORM:122962      7.8     https://vulners.com/packetstorm/PACKETSTORM:122962      *EXPLOIT*
+|       EXPLOITPACK:186B5FCF5C57B52642E62C06BABC6F83    7.8     https://vulners.com/exploitpack/EXPLOITPACK:186B5FCF5C57B52642E62C06BABC6F83    *EXPLOIT*
+|       EDB-ID:18221    7.8     https://vulners.com/exploitdb/EDB-ID:18221      *EXPLOIT*
+|       CVE-2011-3192   7.8     https://vulners.com/cve/CVE-2011-3192
+|       1337DAY-ID-21170        7.8     https://vulners.com/zdt/1337DAY-ID-21170        *EXPLOIT*
+|       SSV:12673       7.5     https://vulners.com/seebug/SSV:12673    *EXPLOIT*
+|       SSV:12626       7.5     https://vulners.com/seebug/SSV:12626    *EXPLOIT*
+|       ECC3E825-EE29-59D3-BE28-1B30DB15940E    7.5     https://vulners.com/githubexploit/ECC3E825-EE29-59D3-BE28-1B30DB15940E  *EXPLOIT*
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CVE-2009-1891   7.1     https://vulners.com/cve/CVE-2009-1891
+|       CVE-2009-1890   7.1     https://vulners.com/cve/CVE-2009-1890
+|       SSV:60427       6.9     https://vulners.com/seebug/SSV:60427    *EXPLOIT*
+|       SSV:60386       6.9     https://vulners.com/seebug/SSV:60386    *EXPLOIT*
+|       SSV:60069       6.9     https://vulners.com/seebug/SSV:60069    *EXPLOIT*
+|       PACKETSTORM:127546      6.8     https://vulners.com/packetstorm/PACKETSTORM:127546      *EXPLOIT*
+|       1337DAY-ID-22451        6.8     https://vulners.com/zdt/1337DAY-ID-22451        *EXPLOIT*
+|       VULNERLAB:967   5.8     https://vulners.com/vulnerlab/VULNERLAB:967     *EXPLOIT*
+|       VULNERABLE:967  5.8     https://vulners.com/vulnerlab/VULNERABLE:967    *EXPLOIT*
+|       SSV:67231       5.8     https://vulners.com/seebug/SSV:67231    *EXPLOIT*
+|       SSV:18637       5.8     https://vulners.com/seebug/SSV:18637    *EXPLOIT*
+|       SSV:15088       5.8     https://vulners.com/seebug/SSV:15088    *EXPLOIT*
+|       SSV:12600       5.8     https://vulners.com/seebug/SSV:12600    *EXPLOIT*
+|       PACKETSTORM:84112       5.8     https://vulners.com/packetstorm/PACKETSTORM:84112       *EXPLOIT*
+|       EXPLOITPACK:8B4E7E8DAE5A13C8250C6C33307CD66C    5.8     https://vulners.com/exploitpack/EXPLOITPACK:8B4E7E8DAE5A13C8250C6C33307CD66C    *EXPLOIT*
+|       EDB-ID:10579    5.8     https://vulners.com/exploitdb/EDB-ID:10579      *EXPLOIT*
+|       SSV:60788       5.1     https://vulners.com/seebug/SSV:60788    *EXPLOIT*
+|       SSV:96537       5.0     https://vulners.com/seebug/SSV:96537    *EXPLOIT*
+|       SSV:62058       5.0     https://vulners.com/seebug/SSV:62058    *EXPLOIT*
+|       SSV:61874       5.0     https://vulners.com/seebug/SSV:61874    *EXPLOIT*
+|       SSV:20993       5.0     https://vulners.com/seebug/SSV:20993    *EXPLOIT*
+|       SSV:20979       5.0     https://vulners.com/seebug/SSV:20979    *EXPLOIT*
+|       SSV:20969       5.0     https://vulners.com/seebug/SSV:20969    *EXPLOIT*
+|       PACKETSTORM:105672      5.0     https://vulners.com/packetstorm/PACKETSTORM:105672      *EXPLOIT*
+|       PACKETSTORM:105591      5.0     https://vulners.com/packetstorm/PACKETSTORM:105591      *EXPLOIT*
+|       EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    5.0     https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    *EXPLOIT*
+|       EXPLOITPACK:460143F0ACAE117DD79BD75EDFDA154B    5.0     https://vulners.com/exploitpack/EXPLOITPACK:460143F0ACAE117DD79BD75EDFDA154B    *EXPLOIT*
+|       EDB-ID:42745    5.0     https://vulners.com/exploitdb/EDB-ID:42745      *EXPLOIT*
+|       EDB-ID:17969    5.0     https://vulners.com/exploitdb/EDB-ID:17969      *EXPLOIT*
+|       1337DAY-ID-28573        5.0     https://vulners.com/zdt/1337DAY-ID-28573        *EXPLOIT*
+|       SSV:30024       4.6     https://vulners.com/seebug/SSV:30024    *EXPLOIT*
+|       1337DAY-ID-27465        4.6     https://vulners.com/zdt/1337DAY-ID-27465        *EXPLOIT*
+|       SSV:23169       4.4     https://vulners.com/seebug/SSV:23169    *EXPLOIT*
+|       1337DAY-ID-27473        4.4     https://vulners.com/zdt/1337DAY-ID-27473        *EXPLOIT*
+|       SSV:60905       4.3     https://vulners.com/seebug/SSV:60905    *EXPLOIT*
+|       SSV:60657       4.3     https://vulners.com/seebug/SSV:60657    *EXPLOIT*
+|       SSV:60653       4.3     https://vulners.com/seebug/SSV:60653    *EXPLOIT*
+|       SSV:60345       4.3     https://vulners.com/seebug/SSV:60345    *EXPLOIT*
+|       SSV:30094       4.3     https://vulners.com/seebug/SSV:30094    *EXPLOIT*
+|       SSV:30056       4.3     https://vulners.com/seebug/SSV:30056    *EXPLOIT*
+|       SSV:24250       4.3     https://vulners.com/seebug/SSV:24250    *EXPLOIT*
+|       SSV:20934       4.3     https://vulners.com/seebug/SSV:20934    *EXPLOIT*
+|       SSV:20555       4.3     https://vulners.com/seebug/SSV:20555    *EXPLOIT*
+|       SSV:19320       4.3     https://vulners.com/seebug/SSV:19320    *EXPLOIT*
+|       PACKETSTORM:109284      4.3     https://vulners.com/packetstorm/PACKETSTORM:109284      *EXPLOIT*
+|       EXPLOITPACK:FDCB3D93694E48CD5EE27CE55D6801DE    4.3     https://vulners.com/exploitpack/EXPLOITPACK:FDCB3D93694E48CD5EE27CE55D6801DE    *EXPLOIT*
+|       SSV:12628       2.6     https://vulners.com/seebug/SSV:12628    *EXPLOIT*
+|_      SSV:60250       1.2     https://vulners.com/seebug/SSV:60250    *EXPLOIT*
+|_http-server-header: Apache/2.2.12 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 5.1p1 Debian 6ubuntu2 (Ubuntu Linux; protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:5.1p1: 
+|       CVE-2010-4478   7.5     https://vulners.com/cve/CVE-2010-4478
+|       SSV:60656       5.0     https://vulners.com/seebug/SSV:60656    *EXPLOIT*
+|       CVE-2010-5107   5.0     https://vulners.com/cve/CVE-2010-5107
+|       SSV:90447       4.6     https://vulners.com/seebug/SSV:90447    *EXPLOIT*
+|       CVE-2016-0777   4.0     https://vulners.com/cve/CVE-2016-0777
+|       CVE-2012-0814   3.5     https://vulners.com/cve/CVE-2012-0814
+|       CVE-2011-5000   3.5     https://vulners.com/cve/CVE-2011-5000
+|_      CVE-2011-4327   2.1     https://vulners.com/cve/CVE-2011-4327
+80/tcp open  http    Apache httpd 2.2.12 ((Ubuntu))
+| http-enum: 
+|   /test/: Test page
+|   /test.php: Test page
+|   /test/logon.html: Jetty
+|_  /icons/: Potentially interesting folder w/ directory listing
+| http-vuln-cve2011-3192: 
+|   VULNERABLE:
+|   Apache byterange filter DoS
+|     State: VULNERABLE
+|     IDs:  BID:49303  CVE:CVE-2011-3192
+|       The Apache web server is vulnerable to a denial of service attack when numerous
+|       overlapping byte ranges are requested.
+|     Disclosure date: 2011-08-19
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-3192
+|       https://www.tenable.com/plugins/nessus/55976
+|       https://www.securityfocus.com/bid/49303
+|_      https://seclists.org/fulldisclosure/2011/Aug/175
+|_http-server-header: Apache/2.2.12 (Ubuntu)
+| vulners: 
+|   cpe:/a:apache:http_server:2.2.12: 
+|       SSV:72403       7.8     https://vulners.com/seebug/SSV:72403    *EXPLOIT*
+|       SSV:26043       7.8     https://vulners.com/seebug/SSV:26043    *EXPLOIT*
+|       SSV:20899       7.8     https://vulners.com/seebug/SSV:20899    *EXPLOIT*
+|       PACKETSTORM:126851      7.8     https://vulners.com/packetstorm/PACKETSTORM:126851      *EXPLOIT*
+|       PACKETSTORM:123527      7.8     https://vulners.com/packetstorm/PACKETSTORM:123527      *EXPLOIT*
+|       PACKETSTORM:122962      7.8     https://vulners.com/packetstorm/PACKETSTORM:122962      *EXPLOIT*
+|       EXPLOITPACK:186B5FCF5C57B52642E62C06BABC6F83    7.8     https://vulners.com/exploitpack/EXPLOITPACK:186B5FCF5C57B52642E62C06BABC6F83    *EXPLOIT*
+|       EDB-ID:18221    7.8     https://vulners.com/exploitdb/EDB-ID:18221      *EXPLOIT*
+|       CVE-2011-3192   7.8     https://vulners.com/cve/CVE-2011-3192
+|       1337DAY-ID-21170        7.8     https://vulners.com/zdt/1337DAY-ID-21170        *EXPLOIT*
+|       SSV:12673       7.5     https://vulners.com/seebug/SSV:12673    *EXPLOIT*
+|       SSV:12626       7.5     https://vulners.com/seebug/SSV:12626    *EXPLOIT*
+|       ECC3E825-EE29-59D3-BE28-1B30DB15940E    7.5     https://vulners.com/githubexploit/ECC3E825-EE29-59D3-BE28-1B30DB15940E  *EXPLOIT*
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CVE-2009-1891   7.1     https://vulners.com/cve/CVE-2009-1891
+|       CVE-2009-1890   7.1     https://vulners.com/cve/CVE-2009-1890
+|       SSV:60427       6.9     https://vulners.com/seebug/SSV:60427    *EXPLOIT*
+|       SSV:60386       6.9     https://vulners.com/seebug/SSV:60386    *EXPLOIT*
+|       SSV:60069       6.9     https://vulners.com/seebug/SSV:60069    *EXPLOIT*
+|       CVE-2012-0883   6.9     https://vulners.com/cve/CVE-2012-0883
+|       PACKETSTORM:127546      6.8     https://vulners.com/packetstorm/PACKETSTORM:127546      *EXPLOIT*
+|       CVE-2016-5387   6.8     https://vulners.com/cve/CVE-2016-5387
+|       CVE-2014-0226   6.8     https://vulners.com/cve/CVE-2014-0226
+|       1337DAY-ID-22451        6.8     https://vulners.com/zdt/1337DAY-ID-22451        *EXPLOIT*
+|       CVE-2017-9788   6.4     https://vulners.com/cve/CVE-2017-9788
+|       VULNERLAB:967   5.8     https://vulners.com/vulnerlab/VULNERLAB:967     *EXPLOIT*
+|       VULNERABLE:967  5.8     https://vulners.com/vulnerlab/VULNERABLE:967    *EXPLOIT*
+|       SSV:67231       5.8     https://vulners.com/seebug/SSV:67231    *EXPLOIT*
+|       SSV:18637       5.8     https://vulners.com/seebug/SSV:18637    *EXPLOIT*
+|       SSV:15088       5.8     https://vulners.com/seebug/SSV:15088    *EXPLOIT*
+|       SSV:12600       5.8     https://vulners.com/seebug/SSV:12600    *EXPLOIT*
+|       PACKETSTORM:84112       5.8     https://vulners.com/packetstorm/PACKETSTORM:84112       *EXPLOIT*
+|       EXPLOITPACK:8B4E7E8DAE5A13C8250C6C33307CD66C    5.8     https://vulners.com/exploitpack/EXPLOITPACK:8B4E7E8DAE5A13C8250C6C33307CD66C    *EXPLOIT*
+|       EDB-ID:10579    5.8     https://vulners.com/exploitdb/EDB-ID:10579      *EXPLOIT*
+|       CVE-2009-3555   5.8     https://vulners.com/cve/CVE-2009-3555
+|       SSV:60788       5.1     https://vulners.com/seebug/SSV:60788    *EXPLOIT*
+|       CVE-2013-1862   5.1     https://vulners.com/cve/CVE-2013-1862
+|       SSV:96537       5.0     https://vulners.com/seebug/SSV:96537    *EXPLOIT*
+|       SSV:62058       5.0     https://vulners.com/seebug/SSV:62058    *EXPLOIT*
+|       SSV:61874       5.0     https://vulners.com/seebug/SSV:61874    *EXPLOIT*
+|       SSV:20993       5.0     https://vulners.com/seebug/SSV:20993    *EXPLOIT*
+|       SSV:20979       5.0     https://vulners.com/seebug/SSV:20979    *EXPLOIT*
+|       SSV:20969       5.0     https://vulners.com/seebug/SSV:20969    *EXPLOIT*
+|       PACKETSTORM:105672      5.0     https://vulners.com/packetstorm/PACKETSTORM:105672      *EXPLOIT*
+|       PACKETSTORM:105591      5.0     https://vulners.com/packetstorm/PACKETSTORM:105591      *EXPLOIT*
+|       EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    5.0     https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    *EXPLOIT*
+|       EXPLOITPACK:460143F0ACAE117DD79BD75EDFDA154B    5.0     https://vulners.com/exploitpack/EXPLOITPACK:460143F0ACAE117DD79BD75EDFDA154B    *EXPLOIT*
+|       EDB-ID:42745    5.0     https://vulners.com/exploitdb/EDB-ID:42745      *EXPLOIT*
+|       EDB-ID:17969    5.0     https://vulners.com/exploitdb/EDB-ID:17969      *EXPLOIT*
+|       CVE-2017-9798   5.0     https://vulners.com/cve/CVE-2017-9798
+|       CVE-2016-8743   5.0     https://vulners.com/cve/CVE-2016-8743
+|       CVE-2014-0231   5.0     https://vulners.com/cve/CVE-2014-0231
+|       CVE-2014-0098   5.0     https://vulners.com/cve/CVE-2014-0098
+|       CVE-2013-6438   5.0     https://vulners.com/cve/CVE-2013-6438
+|       CVE-2013-5704   5.0     https://vulners.com/cve/CVE-2013-5704
+|       CVE-2012-4557   5.0     https://vulners.com/cve/CVE-2012-4557
+|       CVE-2011-3368   5.0     https://vulners.com/cve/CVE-2011-3368
+|       CVE-2010-1452   5.0     https://vulners.com/cve/CVE-2010-1452
+|       CVE-2010-0408   5.0     https://vulners.com/cve/CVE-2010-0408
+|       CVE-2009-3095   5.0     https://vulners.com/cve/CVE-2009-3095
+|       CVE-2009-2699   5.0     https://vulners.com/cve/CVE-2009-2699
+|       CVE-2007-6750   5.0     https://vulners.com/cve/CVE-2007-6750
+|       1337DAY-ID-28573        5.0     https://vulners.com/zdt/1337DAY-ID-28573        *EXPLOIT*
+|       SSV:30024       4.6     https://vulners.com/seebug/SSV:30024    *EXPLOIT*
+|       CVE-2012-0031   4.6     https://vulners.com/cve/CVE-2012-0031
+|       1337DAY-ID-27465        4.6     https://vulners.com/zdt/1337DAY-ID-27465        *EXPLOIT*
+|       SSV:23169       4.4     https://vulners.com/seebug/SSV:23169    *EXPLOIT*
+|       CVE-2011-3607   4.4     https://vulners.com/cve/CVE-2011-3607
+|       1337DAY-ID-27473        4.4     https://vulners.com/zdt/1337DAY-ID-27473        *EXPLOIT*
+|       SSV:60905       4.3     https://vulners.com/seebug/SSV:60905    *EXPLOIT*
+|       SSV:60657       4.3     https://vulners.com/seebug/SSV:60657    *EXPLOIT*
+|       SSV:60653       4.3     https://vulners.com/seebug/SSV:60653    *EXPLOIT*
+|       SSV:60345       4.3     https://vulners.com/seebug/SSV:60345    *EXPLOIT*
+|       SSV:30094       4.3     https://vulners.com/seebug/SSV:30094    *EXPLOIT*
+|       SSV:30056       4.3     https://vulners.com/seebug/SSV:30056    *EXPLOIT*
+|       SSV:24250       4.3     https://vulners.com/seebug/SSV:24250    *EXPLOIT*
+|       SSV:20934       4.3     https://vulners.com/seebug/SSV:20934    *EXPLOIT*
+|       SSV:20555       4.3     https://vulners.com/seebug/SSV:20555    *EXPLOIT*
+|       SSV:19320       4.3     https://vulners.com/seebug/SSV:19320    *EXPLOIT*
+|       PACKETSTORM:109284      4.3     https://vulners.com/packetstorm/PACKETSTORM:109284      *EXPLOIT*
+|       EXPLOITPACK:FDCB3D93694E48CD5EE27CE55D6801DE    4.3     https://vulners.com/exploitpack/EXPLOITPACK:FDCB3D93694E48CD5EE27CE55D6801DE    *EXPLOIT*
+|       CVE-2016-4975   4.3     https://vulners.com/cve/CVE-2016-4975
+|       CVE-2014-0118   4.3     https://vulners.com/cve/CVE-2014-0118
+|       CVE-2013-1896   4.3     https://vulners.com/cve/CVE-2013-1896
+|       CVE-2012-4558   4.3     https://vulners.com/cve/CVE-2012-4558
+|       CVE-2012-3499   4.3     https://vulners.com/cve/CVE-2012-3499
+|       CVE-2012-0053   4.3     https://vulners.com/cve/CVE-2012-0053
+|       CVE-2011-4317   4.3     https://vulners.com/cve/CVE-2011-4317
+|       CVE-2011-3639   4.3     https://vulners.com/cve/CVE-2011-3639
+|       CVE-2011-3348   4.3     https://vulners.com/cve/CVE-2011-3348
+|       CVE-2011-0419   4.3     https://vulners.com/cve/CVE-2011-0419
+|       CVE-2010-0434   4.3     https://vulners.com/cve/CVE-2010-0434
+|       CVE-2008-0455   4.3     https://vulners.com/cve/CVE-2008-0455
+|       SSV:12628       2.6     https://vulners.com/seebug/SSV:12628    *EXPLOIT*
+|       CVE-2012-2687   2.6     https://vulners.com/cve/CVE-2012-2687
+|       CVE-2009-3094   2.6     https://vulners.com/cve/CVE-2009-3094
+|       CVE-2008-0456   2.6     https://vulners.com/cve/CVE-2008-0456
+|       SSV:60250       1.2     https://vulners.com/seebug/SSV:60250    *EXPLOIT*
+|_      CVE-2011-4415   1.2     https://vulners.com/cve/CVE-2011-4415
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Web Servers Recon:
+                                                                                                                                                                                                                                                                                                                            
+nikto -host "http://popcorn.htb:80" | tee "recon/nikto_popcorn.htb_80.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e ',.html' -u "http://popcorn.htb:80/FUZZ" | tee "recon/ffuf_popcorn.htb_80.txt"
+
+
+
+
+
+Which commands would you like to run?                                                                                                                                                                                                                                                                                       
+All (Default), ffuf, nikto, Skip <!>
+
+Running Default in (1)s: 
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.6
++ Target Hostname:    popcorn.htb
++ Target Port:        80
++ Start Time:         2022-12-30 22:17:43 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Apache/2.2.12 (Ubuntu)
++ Server may leak inodes via ETags, header found with file /, inode: 43621, size: 177, mtime: Fri Mar 17 13:07:05 2017
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ Uncommon header 'tcn' found, with contents: list
++ Apache mod_negotiation is enabled with MultiViews, which allows attackers to easily brute force file names. See http://www.wisec.it/sectou.php?id=4698ebdc59d15. The following alternatives for 'index' were found: index.html
++ Apache/2.2.12 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Retrieved x-powered-by header: PHP/5.2.10-2ubuntu6.10
++ /test: Output from the phpinfo() function was found.
++ OSVDB-112004: /test: Site appears vulnerable to the 'shellshock' vulnerability (http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6271).
++ OSVDB-112004: /test: Site appears vulnerable to the 'shellshock' vulnerability (http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6278).
++ Allowed HTTP Methods: GET, HEAD, POST, OPTIONS 
++ /test.php: Output from the phpinfo() function was found.
++ /test/: Output from the phpinfo() function was found.
++ OSVDB-3092: /test/: This might be interesting...
++ /test/jsp/buffer1.jsp: Output from the phpinfo() function was found.
++ /test/jsp/buffer2.jsp: Output from the phpinfo() function was found.
++ /test/jsp/buffer3.jsp: Output from the phpinfo() function was found.
++ /test/jsp/buffer4.jsp: Output from the phpinfo() function was found.
++ /test/jsp/declaration/IntegerOverflow.jsp: Output from the phpinfo() function was found.
++ /test/jsp/extends1.jsp: Output from the phpinfo() function was found.
++ /test/jsp/extends2.jsp: Output from the phpinfo() function was found.
++ /test/jsp/Language.jsp: Output from the phpinfo() function was found.
++ /test/jsp/pageAutoFlush.jsp: Output from the phpinfo() function was found.
++ /test/jsp/pageDouble.jsp: Output from the phpinfo() function was found.
++ /test/jsp/pageExtends.jsp: Output from the phpinfo() function was found.
++ /test/jsp/pageImport2.jsp: Output from the phpinfo() function was found.
++ /test/jsp/pageInfo.jsp: Output from the phpinfo() function was found.
++ /test/jsp/pageInvalid.jsp: Output from the phpinfo() function was found.
++ /test/jsp/pageIsErrorPage.jsp: Output from the phpinfo() function was found.
++ /test/jsp/pageIsThreadSafe.jsp: Output from the phpinfo() function was found.
++ /test/jsp/pageSession.jsp: Output from the phpinfo() function was found.
++ /test/realPath.jsp: Output from the phpinfo() function was found.
++ OSVDB-3233: /test.php: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ /test/phpinfo.php: Output from the phpinfo() function was found.
++ OSVDB-3233: /test/phpinfo.php: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ /test/phpinfo.php3: Output from the phpinfo() function was found.
++ OSVDB-3233: /test/phpinfo.php3: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ /test/test.php: Output from the phpinfo() function was found.
++ OSVDB-3233: /test/test.php: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ /test/info.php: Output from the phpinfo() function was found.
++ OSVDB-3233: /test/info.php: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ /test/index.php: Output from the phpinfo() function was found.
++ OSVDB-3233: /test/index.php: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ /test/php_info.php: Output from the phpinfo() function was found.
++ OSVDB-3233: /test/php_info.php: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ OSVDB-3268: /icons/: Directory indexing found.
++ OSVDB-3233: /icons/README: Apache default file found.
++ OSVDB-3092: /test.php: This might be interesting...
++ 8598 requests: 2 error(s) and 49 item(s) reported on remote host
++ End Time:           2022-12-30 22:24:10 (GMT-5) (387 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://popcorn.htb:80/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       :  .html 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+.html                   [Status: 403, Size: 284, Words: 21, Lines: 11, Duration: 33ms]
+                        [Status: 200, Size: 177, Words: 22, Lines: 5, Duration: 36ms]
+                        [Status: 200, Size: 177, Words: 22, Lines: 5, Duration: 37ms]
+.htaccess               [Status: 403, Size: 288, Words: 21, Lines: 11, Duration: 3975ms]
+.hta.html               [Status: 403, Size: 288, Words: 21, Lines: 11, Duration: 3978ms]
+.hta                    [Status: 403, Size: 283, Words: 21, Lines: 11, Duration: 3992ms]
+.hta                    [Status: 403, Size: 283, Words: 21, Lines: 11, Duration: 4989ms]
+.htaccess               [Status: 403, Size: 288, Words: 21, Lines: 11, Duration: 5006ms]
+.htpasswd.html          [Status: 403, Size: 293, Words: 21, Lines: 11, Duration: 4999ms]
+.htpasswd               [Status: 403, Size: 288, Words: 21, Lines: 11, Duration: 5004ms]
+.htpasswd               [Status: 403, Size: 288, Words: 21, Lines: 11, Duration: 5005ms]
+.htaccess.html          [Status: 403, Size: 293, Words: 21, Lines: 11, Duration: 5005ms]
+cgi-bin/                [Status: 403, Size: 287, Words: 21, Lines: 11, Duration: 31ms]
+cgi-bin/                [Status: 403, Size: 287, Words: 21, Lines: 11, Duration: 32ms]
+cgi-bin/.html           [Status: 403, Size: 292, Words: 21, Lines: 11, Duration: 33ms]
+index                   [Status: 200, Size: 177, Words: 22, Lines: 5, Duration: 41ms]
+index.html              [Status: 200, Size: 177, Words: 22, Lines: 5, Duration: 40ms]
+index                   [Status: 200, Size: 177, Words: 22, Lines: 5, Duration: 42ms]
+index.html              [Status: 200, Size: 177, Words: 22, Lines: 5, Duration: 40ms]
+index.html              [Status: 200, Size: 177, Words: 22, Lines: 5, Duration: 40ms]
+test                    [Status: 200, Size: 47144, Words: 2474, Lines: 651, Duration: 50ms]
+test                    [Status: 200, Size: 47144, Words: 2474, Lines: 651, Duration: 45ms]
+torrent                 [Status: 301, Size: 312, Words: 20, Lines: 10, Duration: 30ms]
+torrent                 [Status: 301, Size: 312, Words: 20, Lines: 10, Duration: 35ms]
+:: Progress: [13842/13842] :: Job [1/1] :: 947 req/sec :: Duration: [0:00:33] :: Errors: 2 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+---------------------Finished all scans------------------------                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+
+Completed in 18 minute(s) and 44 second(s)
+                                            

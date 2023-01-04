@@ -1,0 +1,2232 @@
+./linpeas.sh
+
+
+                            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+                    ▄▄▄▄▄▄▄             ▄▄▄▄▄▄▄▄
+             ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄
+         ▄▄▄▄     ▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄
+         ▄    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄          ▄▄▄▄▄▄               ▄▄▄▄▄▄ ▄
+         ▄▄▄▄▄▄              ▄▄▄▄▄▄▄▄                 ▄▄▄▄ 
+         ▄▄                  ▄▄▄ ▄▄▄▄▄                  ▄▄▄
+         ▄▄                ▄▄▄▄▄▄▄▄▄▄▄▄                  ▄▄
+         ▄            ▄▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄
+         ▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                ▄▄▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄                       ▄▄▄▄▄▄     ▄▄▄▄
+         ▄▄▄▄   ▄▄▄▄▄                       ▄▄▄▄▄      ▄ ▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄        ▄▄▄▄▄▄▄        ▄▄▄▄▄     ▄▄▄▄▄
+         ▄▄▄▄▄▄  ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄   ▄▄▄▄▄ 
+          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄        ▄          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄                       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄                         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+          ▀▀▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▀▀▀▀▀▀
+               ▀▀▀▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▀▀
+                     ▀▀▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀▀▀
+
+    /---------------------------------------------------------------------------\
+    |                             Do you like PEASS?                            |                                                                                                                                                                                                                                           
+    |---------------------------------------------------------------------------|                                                                                                                                                                                                                                           
+    |         Become a Patreon    :     https://www.patreon.com/peass           |                                                                                                                                                                                                                                           
+    |         Follow on Twitter   :     @carlospolopm                           |                                                                                                                                                                                                                                           
+    |         Respect on HTB      :     SirBroccoli                             |                                                                                                                                                                                                                                           
+    |---------------------------------------------------------------------------|                                                                                                                                                                                                                                           
+    |                                 Thank you!                                |                                                                                                                                                                                                                                           
+    \---------------------------------------------------------------------------/                                                                                                                                                                                                                                           
+          linpeas-ng by carlospolop                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                            
+ADVISORY: This script should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own computers and/or with the computer owner's permission.
+                                                                                                                                                                                                                                                                                                                            
+Linux Privesc Checklist: https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist
+ LEGEND:                                                                                                                                                                                                                                                                                                                    
+  RED/YELLOW: 95% a PE vector
+  RED: You should take a look to it
+  LightCyan: Users with console
+  Blue: Users without console & mounted devs
+  Green: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMagenta: Your username
+
+ Starting linpeas. Caching Writable Folders...
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Basic information ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+OS: Linux version 4.15.0-45-generic (buildd@lcy01-amd64-027) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10)) #48~16.04.1-Ubuntu SMP Tue Jan 29 18:03:48 UTC 2019
+User & Groups: uid=33(www-data) gid=33(www-data) groups=33(www-data)
+Hostname: passage
+Writable folder: /dev/shm
+[+] /bin/ping is available for network discovery (linpeas can discover hosts, learn more with -h)
+[+] /bin/nc is available for network discover & port scanning (linpeas can discover hosts and scan ports, learn more with -h)                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                            
+
+Caching directories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . uniq: write error: Broken pipe
+DONE
+                                                                                                                                                                                                                                                                                                                            
+                                        ╔════════════════════╗
+════════════════════════════════════════╣ System Information ╠════════════════════════════════════════                                                                                                                                                                                                                      
+                                        ╚════════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ Operative system
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#kernel-exploits                                                                                                                                                                                                                                               
+Linux version 4.15.0-45-generic (buildd@lcy01-amd64-027) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10)) #48~16.04.1-Ubuntu SMP Tue Jan 29 18:03:48 UTC 2019                                                                                                                                                  
+Distributor ID: Ubuntu
+Description:    Ubuntu 16.04.6 LTS
+Release:        16.04
+Codename:       xenial
+
+╔══════════╣ Sudo version
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-version                                                                                                                                                                                                                                                  
+Sudo version 1.8.16                                                                                                                                                                                                                                                                                                         
+
+Vulnerable to CVE-2021-4034
+
+./linpeas.sh: 1188: ./linpeas.sh: [[: not found
+./linpeas.sh: 1188: ./linpeas.sh: rpm: not found
+./linpeas.sh: 1188: ./linpeas.sh: 0: not found
+╔══════════╣ USBCreator
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation/d-bus-enumeration-and-command-injection-privilege-escalation                                                                                                                                                                                                  
+Vulnerable!!                                                                                                                                                                                                                                                                                                                
+
+╔══════════╣ PATH
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-path-abuses                                                                                                                                                                                                                                          
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin                                                                                                                                                                                                                                                                
+New path exported: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+╔══════════╣ Date & uptime
+Sun Jan  1 18:10:08 PST 2023                                                                                                                                                                                                                                                                                                
+ 18:10:08 up  1:24,  1 user,  load average: 0.28, 0.07, 0.02
+
+╔══════════╣ Any sd*/disk* disk in /dev? (limit 20)
+disk                                                                                                                                                                                                                                                                                                                        
+sda
+sda1
+sda2
+sda5
+
+╔══════════╣ Unmounted file-system?
+╚ Check if you can mount umounted devices                                                                                                                                                                                                                                                                                   
+sed: -e expression #1, char 200: unknown option to `s'                                                                                                                                                                                                                                                                      
+
+╔══════════╣ Environment
+╚ Any private information inside environment variables?                                                                                                                                                                                                                                                                     
+HISTFILESIZE=0                                                                                                                                                                                                                                                                                                              
+SHLVL=1
+OLDPWD=/var/www/html/CuteNews/uploads
+APACHE_RUN_DIR=/var/run/apache2
+APACHE_PID_FILE=/var/run/apache2/apache2.pid
+_=./linpeas.sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+APACHE_LOCK_DIR=/var/lock/apache2
+LANG=C
+HISTSIZE=0
+APACHE_RUN_USER=www-data
+APACHE_RUN_GROUP=www-data
+APACHE_LOG_DIR=/var/log/apache2
+PWD=/tmp
+HISTFILE=/dev/null
+
+╔══════════╣ Searching Signature verification failed in dmesg
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#dmesg-signature-verification-failed                                                                                                                                                                                                                           
+dmesg Not Found                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Executing Linux Exploit Suggester
+╚ https://github.com/mzet-/linux-exploit-suggester                                                                                                                                                                                                                                                                          
+sed: -e expression #1, char 27: unknown option to `s'                                                                                                                                                                                                                                                                       
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+grep: write error: Broken pipe
+
+╔══════════╣ Executing Linux Exploit Suggester 2
+╚ https://github.com/jondonas/linux-exploit-suggester-2                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Protections
+═╣ AppArmor enabled? .............. You do not have enough privilege to read the profile set.                                                                                                                                                                                                                               
+apparmor module is loaded.
+═╣ grsecurity present? ............ grsecurity Not Found
+═╣ PaX bins present? .............. PaX Not Found                                                                                                                                                                                                                                                                           
+═╣ Execshield enabled? ............ Execshield Not Found                                                                                                                                                                                                                                                                    
+═╣ SELinux enabled? ............... sestatus Not Found                                                                                                                                                                                                                                                                      
+═╣ Is ASLR enabled? ............... Yes                                                                                                                                                                                                                                                                                     
+═╣ Printer? ....................... No
+═╣ Is this a virtual machine? ..... Yes (vmware)                                                                                                                                                                                                                                                                            
+
+                                             ╔═══════════╗
+═════════════════════════════════════════════╣ Container ╠═════════════════════════════════════════════                                                                                                                                                                                                                     
+                                             ╚═══════════╝                                                                                                                                                                                                                                                                  
+╔══════════╣ Container related tools present
+╔══════════╣ Container details                                                                                                                                                                                                                                                                                              
+═╣ Is this a container? ........... No                                                                                                                                                                                                                                                                                      
+═╣ Any running containers? ........ No                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                            
+
+                          ╔════════════════════════════════════════════════╗
+══════════════════════════╣ Processes, Crons, Timers, Services and Sockets ╠══════════════════════════                                                                                                                                                                                                                      
+                          ╚════════════════════════════════════════════════╝                                                                                                                                                                                                                                                
+╔══════════╣ Cleaned processes
+╚ Check weird & unexpected proceses run by root: https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes                                                                                                                                                                                                      
+root          1  0.0  0.1 119844  5904 ?        Ss   16:45   0:03 /sbin/init auto noprompt                                                                                                                                                                                                                                  
+root        323  0.0  0.1  32224  4080 ?        Ss   16:45   0:00 /lib/systemd/systemd-journald
+root        352  0.0  0.1  46664  5392 ?        Ss   16:45   0:01 /lib/systemd/systemd-udevd
+root        368  0.0  0.0 158624   312 ?        Ssl  16:45   0:00 vmware-vmblock-fuse /run/vmblock-fuse -o rw,subtype=vmware-vmblock,default_permissions,allow_other,dev,suid
+root        378  0.0  0.2 205988 10836 ?        Ssl  16:45   0:03 /usr/bin/vmtoolsd
+systemd+    402  0.0  0.0 102384  2704 ?        Ssl  16:45   0:00 /lib/systemd/systemd-timesyncd
+  └─(Caps) 0x0000000002000000=cap_sys_time
+root        583  0.0  0.2 298452  8440 ?        Ssl  16:45   0:00 /usr/lib/accountsservice/accounts-daemon[0m
+root        585  0.0  0.2  85440  9224 ?        Ss   16:45   0:00 /usr/bin/VGAuthService
+root        599  0.0  0.0  36076  2960 ?        Ss   16:45   0:00 /usr/sbin/cron -f
+message+    602  0.0  0.1  44136  4848 ?        Ss   16:45   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  └─(Caps) 0x0000000020000000=cap_audit_write
+root        624  0.0  0.4 462592 16424 ?        Ssl  16:45   0:00 /usr/sbin/NetworkManager --no-daemon[0m
+root        625  0.0  0.0   4396  1276 ?        Ss   16:45   0:00 /usr/sbin/acpid
+avahi       682  0.0  0.0  44784   336 ?        S    16:45   0:00  _ avahi-daemon: chroot helper
+root        628  0.0  0.0  28656  3112 ?        Ss   16:45   0:00 /lib/systemd/systemd-logind
+syslog      632  0.0  0.0 256392  3444 ?        Ssl  16:45   0:00 /usr/sbin/rsyslogd -n
+root        673  0.0  0.2 294232  9944 ?        Ssl  16:45   0:00 /usr/lib/policykit-1/polkitd --no-debug
+root        684  0.0  0.1 292168  8020 ?        Ssl  16:45   0:00 /usr/sbin/lightdm
+root        885  0.1  1.4 381404 59200 tty7     Ssl+ 16:45   0:06  _ /usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+root        926  0.0  0.1 228240  6384 ?        Sl   16:45   0:00  _ lightdm --session-child 12 15
+nadav       935  0.0  0.1  53536  4672 ?        Ss   16:45   0:00      _ /sbin/upstart --user
+nadav      1012  0.0  0.0  39928   280 ?        S    16:45   0:00          _ upstart-udev-bridge --daemon[0m --user
+nadav      1022  0.0  0.1  43640  4084 ?        Ss   16:45   0:01          _ dbus-daemon[0m --fork --session --address=unix:abstract=/tmp/dbus-L4jwR21VGi
+nadav      1034  0.0  0.2  93412  8812 ?        Ss   16:45   0:00          _ /usr/lib/x86_64-linux-gnu/hud/window-stack-bridge
+nadav      1063  0.0  0.1 212268  6588 ?        SLl  16:45   0:00          _ gnome-keyring-daemon[0m --start --components pkcs11,secrets
+  └─(Caps) 0x0000000000004000=cap_ipc_lock
+nadav      1070  0.0  0.0  39860   300 ?        S    16:45   0:00          _ upstart-dbus-bridge --daemon[0m --system --user --bus-name system
+nadav      1072  0.0  0.0  48352   376 ?        S    16:45   0:00          _ upstart-file-bridge --daemon[0m --user
+nadav      1077  0.0  1.2 662924 49988 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/bamf/bamfdaemon[0m
+nadav      1079  0.0  0.0  39860   316 ?        S    16:45   0:00          _ upstart-dbus-bridge --daemon[0m --session --user --bus-name session
+nadav      1087  0.0  0.2 365040  8148 ?        Ssl  16:45   0:00          _ /usr/bin/ibus-daemon[0m --daemonize --xim --address unix:tmpdir=/tmp/ibus
+nadav      1104  0.0  0.1 284620  7864 ?        Sl   16:45   0:00          |   _ /usr/lib/ibus/ibus-dconf
+nadav      1108  0.0  0.7 486692 29696 ?        Sl   16:45   0:00          |   _ /usr/lib/ibus/ibus-ui-gtk3
+nadav      1139  0.0  0.1 208752  7684 ?        Sl   16:45   0:00          |   _ /usr/lib/ibus/ibus-engine-simple
+nadav      1096  0.0  0.1 281588  6036 ?        Sl   16:45   0:00          _ /usr/lib/gvfs/gvfsd
+nadav      1101  0.0  0.1 419964  7184 ?        Sl   16:45   0:00          _ /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+nadav      1114  0.0  0.5 437092 21272 ?        Sl   16:45   0:00          _ /usr/lib/ibus/ibus-x11 --kill-daemon[0m
+nadav      1124  0.0  0.2 353672  8136 ?        Sl   16:45   0:00          _ /usr/lib/at-spi2-core/at-spi-bus-launcher
+nadav      1130  0.0  0.0  42892  3924 ?        S    16:45   0:00          |   _ /usr/bin/dbus-daemon[0m --config-file=/etc/at-spi2/accessibility.conf --nofork --print-address 3
+nadav      1136  0.0  0.1 206968  5264 ?        Sl   16:45   0:00          _ /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+nadav      1147  0.0  0.0 173604   644 ?        Ss   16:45   0:00          _ gpg-agent --homedir /home/nadav/.gnupg --use-standard-socket --daemon[0m
+nadav      1157  0.0  0.8 653404 35060 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/hud/hud-service
+nadav      1159  0.0  0.7 870200 29536 ?        Ssl  16:45   0:01          _ /usr/lib/unity-settings-daemon[0m/unity-settings-daemon
+nadav      1175  0.0  0.3 560452 15192 ?        Ssl  16:45   0:00          _ /usr/lib/gnome-session/gnome-session-binary --session=ubuntu
+nadav      1359  0.0  1.0 811708 42108 ?        Sl   16:45   0:01          |   _ nautilus -n
+nadav      1361  0.0  1.8 745300 74792 ?        SLl  16:45   0:02          |   _ /usr/bin/gnome-software --gapplication-service
+nadav      1376  0.0  0.4 583928 19872 ?        Sl   16:45   0:00          |   _ /usr/lib/unity-settings-daemon[0m/unity-fallback-mount-helper
+nadav      1382  0.0  0.8 606836 32732 ?        Sl   16:45   0:00          |   _ nm-applet
+nadav      1384  0.0  0.5 438512 20300 ?        Sl   16:45   0:00          |   _ /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+nadav      1743  0.0  0.3 497944 15368 ?        Sl   16:46   0:00          |   _ zeitgeist-datahub
+nadav      1882  0.0  0.5 532192 23408 ?        Sl   16:46   0:00          |   _ update-notifier
+nadav      1900  0.0  0.2 448372  8596 ?        Sl   16:47   0:00          |   _ /usr/lib/x86_64-linux-gnu/deja-dup/deja-dup-monitor
+nadav      1182  0.0  0.6 571020 28068 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/unity/unity-panel-service
+nadav      1231  0.0  0.1 178664  4796 ?        Sl   16:45   0:04          _ /usr/lib/dconf/dconf-service
+nadav      1238  0.0  0.2 377156  9184 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/indicator-messages/indicator-messages-service
+nadav      1239  0.0  0.1 356116  7844 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/indicator-bluetooth/indicator-bluetooth-service
+nadav      1245  0.0  0.2 366576  9824 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/indicator-power/indicator-power-service
+nadav      1246  0.0  0.4 1247524 17984 ?       Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/indicator-datetime/indicator-datetime-service
+nadav      1247  0.0  0.5 656604 23940 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/indicator-keyboard/indicator-keyboard-service --use-gtk
+nadav      1248  0.0  0.3 756588 12192 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/indicator-sound/indicator-sound-service
+nadav      1249  0.0  0.6 556648 24400 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/indicator-printers/indicator-printers-service
+nadav      1258  0.0  0.2 643392  8460 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/indicator-session/indicator-session-service
+nadav      1259  0.0  0.3 403148 12740 ?        Ssl  16:45   0:00          _ /usr/lib/x86_64-linux-gnu/indicator-application/indicator-application-service
+nadav      1275  0.7  2.5 1329732 103292 ?      Ssl  16:45   0:38          _ compiz
+nadav      1293  0.0  0.2 361388  8076 ?        S<l  16:45   0:00          _ /usr/bin/pulseaudio --start --log-target=syslog
+nadav      1323  0.0  0.5 858968 23732 ?        Sl   16:45   0:00          _ /usr/lib/evolution/evolution-source-registry
+nadav      1354  0.0  1.5 876996 60392 ?        Sl   16:45   0:00          _ /usr/lib/evolution/evolution-calendar-factory
+nadav      1423  0.0  1.2 821684 51208 ?        Sl   16:45   0:00          |   _ /usr/lib/evolution/evolution-calendar-factory-subprocess --factory contacts --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.Calendarx1354x2 --own-path /org/gnome/evolution/dataserver/Subprocess/Backend/Calendar/1354/2
+nadav      1544  0.0  1.2 945332 50936 ?        Sl   16:45   0:00          |   _ /usr/lib/evolution/evolution-calendar-factory-subprocess --factory local --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.Calendarx1354x3 --own-path /org/gnome/evolution/dataserver/Subprocess/Backend/Calendar/1354/3
+nadav      1370  0.0  0.2 303320  9336 ?        Sl   16:45   0:00          _ /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+nadav      1374  0.1  0.8 539932 34624 ?        Sl   16:45   0:08          _ /usr/bin/vmtoolsd -n vmusr --blockFd 3
+nadav      1391  0.0  0.1 278784  5036 ?        Sl   16:45   0:00          _ /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+nadav      1402  0.0  0.2 410676  9052 ?        Sl   16:45   0:00          _ /usr/lib/gvfs/gvfs-afc-volume-monitor
+nadav      1414  0.0  0.1 266588  4628 ?        Sl   16:45   0:00          _ /usr/lib/gvfs/gvfs-mtp-volume-monitor
+nadav      1445  0.0  0.1 264596  4816 ?        Sl   16:45   0:00          _ /usr/lib/gvfs/gvfs-goa-volume-monitor
+nadav      1542  0.0  0.4 704360 19640 ?        Sl   16:45   0:00          _ /usr/lib/evolution/evolution-addressbook-factory
+nadav      1574  0.0  0.4 779840 19164 ?        Sl   16:45   0:00          |   _ /usr/lib/evolution/evolution-addressbook-factory-subprocess --factory local --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.AddressBookx1542x2 --own-path /org/gnome/evolution/dataserver/Subprocess/Backend/AddressBook/1542/2
+nadav      1602  0.0  0.2 370716  8452 ?        Sl   16:45   0:00          _ /usr/lib/gvfs/gvfsd-trash --spawner :1.6 /org/gtk/gvfs/exec_spaw/0
+nadav      1717  0.0  0.6 647844 26992 ?        Ssl  16:45   0:01          _ /usr/lib/x86_64-linux-gnu/unity/unity-panel-service --lockscreen-mode
+nadav      1753  0.0  0.0   4504   740 ?        S    16:46   0:00          _ /bin/sh -c /usr/lib/x86_64-linux-gnu/zeitgeist/zeitgeist-maybe-vacuum; /usr/bin/zeitgeist-daemon[0m
+nadav      1760  0.0  0.1 339960  6432 ?        Sl   16:46   0:00          |   _ /usr/bin/zeitgeist-daemon[0m
+nadav      1772  0.0  0.2 310832  9808 ?        Sl   16:46   0:00          _ /usr/lib/x86_64-linux-gnu/zeitgeist-fts
+nadav      1936  0.0  0.7 578976 30964 ?        Sl   16:49   0:00          _ deja-dup --prompt
+root        685  0.0  0.0  23004  1816 tty1     Ss+  16:45   0:00 /sbin/agetty --noclear tty1 linux
+root        784  0.0  0.0  19616  2076 ?        Ss   16:45   0:00 /usr/sbin/irqbalance --pid=/var/run/irqbalance.pid
+nadav       931  0.0  0.1  45280  4560 ?        Ss   16:45   0:00 /lib/systemd/systemd --user
+nadav       932  0.0  0.0  63460  2028 ?        S    16:45   0:00  _ (sd-pam)
+root       1205  0.0  0.2 354204  9724 ?        Ssl  16:45   0:00 /usr/lib/upower/upowerd
+rtkit      1294  0.0  0.0 183544  2912 ?        SNsl 16:45   0:00 /usr/lib/rtkit/rtkit-daemon
+  └─(Caps) 0x0000000000800004=cap_dac_read_search,cap_sys_nice
+colord     1314  0.0  0.3 320532 12428 ?        Ssl  16:45   0:00 /usr/lib/colord/colord
+root       1375  0.0  0.2 382136  9576 ?        Ssl  16:45   0:00 /usr/lib/udisks2/udisksd --no-debug
+root       1490  0.0  0.8 518648 34044 ?        Ssl  16:45   0:02 /usr/lib/x86_64-linux-gnu/fwupd/fwupd
+root       1493  0.0  0.1  65520  6180 ?        Ss   16:45   0:00 /usr/sbin/sshd -D
+whoopsie   1495  0.0  0.2 284684 11136 ?        Ssl  16:45   0:00 /usr/bin/whoopsie -f
+root       1552  0.0  0.6 255948 26352 ?        Ss   16:45   0:00 /usr/sbin/apache2 -k start
+www-data   2572  0.0  0.3 256844 14836 ?        S    17:10   0:00  _ /usr/sbin/apache2 -k start
+www-data   2574  0.0  0.3 256744 15040 ?        S    17:10   0:00  _ /usr/sbin/apache2 -k start
+www-data   2575  0.0  0.3 256568 14412 ?        S    17:10   0:00  _ /usr/sbin/apache2 -k start
+www-data   2576  0.0  0.3 256844 14576 ?        S    17:10   0:00  _ /usr/sbin/apache2 -k start
+www-data   2577  0.0  0.3 256840 15748 ?        S    17:10   0:00  _ /usr/sbin/apache2 -k start
+www-data   2578  0.0  0.3 256844 14960 ?        S    17:10   0:00  _ /usr/sbin/apache2 -k start
+www-data   2579  0.0  0.3 256844 15376 ?        S    17:10   0:00  _ /usr/sbin/apache2 -k start
+www-data   2580  0.0  0.4 260980 18344 ?        S    17:10   0:00  _ /usr/sbin/apache2 -k start
+www-data   2840  0.0  0.0   4504   844 ?        S    18:08   0:00  |   _ sh -c /bin/sh 
+www-data   2841  0.0  0.0   4504   844 ?        S    18:08   0:00  |       _ /bin/sh
+www-data   2844  0.0  0.0  18212  3348 ?        S    18:08   0:00  |           _ /bin/bash -i
+www-data   2894  0.3  0.0   5404  2524 ?        S    18:09   0:00  |               _ /bin/sh ./linpeas.sh
+www-data   5943  0.0  0.0   5404   992 ?        S    18:10   0:00  |                   _ /bin/sh ./linpeas.sh
+www-data   5947  0.0  0.0  34724  3224 ?        R    18:10   0:00  |                   |   _ ps fauxwww
+www-data   5946  0.0  0.0   5404   992 ?        S    18:10   0:00  |                   _ /bin/sh ./linpeas.sh
+www-data   2581  0.0  0.3 256792 15508 ?        S    17:10   0:00  _ /usr/sbin/apache2 -k start
+www-data   2626  0.0  0.4 260948 16616 ?        S    17:13   0:00  _ /usr/sbin/apache2 -k start
+root       1590  0.1  0.4 890416 18988 ?        Sl   16:45   0:06 /usr/bin/python3 /usr/bin/fail2ban-server -s /var/run/fail2ban/fail2ban.sock -p /var/run/fail2ban/fail2ban.pid -x -b
+root       2101  0.0  0.1 100344  7488 ?        Ss   16:50   0:00 /usr/sbin/cupsd -l
+lp         2104  0.0  0.1  81244  5612 ?        S    16:50   0:00  _ /usr/lib/cups/notifier/dbus dbus://
+root       2102  0.0  0.2 274812  9496 ?        Ssl  16:50   0:00 /usr/sbin/cups-browsed
+
+╔══════════╣ Binary processes permissions (non 'root root' and not belonging to current user)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Files opened by processes belonging to other users
+╚ This is usually empty because of the lack of privileges to read other user processes information                                                                                                                                                                                                                          
+COMMAND    PID  TID             USER   FD      TYPE DEVICE SIZE/OFF    NODE NAME                                                                                                                                                                                                                                            
+
+╔══════════╣ Processes with credentials in memory (root req)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#credentials-from-process-memory                                                                                                                                                                                                                               
+gdm-password Not Found                                                                                                                                                                                                                                                                                                      
+gnome-keyring-daemon process found (dump creds from memory as root)                                                                                                                                                                                                                                                         
+lightdm process found (dump creds from memory as root)
+vsftpd Not Found
+apache2 process found (dump creds from memory as root)                                                                                                                                                                                                                                                                      
+sshd Not Found
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Cron jobs
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#scheduled-cron-jobs                                                                                                                                                                                                                                           
+/usr/bin/crontab                                                                                                                                                                                                                                                                                                            
+incrontab Not Found
+-rw-r--r-- 1 root root     722 Feb  5  2021 /etc/crontab                                                                                                                                                                                                                                                                    
+
+/etc/cron.d:
+total 32
+drwxr-xr-x   2 root root  4096 Jul 21  2020 .
+drwxr-xr-x 134 root root 12288 Feb  5  2021 ..
+-rw-r--r--   1 root root   102 Apr  5  2016 .placeholder
+-rw-r--r--   1 root root   244 Dec 28  2014 anacron
+-rw-r--r--   1 root root   670 Mar  1  2016 php
+-rw-r--r--   1 root root   190 Jun 18  2020 popularity-contest
+
+/etc/cron.daily:
+total 76
+drwxr-xr-x   2 root root  4096 Jul 21  2020 .
+drwxr-xr-x 134 root root 12288 Feb  5  2021 ..
+-rw-r--r--   1 root root   102 Apr  5  2016 .placeholder
+-rwxr-xr-x   1 root root   311 Dec 28  2014 0anacron
+-rwxr-xr-x   1 root root   539 Apr  5  2016 apache2
+-rwxr-xr-x   1 root root   376 Mar 31  2016 apport
+-rwxr-xr-x   1 root root  1474 Oct  9  2018 apt-compat
+-rwxr-xr-x   1 root root   355 May 22  2012 bsdmainutils
+-rwxr-xr-x   1 root root   384 Oct  5  2014 cracklib-runtime
+-rwxr-xr-x   1 root root  1597 Nov 26  2015 dpkg
+-rwxr-xr-x   1 root root   372 May  5  2015 logrotate
+-rwxr-xr-x   1 root root  1293 Nov  6  2015 man-db
+-rwxr-xr-x   1 root root   435 Nov 17  2014 mlocate
+-rwxr-xr-x   1 root root   249 Nov 12  2015 passwd
+-rwxr-xr-x   1 root root  3449 Feb 26  2016 popularity-contest
+-rwxr-xr-x   1 root root   214 Dec  7  2018 update-notifier-common
+-rwxr-xr-x   1 root root  1046 May 19  2016 upstart
+
+/etc/cron.hourly:
+total 20
+drwxr-xr-x   2 root root  4096 Feb 26  2019 .
+drwxr-xr-x 134 root root 12288 Feb  5  2021 ..
+-rw-r--r--   1 root root   102 Apr  5  2016 .placeholder
+
+/etc/cron.monthly:
+total 24
+drwxr-xr-x   2 root root  4096 Feb 26  2019 .
+drwxr-xr-x 134 root root 12288 Feb  5  2021 ..
+-rw-r--r--   1 root root   102 Apr  5  2016 .placeholder
+-rwxr-xr-x   1 root root   313 Dec 28  2014 0anacron
+
+/etc/cron.weekly:
+total 36
+drwxr-xr-x   2 root root  4096 Feb 26  2019 .
+drwxr-xr-x 134 root root 12288 Feb  5  2021 ..
+-rw-r--r--   1 root root   102 Apr  5  2016 .placeholder
+-rwxr-xr-x   1 root root   312 Dec 28  2014 0anacron
+-rwxr-xr-x   1 root root    86 Apr 13  2016 fstrim
+-rwxr-xr-x   1 root root   771 Nov  6  2015 man-db
+-rwxr-xr-x   1 root root   211 Dec  7  2018 update-notifier-common
+
+/var/spool/anacron:
+total 20
+drwxr-xr-x 2 root root 4096 Jun 18  2020 .
+drwxr-xr-x 7 root root 4096 Feb 26  2019 ..
+-rw------- 1 root root    9 Jan  1 16:50 cron.daily
+-rw------- 1 root root    9 Jan  1 17:00 cron.monthly
+-rw------- 1 root root    9 Jan  1 16:55 cron.weekly
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+HOME=/root
+LOGNAME=root
+
+1       5       cron.daily      run-parts --report /etc/cron.daily
+7       10      cron.weekly     run-parts --report /etc/cron.weekly
+@monthly        15      cron.monthly    run-parts --report /etc/cron.monthly
+
+╔══════════╣ Systemd PATH
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#systemd-path-relative-paths                                                                                                                                                                                                                                   
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin                                                                                                                                                                                                                                                           
+
+╔══════════╣ Analyzing .service files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#services                                                                                                                                                                                                                                                      
+/etc/systemd/system/multi-user.target.wants/networking.service is executing some relative path                                                                                                                                                                                                                              
+/etc/systemd/system/network-online.target.wants/networking.service is executing some relative path
+You can't write on systemd PATH
+
+╔══════════╣ System timers
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#timers                                                                                                                                                                                                                                                        
+NEXT                         LEFT          LAST                         PASSED       UNIT                         ACTIVATES                                                                                                                                                                                                 
+Sun 2023-01-01 19:59:49 PST  1h 49min left Sun 2023-01-01 16:45:34 PST  1h 25min ago apt-daily.timer              apt-daily.service
+Mon 2023-01-02 06:57:12 PST  12h left      Sun 2023-01-01 16:45:34 PST  1h 25min ago apt-daily-upgrade.timer      apt-daily-upgrade.service
+Mon 2023-01-02 17:00:34 PST  22h left      Sun 2023-01-01 17:00:34 PST  1h 10min ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+n/a                          n/a           n/a                          n/a          ureadahead-stop.timer        ureadahead-stop.service
+
+╔══════════╣ Analyzing .timer files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#timers                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .socket files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sockets                                                                                                                                                                                                                                                       
+/etc/systemd/system/sockets.target.wants/avahi-daemon.socket is calling this writable listener: /var/run/avahi-daemon/socket                                                                                                                                                                                                
+/etc/systemd/system/sockets.target.wants/uuidd.socket is calling this writable listener: /run/uuidd/request
+/lib/systemd/system/avahi-daemon.socket is calling this writable listener: /var/run/avahi-daemon/socket
+/lib/systemd/system/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket
+/lib/systemd/system/sockets.target.wants/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket
+/lib/systemd/system/sockets.target.wants/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log
+/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout
+/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket
+/lib/systemd/system/syslog.socket is calling this writable listener: /run/systemd/journal/syslog
+/lib/systemd/system/systemd-bus-proxyd.socket is calling this writable listener: /var/run/dbus/system_bus_socket
+/lib/systemd/system/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log
+/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout
+/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket
+/lib/systemd/system/uuidd.socket is calling this writable listener: /run/uuidd/request
+
+╔══════════╣ Unix Sockets Listening
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sockets                                                                                                                                                                                                                                                       
+/com/ubuntu/upstart-session/1000/935                                                                                                                                                                                                                                                                                        
+/home/nadav/.gnupg/S.gpg-agent
+/run/acpid.socket
+  └─(Read Write)
+/run/avahi-daemon/socket
+  └─(Read Write)
+/run/cups/cups.sock
+  └─(Read Write)
+/run/dbus/system_bus_socket
+  └─(Read Write)
+/run/fail2ban/fail2ban.sock
+/run/systemd/fsck.progress
+/run/systemd/journal/dev-log
+  └─(Read Write)
+/run/systemd/journal/socket
+  └─(Read Write)
+/run/systemd/journal/stdout
+  └─(Read Write)
+/run/systemd/journal/syslog
+  └─(Read Write)
+/run/systemd/notify
+  └─(Read Write)
+/run/systemd/private
+  └─(Read Write)
+/run/udev/control
+/run/user/1000/keyring/control
+/run/user/1000/keyring/pkcs11
+/run/user/1000/keyring/ssh
+/run/user/1000/pulse/native
+/run/user/1000/systemd/private
+/run/uuidd/request
+  └─(Read Write)
+/run/vmware/guestServicePipe
+  └─(Read Write)
+/tmp/.ICE-unix/1175
+  └─(Read Write)
+/tmp/.X11-unix/X0
+  └─(Read Write)
+/tmp/dbus-L4jwR21VGi
+/tmp/dbus-ZWHWW6xVNL
+/tmp/ibus/dbus-SPg7uexY
+/var/run/avahi-daemon/socket
+  └─(Read Write)
+/var/run/cups/cups.sock
+  └─(Read Write)
+/var/run/dbus/system_bus_socket
+  └─(Read Write)
+/var/run/fail2ban/fail2ban.sock
+/var/run/vmware/guestServicePipe
+  └─(Read Write)
+
+╔══════════╣ D-Bus config files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#d-bus                                                                                                                                                                                                                                                         
+Possible weak user policy found on /etc/dbus-1/system.d/avahi-dbus.conf (  <policy user="avahi">)                                                                                                                                                                                                                           
+Possible weak user policy found on /etc/dbus-1/system.d/avahi-dbus.conf (  <policy group="netdev">)
+Possible weak user policy found on /etc/dbus-1/system.d/bluetooth.conf (  <policy group="bluetooth">
+  <policy group="lp">)
+Possible weak user policy found on /etc/dbus-1/system.d/dnsmasq.conf (        <policy user="dnsmasq">)
+Possible weak user policy found on /etc/dbus-1/system.d/kerneloops.dbus (  <policy user="kernoops">)
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.ColorManager.conf (  <policy user="colord">)
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.NetworkManager.conf (        <policy user="whoopsie">)
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.RealtimeKit1.conf (  <policy user="rtkit">)
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.network1.conf (        <policy user="systemd-network">)
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.resolve1.conf (        <policy user="systemd-resolve">)
+Possible weak user policy found on /etc/dbus-1/system.d/pulseaudio-system.conf (  <policy user="pulse">)
+Possible weak user policy found on /etc/dbus-1/system.d/wpa_supplicant.conf (        <policy group="netdev">)
+
+╔══════════╣ D-Bus Service Objects list
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#d-bus                                                                                                                                                                                                                                                         
+NAME                                       PID PROCESS         USER             CONNECTION    UNIT                      SESSION    DESCRIPTION                                                                                                                                                                              
+:1.0                                         1 systemd         root             :1.0          init.scope                -          -                  
+:1.1                                       583 accounts-daemon[0m root             :1.1          accounts-daemon.service   -          -                  
+:1.12                                      684 lightdm         root             :1.12         lightdm.service           -          -                  
+:1.18                                      885 Xorg            root             :1.18         lightdm.service           -          -                  
+:1.19                                      926 lightdm         root             :1.19         session-c1.scope          c1         -                  
+:1.2                                       628 systemd-logind  root             :1.2          systemd-logind.service    -          -                  
+:1.21                                      935 upstart         nadav            :1.21         session-c1.scope          c1         -                  
+:1.22                                        - -               -                -             -                         -          -                  
+:1.23                                     1104 ibus-dconf      nadav            :1.23         session-c1.scope          c1         -                  
+:1.24                                     1159 unity-settings- nadav            :1.24         session-c1.scope          c1         -                  
+:1.25                                     1205 upowerd         root             :1.25         upower.service            -          -                  
+:1.26                                     1239 indicator-bluet nadav            :1.26         session-c1.scope          c1         -                  
+:1.27                                     1238 indicator-messa nadav            :1.27         session-c1.scope          c1         -                  
+:1.28                                     1248 indicator-sound nadav            :1.28         session-c1.scope          c1         -                  
+:1.29                                     1249 indicator-print nadav            :1.29         session-c1.scope          c1         -                  
+:1.3                                       673 polkitd         root             :1.3          polkitd.service           -          -                  
+:1.30                                     1245 indicator-power nadav            :1.30         session-c1.scope          c1         -                  
+:1.31                                     1258 indicator-sessi nadav            :1.31         session-c1.scope          c1         -                  
+:1.33                                     1175 gnome-session-b nadav            :1.33         session-c1.scope          c1         -                  
+:1.34                                     1294 rtkit-daemon    root             :1.34         rtkit-daemon.service      -          -                  
+:1.35                                     1246 indicator-datet nadav            :1.35         session-c1.scope          c1         -                  
+:1.36                                     1293 pulseaudio      nadav            :1.36         session-c1.scope          c1         -                  
+:1.37                                     1314 colord          colord           :1.37         colord.service            -          -                  
+:1.4                                       626 avahi-daemon    avahi            :1.4          avahi-daemon.service      -          -                  
+:1.41                                     1370 gvfs-udisks2-vo nadav            :1.41         session-c1.scope          c1         -                  
+:1.42                                     1375 udisksd         root             :1.42         udisks2.service           -          -                  
+:1.43                                     1275 compiz          nadav            :1.43         session-c1.scope          c1         -                  
+:1.45                                     1361 gnome-software  nadav            :1.45         session-c1.scope          c1         -                  
+:1.46                                     1382 nm-applet       nadav            :1.46         session-c1.scope          c1         -                  
+:1.47                                     1384 polkit-gnome-au nadav            :1.47         session-c1.scope          c1         -                  
+:1.48                                     1495 whoopsie        whoopsie         :1.48         whoopsie.service          -          -                  
+:1.49                                     1423 evolution-calen nadav            :1.49         session-c1.scope          c1         -                  
+:1.50                                     1544 evolution-calen nadav            :1.50         session-c1.scope          c1         -                  
+:1.51                                     1574 evolution-addre nadav            :1.51         session-c1.scope          c1         -                  
+:1.54                                     1490 fwupd           root             :1.54         fwupd.service             -          -                  
+:1.55                                     1760 zeitgeist-daemo nadav            :1.55         session-c1.scope          c1         -                  
+:1.56                                     1900 deja-dup-monito nadav            :1.56         session-c1.scope          c1         -                  
+:1.57                                     2101 cupsd           root             :1.57         cups.service              -          -                  
+:1.58                                     2104 dbus            lp               :1.58         cups.service              -          -                  
+:1.59                                     2102 cups-browsed    root             :1.59         cups-browsed.service      -          -                  
+:1.60                                     2102 cups-browsed    root             :1.60         cups-browsed.service      -          -                  
+:1.67                                    10355 busctl          www-data         :1.67         apache2.service           -          -                  
+:1.7                                       624 NetworkManager  root             :1.7          NetworkManager.service    -          -                  
+com.hp.hplip                                 - -               -                (activatable) -                         -         
+com.ubuntu.LanguageSelector                  - -               -                (activatable) -                         -         
+com.ubuntu.SoftwareProperties                - -               -                (activatable) -                         -         
+com.ubuntu.SystemService                     - -               -                (activatable) -                         -         
+com.ubuntu.USBCreator                        - -               -                (activatable) -                         -         
+com.ubuntu.WhoopsiePreferences               - -               -                (activatable) -                         -         
+fi.epitest.hostap.WPASupplicant              - -               -                (activatable) -                         -         
+fi.w1.wpa_supplicant1                        - -               -                (activatable) -                         -         
+io.snapcraft.SnapdLoginService               - -               -                (activatable) -                         -         
+org.bluez                                    - -               -                (activatable) -                         -         
+org.debian.apt                               - -               -                (activatable) -                         -         
+org.freedesktop.Accounts                   583 accounts-daemon[0m root             :1.1          accounts-daemon.service   -          -                  
+org.freedesktop.Avahi                      626 avahi-daemon    avahi            :1.4          avahi-daemon.service      -          -                  
+org.freedesktop.ColorManager              1314 colord          colord           :1.37         colord.service            -          -                  
+org.freedesktop.DBus                       602 dbus-daemon[0m     messagebus       org.freedesktop.DBus dbus.service              -          -                  
+org.freedesktop.DisplayManager             684 lightdm         root             :1.12         lightdm.service           -          -                  
+org.freedesktop.ModemManager1                - -               -                (activatable) -                         -         
+org.freedesktop.NetworkManager             624 NetworkManager  root             :1.7          NetworkManager.service    -          -                  
+org.freedesktop.PackageKit                   - -               -                (activatable) -                         -         
+org.freedesktop.PolicyKit1                 673 polkitd         root             :1.3          polkitd.service           -          -                  
+org.freedesktop.RealtimeKit1              1294 rtkit-daemon    root             :1.34         rtkit-daemon.service      -          -                  
+org.freedesktop.UDisks2                   1375 udisksd         root             :1.42         udisks2.service           -          -                  
+org.freedesktop.UPower                    1205 upowerd         root             :1.25         upower.service            -          -                  
+org.freedesktop.fwupd                     1490 fwupd           root             :1.54         fwupd.service             -          -                  
+org.freedesktop.hostname1                    - -               -                (activatable) -                         -         
+org.freedesktop.locale1                      - -               -                (activatable) -                         -         
+org.freedesktop.login1                     628 systemd-logind  root             :1.2          systemd-logind.service    -          -                  
+org.freedesktop.network1                     - -               -                (activatable) -                         -         
+org.freedesktop.nm_dispatcher                - -               -                (activatable) -                         -         
+org.freedesktop.resolve1                     - -               -                (activatable) -                         -         
+org.freedesktop.systemd1                     1 systemd         root             :1.0          init.scope                -          -                  
+org.freedesktop.thermald                     - -               -                (activatable) -                         -         
+org.freedesktop.timedate1                    - -               -                (activatable) -                         -         
+org.opensuse.CupsPkHelper.Mechanism          - -               -                (activatable) -                         -         
+
+
+                                        ╔═════════════════════╗
+════════════════════════════════════════╣ Network Information ╠════════════════════════════════════════                                                                                                                                                                                                                     
+                                        ╚═════════════════════╝                                                                                                                                                                                                                                                             
+╔══════════╣ Hostname, hosts and DNS
+passage                                                                                                                                                                                                                                                                                                                     
+127.0.0.1       localhost
+127.0.1.1       passage passage.htb
+
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+nameserver 1.1.1.1
+
+╔══════════╣ Interfaces
+# symbolic names for networks, see networks(5) for more information                                                                                                                                                                                                                                                         
+link-local 169.254.0.0
+ens160    Link encap:Ethernet  HWaddr 00:50:56:b9:0a:a0  
+          inet addr:10.10.10.206  Bcast:10.10.10.255  Mask:255.255.255.0
+          inet6 addr: fe80::250:56ff:feb9:aa0/64 Scope:Link
+          inet6 addr: dead:beef::250:56ff:feb9:aa0/64 Scope:Global
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:86555 errors:0 dropped:10 overruns:0 frame:0
+          TX packets:78693 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:8159925 (8.1 MB)  TX bytes:10099967 (10.0 MB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:2051 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2051 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:202554 (202.5 KB)  TX bytes:202554 (202.5 KB)
+
+
+╔══════════╣ Active Ports
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#open-ports                                                                                                                                                                                                                                                    
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                                                                                                                                                                                                                                           
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -               
+tcp6       0      0 :::80                   :::*                    LISTEN      -               
+tcp6       0      0 :::22                   :::*                    LISTEN      -               
+tcp6       0      0 ::1:631                 :::*                    LISTEN      -               
+
+╔══════════╣ Can I sniff with tcpdump?
+No                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                            
+
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Users Information ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ My user
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#users                                                                                                                                                                                                                                                         
+uid=33(www-data) gid=33(www-data) groups=33(www-data)                                                                                                                                                                                                                                                                       
+
+╔══════════╣ Do I have PGP keys?
+/usr/bin/gpg                                                                                                                                                                                                                                                                                                                
+netpgpkeys Not Found
+netpgp Not Found                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Checking 'sudo -l', /etc/sudoers, and /etc/sudoers.d
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Checking sudo tokens
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#reusing-sudo-tokens                                                                                                                                                                                                                                           
+ptrace protection is enabled (1)                                                                                                                                                                                                                                                                                            
+gdb was found in PATH
+
+╔══════════╣ Checking Pkexec policy
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation/interesting-groups-linux-pe#pe-method-2                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+[Configuration]
+AdminIdentities=unix-user:0
+[Configuration]
+AdminIdentities=unix-group:sudo;unix-group:admin
+
+╔══════════╣ Superusers
+root:x:0:0:root:/root:/bin/bash                                                                                                                                                                                                                                                                                             
+
+╔══════════╣ Users with console
+nadav:x:1000:1000:Nadav,,,:/home/nadav:/bin/bash                                                                                                                                                                                                                                                                            
+paul:x:1001:1001:Paul Coles,,,:/home/paul:/bin/bash
+root:x:0:0:root:/root:/bin/bash
+
+╔══════════╣ All users & groups
+uid=0(root) gid=0(root) groups=0(root)                                                                                                                                                                                                                                                                                      
+uid=1(daemon[0m) gid=1(daemon[0m) groups=1(daemon[0m)
+uid=10(uucp) gid=10(uucp) groups=10(uucp)
+uid=100(systemd-timesync) gid=102(systemd-timesync) groups=102(systemd-timesync)
+uid=1000(nadav) gid=1000(nadav) groups=1000(nadav),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),113(lpadmin),128(sambashare)
+uid=1001(paul) gid=1001(paul) groups=1001(paul)
+uid=101(systemd-network) gid=103(systemd-network) groups=103(systemd-network)
+uid=102(systemd-resolve) gid=104(systemd-resolve) groups=104(systemd-resolve)
+uid=103(systemd-bus-proxy) gid=105(systemd-bus-proxy) groups=105(systemd-bus-proxy)
+uid=104(syslog) gid=108(syslog) groups=108(syslog),4(adm)
+uid=105(_apt) gid=65534(nogroup) groups=65534(nogroup)
+uid=106(messagebus) gid=110(messagebus) groups=110(messagebus)
+uid=107(uuidd) gid=111(uuidd) groups=111(uuidd)
+uid=108(lightdm) gid=114(lightdm) groups=114(lightdm)
+uid=109(whoopsie) gid=117(whoopsie) groups=117(whoopsie)
+uid=110(avahi-autoipd) gid=119(avahi-autoipd) groups=119(avahi-autoipd)
+uid=111(avahi) gid=120(avahi) groups=120(avahi)
+uid=112(dnsmasq) gid=65534(nogroup) groups=65534(nogroup)
+uid=113(colord) gid=123(colord) groups=123(colord)
+uid=114(speech-dispatcher) gid=29(audio) groups=29(audio)
+uid=115(hplip) gid=7(lp) groups=7(lp)
+uid=116(kernoops) gid=65534(nogroup) groups=65534(nogroup)
+uid=117(pulse) gid=124(pulse) groups=124(pulse),29(audio)
+uid=118(rtkit) gid=126(rtkit) groups=126(rtkit)
+uid=119(saned) gid=127(saned) groups=127(saned),122(scanner)
+uid=120(usbmux) gid=46(plugdev) groups=46(plugdev)
+uid=121(sshd) gid=65534(nogroup) groups=65534(nogroup)
+uid=13(proxy) gid=13(proxy) groups=13(proxy)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=3(sys) gid=3(sys) groups=3(sys)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=34(backup) gid=34(backup) groups=34(backup)
+uid=38(list) gid=38(list) groups=38(list)
+uid=39(irc) gid=39(irc) groups=39(irc)
+uid=4(sync) gid=65534(nogroup) groups=65534(nogroup)
+uid=41(gnats) gid=41(gnats) groups=41(gnats)
+uid=5(games) gid=60(games) groups=60(games)
+uid=6(man) gid=12(man) groups=12(man)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=7(lp) gid=7(lp) groups=7(lp)
+uid=8(mail) gid=8(mail) groups=8(mail)
+uid=9(news) gid=9(news) groups=9(news)
+
+╔══════════╣ Login now
+ 18:10:40 up  1:25,  1 user,  load average: 0.47, 0.14, 0.05                                                                                                                                                                                                                                                                
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+nadav    tty7     :0               16:45    1:25m  6.09s  0.25s /sbin/upstart --user
+
+╔══════════╣ Last logons
+                                                                                                                                                                                                                                                                                                                            
+wtmp begins Sun Jan  1 16:50:35 2023
+
+╔══════════╣ Last time logon each user
+Username         Port     From             Latest                                                                                                                                                                                                                                                                           
+root             pts/24   127.0.0.1        Mon Aug 31 15:14:22 -0700 2020
+nadav            pts/23   127.0.0.1        Mon Aug 31 15:07:54 -0700 2020
+
+╔══════════╣ Do not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+                                                                                                                                                                                                                                                                                                                            
+
+
+                                       ╔══════════════════════╗
+═══════════════════════════════════════╣ Software Information ╠═══════════════════════════════════════                                                                                                                                                                                                                      
+                                       ╚══════════════════════╝                                                                                                                                                                                                                                                             
+╔══════════╣ Useful software
+/usr/bin/base64                                                                                                                                                                                                                                                                                                             
+/usr/bin/curl
+/usr/bin/g++
+/usr/bin/gcc
+/usr/bin/gdb
+/usr/bin/make
+/bin/nc
+/bin/nc.traditional
+/bin/netcat
+/usr/bin/perl
+/usr/bin/php
+/bin/ping
+/usr/bin/python
+/usr/bin/python2
+/usr/bin/python2.7
+/usr/bin/python3
+/usr/bin/sudo
+/usr/bin/wget
+/usr/bin/xterm
+
+╔══════════╣ Installed Compilers
+ii  g++                                        4:5.3.1-1ubuntu1                             amd64        GNU C++ compiler                                                                                                                                                                                                   
+ii  g++-5                                      5.4.0-6ubuntu1~16.04.11                      amd64        GNU C++ compiler
+ii  gcc                                        4:5.3.1-1ubuntu1                             amd64        GNU C compiler
+ii  gcc-5                                      5.4.0-6ubuntu1~16.04.11                      amd64        GNU C compiler
+ii  hardening-includes                         2.7ubuntu2                                   all          Makefile for enabling compiler flags for security hardening
+/usr/bin/gcc
+
+╔══════════╣ Searching mysql credentials and exec
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing Apache Files (limit 70)
+Version: Server version: Apache/2.4.18 (Ubuntu)                                                                                                                                                                                                                                                                             
+Server built:   2016-04-15T18:00:57
+httpd Not Found
+                                                                                                                                                                                                                                                                                                                            
+══╣ PHP exec extensions
+/etc/apache2/mods-available/php7.0.conf-<FilesMatch ".+\.ph(p[3457]?|t|tml)$">                                                                                                                                                                                                                                              
+/etc/apache2/mods-available/php7.0.conf:    SetHandler application/x-httpd-php
+--
+/etc/apache2/mods-available/php7.0.conf-<FilesMatch ".+\.phps$">
+/etc/apache2/mods-available/php7.0.conf:    SetHandler application/x-httpd-php-source
+--
+/etc/apache2/mods-enabled/php7.0.conf-<FilesMatch ".+\.ph(p[3457]?|t|tml)$">
+/etc/apache2/mods-enabled/php7.0.conf:    SetHandler application/x-httpd-php
+--
+/etc/apache2/mods-enabled/php7.0.conf-<FilesMatch ".+\.phps$">
+/etc/apache2/mods-enabled/php7.0.conf:    SetHandler application/x-httpd-php-source
+drwxr-xr-x 2 root root 4096 Jul 21  2020 /etc/apache2/sites-enabled
+drwxr-xr-x 2 root root 4096 Jul 21  2020 /etc/apache2/sites-enabled
+lrwxrwxrwx 1 root root 35 Jul 21  2020 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf
+
+
+-rw-r--r-- 1 root root 1332 Mar 19  2016 /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:80>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        #ServerName www.example.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        #Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+lrwxrwxrwx 1 root root 35 Jul 21  2020 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf
+<VirtualHost *:80>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        #ServerName www.example.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        #Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+
+-rw-r--r-- 1 root root 69272 Apr 14  2016 /etc/php/7.0/apache2/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+ibase.allow_persistent = 1
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+-rw-r--r-- 1 root root 68929 Apr 14  2016 /etc/php/7.0/cli/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+ibase.allow_persistent = 1
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+
+╔══════════╣ Analyzing Htpasswd Files (limit 70)
+-rw-r--r-- 1 root root 47 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/authz_owner/.htpasswd                                                                                                                                                                                   
+username:$apr1$1f5oQUl4$21lLXSN7xQOPtNsj5s4Nk/
+-rw-r--r-- 1 root root 47 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/file/.htpasswd
+username:$apr1$uUMsOjCQ$.BzXClI/B/vZKddgIAJCR.
+-rw-r--r-- 1 root root 62 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest/.htpasswd
+username:digest private area:fad48d3a7c63f61b5b3567a4105bbb04
+-rw-r--r-- 1 root root 117 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_anon/.htpasswd
+username:digest anon:25e4077a9344ceb1a88f2a62c9fb60d8
+05bbb04
+anonymous:digest anon:faa4e5870970cf935bb9674776e6b26a
+-rw-r--r-- 1 root root 62 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_time/.htpasswd
+username:digest private area:fad48d3a7c63f61b5b3567a4105bbb04
+-rw-r--r-- 1 root root 62 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_wrongrelm/.htpasswd
+username:wrongrelm:99cd340e1283c6d0ab34734bd47bdc30
+4105bbb04
+
+╔══════════╣ Analyzing Rsync Files (limit 70)
+-rw-r--r-- 1 root root 1044 Sep 30  2013 /usr/share/doc/rsync/examples/rsyncd.conf                                                                                                                                                                                                                                          
+[ftp]
+        comment = public archive
+        path = /var/www/pub
+        use chroot = yes
+        lock file = /var/lock/rsyncd
+        read only = yes
+        list = yes
+        uid = nobody
+        gid = nogroup
+        strict modes = yes
+        ignore errors = no
+        ignore nonreadable = yes
+        transfer logging = no
+        timeout = 600
+        refuse options = checksum dry-run
+        dont compress = *.gz *.tgz *.zip *.z *.rpm *.deb *.iso *.bz2 *.tbz
+
+
+╔══════════╣ Analyzing Ldap Files (limit 70)
+The password hash is from the {SSHA} to 'structural'                                                                                                                                                                                                                                                                        
+drwxr-xr-x 2 root root 4096 Feb 26  2019 /etc/ldap
+
+
+╔══════════╣ Searching ssl/ssh files
+find: './systemd-private-f61dcef740b644fe87ea4b69ba1711af-systemd-timesyncd.service-Ho0KpZ': Permission denied                                                                                                                                                                                                              
+find: './systemd-private-f61dcef740b644fe87ea4b69ba1711af-rtkit-daemon.service-3bEnNw': Permission denied
+find: './systemd-private-f61dcef740b644fe87ea4b69ba1711af-colord.service-R1B62f': Permission denied
+find: './vmware-root': Permission denied
+find: './systemd-private-f61dcef740b644fe87ea4b69ba1711af-fwupd.service-bUaVWR': Permission denied
+Port 22
+PermitRootLogin prohibit-password
+PubkeyAuthentication yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM no
+
+══╣ Possible private SSH keys were found!
+/etc/ImageMagick-6/mime.xml
+
+gpg-connect-agent: no running gpg-agent - starting '/usr/bin/gpg-agent'
+gpg-connect-agent: failed to create temporary file '/var/www/.gnupg/.#lk0x000055901c47bc50.passage.11474': No such file or directory
+gpg-connect-agent: can't connect to the agent: No such file or directory
+gpg-connect-agent: error sending standard options: No agent running
+══╣ Some home ssh config file was found
+/usr/share/doc/openssh-client/examples/sshd_config                                                                                                                                                                                                                                                                          
+AuthorizedKeysFile      .ssh/authorized_keys
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+
+══╣ /etc/hosts.allow file found, trying to read the rules:
+/etc/hosts.allow                                                                                                                                                                                                                                                                                                            
+
+
+Searching inside /etc/ssh/ssh_config for interesting info
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
+
+╔══════════╣ Analyzing PAM Auth Files (limit 70)
+drwxr-xr-x 2 root root 4096 Feb  5  2021 /etc/pam.d                                                                                                                                                                                                                                                                         
+-rw-r--r-- 1 root root 2133 Apr 15  2016 /etc/pam.d/sshd
+
+
+╔══════════╣ Passwords inside pam.d
+/etc/pam.d/lightdm:auth    sufficient      pam_succeed_if.so user ingroup nopasswdlogin                                                                                                                                                                                                                                     
+
+
+
+╔══════════╣ Analyzing Cloud Credentials Files (limit 70)
+drwxr-xr-x 2 root root 4096 Feb 26  2019 /usr/share/help/C/web-credentials                                                                                                                                                                                                                                                  
+
+
+
+
+
+
+
+
+
+
+╔══════════╣ Analyzing Keyring Files (limit 70)
+drwxr-xr-x 2 root root 4096 Feb 26  2019 /usr/share/keyrings                                                                                                                                                                                                                                                                
+drwxr-xr-x 2 root root 4096 Feb 26  2019 /var/lib/apt/keyrings
+
+
+
+
+╔══════════╣ Searching uncommon passwd files (splunk)
+passwd file: /etc/pam.d/passwd                                                                                                                                                                                                                                                                                              
+passwd file: /etc/passwd
+passwd file: /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/authz_owner/.htpasswd
+passwd file: /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/file/.htpasswd
+passwd file: /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest/.htpasswd
+passwd file: /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_anon/.htpasswd
+passwd file: /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_time/.htpasswd
+passwd file: /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_wrongrelm/.htpasswd
+passwd file: /usr/share/bash-completion/completions/passwd
+passwd file: /usr/share/lintian/overrides/passwd
+
+╔══════════╣ Analyzing PGP-GPG Files (limit 70)
+/usr/bin/gpg                                                                                                                                                                                                                                                                                                                
+gpg Not Found
+netpgpkeys Not Found                                                                                                                                                                                                                                                                                                        
+netpgp Not Found                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+-rw-r--r-- 1 root root 12255 Feb 26  2019 /etc/apt/trusted.gpg
+-rw-r--r-- 1 root root 4114 Jun 14  2018 /usr/share/gnupg2/distsigkey.gpg
+-rw-r--r-- 1 root root 12335 May 18  2012 /usr/share/keyrings/ubuntu-archive-keyring.gpg
+-rw-r--r-- 1 root root 0 May 18  2012 /usr/share/keyrings/ubuntu-archive-removed-keys.gpg
+-rw-r--r-- 1 root root 2253 Nov  5  2017 /usr/share/keyrings/ubuntu-esm-keyring.gpg
+-rw-r--r-- 1 root root 1139 Nov  5  2017 /usr/share/keyrings/ubuntu-fips-keyring.gpg
+-rw-r--r-- 1 root root 1227 May 18  2012 /usr/share/keyrings/ubuntu-master-keyring.gpg
+-rw-r--r-- 1 root root 2256 Feb 26  2016 /usr/share/popularity-contest/debian-popcon.gpg
+-rw-r--r-- 1 root root 12335 Feb 26  2019 /var/lib/apt/keyrings/ubuntu-archive-keyring.gpg
+
+
+╔══════════╣ Kubernetes information
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing FTP Files (limit 70)
+                                                                                                                                                                                                                                                                                                                            
+
+-rw-r--r-- 1 root root 69 Apr 14  2016 /etc/php/7.0/mods-available/ftp.ini
+-rw-r--r-- 1 root root 69 Apr 14  2016 /usr/share/php7.0-common/common/ftp.ini
+
+
+
+
+
+
+╔══════════╣ Analyzing Cacti Files (limit 70)
+drwxr-xr-x 2 root root 4096 Jul 21  2020 /usr/share/doc/fail2ban/examples/cacti                                                                                                                                                                                                                                             
+
+
+
+
+
+╔══════════╣ Analyzing Windows Files Files (limit 70)
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-rw-r--r-- 1 root root 553164 Feb 17  2016 /usr/share/gutenprint/5.2/xml/printers.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔══════════╣ Analyzing Other Interesting Files Files (limit 70)
+-rw-r--r-- 1 root root 3770 Jul 21  2020 /etc/skel/.bashrc                                                                                                                                                                                                                                                                  
+
+
+
+
+
+-rw-r--r-- 1 root root 655 May 16  2017 /etc/skel/.profile
+
+
+
+
+
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Interesting Files ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+-rwsr-xr-x 1 root root 40K May 16  2018 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8                                                                                                                                                                                                     
+-rwsr-xr-x 1 root root 27K May 16  2018 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 139K Jan 28  2017 /bin/ntfs-3g  --->  Debian9/8/7/Ubuntu/Gentoo/others/Ubuntu_Server_16.10_and_others(02-2017)
+-rwsr-xr-x 1 root root 44K May  7  2014 /bin/ping
+-rwsr-xr-x 1 root root 40K May 16  2017 /bin/su
+-rwsr-xr-x 1 root root 31K Jul 12  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 44K May  7  2014 /bin/ping6
+-rwsr-xr-- 1 root messagebus 42K Jan 12  2017 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 10K Mar 27  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 419K Apr 15  2016 /usr/lib/openssh/ssh-keysign
+-rwsr-sr-x 1 root root 11K Oct 25  2018 /usr/lib/xorg/Xorg.wrap
+-rwsr-xr-x 1 root root 15K Jan 15  2019 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root root 53K May 16  2017 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 23K Jan 15  2019 /usr/bin/pkexec  --->  Linux4.10_to_5.1.17(CVE-2019-13272)/rhel_6(CVE-2011-1485)
+-rwsr-xr-x 1 root root 39K May 16  2017 /usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 49K May 16  2017 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 134K Jan 20  2021 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 74K May 16  2017 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 40K May 16  2017 /usr/bin/chsh
+-rwsr-xr-x 1 root root 11K May  8  2018 /usr/bin/vmware-user-suid-wrapper
+-rwsr-xr-- 1 root dip 386K Jun 12  2018 /usr/sbin/pppd  --->  Apple_Mac_OSX_10.4.8(05-2007)
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+-rwxr-sr-x 1 root utmp 10K Mar 11  2016 /usr/lib/x86_64-linux-gnu/utempter/utempter                                                                                                                                                                                                                                         
+-rwxr-sr-x 1 root mail 14K Jul 25  2018 /usr/lib/evolution/camel-lock-helper-1.2
+-rwsr-sr-x 1 root root 11K Oct 25  2018 /usr/lib/xorg/Xorg.wrap
+-rwxr-sr-x 1 root crontab 36K Apr  5  2016 /usr/bin/crontab
+-rwxr-sr-x 1 root ssh 351K Apr 15  2016 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root tty 15K Mar  1  2016 /usr/bin/bsd-write
+-rwxr-sr-x 1 root shadow 23K May 16  2017 /usr/bin/expiry
+-rwxr-sr-x 1 root tty 27K May 16  2018 /usr/bin/wall
+-rwxr-sr-x 1 root mlocate 39K Nov 17  2014 /usr/bin/mlocate
+-rwxr-sr-x 1 root shadow 61K May 16  2017 /usr/bin/chage
+-rwxr-sr-x 1 root shadow 35K Apr  9  2018 /sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 35K Apr  9  2018 /sbin/pam_extrausers_chkpwd
+
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#ld-so                                                                                                                                                                                                                                                         
+/etc/ld.so.conf                                                                                                                                                                                                                                                                                                             
+include /etc/ld.so.conf.d/*.conf
+
+/etc/ld.so.conf.d
+  /etc/ld.so.conf.d/fakeroot-x86_64-linux-gnu.conf
+/usr/lib/x86_64-linux-gnu/libfakeroot
+  /etc/ld.so.conf.d/libc.conf
+/usr/local/lib
+  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+  /etc/ld.so.conf.d/x86_64-linux-gnu_EGL.conf
+/usr/lib/x86_64-linux-gnu/mesa-egl
+  /etc/ld.so.conf.d/x86_64-linux-gnu_GL.conf
+/usr/lib/x86_64-linux-gnu/mesa
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#capabilities                                                                                                                                                                                                                                                  
+Current capabilities:                                                                                                                                                                                                                                                                                                       
+Current: =
+CapInh: 0000000000000000
+CapPrm: 0000000000000000
+CapEff: 0000000000000000
+CapBnd: 0000003fffffffff
+CapAmb: 0000000000000000
+
+Shell capabilities:
+0x0000000000000000=
+CapInh: 0000000000000000
+CapPrm: 0000000000000000
+CapEff: 0000000000000000
+CapBnd: 0000003fffffffff
+CapAmb: 0000000000000000
+
+Files with capabilities (limited to 50):
+/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper = cap_net_bind_service,cap_net_admin+ep
+/usr/bin/traceroute6.iputils = cap_net_raw+ep
+/usr/bin/mtr = cap_net_raw+ep
+/usr/bin/gnome-keyring-daemon = cap_ipc_lock+ep
+/usr/bin/arping = cap_net_raw+ep
+/usr/bin/systemd-detect-virt = cap_dac_override,cap_sys_ptrace+ep
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#acls                                                                                                                                                                                                                                                          
+files with acls in searched folders Not Found                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#script-binaries-in-path                                                                                                                                                                                                                                       
+/usr/sbin/alsa-info.sh                                                                                                                                                                                                                                                                                                      
+/usr/bin/amuFormat.sh
+/usr/bin/gettext.sh
+
+╔══════════╣ Unexpected in root
+/initrd.img                                                                                                                                                                                                                                                                                                                 
+/initrd.img.old
+/vmlinuz
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#profiles-files                                                                                                                                                                                                                                                
+total 32                                                                                                                                                                                                                                                                                                                    
+drwxr-xr-x   2 root root  4096 Jul 21  2020 .
+drwxr-xr-x 134 root root 12288 Feb  5  2021 ..
+-rw-r--r--   1 root root    40 Feb 16  2017 appmenu-qt5.sh
+-rw-r--r--   1 root root   663 May 18  2016 bash_completion.sh
+-rw-r--r--   1 root root  1003 Dec 29  2015 cedilla-portuguese.sh
+-rw-r--r--   1 root root  1941 Mar 16  2016 vte-2.91.sh
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#init-init-d-systemd-and-rc-d                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                            
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No                                                                                                                                                                                                                                                                                
+═╣ Credentials in fstab/mtab? ........... No                                                                                                                                                                                                                                                                                
+═╣ Can I read shadow files? ............. No                                                                                                                                                                                                                                                                                
+═╣ Can I read shadow plists? ............ No                                                                                                                                                                                                                                                                                
+═╣ Can I write shadow plists? ........... No                                                                                                                                                                                                                                                                                
+═╣ Can I read opasswd file? ............. No                                                                                                                                                                                                                                                                                
+═╣ Can I write in network-scripts? ...... No                                                                                                                                                                                                                                                                                
+═╣ Can I read root folder? .............. No                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/                                                                                                                                                                                                                                                                                                                      
+/root/
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+/var/www/html/CuteNews/cdata/users/20.php                                                                                                                                                                                                                                                                                   
+/var/www/html/CuteNews/uploads/avatar_123_yspjvisv.php
+/var/log/auth.log
+/var/log/kern.log
+/var/log/fail2ban.log
+
+╔══════════╣ Writable log files (logrotten) (limit 100)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#logrotate-exploitation                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Files inside /home/www-data (limit 20)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Files inside others home (limit 20)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching installed mail applications
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Mails (limit 50)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Backup folders
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Backup files (limited 100)
+-rw-r--r-- 1 root root 8022 Jan 29  2019 /lib/modules/4.15.0-45-generic/kernel/drivers/net/team/team_mode_activebackup.ko                                                                                                                                                                                                   
+-rw-r--r-- 1 root root 7974 Jan 29  2019 /lib/modules/4.15.0-45-generic/kernel/drivers/power/supply/wm831x_backup.ko
+-rw-r--r-- 1 root root 610 Feb 26  2019 /etc/xml/catalog.old
+-rw-r--r-- 1 root root 673 Feb 26  2019 /etc/xml/xml-core.xml.old
+-rw-r--r-- 1 root root 2903 Jun 18  2020 /etc/apt/sources.bak
+-rw-r--r-- 1 root root 128 Feb 26  2019 /var/lib/sgml-base/supercatalog.old
+-rwxrwxr-x 1 www-data www-data 1522 Aug 20  2018 /var/www/html/CuteNews/skins/base/dashboard/backups.php
+-rw-r--r-- 1 root root 22356 Feb  5  2021 /var/log/Xorg.1.log.old
+-rw-r--r-- 1 root root 22398 Feb  5  2021 /var/log/Xorg.0.log.old
+-rw-r--r-- 1 root root 217038 Jan 29  2019 /usr/src/linux-headers-4.15.0-45-generic/.config.old
+-rw-r--r-- 1 root root 0 Jan 29  2019 /usr/src/linux-headers-4.15.0-45-generic/include/config/net/team/mode/activebackup.h
+-rw-r--r-- 1 root root 0 Jan 29  2019 /usr/src/linux-headers-4.15.0-45-generic/include/config/wm831x/backup.h
+-rw-r--r-- 1 root root 5406 Oct 18  2016 /usr/lib/libreoffice/share/config/soffice.cfg/dbaccess/ui/backuppage.ui
+-rw-r--r-- 1 root root 35792 May  8  2018 /usr/lib/open-vm-tools/plugins/vmsvc/libvmbackup.so
+-rw-r--r-- 1 root root 76 Mar 31  2017 /usr/share/lightdm/lightdm.conf.d/50-disable-log-backup.conf
+-rw-r--r-- 1 root root 1813 Oct 23  2015 /usr/share/help/C/gnome-help/backup-check.page
+-rw-r--r-- 1 root root 2264 Oct 23  2015 /usr/share/help/C/gnome-help/backup-where.page
+-rw-r--r-- 1 root root 2356 Oct 23  2015 /usr/share/help/C/gnome-help/backup-how.page
+-rw-r--r-- 1 root root 1320 Oct 23  2015 /usr/share/help/C/gnome-help/backup-restore.page
+-rw-r--r-- 1 root root 3363 Oct 23  2015 /usr/share/help/C/gnome-help/backup-thinkabout.page
+-rw-r--r-- 1 root root 1262 Oct 23  2015 /usr/share/help/C/gnome-help/backup-why.page
+-rw-r--r-- 1 root root 2505 Oct 23  2015 /usr/share/help/C/gnome-help/backup-what.page
+-rw-r--r-- 1 root root 1999 Oct 23  2015 /usr/share/help/C/gnome-help/backup-frequency.page
+-rw-r--r-- 1 root root 969 Oct  9  2013 /usr/share/help/C/deja-dup/backup-auto.page
+-rw-r--r-- 1 root root 750 Oct 15  2013 /usr/share/help/C/deja-dup/backup-first.page
+-rw-r--r-- 1 root root 1687 Jun 21  2016 /usr/share/help/C/ubuntu-help/backup-check.page
+-rw-r--r-- 1 root root 2266 Jun 21  2016 /usr/share/help/C/ubuntu-help/backup-where.page
+-rw-r--r-- 1 root root 2374 Jun 21  2016 /usr/share/help/C/ubuntu-help/backup-how.page
+-rw-r--r-- 1 root root 1383 Jun 21  2016 /usr/share/help/C/ubuntu-help/backup-restore.page
+-rw-r--r-- 1 root root 3050 Jun 21  2016 /usr/share/help/C/ubuntu-help/backup-thinkabout.page
+-rw-r--r-- 1 root root 1254 Jun 21  2016 /usr/share/help/C/ubuntu-help/backup-why.page
+-rw-r--r-- 1 root root 2498 Jun 21  2016 /usr/share/help/C/ubuntu-help/backup-what.page
+-rw-r--r-- 1 root root 1989 Jun 21  2016 /usr/share/help/C/ubuntu-help/backup-frequency.page
+-rw-r--r-- 1 root root 1581 Oct 27  2015 /usr/share/help/C/seahorse/misc-key-backup.page
+-rw-r--r-- 1 root root 11308 Feb 26  2019 /usr/share/info/dir.old
+-rwxr-xr-x 1 root root 1513 Oct 19  2013 /usr/share/doc/libipc-system-simple-perl/examples/rsync-backup.pl
+-rw-r--r-- 1 root root 298768 Dec 29  2015 /usr/share/doc/manpages/Changes.old.gz
+-rw-r--r-- 1 root root 7867 May  6  2015 /usr/share/doc/telnet/README.telnet.old.gz
+-rw-r--r-- 1 root root 974 Apr  7  2016 /usr/share/help-langpack/en_AU/deja-dup/backup-auto.page
+-rw-r--r-- 1 root root 755 Apr  7  2016 /usr/share/help-langpack/en_AU/deja-dup/backup-first.page
+-rw-r--r-- 1 root root 1720 Jun 21  2016 /usr/share/help-langpack/en_AU/ubuntu-help/backup-check.page
+-rw-r--r-- 1 root root 2295 Jun 21  2016 /usr/share/help-langpack/en_AU/ubuntu-help/backup-where.page
+-rw-r--r-- 1 root root 2392 Jun 21  2016 /usr/share/help-langpack/en_AU/ubuntu-help/backup-how.page
+-rw-r--r-- 1 root root 1422 Jun 21  2016 /usr/share/help-langpack/en_AU/ubuntu-help/backup-restore.page
+-rw-r--r-- 1 root root 3073 Jun 21  2016 /usr/share/help-langpack/en_AU/ubuntu-help/backup-thinkabout.page
+-rw-r--r-- 1 root root 1291 Jun 21  2016 /usr/share/help-langpack/en_AU/ubuntu-help/backup-why.page
+-rw-r--r-- 1 root root 2500 Jun 21  2016 /usr/share/help-langpack/en_AU/ubuntu-help/backup-what.page
+-rw-r--r-- 1 root root 2018 Jun 21  2016 /usr/share/help-langpack/en_AU/ubuntu-help/backup-frequency.page
+-rw-r--r-- 1 root root 974 Apr  7  2016 /usr/share/help-langpack/en_GB/deja-dup/backup-auto.page
+-rw-r--r-- 1 root root 755 Apr  7  2016 /usr/share/help-langpack/en_GB/deja-dup/backup-first.page
+-rw-r--r-- 1 root root 1720 Jun 21  2016 /usr/share/help-langpack/en_GB/ubuntu-help/backup-check.page
+-rw-r--r-- 1 root root 2289 Jun 21  2016 /usr/share/help-langpack/en_GB/ubuntu-help/backup-where.page
+-rw-r--r-- 1 root root 2371 Jun 21  2016 /usr/share/help-langpack/en_GB/ubuntu-help/backup-how.page
+-rw-r--r-- 1 root root 1420 Jun 21  2016 /usr/share/help-langpack/en_GB/ubuntu-help/backup-restore.page
+-rw-r--r-- 1 root root 3067 Jun 21  2016 /usr/share/help-langpack/en_GB/ubuntu-help/backup-thinkabout.page
+-rw-r--r-- 1 root root 1291 Jun 21  2016 /usr/share/help-langpack/en_GB/ubuntu-help/backup-why.page
+-rw-r--r-- 1 root root 2503 Jun 21  2016 /usr/share/help-langpack/en_GB/ubuntu-help/backup-what.page
+-rw-r--r-- 1 root root 2020 Jun 21  2016 /usr/share/help-langpack/en_GB/ubuntu-help/backup-frequency.page
+-rw-r--r-- 1 root root 2543 Jun 24  2016 /usr/share/help-langpack/en_GB/evolution/backup-restore.page
+-rw-r--r-- 1 root root 1732 Jun 21  2016 /usr/share/help-langpack/en_CA/ubuntu-help/backup-check.page
+-rw-r--r-- 1 root root 2308 Jun 21  2016 /usr/share/help-langpack/en_CA/ubuntu-help/backup-where.page
+-rw-r--r-- 1 root root 2418 Jun 21  2016 /usr/share/help-langpack/en_CA/ubuntu-help/backup-how.page
+-rw-r--r-- 1 root root 1427 Jun 21  2016 /usr/share/help-langpack/en_CA/ubuntu-help/backup-restore.page
+-rw-r--r-- 1 root root 3094 Jun 21  2016 /usr/share/help-langpack/en_CA/ubuntu-help/backup-thinkabout.page
+-rw-r--r-- 1 root root 1298 Jun 21  2016 /usr/share/help-langpack/en_CA/ubuntu-help/backup-why.page
+-rw-r--r-- 1 root root 2530 Jun 21  2016 /usr/share/help-langpack/en_CA/ubuntu-help/backup-what.page
+-rw-r--r-- 1 root root 2034 Jun 21  2016 /usr/share/help-langpack/en_CA/ubuntu-help/backup-frequency.page
+-rw-r--r-- 1 root root 502 Sep 10  2015 /usr/share/app-install/desktop/slbackup-php:slbackup-php.desktop
+-rw-r--r-- 1 root root 449 Sep 10  2015 /usr/share/app-install/desktop/luckybackup:luckybackup.desktop
+-rw-r--r-- 1 root root 446 Sep 10  2015 /usr/share/app-install/desktop/kbackup:kde4__kbackup.desktop
+-rw-r--r-- 1 root root 396 Sep 10  2015 /usr/share/app-install/desktop/barrybackup-gui:barrybackup.desktop
+
+╔══════════╣ Searching tables inside readable .db/.sql/.sqlite files (limit 100)
+Found: /var/lib/colord/mapping.db: SQLite 3.x database                                                                                                                                                                                                                                                                      
+Found: /var/lib/colord/storage.db: SQLite 3.x database
+Found: /var/lib/fail2ban/fail2ban.sqlite3: regular file, no read permission
+Found: /var/lib/fwupd/pending.db: SQLite 3.x database
+Found: /var/lib/mlocate/mlocate.db: regular file, no read permission
+Found: /var/lib/nssdb/cert9.db: SQLite 3.x database
+Found: /var/lib/nssdb/key4.db: SQLite 3.x database
+Found: /var/lib/nssdb/secmod.db: Berkeley DB 1.85 (Hash, version 2, native byte-order)
+
+ -> Extracting tables from /var/lib/colord/mapping.db (limit 20)
+                                                                                                                                                                                                                                                                                                                            
+
+ -> Extracting tables from /var/lib/colord/storage.db (limit 20)
+                                                                                                                                                                                                                                                                                                                            
+
+
+ -> Extracting tables from /var/lib/fwupd/pending.db (limit 20)
+                                                                                                                                                                                                                                                                                                                            
+ -> Extracting tables from /var/lib/nssdb/cert9.db (limit 20)
+                                                                                                                                                                                                                                                                                                                            
+ -> Extracting tables from /var/lib/nssdb/key4.db (limit 20)
+                                                                                                                                                                                                                                                                                                                            
+
+
+╔══════════╣ Web files?(output limit)
+/var/www/:                                                                                                                                                                                                                                                                                                                  
+total 12K
+drwxr-xr-x  3 root     root     4.0K Jul 21  2020 .
+drwxr-xr-x 14 root     root     4.0K Jul 21  2020 ..
+drwxr-xr-x  3 www-data www-data 4.0K Jun 18  2020 html
+
+/var/www/html:
+total 24K
+drwxr-xr-x 3 www-data www-data 4.0K Jun 18  2020 .
+drwxr-xr-x 3 root     root     4.0K Jul 21  2020 ..
+
+╔══════════╣ All hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+-rw-r--r-- 1 root root 0 Jan  1 16:45 /run/network/.ifstate.lock                                                                                                                                                                                                                                                            
+-rw-r--r-- 1 root root 1531 Jun 18  2020 /etc/apparmor.d/cache/.features
+-rw------- 1 root root 0 Feb 26  2019 /etc/.pwd.lock
+-rw-r--r-- 1 root root 220 Aug 31  2015 /etc/skel/.bash_logout
+-rw-r--r-- 1 www-data www-data 45 Aug 30  2020 /var/www/html/CuteNews/cdata/news/.php
+-rw-rw-r-- 1 www-data www-data 36 Aug 20  2018 /var/www/html/CuteNews/skins/emoticons/.htaccess
+-r--r--r-- 1 root root 11 Jan  1 16:45 /tmp/.X0-lock
+-rw-r--r-- 1 root root 179 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_wrongrelm/.htaccess
+-rw-r--r-- 1 root root 129 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/file/.htaccess
+-rw-r--r-- 1 root root 136 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/authz_owner/.htaccess
+-rw-r--r-- 1 root root 159 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest/.htaccess
+-rw-r--r-- 1 root root 231 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_anon/.htaccess
+-rw-r--r-- 1 root root 195 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_time/.htaccess
+-rw-r--r-- 1 root root 14 Jul 31  2015 /usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/noentry/.htaccess
+
+╔══════════╣ Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders (limit 70)
+-rwxrwxrwx 1 www-data www-data 765823 Dec 13 21:28 /tmp/linpeas.sh                                                                                                                                                                                                                                                          
+-r--r--r-- 1 root root 11 Jan  1 16:45 /tmp/.X0-lock
+-rw-rw-r-- 1 nadav nadav 0 Jan  1 16:45 /tmp/unity_support_test.0
+-rw-r--r-- 1 root root 491212 Jul 21  2020 /var/backups/dpkg.status.1.gz
+-rw-r--r-- 1 root root 195 Jul 21  2020 /var/backups/dpkg.statoverride.1.gz
+-rw-r--r-- 1 root root 1214 Jul 21  2020 /var/backups/dpkg.diversions.0
+-rw-r--r-- 1 root root 43 Jun 18  2020 /var/backups/dpkg.arch.1.gz
+-rw-r--r-- 1 root root 265 Jul 21  2020 /var/backups/dpkg.statoverride.0
+-rw-r--r-- 1 root root 71680 Aug 24  2020 /var/backups/alternatives.tar.0
+-rw-r--r-- 1 root root 385 Jul 21  2020 /var/backups/dpkg.diversions.1.gz
+-rw-r--r-- 1 root root 474 Jun 18  2020 /var/backups/apt.extended_states.1.gz
+-rw-r--r-- 1 root root 11 Jun 18  2020 /var/backups/dpkg.arch.0
+-rw-r--r-- 1 root root 4523 Jul 21  2020 /var/backups/apt.extended_states.0
+-rw-r--r-- 1 root root 1785505 Feb  5  2021 /var/backups/dpkg.status.0
+
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files                                                                                                                                                                                                                                                
+/dev/mqueue                                                                                                                                                                                                                                                                                                                 
+/dev/shm
+/run/lock
+/run/lock/apache2
+/tmp
+/tmp/.ICE-unix
+/tmp/.Test-unix
+/tmp/.X11-unix
+/tmp/.XIM-unix
+/tmp/.font-unix
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/cache/apache2/mod_cache_disk
+/var/crash
+/var/lib/php/sessions
+/var/metrics
+/var/tmp
+/var/www/html
+/var/www/html/CuteNews
+/var/www/html/CuteNews/LGPL_CKeditor.txt
+/var/www/html/CuteNews/LICENSE.txt
+/var/www/html/CuteNews/README.md
+/var/www/html/CuteNews/captcha.php
+/var/www/html/CuteNews/cdata
+/var/www/html/CuteNews/cdata/Default.tpl
+/var/www/html/CuteNews/cdata/Headlines.tpl
+/var/www/html/CuteNews/cdata/archives
+/var/www/html/CuteNews/cdata/auto_archive.db.php
+/var/www/html/CuteNews/cdata/backup
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/cdata/btree/01.php
+/var/www/html/CuteNews/cdata/btree/02.php
+/var/www/html/CuteNews/cdata/btree/03.php
+/var/www/html/CuteNews/cdata/btree/04.php
+/var/www/html/CuteNews/cdata/btree/05.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/cdata/cache
+/var/www/html/CuteNews/cdata/cat.num.php
+/var/www/html/CuteNews/cdata/category.db.php
+/var/www/html/CuteNews/cdata/comments.txt
+/var/www/html/CuteNews/cdata/conf.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/cdata/news/.php
+/var/www/html/CuteNews/cdata/news/1969-12-31.php
+/var/www/html/CuteNews/cdata/news/2014-01-12.php
+/var/www/html/CuteNews/cdata/news/2020-03-03.php
+/var/www/html/CuteNews/cdata/news/2020-03-17.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/cdata/newsid.txt
+/var/www/html/CuteNews/cdata/plugins
+/var/www/html/CuteNews/cdata/plugins/guestmode_links.php
+/var/www/html/CuteNews/cdata/postponed_news.txt
+/var/www/html/CuteNews/cdata/replaces.php
+/var/www/html/CuteNews/cdata/rss.tpl
+/var/www/html/CuteNews/cdata/rss_config.php
+/var/www/html/CuteNews/cdata/template
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/cdata/users/09.php
+/var/www/html/CuteNews/cdata/users/0a.php
+/var/www/html/CuteNews/cdata/users/16.php
+/var/www/html/CuteNews/cdata/users/20.php
+/var/www/html/CuteNews/cdata/users/21.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/cn_api.php
+/var/www/html/CuteNews/core
+/var/www/html/CuteNews/core/captcha
+/var/www/html/CuteNews/core/captcha/captcha.php
+/var/www/html/CuteNews/core/captcha/resources
+/var/www/html/CuteNews/core/captcha/resources/fonts
+/var/www/html/CuteNews/core/captcha/resources/fonts/Heineken.ttf
+/var/www/html/CuteNews/core/ckeditor
+/var/www/html/CuteNews/core/ckeditor/adapters
+/var/www/html/CuteNews/core/ckeditor/adapters/jquery.js
+/var/www/html/CuteNews/core/ckeditor/build-config.js
+/var/www/html/CuteNews/core/ckeditor/ckeditor.js
+/var/www/html/CuteNews/core/ckeditor/config.js
+/var/www/html/CuteNews/core/ckeditor/contents.css
+/var/www/html/CuteNews/core/ckeditor/lang
+/var/www/html/CuteNews/core/ckeditor/lang/en.js
+/var/www/html/CuteNews/core/ckeditor/plugins
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp/dialogs/a11yhelp.js
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp/dialogs/lang
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp/dialogs/lang/en.js
+/var/www/html/CuteNews/core/ckeditor/plugins/about
+/var/www/html/CuteNews/core/ckeditor/plugins/about/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/about/dialogs/about.js
+/var/www/html/CuteNews/core/ckeditor/plugins/about/dialogs/hidpi
+/var/www/html/CuteNews/core/ckeditor/plugins/clipboard
+/var/www/html/CuteNews/core/ckeditor/plugins/clipboard/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/clipboard/dialogs/paste.js
+/var/www/html/CuteNews/core/ckeditor/plugins/colordialog
+/var/www/html/CuteNews/core/ckeditor/plugins/colordialog/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/colordialog/dialogs/colordialog.js
+/var/www/html/CuteNews/core/ckeditor/plugins/dialog
+/var/www/html/CuteNews/core/ckeditor/plugins/dialog/dialogDefinition.js
+/var/www/html/CuteNews/core/ckeditor/plugins/div
+/var/www/html/CuteNews/core/ckeditor/plugins/div/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/div/dialogs/div.js
+/var/www/html/CuteNews/core/ckeditor/plugins/fakeobjects
+/var/www/html/CuteNews/core/ckeditor/plugins/fakeobjects/images
+/var/www/html/CuteNews/core/ckeditor/plugins/find
+/var/www/html/CuteNews/core/ckeditor/plugins/find/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/find/dialogs/find.js
+/var/www/html/CuteNews/core/ckeditor/plugins/flash
+/var/www/html/CuteNews/core/ckeditor/plugins/flash/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/flash/dialogs/flash.js
+/var/www/html/CuteNews/core/ckeditor/plugins/flash/images
+/var/www/html/CuteNews/core/ckeditor/plugins/forms
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/button.js
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/checkbox.js
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/form.js
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/hiddenfield.js
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/radio.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/images
+/var/www/html/CuteNews/core/ckeditor/plugins/iframe
+/var/www/html/CuteNews/core/ckeditor/plugins/iframe/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/iframe/dialogs/iframe.js
+/var/www/html/CuteNews/core/ckeditor/plugins/iframe/images
+/var/www/html/CuteNews/core/ckeditor/plugins/image
+/var/www/html/CuteNews/core/ckeditor/plugins/image/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/image/dialogs/image.js
+/var/www/html/CuteNews/core/ckeditor/plugins/image/images
+/var/www/html/CuteNews/core/ckeditor/plugins/link
+/var/www/html/CuteNews/core/ckeditor/plugins/link/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/link/dialogs/anchor.js
+/var/www/html/CuteNews/core/ckeditor/plugins/link/dialogs/link.js
+/var/www/html/CuteNews/core/ckeditor/plugins/link/images
+/var/www/html/CuteNews/core/ckeditor/plugins/link/images/hidpi
+/var/www/html/CuteNews/core/ckeditor/plugins/liststyle
+/var/www/html/CuteNews/core/ckeditor/plugins/liststyle/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/liststyle/dialogs/liststyle.js
+/var/www/html/CuteNews/core/ckeditor/plugins/magicline
+/var/www/html/CuteNews/core/ckeditor/plugins/magicline/images
+/var/www/html/CuteNews/core/ckeditor/plugins/magicline/images/hidpi
+/var/www/html/CuteNews/core/ckeditor/plugins/pagebreak
+/var/www/html/CuteNews/core/ckeditor/plugins/pagebreak/images
+/var/www/html/CuteNews/core/ckeditor/plugins/pastefromword
+/var/www/html/CuteNews/core/ckeditor/plugins/pastefromword/filter
+/var/www/html/CuteNews/core/ckeditor/plugins/pastefromword/filter/default.js
+/var/www/html/CuteNews/core/ckeditor/plugins/preview
+/var/www/html/CuteNews/core/ckeditor/plugins/preview/preview.html
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/LICENSE.md
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/README.md
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/dialogs/options.js
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/dialogs/toolbar.css
+/var/www/html/CuteNews/core/ckeditor/plugins/showblocks
+/var/www/html/CuteNews/core/ckeditor/plugins/showblocks/images
+/var/www/html/CuteNews/core/ckeditor/plugins/smiley
+/var/www/html/CuteNews/core/ckeditor/plugins/smiley/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/smiley/dialogs/smiley.js
+/var/www/html/CuteNews/core/ckeditor/plugins/smiley/images
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar/dialogs/lang
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar/dialogs/lang/en.js
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar/dialogs/specialchar.js
+/var/www/html/CuteNews/core/ckeditor/plugins/table
+/var/www/html/CuteNews/core/ckeditor/plugins/table/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/table/dialogs/table.js
+/var/www/html/CuteNews/core/ckeditor/plugins/tabletools
+/var/www/html/CuteNews/core/ckeditor/plugins/tabletools/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/tabletools/dialogs/tableCell.js
+/var/www/html/CuteNews/core/ckeditor/plugins/templates
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/dialogs/templates.css
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/dialogs/templates.js
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/templates
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/templates/default.js
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/templates/images
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/LICENSE.md
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/README.md
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/ciframe.html
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/tmp.html
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/tmpFrameset.html
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/wsc.css
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/wsc.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/core/ckeditor/skins
+/var/www/html/CuteNews/core/ckeditor/skins/moono
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog_ie.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog_ie7.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog_ie8.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog_iequirks.css
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/core/ckeditor/skins/moono/images/hidpi
+/var/www/html/CuteNews/core/ckeditor/skins/moono/readme.md
+/var/www/html/CuteNews/core/ckeditor/styles.js
+/var/www/html/CuteNews/core/core.php
+/var/www/html/CuteNews/core/db
+/var/www/html/CuteNews/core/db/coreflat.php
+/var/www/html/CuteNews/core/downloader.php
+/var/www/html/CuteNews/core/includes
+/var/www/html/CuteNews/core/includes/active_news.php
+/var/www/html/CuteNews/core/includes/add_comment.php
+/var/www/html/CuteNews/core/includes/comments.php
+/var/www/html/CuteNews/core/includes/dispatcher.php
+/var/www/html/CuteNews/core/includes/full_story.php
+/var/www/html/CuteNews/core/init.php
+/var/www/html/CuteNews/core/lang
+/var/www/html/CuteNews/core/lang/en.txt
+/var/www/html/CuteNews/core/modules
+/var/www/html/CuteNews/core/modules/add_news.php
+/var/www/html/CuteNews/core/modules/dashboard.php
+/var/www/html/CuteNews/core/modules/edit_news.php
+/var/www/html/CuteNews/core/modules/help.php
+/var/www/html/CuteNews/core/modules/hooks
+/var/www/html/CuteNews/core/modules/hooks/common.php
+/var/www/html/CuteNews/core/modules/init.php
+/var/www/html/CuteNews/core/modules/maint.php
+/var/www/html/CuteNews/core/modules/media.php
+/var/www/html/CuteNews/core/news.php
+/var/www/html/CuteNews/core/security.php
+/var/www/html/CuteNews/core/tools
+/var/www/html/CuteNews/core/tools/update_indexes.php
+/var/www/html/CuteNews/core/update_indexes_tool.php
+/var/www/html/CuteNews/core/zip.class.php
+/var/www/html/CuteNews/docs
+/var/www/html/CuteNews/docs/readme.html
+/var/www/html/CuteNews/docs/release.html
+/var/www/html/CuteNews/docs/usage.html
+/var/www/html/CuteNews/example.php
+/var/www/html/CuteNews/example_fb.php
+/var/www/html/CuteNews/favicon.ico
+/var/www/html/CuteNews/index.php
+/var/www/html/CuteNews/libs
+/var/www/html/CuteNews/libs/bootbox
+/var/www/html/CuteNews/libs/bootbox/bootbox.min.js
+/var/www/html/CuteNews/libs/bootstrap-select
+/var/www/html/CuteNews/libs/bootstrap-select/css
+/var/www/html/CuteNews/libs/bootstrap-select/css/bootstrap-select.css
+/var/www/html/CuteNews/libs/bootstrap-select/css/bootstrap-select.css.map
+/var/www/html/CuteNews/libs/bootstrap-select/css/bootstrap-select.min.css
+/var/www/html/CuteNews/libs/bootstrap-select/js
+/var/www/html/CuteNews/libs/bootstrap-select/js/bootstrap-select.js.map
+/var/www/html/CuteNews/libs/bootstrap-select/js/bootstrap-select.min.js
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-ar_AR.js
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-ar_AR.min.js
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-bg_BG.js
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-bg_BG.min.js
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-cro_CRO.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/libs/codemirror
+/var/www/html/CuteNews/libs/codemirror/addon
+/var/www/html/CuteNews/libs/codemirror/addon/selection
+/var/www/html/CuteNews/libs/codemirror/addon/selection/selection-pointer.js
+/var/www/html/CuteNews/libs/codemirror/lib
+/var/www/html/CuteNews/libs/codemirror/lib/codemirror.css
+/var/www/html/CuteNews/libs/codemirror/lib/codemirror.js
+/var/www/html/CuteNews/libs/codemirror/mode
+/var/www/html/CuteNews/libs/codemirror/mode/css
+/var/www/html/CuteNews/libs/codemirror/mode/css/css.js
+/var/www/html/CuteNews/libs/codemirror/mode/htmlmixed
+/var/www/html/CuteNews/libs/codemirror/mode/htmlmixed/htmlmixed.js
+/var/www/html/CuteNews/libs/codemirror/mode/javascript
+/var/www/html/CuteNews/libs/codemirror/mode/javascript/javascript.js
+/var/www/html/CuteNews/libs/codemirror/mode/vbscript
+/var/www/html/CuteNews/libs/codemirror/mode/vbscript/vbscript.js
+/var/www/html/CuteNews/libs/codemirror/mode/xml
+/var/www/html/CuteNews/libs/codemirror/mode/xml/xml.js
+/var/www/html/CuteNews/libs/css
+/var/www/html/CuteNews/libs/css/cerulean.min.css
+/var/www/html/CuteNews/libs/css/cosmo.min.css
+/var/www/html/CuteNews/libs/css/cyborg.min.css
+/var/www/html/CuteNews/libs/css/darkly.min.css
+/var/www/html/CuteNews/libs/css/default.min.css
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/libs/fonts
+/var/www/html/CuteNews/libs/fonts/FontAwesome.otf
+/var/www/html/CuteNews/libs/fonts/fontawesome-webfont.eot
+/var/www/html/CuteNews/libs/fonts/fontawesome-webfont.ttf
+/var/www/html/CuteNews/libs/fonts/fontawesome-webfont.woff
+/var/www/html/CuteNews/libs/fonts/fontawesome-webfont.woff2
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/libs/js
+/var/www/html/CuteNews/libs/js/bootstrap.min.js
+/var/www/html/CuteNews/libs/js/jquery.js
+/var/www/html/CuteNews/libs/sweet-alert2
+/var/www/html/CuteNews/libs/sweet-alert2/sweet-alert2.css
+/var/www/html/CuteNews/libs/sweet-alert2/sweet-alert2.min.js
+/var/www/html/CuteNews/migrations
+/var/www/html/CuteNews/migrations/classes
+/var/www/html/CuteNews/migrations/classes/cutenews2x.php
+/var/www/html/CuteNews/migrations/classes/migrations.php
+/var/www/html/CuteNews/migrations/cn203_204.php
+/var/www/html/CuteNews/migrations/template.html
+/var/www/html/CuteNews/popup.php
+/var/www/html/CuteNews/print.php
+/var/www/html/CuteNews/rss.php
+/var/www/html/CuteNews/search.php
+/var/www/html/CuteNews/show_archives.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/skins/base
+/var/www/html/CuteNews/skins/base/addedit
+/var/www/html/CuteNews/skins/base/addedit/changecats.php
+/var/www/html/CuteNews/skins/base/addedit/main.css
+/var/www/html/CuteNews/skins/base/addedit/main.php
+/var/www/html/CuteNews/skins/base/auth
+/var/www/html/CuteNews/skins/base/auth/login.php
+/var/www/html/CuteNews/skins/base/auth/lost.php
+/var/www/html/CuteNews/skins/base/auth/register.php
+/var/www/html/CuteNews/skins/base/cnscript.tpl
+/var/www/html/CuteNews/skins/base/confirm.tpl
+/var/www/html/CuteNews/skins/base/dashboard
+/var/www/html/CuteNews/skins/base/dashboard/archives.php
+/var/www/html/CuteNews/skins/base/dashboard/backups.php
+/var/www/html/CuteNews/skins/base/dashboard/category.php
+/var/www/html/CuteNews/skins/base/dashboard/comments.php
+/var/www/html/CuteNews/skins/base/dashboard/general.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/skins/base/dashboard/snippet/editor.php
+/var/www/html/CuteNews/skins/base/dashboard/snippet/morefields.php
+/var/www/html/CuteNews/skins/base/dashboard/style.css
+/var/www/html/CuteNews/skins/base/dashboard/sysconf.php
+/var/www/html/CuteNews/skins/base/dashboard/template.php
+/var/www/html/CuteNews/skins/base/dashboard/users.php
+/var/www/html/CuteNews/skins/base/dashboard/widgets.php
+/var/www/html/CuteNews/skins/base/defaults
+/var/www/html/CuteNews/skins/base/defaults/groups.tpl
+/var/www/html/CuteNews/skins/base/defaults/groups_names.tpl
+/var/www/html/CuteNews/skins/base/defaults/templates.tpl
+/var/www/html/CuteNews/skins/base/editnews
+/var/www/html/CuteNews/skins/base/editnews/list.php
+/var/www/html/CuteNews/skins/base/editnews/main.css
+/var/www/html/CuteNews/skins/base/fb_comments.tpl
+/var/www/html/CuteNews/skins/base/google_plus.tpl
+/var/www/html/CuteNews/skins/base/help
+/var/www/html/CuteNews/skins/base/help/about.php
+/var/www/html/CuteNews/skins/base/help/cutecode.php
+/var/www/html/CuteNews/skins/base/help/main.php
+/var/www/html/CuteNews/skins/base/help/manual
+/var/www/html/CuteNews/skins/base/help/manual/rss.tpl
+/var/www/html/CuteNews/skins/base/help/manual/wrong_include.tpl
+/var/www/html/CuteNews/skins/base/help/sections
+/var/www/html/CuteNews/skins/base/help/sections/addnews_options.tpl
+/var/www/html/CuteNews/skins/base/help/sections/archives.tpl
+/var/www/html/CuteNews/skins/base/help/sections/categories.tpl
+/var/www/html/CuteNews/skins/base/help/sections/including.tpl
+/var/www/html/CuteNews/skins/base/help/sections/multiple_includes.tpl
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/skins/base/help/style.css
+/var/www/html/CuteNews/skins/base/install.php
+/var/www/html/CuteNews/skins/base/maint
+/var/www/html/CuteNews/skins/base/maint/diff.php
+/var/www/html/CuteNews/skins/base/maint/maintenance.php
+/var/www/html/CuteNews/skins/base/maint/migrate.php
+/var/www/html/CuteNews/skins/base/maint/repair.php
+/var/www/html/CuteNews/skins/base/maint/sysconf.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/skins/base/maint/window/template.php
+/var/www/html/CuteNews/skins/base/media
+/var/www/html/CuteNews/skins/base/media/general.php
+/var/www/html/CuteNews/skins/base/media/style.css
+/var/www/html/CuteNews/skins/base/msg.tpl
+/var/www/html/CuteNews/skins/base/widgets
+/var/www/html/CuteNews/skins/base/widgets/personal_login_form.tpl
+/var/www/html/CuteNews/skins/base/window.php
+/var/www/html/CuteNews/skins/compact.skin.php
+/var/www/html/CuteNews/skins/custom.css
+/var/www/html/CuteNews/skins/cute.js
+/var/www/html/CuteNews/skins/default.css
+/var/www/html/CuteNews/skins/default.skin.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/skins/emoticons/.htaccess
+/var/www/html/CuteNews/skins/emoticons/index.html
+/var/www/html/CuteNews/skins/images
+/var/www/html/CuteNews/skins/images/favicon.ico
+/var/www/html/CuteNews/skins/master.skin.php
+/var/www/html/CuteNews/skins/rss_style.css
+/var/www/html/CuteNews/skins/simple.skin.php
+/var/www/html/CuteNews/snippet.php
+/var/www/html/CuteNews/uploads
+/var/www/html/CuteNews/uploads/avatar_123_yspjvisv.php
+/var/www/html/CuteNews/uploads/avatar_egre55_ykxnacpt.php
+/var/www/html/CuteNews/uploads/avatar_hacker_jpyoyskt.php
+/var/www/html/CuteNews/uploads/avatar_ysO7jg95re_ysO7jg95re.php
+/var/www/html/index.php
+/var/www/html/news.php
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files                                                                                                                                                                                                                                                
+  Group www-data:                                                                                                                                                                                                                                                                                                           
+/var/www/html/CuteNews                                                                                                                                                                                                                                                                                                      
+/var/www/html/CuteNews/favicon.ico
+/var/www/html/CuteNews/LICENSE.txt
+/var/www/html/CuteNews/example_fb.php
+/var/www/html/CuteNews/search.php
+/var/www/html/CuteNews/snippet.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/migrations/classes
+/var/www/html/CuteNews/migrations/classes/cutenews2x.php
+/var/www/html/CuteNews/migrations/classes/migrations.php
+/var/www/html/CuteNews/migrations/template.html
+/var/www/html/CuteNews/migrations/cn203_204.php
+/var/www/html/CuteNews/show_news.php
+/var/www/html/CuteNews/rss.php
+/var/www/html/CuteNews/docs
+/var/www/html/CuteNews/docs/usage.html
+/var/www/html/CuteNews/docs/readme.html
+/var/www/html/CuteNews/docs/release.html
+/var/www/html/CuteNews/show_archives.php
+/var/www/html/CuteNews/popup.php
+/var/www/html/CuteNews/example.php
+/var/www/html/CuteNews/cdata
+/var/www/html/CuteNews/cdata/ipban.db.php
+/var/www/html/CuteNews/cdata/comments.txt
+/var/www/html/CuteNews/cdata/idnews.db.php
+/var/www/html/CuteNews/cdata/archives
+/var/www/html/CuteNews/cdata/news
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/cdata/plugins/guestmode_links.php
+/var/www/html/CuteNews/cdata/config.php
+/var/www/html/CuteNews/cdata/btree
+/var/www/html/CuteNews/cdata/unapproved_news.txt
+/var/www/html/CuteNews/cdata/rss.tpl
+/var/www/html/CuteNews/cdata/auto_archive.db.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/print.php
+/var/www/html/CuteNews/core
+/var/www/html/CuteNews/core/zip.class.php
+/var/www/html/CuteNews/core/security.php
+/var/www/html/CuteNews/core/downloader.php
+/var/www/html/CuteNews/core/lang
+/var/www/html/CuteNews/core/lang/en.txt
+/var/www/html/CuteNews/core/includes
+/var/www/html/CuteNews/core/includes/add_comment.php
+/var/www/html/CuteNews/core/includes/comments.php
+/var/www/html/CuteNews/core/includes/active_news.php
+/var/www/html/CuteNews/core/includes/dispatcher.php
+/var/www/html/CuteNews/core/includes/full_story.php
+/var/www/html/CuteNews/core/tools
+/var/www/html/CuteNews/core/tools/update_indexes.php
+/var/www/html/CuteNews/core/update_indexes_tool.php
+/var/www/html/CuteNews/core/news.php
+/var/www/html/CuteNews/core/ckeditor
+/var/www/html/CuteNews/core/ckeditor/ckeditor.js
+/var/www/html/CuteNews/core/ckeditor/contents.css
+/var/www/html/CuteNews/core/ckeditor/plugins
+/var/www/html/CuteNews/core/ckeditor/plugins/smiley
+/var/www/html/CuteNews/core/ckeditor/plugins/smiley/images
+/var/www/html/CuteNews/core/ckeditor/plugins/smiley/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/smiley/dialogs/smiley.js
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/LICENSE.md
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/tmpFrameset.html
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/tmp.html
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/wsc.css
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/ciframe.html
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/dialogs/wsc_ie.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/core/ckeditor/plugins/wsc/README.md
+/var/www/html/CuteNews/core/ckeditor/plugins/flash
+/var/www/html/CuteNews/core/ckeditor/plugins/flash/images
+/var/www/html/CuteNews/core/ckeditor/plugins/flash/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/flash/dialogs/flash.js
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar/dialogs/lang
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar/dialogs/lang/en.js
+/var/www/html/CuteNews/core/ckeditor/plugins/specialchar/dialogs/specialchar.js
+/var/www/html/CuteNews/core/ckeditor/plugins/tabletools
+/var/www/html/CuteNews/core/ckeditor/plugins/tabletools/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/tabletools/dialogs/tableCell.js
+/var/www/html/CuteNews/core/ckeditor/plugins/magicline
+/var/www/html/CuteNews/core/ckeditor/plugins/magicline/images
+/var/www/html/CuteNews/core/ckeditor/plugins/magicline/images/hidpi
+/var/www/html/CuteNews/core/ckeditor/plugins/dialog
+/var/www/html/CuteNews/core/ckeditor/plugins/dialog/dialogDefinition.js
+/var/www/html/CuteNews/core/ckeditor/plugins/fakeobjects
+/var/www/html/CuteNews/core/ckeditor/plugins/fakeobjects/images
+/var/www/html/CuteNews/core/ckeditor/plugins/forms
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/images
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/checkbox.js
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/form.js
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/textarea.js
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/hiddenfield.js
+/var/www/html/CuteNews/core/ckeditor/plugins/forms/dialogs/button.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/core/ckeditor/plugins/div
+/var/www/html/CuteNews/core/ckeditor/plugins/div/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/div/dialogs/div.js
+/var/www/html/CuteNews/core/ckeditor/plugins/image
+/var/www/html/CuteNews/core/ckeditor/plugins/image/images
+/var/www/html/CuteNews/core/ckeditor/plugins/image/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/image/dialogs/image.js
+/var/www/html/CuteNews/core/ckeditor/plugins/link
+/var/www/html/CuteNews/core/ckeditor/plugins/link/images
+/var/www/html/CuteNews/core/ckeditor/plugins/link/images/hidpi
+/var/www/html/CuteNews/core/ckeditor/plugins/link/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/link/dialogs/link.js
+/var/www/html/CuteNews/core/ckeditor/plugins/link/dialogs/anchor.js
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/LICENSE.md
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/dialogs/options.js
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/dialogs/toolbar.css
+/var/www/html/CuteNews/core/ckeditor/plugins/scayt/README.md
+/var/www/html/CuteNews/core/ckeditor/plugins/clipboard
+/var/www/html/CuteNews/core/ckeditor/plugins/clipboard/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/clipboard/dialogs/paste.js
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp/dialogs/a11yhelp.js
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp/dialogs/lang
+/var/www/html/CuteNews/core/ckeditor/plugins/a11yhelp/dialogs/lang/en.js
+/var/www/html/CuteNews/core/ckeditor/plugins/find
+/var/www/html/CuteNews/core/ckeditor/plugins/find/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/find/dialogs/find.js
+/var/www/html/CuteNews/core/ckeditor/plugins/pagebreak
+/var/www/html/CuteNews/core/ckeditor/plugins/pagebreak/images
+/var/www/html/CuteNews/core/ckeditor/plugins/showblocks
+/var/www/html/CuteNews/core/ckeditor/plugins/showblocks/images
+/var/www/html/CuteNews/core/ckeditor/plugins/iframe
+/var/www/html/CuteNews/core/ckeditor/plugins/iframe/images
+/var/www/html/CuteNews/core/ckeditor/plugins/iframe/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/iframe/dialogs/iframe.js
+/var/www/html/CuteNews/core/ckeditor/plugins/about
+/var/www/html/CuteNews/core/ckeditor/plugins/about/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/about/dialogs/about.js
+/var/www/html/CuteNews/core/ckeditor/plugins/about/dialogs/hidpi
+/var/www/html/CuteNews/core/ckeditor/plugins/colordialog
+/var/www/html/CuteNews/core/ckeditor/plugins/colordialog/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/colordialog/dialogs/colordialog.js
+/var/www/html/CuteNews/core/ckeditor/plugins/templates
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/dialogs/templates.css
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/dialogs/templates.js
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/templates
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/templates/default.js
+/var/www/html/CuteNews/core/ckeditor/plugins/templates/templates/images
+/var/www/html/CuteNews/core/ckeditor/plugins/liststyle
+/var/www/html/CuteNews/core/ckeditor/plugins/liststyle/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/liststyle/dialogs/liststyle.js
+/var/www/html/CuteNews/core/ckeditor/plugins/pastefromword
+/var/www/html/CuteNews/core/ckeditor/plugins/pastefromword/filter
+/var/www/html/CuteNews/core/ckeditor/plugins/pastefromword/filter/default.js
+/var/www/html/CuteNews/core/ckeditor/plugins/table
+/var/www/html/CuteNews/core/ckeditor/plugins/table/dialogs
+/var/www/html/CuteNews/core/ckeditor/plugins/table/dialogs/table.js
+/var/www/html/CuteNews/core/ckeditor/plugins/preview
+/var/www/html/CuteNews/core/ckeditor/plugins/preview/preview.html
+/var/www/html/CuteNews/core/ckeditor/lang
+/var/www/html/CuteNews/core/ckeditor/lang/en.js
+/var/www/html/CuteNews/core/ckeditor/adapters
+/var/www/html/CuteNews/core/ckeditor/adapters/jquery.js
+/var/www/html/CuteNews/core/ckeditor/config.js
+/var/www/html/CuteNews/core/ckeditor/build-config.js
+/var/www/html/CuteNews/core/ckeditor/skins
+/var/www/html/CuteNews/core/ckeditor/skins/moono
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog_ie7.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/editor_iequirks.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog_ie.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/editor_gecko.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/editor_ie8.css
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/core/ckeditor/skins/moono/images/hidpi
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog_ie8.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog_iequirks.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/readme.md
+/var/www/html/CuteNews/core/ckeditor/skins/moono/editor_ie7.css
+/var/www/html/CuteNews/core/ckeditor/skins/moono/dialog_opera.css
+/var/www/html/CuteNews/core/ckeditor/styles.js
+/var/www/html/CuteNews/core/modules
+/var/www/html/CuteNews/core/modules/hooks
+/var/www/html/CuteNews/core/modules/hooks/common.php
+/var/www/html/CuteNews/core/modules/maint.php
+/var/www/html/CuteNews/core/modules/help.php
+/var/www/html/CuteNews/core/modules/edit_news.php
+/var/www/html/CuteNews/core/modules/init.php
+/var/www/html/CuteNews/core/modules/dashboard.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/core/core.php
+/var/www/html/CuteNews/core/db
+/var/www/html/CuteNews/core/db/coreflat.php
+/var/www/html/CuteNews/core/captcha
+/var/www/html/CuteNews/core/captcha/captcha.php
+/var/www/html/CuteNews/core/captcha/resources
+/var/www/html/CuteNews/core/captcha/resources/fonts
+/var/www/html/CuteNews/core/captcha/resources/fonts/Heineken.ttf
+/var/www/html/CuteNews/cn_api.php
+/var/www/html/CuteNews/captcha.php
+/var/www/html/CuteNews/uploads
+/var/www/html/CuteNews/skins
+/var/www/html/CuteNews/skins/default.css
+/var/www/html/CuteNews/skins/simple.skin.php
+/var/www/html/CuteNews/skins/custom.css
+/var/www/html/CuteNews/skins/cute.js
+/var/www/html/CuteNews/skins/default.skin.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/skins/images/favicon.ico
+/var/www/html/CuteNews/skins/master.skin.php
+/var/www/html/CuteNews/skins/emoticons
+/var/www/html/CuteNews/skins/emoticons/index.html
+/var/www/html/CuteNews/skins/emoticons/.htaccess
+/var/www/html/CuteNews/skins/base
+/var/www/html/CuteNews/skins/base/dashboard
+/var/www/html/CuteNews/skins/base/dashboard/group.php
+/var/www/html/CuteNews/skins/base/dashboard/replace.php
+/var/www/html/CuteNews/skins/base/dashboard/users.php
+/var/www/html/CuteNews/skins/base/dashboard/intwiz.php
+/var/www/html/CuteNews/skins/base/dashboard/comments.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/skins/base/dashboard/snippet/editor.php
+/var/www/html/CuteNews/skins/base/dashboard/snippet/morefields.php
+/var/www/html/CuteNews/skins/base/dashboard/selfchk.php
+/var/www/html/CuteNews/skins/base/dashboard/widgets.php
+/var/www/html/CuteNews/skins/base/dashboard/logs.php
+/var/www/html/CuteNews/skins/base/dashboard/template.php
+/var/www/html/CuteNews/skins/base/dashboard/category.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/skins/base/window.php
+/var/www/html/CuteNews/skins/base/editnews
+/var/www/html/CuteNews/skins/base/editnews/main.css
+/var/www/html/CuteNews/skins/base/editnews/list.php
+/var/www/html/CuteNews/skins/base/cnscript.tpl
+/var/www/html/CuteNews/skins/base/defaults
+/var/www/html/CuteNews/skins/base/defaults/templates.tpl
+/var/www/html/CuteNews/skins/base/defaults/groups.tpl
+/var/www/html/CuteNews/skins/base/defaults/groups_names.tpl
+/var/www/html/CuteNews/skins/base/help
+/var/www/html/CuteNews/skins/base/help/cutecode.php
+/var/www/html/CuteNews/skins/base/help/main.php
+/var/www/html/CuteNews/skins/base/help/sections
+/var/www/html/CuteNews/skins/base/help/sections/users.tpl
+/var/www/html/CuteNews/skins/base/help/sections/templates.tpl
+/var/www/html/CuteNews/skins/base/help/sections/archives.tpl
+/var/www/html/CuteNews/skins/base/help/sections/including.tpl
+/var/www/html/CuteNews/skins/base/help/sections/snippets.tpl
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/skins/base/help/manual
+/var/www/html/CuteNews/skins/base/help/manual/rss.tpl
+/var/www/html/CuteNews/skins/base/help/manual/wrong_include.tpl
+/var/www/html/CuteNews/skins/base/help/about.php
+/var/www/html/CuteNews/skins/base/help/style.css
+/var/www/html/CuteNews/skins/base/auth
+/var/www/html/CuteNews/skins/base/auth/login.php
+/var/www/html/CuteNews/skins/base/auth/lost.php
+/var/www/html/CuteNews/skins/base/auth/register.php
+/var/www/html/CuteNews/skins/base/media
+/var/www/html/CuteNews/skins/base/media/general.php
+/var/www/html/CuteNews/skins/base/media/style.css
+/var/www/html/CuteNews/skins/base/fb_comments.tpl
+/var/www/html/CuteNews/skins/base/widgets
+/var/www/html/CuteNews/skins/base/widgets/personal_login_form.tpl
+/var/www/html/CuteNews/skins/base/maint
+/var/www/html/CuteNews/skins/base/maint/repair.php
+/var/www/html/CuteNews/skins/base/maint/sysconf.php
+/var/www/html/CuteNews/skins/base/maint/diff.php
+/var/www/html/CuteNews/skins/base/maint/maintenance.php
+/var/www/html/CuteNews/skins/base/maint/window
+/var/www/html/CuteNews/skins/base/maint/window/template.php
+/var/www/html/CuteNews/skins/base/maint/migrate.php
+/var/www/html/CuteNews/skins/base/google_plus.tpl
+/var/www/html/CuteNews/skins/base/confirm.tpl
+/var/www/html/CuteNews/skins/base/msg.tpl
+/var/www/html/CuteNews/skins/base/addedit
+/var/www/html/CuteNews/skins/base/addedit/main.php
+/var/www/html/CuteNews/skins/base/addedit/main.css
+/var/www/html/CuteNews/skins/base/addedit/changecats.php
+/var/www/html/CuteNews/skins/compact.skin.php
+/var/www/html/CuteNews/README.md
+/var/www/html/CuteNews/index.php
+/var/www/html/CuteNews/LGPL_CKeditor.txt
+/var/www/html/CuteNews/libs
+/var/www/html/CuteNews/libs/bootstrap-select
+/var/www/html/CuteNews/libs/bootstrap-select/js
+/var/www/html/CuteNews/libs/bootstrap-select/js/bootstrap-select.js.map
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-zh_CN.min.js
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-en_US.min.js
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-sl_SI.js
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-ro_RO.js
+/var/www/html/CuteNews/libs/bootstrap-select/js/i18n/defaults-sl_SI.min.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/libs/bootstrap-select/js/bootstrap-select.min.js
+/var/www/html/CuteNews/libs/bootstrap-select/css
+/var/www/html/CuteNews/libs/bootstrap-select/css/bootstrap-select.css.map
+/var/www/html/CuteNews/libs/bootstrap-select/css/bootstrap-select.css
+/var/www/html/CuteNews/libs/bootstrap-select/css/bootstrap-select.min.css
+/var/www/html/CuteNews/libs/fonts
+/var/www/html/CuteNews/libs/fonts/glyphicons-halflings-regular.woff
+/var/www/html/CuteNews/libs/fonts/fontawesome-webfont.eot
+/var/www/html/CuteNews/libs/fonts/glyphicons-halflings-regular.ttf
+/var/www/html/CuteNews/libs/fonts/glyphicons-halflings-regular.eot
+/var/www/html/CuteNews/libs/fonts/glyphicons-halflings-regular.woff2
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/libs/js
+/var/www/html/CuteNews/libs/js/bootstrap.min.js
+/var/www/html/CuteNews/libs/js/jquery.js
+/var/www/html/CuteNews/libs/codemirror
+/var/www/html/CuteNews/libs/codemirror/addon
+/var/www/html/CuteNews/libs/codemirror/addon/selection
+/var/www/html/CuteNews/libs/codemirror/addon/selection/selection-pointer.js
+/var/www/html/CuteNews/libs/codemirror/lib
+/var/www/html/CuteNews/libs/codemirror/lib/codemirror.css
+/var/www/html/CuteNews/libs/codemirror/lib/codemirror.js
+/var/www/html/CuteNews/libs/codemirror/mode
+/var/www/html/CuteNews/libs/codemirror/mode/xml
+/var/www/html/CuteNews/libs/codemirror/mode/xml/xml.js
+/var/www/html/CuteNews/libs/codemirror/mode/javascript
+/var/www/html/CuteNews/libs/codemirror/mode/javascript/javascript.js
+/var/www/html/CuteNews/libs/codemirror/mode/htmlmixed
+/var/www/html/CuteNews/libs/codemirror/mode/htmlmixed/htmlmixed.js
+/var/www/html/CuteNews/libs/codemirror/mode/css
+/var/www/html/CuteNews/libs/codemirror/mode/css/css.js
+/var/www/html/CuteNews/libs/codemirror/mode/vbscript
+/var/www/html/CuteNews/libs/codemirror/mode/vbscript/vbscript.js
+/var/www/html/CuteNews/libs/css
+/var/www/html/CuteNews/libs/css/spacelab.min.css
+/var/www/html/CuteNews/libs/css/superhero.min.css
+/var/www/html/CuteNews/libs/css/simplex.min.css
+/var/www/html/CuteNews/libs/css/slate.min.css
+/var/www/html/CuteNews/libs/css/cyborg.min.css
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/www/html/CuteNews/libs/bootbox
+/var/www/html/CuteNews/libs/bootbox/bootbox.min.js
+/var/www/html/CuteNews/libs/sweet-alert2
+/var/www/html/CuteNews/libs/sweet-alert2/sweet-alert2.css
+/var/www/html/CuteNews/libs/sweet-alert2/sweet-alert2.min.js
+/tmp/linpeas.sh
+
+╔══════════╣ Searching passwords in config PHP files
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/bin/systemd-ask-password                                                                                                                                                                                                                                                                                                   
+/bin/systemd-tty-ask-password-agent
+/etc/brlapi.key
+/etc/pam.d/common-password
+/usr/bin/credentials-preferences
+/usr/lib/evolution-data-server/credential-modules
+/usr/lib/evolution-data-server/credential-modules/module-credentials-goa.so
+/usr/lib/evolution-data-server/credential-modules/module-credentials-uoa.so
+/usr/lib/grub/i386-pc/legacy_password_test.mod
+/usr/lib/grub/i386-pc/password.mod
+/usr/lib/grub/i386-pc/password_pbkdf2.mod
+/usr/lib/libreoffice/program/libpasswordcontainerlo.so
+/usr/lib/libreoffice/share/config/soffice.cfg/cui/ui/password.ui
+/usr/lib/libreoffice/share/config/soffice.cfg/dbaccess/ui/password.ui
+/usr/lib/libreoffice/share/config/soffice.cfg/modules/scalc/ui/retypepassworddialog.ui
+/usr/lib/libreoffice/share/config/soffice.cfg/sfx/ui/password.ui
+/usr/lib/libreoffice/share/config/soffice.cfg/uui/ui/masterpassworddlg.ui
+/usr/lib/libreoffice/share/config/soffice.cfg/uui/ui/password.ui
+/usr/lib/libreoffice/share/config/soffice.cfg/uui/ui/setmasterpassworddlg.ui
+/usr/lib/libreoffice/share/config/soffice.cfg/vcl/ui/cupspassworddialog.ui
+/usr/lib/pppd/2.4.7/passwordfd.so
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/client_credentials.cpython-35.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/__pycache__/resource_owner_password_credentials.cpython-35.pyc
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/client_credentials.py
+/usr/lib/python3/dist-packages/oauthlib/oauth2/rfc6749/grant_types/resource_owner_password_credentials.py
+/usr/lib/x86_64-linux-gnu/libsamba-credentials.so.0
+/usr/lib/x86_64-linux-gnu/libsamba-credentials.so.0.0.1
+/usr/lib/x86_64-linux-gnu/samba/libcmdline-credentials.so.0
+/usr/lib/x86_64-linux-gnu/signon/libpasswordplugin.so
+/usr/lib/x86_64-linux-gnu/unity-control-center-1/panels/libcredentials.so
+/usr/share/app-install/desktop/password-gorilla:password-gorilla.desktop
+/usr/share/app-install/desktop/unity-control-center-signon:credentials-preferences.desktop
+/usr/share/app-install/desktop/unity-control-center-signon:unity-credentials-panel.desktop
+/usr/share/app-install/icons/credentials-preferences.png
+/usr/share/app-install/icons/password-gorilla.png
+/usr/share/app-install/icons/password.png
+/usr/share/app-install/icons/preferences-desktop-user-password.svg
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/applications/unity-credentials-panel.desktop
+/usr/share/dbus-1/services/com.canonical.indicators.webcredentials.service
+/usr/share/dbus-1/services/com.canonical.webcredentials.capture.service
+/usr/share/dns/root.key
+/usr/share/doc/signon-plugin-password
+/usr/share/help-langpack/en_AU/ubuntu-help/user-changepassword.page
+/usr/share/help-langpack/en_AU/ubuntu-help/user-forgottenpassword.page
+/usr/share/help-langpack/en_AU/ubuntu-help/user-goodpassword.page
+/usr/share/help-langpack/en_CA/ubuntu-help/user-changepassword.page
+/usr/share/help-langpack/en_CA/ubuntu-help/user-forgottenpassword.page
+/usr/share/help-langpack/en_CA/ubuntu-help/user-goodpassword.page
+/usr/share/help-langpack/en_GB/evince/password.page
+/usr/share/help-langpack/en_GB/ubuntu-help/user-changepassword.page
+/usr/share/help-langpack/en_GB/ubuntu-help/user-forgottenpassword.page
+/usr/share/help-langpack/en_GB/ubuntu-help/user-goodpassword.page
+/usr/share/help-langpack/en_GB/zenity/password.page
+/usr/share/help/C/evince/password.page
+/usr/share/help/C/file-roller/password-protection.page
+/usr/share/help/C/file-roller/troubleshooting-password.page
+/usr/share/help/C/gnome-help/user-changepassword.page
+/usr/share/help/C/gnome-help/user-goodpassword.page
+/usr/share/help/C/onboard/password-dialogs.page
+/usr/share/help/C/seahorse/keyring-update-password.page
+/usr/share/help/C/seahorse/passwords-stored-create.page
+/usr/share/help/C/seahorse/passwords-view.page
+/usr/share/help/C/ubuntu-help/user-changepassword.page
+/usr/share/help/C/ubuntu-help/user-forgottenpassword.page
+/usr/share/help/C/ubuntu-help/user-goodpassword.page
+/usr/share/help/C/web-credentials
+/usr/share/help/C/zenity/figures/zenity-password-screenshot.png
+/usr/share/help/C/zenity/password.page
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching passwords inside logs (limit 70)
+ base-passwd depends on libc6 (>= 2.8); however:                                                                                                                                                                                                                                                                            
+ base-passwd depends on libdebconfclient0 (>= 0.145); however:
+Jun 18 10:06:54 ubuntu systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jun 18 10:09:03 ubuntu systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jun 18 10:09:18 ubuntu systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jun 18 10:09:49 ubuntu systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jun 18 10:14:09 passage systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Jun 18 10:15:29 passage systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+Preparing to unpack .../base-passwd_3.5.39_amd64.deb ...
+Preparing to unpack .../passwd_1%3a4.2-3.1ubuntu5_amd64.deb ...
+Selecting previously unselected package base-passwd.
+Selecting previously unselected package passwd.
+Setting up base-passwd (3.5.39) ...
+Setting up passwd (1:4.2-3.1ubuntu5) ...
+Shadow passwords are now on.
+Unpacking base-passwd (3.5.39) ...
+Unpacking base-passwd (3.5.39) over (3.5.39) ...
+Unpacking passwd (1:4.2-3.1ubuntu5) ...
+dpkg: base-passwd: dependency problems, but configuring anyway as you requested:

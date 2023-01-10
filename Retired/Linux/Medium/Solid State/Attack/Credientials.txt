@@ -1,0 +1,9 @@
+Apache James
+james:james
+thomas:thomas
+john:john
+mindy:mindy
+mailadmin:mailadmin
+
+SSH
+mindy:P@55W0rd1!2@

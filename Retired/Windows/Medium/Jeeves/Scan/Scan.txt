@@ -1,0 +1,324 @@
+┌──(kali㉿kali)-[~/Downloads/nmapAutomator]
+└─$ sudo ./nmapAutomator.sh -H jeeves.htb -t All
+
+Running all scans on jeeves.htb with IP 3(NXDOMAIN)
+
+
+No ping detected.. Will not use ping scans!
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT      STATE SERVICE
+80/tcp    open  http
+135/tcp   open  msrpc
+445/tcp   open  microsoft-ds
+50000/tcp open  ibm-db2
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT      STATE SERVICE      VERSION
+80/tcp    open  http         Microsoft IIS httpd 10.0
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: Ask Jeeves
+135/tcp   open  msrpc        Microsoft Windows RPC
+445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+50000/tcp open  http         Jetty 9.4.z-SNAPSHOT
+|_http-title: Error 404 Not Found
+|_http-server-header: Jetty(9.4.z-SNAPSHOT)
+Service Info: Host: JEEVES; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+|_clock-skew: mean: 5h00m01s, deviation: 0s, median: 5h00m00s
+| smb-security-mode: 
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-time: 
+|   date: 2023-01-10T10:31:15
+|_  start_date: 2023-01-10T10:29:42
+
+
+
+
+---------------------Starting Full Scan------------------------
+
+
+
+PORT      STATE SERVICE
+80/tcp    open  http
+135/tcp   open  msrpc
+445/tcp   open  microsoft-ds
+50000/tcp open  ibm-db2
+
+
+
+No new ports
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+----------------------Starting UDP Scan------------------------
+                                                                                                                                                                                                                                                                                                                            
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: UDP Scan (0:00:03 elapsed - 0:00:00 remaining)   
+                                     In progress: UDP Scan (0:00:03 elapsed - 0:00:00 remaining)                                                                    ] 0% done                                         In progress: UDP Scan (0:00:09 elapsed - 0:04:36 remaining)                                                                    ] 0% done                                        In progress: UDP Scan (0:00:12 elapsed - 0:04:07 remaining)                                                                     ] 0% done                                       In progress: UDP Scan (0:00:15 elapsed - 0:03:50 remaining)                                                                     ] 3% done                                       In progress: UDP Scan (0:00:18 elapsed - 0:03:39 remaining)                                                                     ] 5% done                                       In progress: UDP Scan (0:00:21 elapsed - 0:03:30 remaining)                                                                     ] 6% done                                       In progress: UDP Scan (0:00:24 elapsed - 0:03:22 remaining)                                                                     ] 8% done   
+       In progress: UDP Scan (0:00:27 elapsed - 0:03:16 remaining)                                                                    ] 9% done                                         In progress: UDP Scan (0:00:27 elapsed - 0:03:16 remaining)                                                                   ] 11% done                                         In progress: UDP Scan (0:00:33 elapsed - 0:03:05 remaining)                                                                   ] 12% done                                         In progress: UDP Scan (0:00:37 elapsed - 0:03:01 remaining)                                                                   ] 12% done                                         In progress: UDP Scan (0:00:39 elapsed - 0:03:02 remaining)                                                                   ] 15% done                                         In progress: UDP Scan (0:00:42 elapsed - 0:02:58 remaining)                                                                   ] 17% done                                         In progress: UDP Scan (0:00:45 elapsed - 0:02:53 remaining)                                                                   ] 18% done                                         In progress: UDP Scan (0:00:48 elapsed - 0:02:49 remaining)                                                                   ] 19% done                                         In progress: UDP Scan (0:00:51 elapsed - 0:02:45 remaining)                                                                   ] 21% done   
+                    In progress: UDP Scan (0:00:54 elapsed - 0:02:41 remaining)                                                                   ] 22% done                                         In progress: UDP Scan (0:00:57 elapsed - 0:02:37 remaining)                                                                   ] 24% done                                         In progress: UDP Scan (0:01:00 elapsed - 0:02:34 remaining)                                                                   ] 25% done                                         In progress: UDP Scan (0:01:03 elapsed - 0:02:31 remaining)                                                                   ] 27% done                                         In progress: UDP Scan (0:01:06 elapsed - 0:02:29 remaining)                                                                   ] 28% done                                         In progress: UDP Scan (0:01:12 elapsed - 0:02:22 remaining)                                                                   ] 29% done                                         In progress: UDP Scan (0:01:15 elapsed - 0:02:18 remaining)                                                                   ] 31% done                                         In progress: UDP Scan (0:01:18 elapsed - 0:02:15 remaining)                                                                   ] 34% done                                         In progress: UDP Scan (0:01:21 elapsed - 0:02:11 remaining)                                                                   ] 35% done   
+                                 In progress: UDP Scan (0:01:24 elapsed - 0:02:08 remaining)   >                                                               ] 37% done                                         In progress: UDP Scan (0:01:27 elapsed - 0:02:04 remaining)   #>                                                              ] 38% done                                         In progress: UDP Scan (0:01:30 elapsed - 0:02:01 remaining)   ###>                                                            ] 40% done                                         In progress: UDP Scan (0:01:33 elapsed - 0:01:57 remaining)   ####>                                                           ] 41% done                                         In progress: UDP Scan (0:01:36 elapsed - 0:01:54 remaining)   ######>                                                         ] 43% done                                         In progress: UDP Scan (0:01:39 elapsed - 0:01:51 remaining)   #######>                                                        ] 44% done                                         In progress: UDP Scan (0:01:42 elapsed - 0:01:47 remaining)   #########>                                                      ] 46% done   
+        In progress: UDP Scan (0:01:46 elapsed - 0:01:44 remaining)   ##########>                                                     ] 47% done                                         In progress: UDP Scan (0:01:48 elapsed - 0:01:42 remaining)   ############>                                                   ] 49% done                                         In progress: UDP Scan (0:01:54 elapsed - 0:01:38 remaining)   #############>                                                  ] 50% done                                         In progress: UDP Scan (0:01:57 elapsed - 0:01:35 remaining)   ##############>                                                 ] 51% done                                         In progress: UDP Scan (0:02:00 elapsed - 0:01:31 remaining)   #################>                                              ] 54% done                                         In progress: UDP Scan (0:02:03 elapsed - 0:01:28 remaining)   ##################>                                             ] 55% done                                         In progress: UDP Scan (0:02:03 elapsed - 0:01:28 remaining)   ####################>                                           ] 57% done                                         In progress: UDP Scan (0:02:06 elapsed - 0:01:25 remaining)   #####################>                                          ] 58% done                                         In progress: UDP Scan (0:02:09 elapsed - 0:01:21 remaining)   #####################>                                          ] 58% done   
+                     In progress: UDP Scan (0:02:15 elapsed - 0:01:17 remaining)   #######################>                                        ] 60% done                                         In progress: UDP Scan (0:02:15 elapsed - 0:01:17 remaining)   ########################>                                       ] 61% done                                         In progress: UDP Scan (0:02:18 elapsed - 0:01:15 remaining)   ###########################>                                    ] 64% done                                         In progress: UDP Scan (0:02:21 elapsed - 0:01:12 remaining)   ###########################>                                    ] 64% done                                         In progress: UDP Scan (0:02:27 elapsed - 0:01:06 remaining)   ############################>                                   ] 65% done                                         In progress: UDP Scan (0:02:30 elapsed - 0:01:03 remaining)   #############################>                                  ] 66% done                                         In progress: UDP Scan (0:02:33 elapsed - 0:01:00 remaining)   ################################>                               ] 69% done                                         In progress: UDP Scan (0:02:36 elapsed - 0:00:57 remaining)   #################################>                              ] 70% done                                         In progress: UDP Scan (0:02:42 elapsed - 0:00:51 remaining)   ###################################>                            ] 72% done   
+                                  In progress: UDP Scan (0:02:45 elapsed - 0:00:48 remaining)   ####################################>                           ] 73% done                                         In progress: UDP Scan (0:02:48 elapsed - 0:00:45 remaining)   #######################################>                        ] 76% done                                         In progress: UDP Scan (0:02:51 elapsed - 0:00:42 remaining)   ########################################>                       ] 77% done                                         In progress: UDP Scan (0:02:54 elapsed - 0:00:38 remaining)   ##########################################>                     ] 79% done                                         In progress: UDP Scan (0:02:57 elapsed - 0:00:35 remaining)   ###########################################>                    ] 80% done                                         In progress: UDP Scan (0:03:00 elapsed - 0:00:32 remaining)   #############################################>                  ] 82% done                                         In progress: UDP Scan (0:03:03 elapsed - 0:00:29 remaining)   ##############################################>                 ] 83% done   
+         In progress: UDP Scan (0:03:06 elapsed - 0:00:26 remaining)   ################################################>               ] 85% done                                         In progress: UDP Scan (0:03:09 elapsed - 0:00:22 remaining)   #################################################>              ] 86% done                                         In progress: UDP Scan (0:03:12 elapsed - 0:00:20 remaining)   ###################################################>            ] 88% done                                         In progress: UDP Scan (0:03:16 elapsed - 0:00:17 remaining)   ####################################################>           ] 89% done                                         In progress: UDP Scan (0:03:18 elapsed - 0:00:15 remaining)   #####################################################>          ] 90% done                                         In progress: UDP Scan (0:03:21 elapsed - 0:00:12 remaining)   #######################################################>        ] 92% done                                         In progress: UDP Scan (0:03:24 elapsed - 0:00:09 remaining)   ########################################################>       ] 93% done                                         In progress: UDP Scan (0:03:27 elapsed - 0:00:05 remaining)   #########################################################>      ] 94% done                                         In progress: UDP Scan (0:03:30 elapsed - 0:00:02 remaining)   ###########################################################>    ] 96% done   
+                      
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                                                                                            
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE      VERSION
+80/tcp    open  http         Microsoft IIS httpd 10.0
+|_http-server-header: Microsoft-IIS/10.0
+135/tcp   open  msrpc        Microsoft Windows RPC
+445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+50000/tcp open  http         Jetty 9.4.z-SNAPSHOT
+|_http-server-header: Jetty(9.4.z-SNAPSHOT)
+Service Info: Host: JEEVES; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE      VERSION
+80/tcp    open  http         Microsoft IIS httpd 10.0
+| http-csrf: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=jeeves.htb
+|   Found the following possible CSRF vulnerabilities: 
+|     
+|     Path: http://jeeves.htb:80/
+|     Form id: 
+|_    Form action: error.html
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-server-header: Microsoft-IIS/10.0
+| http-enum: 
+|_  /error.html: Potentially interesting folder
+135/tcp   open  msrpc        Microsoft Windows RPC
+445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+50000/tcp open  http         Jetty 9.4.z-SNAPSHOT
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-server-header: Jetty(9.4.z-SNAPSHOT)
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+Service Info: Host: JEEVES; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_smb-vuln-ms10-054: false
+|_samba-vuln-cve-2012-1182: No accounts left to try
+|_smb-vuln-ms10-061: No accounts left to try
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Web Servers Recon:
+                                                                                                                                                                                                                                                                                                                            
+nikto -host "http://jeeves.htb:80" | tee "recon/nikto_jeeves.htb_80.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '.html' -u "http://jeeves.htb:80/FUZZ" | tee "recon/ffuf_jeeves.htb_80.txt"
+
+nikto -host "http://jeeves.htb:50000" | tee "recon/nikto_jeeves.htb_50000.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '' -u "http://jeeves.htb:50000/FUZZ" | tee "recon/ffuf_jeeves.htb_50000.txt"
+
+
+SMB Recon:
+                                                                                                                                                                                                                                                                                                                            
+smbmap -H "jeeves.htb" | tee "recon/smbmap_jeeves.htb.txt"
+smbclient -L "//jeeves.htb/" -U "guest"% | tee "recon/smbclient_jeeves.htb.txt"
+
+
+
+
+
+Which commands would you like to run?                                                                                                                                                                                                                                                                                       
+All (Default), ffuf, nikto, smbclient, smbmap, Skip <!>
+
+Running Default in (1)s: 
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.63
++ Target Hostname:    jeeves.htb
++ Target Port:        80
++ Start Time:         2023-01-10 00:46:47 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Microsoft-IIS/10.0
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Allowed HTTP Methods: OPTIONS, TRACE, GET, HEAD, POST 
++ Public HTTP Methods: OPTIONS, TRACE, GET, HEAD, POST 
++ 7785 requests: 0 error(s) and 5 item(s) reported on remote host
++ End Time:           2023-01-10 01:00:33 (GMT-5) (826 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://jeeves.htb:80/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       : .html 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+                        [Status: 200, Size: 503, Words: 38, Lines: 17, Duration: 164ms]
+error.html              [Status: 200, Size: 50, Words: 4, Lines: 2, Duration: 34ms]
+index.html              [Status: 200, Size: 503, Words: 38, Lines: 17, Duration: 32ms]
+Index.html              [Status: 200, Size: 503, Words: 38, Lines: 17, Duration: 33ms]
+index.html              [Status: 200, Size: 503, Words: 38, Lines: 17, Duration: 32ms]
+:: Progress: [9228/9228] :: Job [1/1] :: 1264 req/sec :: Duration: [0:00:08] :: Errors: 0 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.63
++ Target Hostname:    jeeves.htb
++ Target Port:        50000
++ Start Time:         2023-01-10 01:00:42 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Jetty(9.4.z-SNAPSHOT)
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ 7786 requests: 0 error(s) and 3 item(s) reported on remote host
++ End Time:           2023-01-10 01:05:28 (GMT-5) (286 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+
+      *********************************************************************
+      Portions of the server's headers (Jetty/9.4.z-SNAPSHOT) are not in
+      the Nikto 2.1.6 database or are newer than the known string. Would you like
+      to submit this information (*no server specific data*) to CIRT.net
+      for a Nikto update (or you may email to sullo@cirt.net) (y/n)? y
+
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The site uses SSL and the Strict-Transport-Security HTTP header is not defined.
++ The site uses SSL and Expect-CT header is not present.
+- Sent updated info to cirt.net -- Thank you!
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://jeeves.htb:50000/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+:: Progress: [4614/4614] :: Job [1/1] :: 1238 req/sec :: Duration: [0:00:04] :: Errors: 0 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting smbmap scan
+                                                                                                                                                                                                                                                                                                                            
+[!] Authentication error on jeeves.htb
+
+Finished smbmap scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting smbclient scan
+                                                                                                                                                                                                                                                                                                                            
+session setup failed: NT_STATUS_ACCOUNT_DISABLED
+
+Finished smbclient scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+---------------------Finished all scans------------------------                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+
+Completed in 39 minute(s) and 22 second(s)

@@ -1,0 +1,433 @@
+┌──(kali㉿kali)-[~/Downloads/nmapAutomator]
+└─$ sudo ./nmapAutomator.sh -h solidstate.htb -t All
+
+Invalid IP or URL!
+
+Usage: nmapAutomator.sh -H/--host <TARGET-IP> -t/--type <TYPE>
+Optional: [-r/--remote <REMOTE MODE>] [-d/--dns <DNS SERVER>] [-o/--output <OUTPUT DIRECTORY>] [-s/--static-nmap <STATIC NMAP PATH>]
+
+Scan Types:
+        Network : Shows all live hosts in the host's network (~15 seconds)
+        Port    : Shows all open ports (~15 seconds)
+        Script  : Runs a script scan on found ports (~5 minutes)
+        Full    : Runs a full range port scan, then runs a script scan on new ports (~5-10 minutes)
+        UDP     : Runs a UDP scan "requires sudo" (~5 minutes)
+        Vulns   : Runs CVE scan and nmap Vulns scan on all found ports (~5-15 minutes)
+        Recon   : Suggests recon commands, then prompts to automatically run them
+        All     : Runs all the scans (~20-30 minutes)
+
+                                                                                                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/Downloads/nmapAutomator]
+└─$ sudo ./nmapAutomator.sh -H solidstate.htb -t All
+
+Running all scans on solidstate.htb with IP 3(NXDOMAIN)
+
+
+No ping detected.. Will not use ping scans!
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT    STATE SERVICE
+22/tcp  open  ssh
+25/tcp  open  smtp
+80/tcp  open  http
+110/tcp open  pop3
+119/tcp open  nntp
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT    STATE SERVICE VERSION
+22/tcp  open  ssh     OpenSSH 7.4p1 Debian 10+deb9u1 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 770084f578b9c7d354cf712e0d526d8b (RSA)
+|   256 78b83af660190691f553921d3f48ed53 (ECDSA)
+|_  256 e445e9ed074d7369435a12709dc4af76 (ED25519)
+25/tcp  open  smtp    JAMES smtpd 2.3.2
+|_smtp-commands: solidstate Hello solidstate.htb (10.10.16.2 [10.10.16.2])
+80/tcp  open  http    Apache httpd 2.4.25 ((Debian))
+|_http-server-header: Apache/2.4.25 (Debian)
+|_http-title: Home - Solid State Security
+110/tcp open  pop3    JAMES pop3d 2.3.2
+119/tcp open  nntp    JAMES nntpd (posting ok)
+Service Info: Host: solidstate; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+
+---------------------Starting Full Scan------------------------
+
+
+
+PORT     STATE SERVICE
+22/tcp   open  ssh
+25/tcp   open  smtp
+80/tcp   open  http
+110/tcp  open  pop3
+119/tcp  open  nntp
+4555/tcp open  rsip
+
+
+
+Making a script scan on extra ports: 4555
+                                                                                                                                                                                                                                                                                                                           
+
+
+PORT     STATE SERVICE VERSION
+4555/tcp open  rsip?
+| fingerprint-strings: 
+|   GenericLines: 
+|     JAMES Remote Administration Tool 2.3.2
+|     Please enter your login and password
+|     Login id:
+|     Password:
+|     Login failed for 
+|_    Login id:
+
+
+
+
+----------------------Starting UDP Scan------------------------
+                                                                                                                                                                                                                                                                                                                           
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)   
+                                     In progress: UDP Scan (0:00:06 elapsed - 0:01:03 remaining)                                                                    ] 0% done                                        In progress: UDP Scan (0:00:06 elapsed - 0:01:03 remaining)                                                                    ] 0% done                                        In progress: UDP Scan (0:00:12 elapsed - 0:00:45 remaining)                                                                    ] 8% done                                         In progress: UDP Scan (0:00:15 elapsed - 0:00:47 remaining)                                                                   ] 8% done                                          In progress: UDP Scan (0:00:18 elapsed - 0:00:48 remaining)                                                                  ] 21% done                                          In progress: UDP Scan (0:00:21 elapsed - 0:00:48 remaining)                                                                  ] 24% done                                          In progress: UDP Scan (0:00:24 elapsed - 0:00:48 remaining)                                                                  ] 27% done   
+              In progress: UDP Scan (0:00:27 elapsed - 0:00:47 remaining)                                                                  ] 30% done                                          In progress: UDP Scan (0:00:30 elapsed - 0:00:46 remaining)                                                                  ] 33% done                                          In progress: UDP Scan (0:00:33 elapsed - 0:00:46 remaining)                                                                  ] 36% done                                          In progress: UDP Scan (0:00:36 elapsed - 0:00:47 remaining)   #>                                                             ] 39% done                                          In progress: UDP Scan (0:00:39 elapsed - 0:00:48 remaining)   ###>                                                           ] 41% done                                          In progress: UDP Scan (0:00:42 elapsed - 0:00:49 remaining)   #####>                                                         ] 43% done                                          In progress: UDP Scan (0:00:45 elapsed - 0:00:49 remaining)   ######>                                                        ] 44% done                                          In progress: UDP Scan (0:00:48 elapsed - 0:00:50 remaining)   ########>                                                      ] 46% done                                          In progress: UDP Scan (0:00:51 elapsed - 0:00:51 remaining)   #########>                                                     ] 47% done   
+                                In progress: UDP Scan (0:00:54 elapsed - 0:00:52 remaining)   ###########>                                                   ] 49% done                                          In progress: UDP Scan (0:00:57 elapsed - 0:00:53 remaining)   ############>                                                  ] 50% done                                          In progress: UDP Scan (0:01:00 elapsed - 0:00:54 remaining)   ############>                                                  ] 50% done                                          In progress: UDP Scan (0:01:03 elapsed - 0:00:54 remaining)   #############>                                                 ] 51% done                                          In progress: UDP Scan (0:01:06 elapsed - 0:00:55 remaining)   ##############>                                                ] 52% done                                          In progress: UDP Scan (0:01:09 elapsed - 0:00:55 remaining)   ###############>                                               ] 53% done                                          In progress: UDP Scan (0:01:12 elapsed - 0:00:56 remaining)   ################>                                              ] 54% done   
+           In progress: UDP Scan (0:01:15 elapsed - 0:00:56 remaining)   #################>                                             ] 55% done                                          In progress: UDP Scan (0:01:18 elapsed - 0:00:56 remaining)   ##################>                                            ] 56% done                                          In progress: UDP Scan (0:01:21 elapsed - 0:00:56 remaining)   ###################>                                           ] 57% done                                          In progress: UDP Scan (0:01:24 elapsed - 0:00:56 remaining)   ####################>                                          ] 58% done                                          In progress: UDP Scan (0:01:27 elapsed - 0:00:56 remaining)   #####################>                                         ] 59% done                                          In progress: UDP Scan (0:01:30 elapsed - 0:00:56 remaining)   #####################>                                         ] 59% done                                          In progress: UDP Scan (0:01:33 elapsed - 0:00:56 remaining)   ######################>                                        ] 60% done                                          In progress: UDP Scan (0:01:36 elapsed - 0:00:55 remaining)   #######################>                                       ] 61% done                                          In progress: UDP Scan (0:01:39 elapsed - 0:00:55 remaining)   ########################>                                      ] 62% done   
+                             In progress: UDP Scan (0:01:42 elapsed - 0:00:54 remaining)   #########################>                                     ] 63% done                                          In progress: UDP Scan (0:01:45 elapsed - 0:00:54 remaining)   ##########################>                                    ] 64% done                                          In progress: UDP Scan (0:01:48 elapsed - 0:00:53 remaining)   ###########################>                                   ] 65% done                                          In progress: UDP Scan (0:01:51 elapsed - 0:00:53 remaining)   ############################>                                  ] 66% done                                          In progress: UDP Scan (0:01:54 elapsed - 0:00:52 remaining)   ############################>                                  ] 66% done                                          In progress: UDP Scan (0:01:57 elapsed - 0:00:51 remaining)   #############################>                                 ] 67% done                                          In progress: UDP Scan (0:02:00 elapsed - 0:00:51 remaining)   ##############################>                                ] 68% done   
+        In progress: UDP Scan (0:02:03 elapsed - 0:00:50 remaining)   ###############################>                               ] 69% done                                          In progress: UDP Scan (0:02:06 elapsed - 0:00:49 remaining)   ################################>                              ] 70% done                                          In progress: UDP Scan (0:02:09 elapsed - 0:00:48 remaining)   #################################>                             ] 71% done                                          In progress: UDP Scan (0:02:12 elapsed - 0:00:47 remaining)   ##################################>                            ] 72% done                                          In progress: UDP Scan (0:02:15 elapsed - 0:00:46 remaining)   ##################################>                            ] 72% done                                          In progress: UDP Scan (0:02:18 elapsed - 0:00:45 remaining)   ###################################>                           ] 73% done                                          In progress: UDP Scan (0:02:21 elapsed - 0:00:44 remaining)   ####################################>                          ] 74% done                                          In progress: UDP Scan (0:02:24 elapsed - 0:00:43 remaining)   #####################################>                         ] 75% done                                          In progress: UDP Scan (0:02:27 elapsed - 0:00:42 remaining)   ######################################>                        ] 76% done   
+                          In progress: UDP Scan (0:02:30 elapsed - 0:00:40 remaining)   #######################################>                       ] 77% done                                          In progress: UDP Scan (0:02:33 elapsed - 0:00:39 remaining)   #######################################>                       ] 77% done                                          In progress: UDP Scan (0:02:36 elapsed - 0:00:38 remaining)   ########################################>                      ] 78% done                                          In progress: UDP Scan (0:02:39 elapsed - 0:00:36 remaining)   #########################################>                     ] 79% done                                          In progress: UDP Scan (0:02:42 elapsed - 0:00:35 remaining)   ##########################################>                    ] 80% done                                          In progress: UDP Scan (0:02:45 elapsed - 0:00:33 remaining)   ###########################################>                   ] 81% done                                          In progress: UDP Scan (0:02:48 elapsed - 0:00:32 remaining)   ############################################>                  ] 82% done   
+     In progress: UDP Scan (0:02:51 elapsed - 0:00:30 remaining)   #############################################>                 ] 83% done                                          In progress: UDP Scan (0:02:54 elapsed - 0:00:29 remaining)   ##############################################>                ] 84% done                                          In progress: UDP Scan (0:02:57 elapsed - 0:00:27 remaining)   ###############################################>               ] 85% done                                          In progress: UDP Scan (0:03:00 elapsed - 0:00:25 remaining)   ###############################################>               ] 85% done                                          In progress: UDP Scan (0:03:03 elapsed - 0:00:24 remaining)   ################################################>              ] 86% done                                          In progress: UDP Scan (0:03:06 elapsed - 0:00:22 remaining)   #################################################>             ] 87% done                                          In progress: UDP Scan (0:03:09 elapsed - 0:00:20 remaining)   ##################################################>            ] 88% done                                          In progress: UDP Scan (0:03:12 elapsed - 0:00:18 remaining)   ###################################################>           ] 89% done                                          In progress: UDP Scan (0:03:15 elapsed - 0:00:17 remaining)   ####################################################>          ] 90% done   
+                       In progress: UDP Scan (0:03:18 elapsed - 0:00:16 remaining)   #####################################################>         ] 91% done                                          In progress: UDP Scan (0:03:21 elapsed - 0:00:14 remaining)   ######################################################>        ] 92% done                                          In progress: UDP Scan (0:03:24 elapsed - 0:00:12 remaining)   ######################################################>        ] 92% done                                          In progress: UDP Scan (0:03:27 elapsed - 0:00:10 remaining)   #######################################################>       ] 93% done                                          In progress: UDP Scan (0:03:30 elapsed - 0:00:08 remaining)   ########################################################>      ] 94% done                                          In progress: UDP Scan (0:03:33 elapsed - 0:00:06 remaining)   #########################################################>     ] 95% done                                          In progress: UDP Scan (0:03:36 elapsed - 0:00:04 remaining)   ##########################################################>    ] 96% done   
+  In progress: UDP Scan (0:03:39 elapsed - 0:00:02 remaining)   ###########################################################>   ] 97% done                                          In progress: UDP Scan (0:03:42 elapsed - 0:00:00 remaining)   ############################################################>  ] 98% done                                          In progress: UDP Scan (0:03:45 elapsed - 0:00:00 remaining)   ############################################################>  ] 98% done                                          In progress: UDP Scan (0:03:48 elapsed - 0:00:00 remaining)   #############################################################> ] 99% done                                          
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                                                                                           
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                                                                                           
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                                                                                           
+
+
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.4p1 Debian 10+deb9u1 (protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:7.4p1: 
+|       PACKETSTORM:151227      0.0     https://vulners.com/packetstorm/PACKETSTORM:151227      *EXPLOIT*
+|       MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS-        0.0     https://vulners.com/metasploit/MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS- *EXPLOIT*
+|_      1337DAY-ID-30937        0.0     https://vulners.com/zdt/1337DAY-ID-30937        *EXPLOIT*
+25/tcp   open  smtp    JAMES smtpd 2.3.2
+80/tcp   open  http    Apache httpd 2.4.25 ((Debian))
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.25: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       EXPLOITPACK:44C5118F831D55FAF4259C41D8BDA0AB    7.2     https://vulners.com/exploitpack/EXPLOITPACK:44C5118F831D55FAF4259C41D8BDA0AB    *EXPLOIT*
+|       EDB-ID:46676    7.2     https://vulners.com/exploitdb/EDB-ID:46676      *EXPLOIT*
+|       CVE-2019-0211   7.2     https://vulners.com/cve/CVE-2019-0211
+|       1337DAY-ID-32502        7.2     https://vulners.com/zdt/1337DAY-ID-32502        *EXPLOIT*
+|_      PACKETSTORM:152441      0.0     https://vulners.com/packetstorm/PACKETSTORM:152441      *EXPLOIT*
+|_http-server-header: Apache/2.4.25 (Debian)
+110/tcp  open  pop3    JAMES pop3d 2.3.2
+119/tcp  open  nntp    JAMES nntpd (posting ok)
+4555/tcp open  rsip?
+| fingerprint-strings: 
+|   GenericLines: 
+|     JAMES Remote Administration Tool 2.3.2
+|     Please enter your login and password
+|     Login id:
+|     Password:
+|     Login failed for 
+|_    Login id:
+Service Info: Host: solidstate; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.4p1 Debian 10+deb9u1 (protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:7.4p1: 
+|       EXPLOITPACK:98FE96309F9524B8C84C508837551A19    5.8     https://vulners.com/exploitpack/EXPLOITPACK:98FE96309F9524B8C84C508837551A19    *EXPLOIT*
+|       EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97    5.8     https://vulners.com/exploitpack/EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97    *EXPLOIT*
+|       EDB-ID:46516    5.8     https://vulners.com/exploitdb/EDB-ID:46516      *EXPLOIT*
+|       EDB-ID:46193    5.8     https://vulners.com/exploitdb/EDB-ID:46193      *EXPLOIT*
+|       CVE-2019-6111   5.8     https://vulners.com/cve/CVE-2019-6111
+|       1337DAY-ID-32328        5.8     https://vulners.com/zdt/1337DAY-ID-32328        *EXPLOIT*
+|       1337DAY-ID-32009        5.8     https://vulners.com/zdt/1337DAY-ID-32009        *EXPLOIT*
+|       SSH_ENUM        5.0     https://vulners.com/canvas/SSH_ENUM     *EXPLOIT*
+|       PACKETSTORM:150621      5.0     https://vulners.com/packetstorm/PACKETSTORM:150621      *EXPLOIT*
+|       EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0    5.0     https://vulners.com/exploitpack/EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0    *EXPLOIT*
+|       EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283    5.0     https://vulners.com/exploitpack/EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283    *EXPLOIT*
+|       EDB-ID:45939    5.0     https://vulners.com/exploitdb/EDB-ID:45939      *EXPLOIT*
+|       EDB-ID:45233    5.0     https://vulners.com/exploitdb/EDB-ID:45233      *EXPLOIT*
+|       CVE-2018-15919  5.0     https://vulners.com/cve/CVE-2018-15919
+|       CVE-2018-15473  5.0     https://vulners.com/cve/CVE-2018-15473
+|       CVE-2017-15906  5.0     https://vulners.com/cve/CVE-2017-15906
+|       1337DAY-ID-31730        5.0     https://vulners.com/zdt/1337DAY-ID-31730        *EXPLOIT*
+|       CVE-2021-41617  4.4     https://vulners.com/cve/CVE-2021-41617
+|       CVE-2020-14145  4.3     https://vulners.com/cve/CVE-2020-14145
+|       CVE-2019-6110   4.0     https://vulners.com/cve/CVE-2019-6110
+|       CVE-2019-6109   4.0     https://vulners.com/cve/CVE-2019-6109
+|       CVE-2018-20685  2.6     https://vulners.com/cve/CVE-2018-20685
+|       PACKETSTORM:151227      0.0     https://vulners.com/packetstorm/PACKETSTORM:151227      *EXPLOIT*
+|       MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS-        0.0     https://vulners.com/metasploit/MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS- *EXPLOIT*
+|_      1337DAY-ID-30937        0.0     https://vulners.com/zdt/1337DAY-ID-30937        *EXPLOIT*
+25/tcp   open  smtp    JAMES smtpd 2.3.2
+| smtp-vuln-cve2010-4344: 
+|_  The SMTP server is not Exim: NOT VULNERABLE
+80/tcp   open  http    Apache httpd 2.4.25 ((Debian))
+| http-enum: 
+|   /README.txt: Interesting, a readme.
+|_  /images/: Potentially interesting directory w/ listing on 'apache/2.4.25 (debian)'
+|_http-server-header: Apache/2.4.25 (Debian)
+| http-csrf: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=solidstate.htb
+|   Found the following possible CSRF vulnerabilities: 
+|     
+|     Path: http://solidstate.htb:80/
+|     Form id: name
+|_    Form action: #
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.25: 
+|       CVE-2022-31813  7.5     https://vulners.com/cve/CVE-2022-31813
+|       CVE-2022-23943  7.5     https://vulners.com/cve/CVE-2022-23943
+|       CVE-2022-22720  7.5     https://vulners.com/cve/CVE-2022-22720
+|       CVE-2021-44790  7.5     https://vulners.com/cve/CVE-2021-44790
+|       CVE-2021-39275  7.5     https://vulners.com/cve/CVE-2021-39275
+|       CVE-2021-26691  7.5     https://vulners.com/cve/CVE-2021-26691
+|       CVE-2017-7679   7.5     https://vulners.com/cve/CVE-2017-7679
+|       CVE-2017-3169   7.5     https://vulners.com/cve/CVE-2017-3169
+|       CVE-2017-3167   7.5     https://vulners.com/cve/CVE-2017-3167
+|       CNVD-2022-73123 7.5     https://vulners.com/cnvd/CNVD-2022-73123
+|       CNVD-2022-03225 7.5     https://vulners.com/cnvd/CNVD-2022-03225
+|       CNVD-2021-102386        7.5     https://vulners.com/cnvd/CNVD-2021-102386
+|       EXPLOITPACK:44C5118F831D55FAF4259C41D8BDA0AB    7.2     https://vulners.com/exploitpack/EXPLOITPACK:44C5118F831D55FAF4259C41D8BDA0AB    *EXPLOIT*
+|       EDB-ID:46676    7.2     https://vulners.com/exploitdb/EDB-ID:46676      *EXPLOIT*
+|       CVE-2019-0211   7.2     https://vulners.com/cve/CVE-2019-0211
+|       1337DAY-ID-32502        7.2     https://vulners.com/zdt/1337DAY-ID-32502        *EXPLOIT*
+|       FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8    6.8     https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8  *EXPLOIT*
+|       CVE-2021-40438  6.8     https://vulners.com/cve/CVE-2021-40438
+|       CVE-2020-35452  6.8     https://vulners.com/cve/CVE-2020-35452
+|       CVE-2018-1312   6.8     https://vulners.com/cve/CVE-2018-1312
+|       CVE-2017-15715  6.8     https://vulners.com/cve/CVE-2017-15715
+|       CNVD-2022-03224 6.8     https://vulners.com/cnvd/CNVD-2022-03224
+|       8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2    6.8     https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2  *EXPLOIT*
+|       4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332    6.8     https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332  *EXPLOIT*
+|       4373C92A-2755-5538-9C91-0469C995AA9B    6.8     https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B  *EXPLOIT*
+|       0095E929-7573-5E4A-A7FA-F6598A35E8DE    6.8     https://vulners.com/githubexploit/0095E929-7573-5E4A-A7FA-F6598A35E8DE  *EXPLOIT*
+|       CVE-2022-28615  6.4     https://vulners.com/cve/CVE-2022-28615
+|       CVE-2021-44224  6.4     https://vulners.com/cve/CVE-2021-44224
+|       CVE-2019-10082  6.4     https://vulners.com/cve/CVE-2019-10082
+|       CVE-2017-9788   6.4     https://vulners.com/cve/CVE-2017-9788
+|       CVE-2019-0217   6.0     https://vulners.com/cve/CVE-2019-0217
+|       CVE-2022-22721  5.8     https://vulners.com/cve/CVE-2022-22721
+|       CVE-2020-1927   5.8     https://vulners.com/cve/CVE-2020-1927
+|       CVE-2019-10098  5.8     https://vulners.com/cve/CVE-2019-10098
+|       1337DAY-ID-33577        5.8     https://vulners.com/zdt/1337DAY-ID-33577        *EXPLOIT*
+|       SSV:96537       5.0     https://vulners.com/seebug/SSV:96537    *EXPLOIT*
+|       EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    5.0     https://vulners.com/exploitpack/EXPLOITPACK:C8C256BE0BFF5FE1C0405CB0AA9C075D    *EXPLOIT*
+|       EDB-ID:42745    5.0     https://vulners.com/exploitdb/EDB-ID:42745      *EXPLOIT*
+|       CVE-2022-30556  5.0     https://vulners.com/cve/CVE-2022-30556
+|       CVE-2022-29404  5.0     https://vulners.com/cve/CVE-2022-29404
+|       CVE-2022-28614  5.0     https://vulners.com/cve/CVE-2022-28614
+|       CVE-2022-26377  5.0     https://vulners.com/cve/CVE-2022-26377
+|       CVE-2022-22719  5.0     https://vulners.com/cve/CVE-2022-22719
+|       CVE-2021-34798  5.0     https://vulners.com/cve/CVE-2021-34798
+|       CVE-2021-33193  5.0     https://vulners.com/cve/CVE-2021-33193
+|       CVE-2021-26690  5.0     https://vulners.com/cve/CVE-2021-26690
+|       CVE-2020-9490   5.0     https://vulners.com/cve/CVE-2020-9490
+|       CVE-2020-1934   5.0     https://vulners.com/cve/CVE-2020-1934
+|       CVE-2019-17567  5.0     https://vulners.com/cve/CVE-2019-17567
+|       CVE-2019-10081  5.0     https://vulners.com/cve/CVE-2019-10081
+|       CVE-2019-0220   5.0     https://vulners.com/cve/CVE-2019-0220
+|       CVE-2019-0196   5.0     https://vulners.com/cve/CVE-2019-0196
+|       CVE-2018-17199  5.0     https://vulners.com/cve/CVE-2018-17199
+|       CVE-2018-17189  5.0     https://vulners.com/cve/CVE-2018-17189
+|       CVE-2018-1333   5.0     https://vulners.com/cve/CVE-2018-1333
+|       CVE-2018-1303   5.0     https://vulners.com/cve/CVE-2018-1303
+|       CVE-2017-9798   5.0     https://vulners.com/cve/CVE-2017-9798
+|       CVE-2017-7668   5.0     https://vulners.com/cve/CVE-2017-7668
+|       CVE-2017-7659   5.0     https://vulners.com/cve/CVE-2017-7659
+|       CVE-2017-15710  5.0     https://vulners.com/cve/CVE-2017-15710
+|       CNVD-2022-73122 5.0     https://vulners.com/cnvd/CNVD-2022-73122
+|       CNVD-2022-53584 5.0     https://vulners.com/cnvd/CNVD-2022-53584
+|       CNVD-2022-53582 5.0     https://vulners.com/cnvd/CNVD-2022-53582
+|       CNVD-2022-03223 5.0     https://vulners.com/cnvd/CNVD-2022-03223
+|       1337DAY-ID-28573        5.0     https://vulners.com/zdt/1337DAY-ID-28573        *EXPLOIT*
+|       CVE-2020-11993  4.3     https://vulners.com/cve/CVE-2020-11993
+|       CVE-2019-10092  4.3     https://vulners.com/cve/CVE-2019-10092
+|       CVE-2018-1302   4.3     https://vulners.com/cve/CVE-2018-1302
+|       CVE-2018-1301   4.3     https://vulners.com/cve/CVE-2018-1301
+|       CVE-2018-11763  4.3     https://vulners.com/cve/CVE-2018-11763
+|       4013EC74-B3C1-5D95-938A-54197A58586D    4.3     https://vulners.com/githubexploit/4013EC74-B3C1-5D95-938A-54197A58586D  *EXPLOIT*
+|       1337DAY-ID-35422        4.3     https://vulners.com/zdt/1337DAY-ID-35422        *EXPLOIT*
+|       1337DAY-ID-33575        4.3     https://vulners.com/zdt/1337DAY-ID-33575        *EXPLOIT*
+|       CVE-2018-1283   3.5     https://vulners.com/cve/CVE-2018-1283
+|_      PACKETSTORM:152441      0.0     https://vulners.com/packetstorm/PACKETSTORM:152441      *EXPLOIT*
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+110/tcp  open  pop3    JAMES pop3d 2.3.2
+119/tcp  open  nntp    JAMES nntpd (posting ok)
+4555/tcp open  rsip?
+| fingerprint-strings: 
+|   GenericLines: 
+|     JAMES Remote Administration Tool 2.3.2
+|     Please enter your login and password
+|     Login id:
+|     Password:
+|     Login failed for 
+|_    Login id:
+Service Info: Host: solidstate; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                                                                                            
+
+SMTP Recon:
+                                                                                                                                                                                                                                                                                                                            
+smtp-user-enum -U /usr/share/wordlists/metasploit/unix_users.txt -t "solidstate.htb" | tee "recon/smtp_user_enum_solidstate.htb.txt"
+
+
+Web Servers Recon:
+                                                                                                                                                                                                                                                                                                                            
+nikto -host "http://solidstate.htb:80" | tee "recon/nikto_solidstate.htb_80.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '.html' -u "http://solidstate.htb:80/FUZZ" | tee "recon/ffuf_solidstate.htb_80.txt"
+
+
+
+
+Missing tools: smtp-user-enum
+
+You can install with:
+sudo apt install smtp-user-enum -y                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                            
+
+
+Which commands would you like to run?                                                                                                                                                                                                                                                                                       
+All (Default), ffuf, nikto, Skip <!>
+
+Running Default in (1)s: 
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                                                                                            
+
+Starting smtp-user-enum scan
+                                                                                                                                                                                                                                                                                                                            
+./nmapAutomator.sh: 1: eval: smtp-user-enum: not found
+
+Finished smtp-user-enum scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                            
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.51
++ Target Hostname:    solidstate.htb
++ Target Port:        80
++ Start Time:         2023-01-07 22:18:12 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.25 (Debian)
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Server may leak inodes via ETags, header found with file /, inode: 1e60, size: 5610a1e7a4c9b, mtime: gzip
++ Apache/2.4.25 appears to be outdated (current is at least Apache/2.4.37). Apache 2.2.34 is the EOL for the 2.x branch.
++ Allowed HTTP Methods: GET, HEAD, POST, OPTIONS 
++ OSVDB-3268: /images/: Directory indexing found.
++ OSVDB-3092: /LICENSE.txt: License file found may identify site software.
++ OSVDB-3233: /icons/README: Apache default file found.
++ 7786 requests: 0 error(s) and 9 item(s) reported on remote host
++ End Time:           2023-01-07 22:24:02 (GMT-5) (350 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://solidstate.htb:80/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       : .html 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+.html                   [Status: 403, Size: 294, Words: 22, Lines: 12, Duration: 37ms]
+.htpasswd               [Status: 403, Size: 298, Words: 22, Lines: 12, Duration: 38ms]
+.htaccess               [Status: 403, Size: 298, Words: 22, Lines: 12, Duration: 38ms]
+.htpasswd.html          [Status: 403, Size: 303, Words: 22, Lines: 12, Duration: 38ms]
+.htaccess.html          [Status: 403, Size: 303, Words: 22, Lines: 12, Duration: 39ms]
+                        [Status: 200, Size: 7776, Words: 525, Lines: 180, Duration: 41ms]
+.hta.html               [Status: 403, Size: 298, Words: 22, Lines: 12, Duration: 64ms]
+.hta                    [Status: 403, Size: 293, Words: 22, Lines: 12, Duration: 64ms]
+about.html              [Status: 200, Size: 7183, Words: 680, Lines: 130, Duration: 37ms]
+assets                  [Status: 301, Size: 317, Words: 20, Lines: 10, Duration: 39ms]
+images                  [Status: 301, Size: 317, Words: 20, Lines: 10, Duration: 39ms]
+index.html              [Status: 200, Size: 7776, Words: 525, Lines: 180, Duration: 36ms]
+index.html              [Status: 200, Size: 7776, Words: 525, Lines: 180, Duration: 38ms]
+server-status           [Status: 403, Size: 302, Words: 22, Lines: 12, Duration: 38ms]
+services.html           [Status: 200, Size: 8404, Words: 856, Lines: 131, Duration: 37ms]
+:: Progress: [9228/9228] :: Job [1/1] :: 1065 req/sec :: Duration: [0:00:08] :: Errors: 0 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                            
+=========================
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+---------------------Finished all scans------------------------                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+
+Completed in 29 minute(s) and 35 second(s)

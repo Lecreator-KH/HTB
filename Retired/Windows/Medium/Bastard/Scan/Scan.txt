@@ -1,0 +1,95 @@
+
+Running all scans on bastard.htb with IP 3(NXDOMAIN)
+
+
+No ping detected.. Will not use ping scans!
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT      STATE SERVICE
+80/tcp    open  http
+135/tcp   open  msrpc
+49154/tcp open  unknown
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT      STATE SERVICE VERSION
+80/tcp    open  http    Microsoft IIS httpd 7.5
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-title: Welcome to Bastard | Bastard
+|_http-generator: Drupal 7 (http://drupal.org)
+|_http-server-header: Microsoft-IIS/7.5
+| http-robots.txt: 36 disallowed entries (15 shown)
+| /includes/ /misc/ /modules/ /profiles/ /scripts/ 
+| /themes/ /CHANGELOG.txt /cron.php /INSTALL.mysql.txt 
+| /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php /INSTALL.txt 
+|_/LICENSE.txt /MAINTAINERS.txt
+135/tcp   open  msrpc   Microsoft Windows RPC
+49154/tcp open  msrpc   Microsoft Windows RPC
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+
+
+OS Detection modified to: Windows
+
+
+
+
+---------------------Starting Full Scan------------------------
+
+
+
+PORT      STATE SERVICE
+80/tcp    open  http
+135/tcp   open  msrpc
+49154/tcp open  unknown
+
+
+
+No new ports
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+----------------------Starting UDP Scan------------------------
+                                                                                                                                                                                                                                                                                                                            
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)   
+                                    In progress: UDP Scan (0:00:03 elapsed - 0:04:57 remaining)                                                                     ] 0% done                                       In progress: UDP Scan (0:00:06 elapsed - 0:03:54 remaining)                                                                     ] 0% done                                       In progress: UDP Scan (0:00:09 elapsed - 0:03:36 remaining)                                                                     ] 1% done                                       In progress: UDP Scan (0:00:12 elapsed - 0:03:26 remaining)                                                                     ] 2% done                                       In progress: UDP Scan (0:00:18 elapsed - 0:03:14 remaining)                                                                     ] 4% done                                       In progress: UDP Scan (0:00:21 elapsed - 0:03:09 remaining)                                                                     ] 5% done                                        In progress: UDP Scan (0:00:24 elapsed - 0:03:05 remaining)                                                                    ] 8% done   
+      In progress: UDP Scan (0:00:27 elapsed - 0:03:01 remaining)                                                                   ] 10% done                                         In progress: UDP Scan (0:00:30 elapsed - 0:02:57 remaining)                                                                   ] 11% done                                         In progress: UDP Scan (0:00:33 elapsed - 0:02:53 remaining)                                                                   ] 13% done                                         In progress: UDP Scan (0:00:36 elapsed - 0:02:50 remaining)                                                                   ] 14% done                                         In progress: UDP Scan (0:00:39 elapsed - 0:02:46 remaining)                                                                   ] 16% done                                         In progress: UDP Scan (0:00:42 elapsed - 0:02:43 remaining)                                                                   ] 17% done                                         In progress: UDP Scan (0:00:45 elapsed - 0:02:40 remaining)                                                                   ] 19% done                                         In progress: UDP Scan (0:00:48 elapsed - 0:02:36 remaining)                                                                   ] 20% done                                         In progress: UDP Scan (0:00:51 elapsed - 0:02:33 remaining)                                                                   ] 22% done   
+                   In progress: UDP Scan (0:00:54 elapsed - 0:02:30 remaining)                                                                   ] 23% done                                         In progress: UDP Scan (0:00:57 elapsed - 0:02:27 remaining)                                                                   ] 25% done                                         In progress: UDP Scan (0:01:00 elapsed - 0:02:23 remaining)                                                                   ] 26% done                                         In progress: UDP Scan (0:01:03 elapsed - 0:02:20 remaining)                                                                   ] 28% done                                         In progress: UDP Scan (0:01:06 elapsed - 0:02:17 remaining)                                                                   ] 29% done                                         In progress: UDP Scan (0:01:09 elapsed - 0:02:14 remaining)                                                                   ] 31% done                                         In progress: UDP Scan (0:01:12 elapsed - 0:02:11 remaining)                                                                   ] 32% done                                         In progress: UDP Scan (0:01:15 elapsed - 0:02:08 remaining)                                                                   ] 34% done                                         In progress: UDP Scan (0:01:18 elapsed - 0:02:05 remaining)                                                                   ] 35% done   
+                                In progress: UDP Scan (0:01:21 elapsed - 0:02:02 remaining)   >                                                               ] 37% done                                         In progress: UDP Scan (0:01:24 elapsed - 0:01:58 remaining)   #>                                                              ] 38% done                                         In progress: UDP Scan (0:01:27 elapsed - 0:01:55 remaining)   ###>                                                            ] 40% done                                         In progress: UDP Scan (0:01:30 elapsed - 0:01:52 remaining)   ####>                                                           ] 41% done                                         In progress: UDP Scan (0:01:33 elapsed - 0:01:49 remaining)   ######>                                                         ] 43% done                                         In progress: UDP Scan (0:01:36 elapsed - 0:01:46 remaining)   #######>                                                        ] 44% done                                         In progress: UDP Scan (0:01:39 elapsed - 0:01:43 remaining)   #########>                                                      ] 46% done   
+       In progress: UDP Scan (0:01:42 elapsed - 0:01:40 remaining)   ##########>                                                     ] 47% done                                         In progress: UDP Scan (0:01:45 elapsed - 0:01:37 remaining)   ############>                                                   ] 49% done                                         In progress: UDP Scan (0:01:48 elapsed - 0:01:34 remaining)   #############>                                                  ] 50% done                                         In progress: UDP Scan (0:01:51 elapsed - 0:01:31 remaining)   ###############>                                                ] 52% done                                         In progress: UDP Scan (0:01:54 elapsed - 0:01:28 remaining)   ################>                                               ] 53% done                                         In progress: UDP Scan (0:01:57 elapsed - 0:01:25 remaining)   ##################>                                             ] 55% done                                         In progress: UDP Scan (0:02:00 elapsed - 0:01:22 remaining)   ###################>                                            ] 56% done                                         In progress: UDP Scan (0:02:03 elapsed - 0:01:19 remaining)   #####################>                                          ] 58% done                                         In progress: UDP Scan (0:02:06 elapsed - 0:01:16 remaining)   ######################>                                         ] 59% done   
+                    In progress: UDP Scan (0:02:09 elapsed - 0:01:13 remaining)   ########################>                                       ] 61% done                                         In progress: UDP Scan (0:02:12 elapsed - 0:01:10 remaining)   #########################>                                      ] 62% done                                         In progress: UDP Scan (0:02:15 elapsed - 0:01:07 remaining)   ###########################>                                    ] 64% done                                         In progress: UDP Scan (0:02:18 elapsed - 0:01:04 remaining)   ############################>                                   ] 65% done                                         In progress: UDP Scan (0:02:21 elapsed - 0:01:01 remaining)   ##############################>                                 ] 67% done                                         In progress: UDP Scan (0:02:24 elapsed - 0:00:58 remaining)   ###############################>                                ] 68% done                                         In progress: UDP Scan (0:02:27 elapsed - 0:00:55 remaining)   #################################>                              ] 70% done                                         In progress: UDP Scan (0:02:30 elapsed - 0:00:52 remaining)   ##################################>                             ] 71% done                                         In progress: UDP Scan (0:02:33 elapsed - 0:00:49 remaining)   ####################################>                           ] 73% done   
+                                 In progress: UDP Scan (0:02:36 elapsed - 0:00:46 remaining)   #####################################>                          ] 74% done                                         In progress: UDP Scan (0:02:39 elapsed - 0:00:43 remaining)   #######################################>                        ] 76% done                                         In progress: UDP Scan (0:02:42 elapsed - 0:00:39 remaining)   ########################################>                       ] 77% done                                         In progress: UDP Scan (0:02:45 elapsed - 0:00:36 remaining)   ##########################################>                     ] 79% done                                         In progress: UDP Scan (0:02:48 elapsed - 0:00:33 remaining)   ###########################################>                    ] 80% done                                         In progress: UDP Scan (0:02:51 elapsed - 0:00:30 remaining)   #############################################>                  ] 82% done                                         In progress: UDP Scan (0:02:54 elapsed - 0:00:27 remaining)   ##############################################>                 ] 83% done   
+        In progress: UDP Scan (0:02:57 elapsed - 0:00:24 remaining)   ################################################>               ] 85% done                                         In progress: UDP Scan (0:03:00 elapsed - 0:00:21 remaining)   #################################################>              ] 86% done                                         In progress: UDP Scan (0:03:03 elapsed - 0:00:18 remaining)   ###################################################>            ] 88% done                                         In progress: UDP Scan (0:03:06 elapsed - 0:00:15 remaining)   ####################################################>           ] 89% done                                         In progress: UDP Scan (0:03:09 elapsed - 0:00:12 remaining)   ######################################################>         ] 91% done                                         In progress: UDP Scan (0:03:12 elapsed - 0:00:09 remaining)   #######################################################>        ] 92% done                                         In progress: UDP Scan (0:03:15 elapsed - 0:00:06 remaining)   #########################################################>      ] 94% done                                         In progress: UDP Scan (0:03:18 elapsed - 0:00:03 remaining)   ##########################################################>     ] 95% done                                         
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                                                                                            
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                                                                                            
+
+
+PORT      STATE SERVICE VERSION
+80/tcp    open  http    Microsoft IIS httpd 7.5
+|_http-server-header: Microsoft-IIS/7.5
+135/tcp   open  msrpc   Microsoft Windows RPC
+49154/tcp open  msrpc   Microsoft Windows RPC
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows

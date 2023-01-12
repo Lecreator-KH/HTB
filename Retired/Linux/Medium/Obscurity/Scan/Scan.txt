@@ -1,0 +1,326 @@
+┌──(kali㉿kali)-[~/Downloads/nmapAutomator]
+└─$ sudo ./nmapAutomator.sh -H obscurity.htb -t All
+
+Running all scans on obscurity.htb with IP 3(NXDOMAIN)
+
+
+No ping detected.. Will not use ping scans!
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT     STATE SERVICE
+22/tcp   open  ssh
+8080/tcp open  http-proxy
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 33d39a0d972c5420e1b01734f4ca701b (RSA)
+|   256 f68bd57397be52cb12ea8b027c34a3d7 (ECDSA)
+|_  256 e8df557876854b7bdc706afc40ccac9b (ED25519)
+8080/tcp open  http-proxy BadHTTPServer
+|_http-title: 0bscura
+|_http-server-header: BadHTTPServer
+| fingerprint-strings: 
+|   GetRequest, HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Date: Wed, 11 Jan 2023 05:59:56
+|     Server: BadHTTPServer
+|     Last-Modified: Wed, 11 Jan 2023 05:59:56
+|     Content-Length: 4171
+|     Content-Type: text/html
+|     Connection: Closed
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>0bscura</title>
+|     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+|     <meta name="viewport" content="width=device-width, initial-scale=1">
+|     <meta name="keywords" content="">
+|     <meta name="description" content="">
+|     <!-- 
+|     Easy Profile Template
+|     http://www.templatemo.com/tm-467-easy-profile
+|     <!-- stylesheet css -->
+|     <link rel="stylesheet" href="css/bootstrap.min.css">
+|     <link rel="stylesheet" href="css/font-awesome.min.css">
+|     <link rel="stylesheet" href="css/templatemo-blue.css">
+|     </head>
+|     <body data-spy="scroll" data-target=".navbar-collapse">
+|     <!-- preloader section -->
+|     <!--
+|     <div class="preloader">
+|_    <div class="sk-spinner sk-spinner-wordpress">
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+OS Detection modified to: Linux
+                                                                                                                                                                                                                                                                                                                           
+
+
+
+---------------------Starting Full Scan------------------------
+                                                                                                                                                                                                                                                                                                                           
+
+
+PORT     STATE SERVICE
+22/tcp   open  ssh
+8080/tcp open  http-proxy
+
+
+
+No new ports
+                                                                                                                                                                                                                                                                                                                           
+
+
+
+----------------------Starting UDP Scan------------------------
+                                                                                                                                                                                                                                                                                                                           
+In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)                                                                                                                      In progress: No Scan (0:00:00 elapsed - 0:00:00 remaining)   
+                                     In progress: UDP Scan (0:00:06 elapsed - 0:03:54 remaining)                                                                    ] 0% done                                        In progress: UDP Scan (0:00:09 elapsed - 0:03:36 remaining)                                                                    ] 0% done                                        In progress: UDP Scan (0:00:12 elapsed - 0:03:26 remaining)                                                                    ] 2% done                                        In progress: UDP Scan (0:00:15 elapsed - 0:03:19 remaining)                                                                    ] 4% done                                        In progress: UDP Scan (0:00:18 elapsed - 0:03:14 remaining)                                                                    ] 5% done                                        In progress: UDP Scan (0:00:21 elapsed - 0:03:09 remaining)                                                                    ] 7% done                                         In progress: UDP Scan (0:00:24 elapsed - 0:03:05 remaining)                                                                   ] 8% done   
+           In progress: UDP Scan (0:00:27 elapsed - 0:03:01 remaining)                                                                  ] 10% done                                          In progress: UDP Scan (0:00:30 elapsed - 0:02:57 remaining)                                                                  ] 11% done                                          In progress: UDP Scan (0:00:33 elapsed - 0:02:53 remaining)                                                                  ] 13% done                                          In progress: UDP Scan (0:00:36 elapsed - 0:02:50 remaining)                                                                  ] 14% done                                          In progress: UDP Scan (0:00:39 elapsed - 0:02:46 remaining)                                                                  ] 16% done                                          In progress: UDP Scan (0:00:42 elapsed - 0:02:43 remaining)                                                                  ] 17% done                                          In progress: UDP Scan (0:00:45 elapsed - 0:02:40 remaining)                                                                  ] 19% done                                          In progress: UDP Scan (0:00:48 elapsed - 0:02:36 remaining)                                                                  ] 20% done                                          In progress: UDP Scan (0:00:51 elapsed - 0:02:33 remaining)                                                                  ] 22% done   
+                             In progress: UDP Scan (0:00:54 elapsed - 0:02:30 remaining)                                                                  ] 23% done                                          In progress: UDP Scan (0:00:57 elapsed - 0:02:27 remaining)                                                                  ] 25% done                                          In progress: UDP Scan (0:01:00 elapsed - 0:02:23 remaining)                                                                  ] 26% done                                          In progress: UDP Scan (0:01:03 elapsed - 0:02:20 remaining)                                                                  ] 28% done                                          In progress: UDP Scan (0:01:06 elapsed - 0:02:17 remaining)                                                                  ] 29% done                                          In progress: UDP Scan (0:01:09 elapsed - 0:02:14 remaining)                                                                  ] 31% done                                          In progress: UDP Scan (0:01:12 elapsed - 0:02:11 remaining)                                                                  ] 32% done   
+        In progress: UDP Scan (0:01:15 elapsed - 0:02:08 remaining)                                                                  ] 34% done                                          In progress: UDP Scan (0:01:18 elapsed - 0:02:05 remaining)                                                                  ] 35% done                                          In progress: UDP Scan (0:01:21 elapsed - 0:02:02 remaining)                                                                  ] 37% done                                          In progress: UDP Scan (0:01:24 elapsed - 0:01:58 remaining)   >                                                              ] 38% done                                          In progress: UDP Scan (0:01:27 elapsed - 0:01:55 remaining)   ##>                                                            ] 40% done                                          In progress: UDP Scan (0:01:30 elapsed - 0:01:52 remaining)   ###>                                                           ] 41% done                                          In progress: UDP Scan (0:01:33 elapsed - 0:01:49 remaining)   #####>                                                         ] 43% done                                          In progress: UDP Scan (0:01:36 elapsed - 0:01:46 remaining)   ######>                                                        ] 44% done                                          In progress: UDP Scan (0:01:39 elapsed - 0:01:43 remaining)   ########>                                                      ] 46% done   
+                          
+
+
+
+No UDP ports are open
+                                                                                                                                                                                                                                                                                                                           
+
+
+
+---------------------Starting Vulns Scan-----------------------
+                                                                                                                                                                                                                                                                                                                           
+Running CVE scan on all ports
+                                                                                                                                                                                                                                                                                                                           
+
+
+PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:7.6p1: 
+|       PACKETSTORM:151227      0.0     https://vulners.com/packetstorm/PACKETSTORM:151227      *EXPLOIT*
+|       MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS-        0.0     https://vulners.com/metasploit/MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS- *EXPLOIT*
+|_      1337DAY-ID-30937        0.0     https://vulners.com/zdt/1337DAY-ID-30937        *EXPLOIT*
+8080/tcp open  http-proxy BadHTTPServer
+|_http-server-header: BadHTTPServer
+| fingerprint-strings: 
+|   GetRequest, HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Date: Wed, 11 Jan 2023 06:06:22
+|     Server: BadHTTPServer
+|     Last-Modified: Wed, 11 Jan 2023 06:06:22
+|     Content-Length: 4171
+|     Content-Type: text/html
+|     Connection: Closed
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>0bscura</title>
+|     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+|     <meta name="viewport" content="width=device-width, initial-scale=1">
+|     <meta name="keywords" content="">
+|     <meta name="description" content="">
+|     <!-- 
+|     Easy Profile Template
+|     http://www.templatemo.com/tm-467-easy-profile
+|     <!-- stylesheet css -->
+|     <link rel="stylesheet" href="css/bootstrap.min.css">
+|     <link rel="stylesheet" href="css/font-awesome.min.css">
+|     <link rel="stylesheet" href="css/templatemo-blue.css">
+|     </head>
+|     <body data-spy="scroll" data-target=".navbar-collapse">
+|     <!-- preloader section -->
+|     <!--
+|     <div class="preloader">
+|_    <div class="sk-spinner sk-spinner-wordpress">
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+Running Vuln scan on all ports
+This may take a while, depending on the number of detected services..                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                           
+
+
+PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:7.6p1: 
+|       EXPLOITPACK:98FE96309F9524B8C84C508837551A19    5.8     https://vulners.com/exploitpack/EXPLOITPACK:98FE96309F9524B8C84C508837551A19    *EXPLOIT*
+|       EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97    5.8     https://vulners.com/exploitpack/EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97    *EXPLOIT*
+|       EDB-ID:46516    5.8     https://vulners.com/exploitdb/EDB-ID:46516      *EXPLOIT*
+|       EDB-ID:46193    5.8     https://vulners.com/exploitdb/EDB-ID:46193      *EXPLOIT*
+|       CVE-2019-6111   5.8     https://vulners.com/cve/CVE-2019-6111
+|       1337DAY-ID-32328        5.8     https://vulners.com/zdt/1337DAY-ID-32328        *EXPLOIT*
+|       1337DAY-ID-32009        5.8     https://vulners.com/zdt/1337DAY-ID-32009        *EXPLOIT*
+|       SSH_ENUM        5.0     https://vulners.com/canvas/SSH_ENUM     *EXPLOIT*
+|       PACKETSTORM:150621      5.0     https://vulners.com/packetstorm/PACKETSTORM:150621      *EXPLOIT*
+|       EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0    5.0     https://vulners.com/exploitpack/EXPLOITPACK:F957D7E8A0CC1E23C3C649B764E13FB0    *EXPLOIT*
+|       EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283    5.0     https://vulners.com/exploitpack/EXPLOITPACK:EBDBC5685E3276D648B4D14B75563283    *EXPLOIT*
+|       EDB-ID:45939    5.0     https://vulners.com/exploitdb/EDB-ID:45939      *EXPLOIT*
+|       EDB-ID:45233    5.0     https://vulners.com/exploitdb/EDB-ID:45233      *EXPLOIT*
+|       CVE-2018-15919  5.0     https://vulners.com/cve/CVE-2018-15919
+|       CVE-2018-15473  5.0     https://vulners.com/cve/CVE-2018-15473
+|       1337DAY-ID-31730        5.0     https://vulners.com/zdt/1337DAY-ID-31730        *EXPLOIT*
+|       CVE-2021-41617  4.4     https://vulners.com/cve/CVE-2021-41617
+|       CVE-2020-14145  4.3     https://vulners.com/cve/CVE-2020-14145
+|       CVE-2019-6110   4.0     https://vulners.com/cve/CVE-2019-6110
+|       CVE-2019-6109   4.0     https://vulners.com/cve/CVE-2019-6109
+|       CVE-2018-20685  2.6     https://vulners.com/cve/CVE-2018-20685
+|       PACKETSTORM:151227      0.0     https://vulners.com/packetstorm/PACKETSTORM:151227      *EXPLOIT*
+|       MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS-        0.0     https://vulners.com/metasploit/MSF:AUXILIARY-SCANNER-SSH-SSH_ENUMUSERS- *EXPLOIT*
+|_      1337DAY-ID-30937        0.0     https://vulners.com/zdt/1337DAY-ID-30937        *EXPLOIT*
+8080/tcp open  http-proxy BadHTTPServer
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|       Slowloris tries to keep many connections to the target web server open and hold
+|       them open as long as possible.  It accomplishes this by opening connections to
+|       the target web server and sending a partial request. By doing so, it starves
+|       the http server's resources causing Denial Of Service.
+|       
+|     Disclosure date: 2009-09-17
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+|_      http://ha.ckers.org/slowloris/
+|_http-server-header: BadHTTPServer
+| fingerprint-strings: 
+|   GetRequest, HTTPOptions: 
+|     HTTP/1.1 200 OK
+|     Date: Wed, 11 Jan 2023 06:06:47
+|     Server: BadHTTPServer
+|     Last-Modified: Wed, 11 Jan 2023 06:06:47
+|     Content-Length: 4171
+|     Content-Type: text/html
+|     Connection: Closed
+|     <!DOCTYPE html>
+|     <html lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <title>0bscura</title>
+|     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+|     <meta name="viewport" content="width=device-width, initial-scale=1">
+|     <meta name="keywords" content="">
+|     <meta name="description" content="">
+|     <!-- 
+|     Easy Profile Template
+|     http://www.templatemo.com/tm-467-easy-profile
+|     <!-- stylesheet css -->
+|     <link rel="stylesheet" href="css/bootstrap.min.css">
+|     <link rel="stylesheet" href="css/font-awesome.min.css">
+|     <link rel="stylesheet" href="css/templatemo-blue.css">
+|     </head>
+|     <body data-spy="scroll" data-target=".navbar-collapse">
+|     <!-- preloader section -->
+|     <!--
+|     <div class="preloader">
+|_    <div class="sk-spinner sk-spinner-wordpress">
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+
+---------------------Recon Recommendations---------------------
+                                                                                                                                                                                                                                                                                                                           
+
+Web Servers Recon:
+                                                                                                                                                                                                                                                                                                                           
+nikto -host "http://obscurity.htb:8080" | tee "recon/nikto_obscurity.htb_8080.txt"
+ffuf -ic -w /usr/share/wordlists/dirb/common.txt -e '.html' -u "http://obscurity.htb:8080/FUZZ" | tee "recon/ffuf_obscurity.htb_8080.txt"
+
+
+
+
+
+Which commands would you like to run?                                                                                                                                                                                                                                                                                      
+All (Default), ffuf, nikto, Skip <!>
+
+Running Default in (1)s: 
+
+
+---------------------Running Recon Commands--------------------
+                                                                                                                                                                                                                                                                                                                           
+
+Starting nikto scan
+                                                                                                                                                                                                                                                                                                                           
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.168
++ Target Hostname:    obscurity.htb
++ Target Port:        8080
++ Start Time:         2023-01-11 01:11:40 (GMT-5)
+---------------------------------------------------------------------------
++ Server: BadHTTPServer
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Web Server returns a valid response with junk HTTP methods, this may cause false positives.
++ ERROR: Error limit (20) reached for host, giving up. Last error: error reading HTTP response
++ Scan terminated:  20 error(s) and 4 item(s) reported on remote host
++ End Time:           2023-01-11 01:15:01 (GMT-5) (201 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Finished nikto scan
+                                                                                                                                                                                                                                                                                                                           
+=========================
+                                                                                                                                                                                                                                                                                                                           
+Starting ffuf scan
+                                                                                                                                                                                                                                                                                                                           
+
+        /'___\  /'___\           /'___\       
+       /\ \__/ /\ \__/  __  __  /\ \__/       
+       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+         \ \_\   \ \_\  \ \____/  \ \_\       
+          \/_/    \/_/   \/___/    \/_/       
+
+       v1.5.0 Kali Exclusive <3
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://obscurity.htb:8080/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/dirb/common.txt
+ :: Extensions       : .html 
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : 10
+ :: Threads          : 40
+ :: Matcher          : Response status: 200,204,301,302,307,401,403,405,500
+________________________________________________
+
+                        [Status: 200, Size: 4171, Words: 348, Lines: 124, Duration: 56ms]
+index.html              [Status: 200, Size: 4171, Words: 348, Lines: 124, Duration: 50ms]
+index.html              [Status: 200, Size: 4171, Words: 348, Lines: 124, Duration: 310ms]
+:: Progress: [9228/9228] :: Job [1/1] :: 398 req/sec :: Duration: [0:00:24] :: Errors: 0 ::
+
+Finished ffuf scan
+                                                                                                                                                                                                                                                                                                                           
+=========================
+                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                           
+---------------------Finished all scans------------------------                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                           
+
+Completed in 15 minute(s) and 43 second(s)

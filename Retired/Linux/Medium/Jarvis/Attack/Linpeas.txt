@@ -1,0 +1,1673 @@
+ADVISORY: This script should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own computers and/or with the computer owner's permission.
+                                                                                                                                                                                                                                                                                                                            
+Linux Privesc Checklist: https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist
+ LEGEND:                                                                                                                                                                                                                                                                                                                    
+  RED/YELLOW: 95% a PE vector
+  RED: You should take a look to it
+  LightCyan: Users with console
+  Blue: Users without console & mounted devs
+  Green: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMagenta: Your username
+
+ Starting linpeas. Caching Writable Folders...
+
+grep: write error: Broken pipe
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Basic information ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+OS: Linux version 4.9.0-8-amd64 (debian-kernel@lists.debian.org) (gcc version 6.3.0 20170516 (Debian 6.3.0-18+deb9u1) ) #1 SMP Debian 4.9.144-3.1 (2019-02-19)
+User & Groups: uid=33(www-data) gid=33(www-data) groups=33(www-data)
+Hostname: jarvis
+Writable folder: /dev/shm
+[+] /bin/ping is available for network discovery (linpeas can discover hosts, learn more with -h)
+[+] /bin/nc is available for network discover & port scanning (linpeas can discover hosts and scan ports, learn more with -h)                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                            
+
+Caching directories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . DONE
+                                                                                                                                                                                                                                                                                                                            
+                                        ╔════════════════════╗
+════════════════════════════════════════╣ System Information ╠════════════════════════════════════════                                                                                                                                                                                                                      
+                                        ╚════════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ Operative system
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#kernel-exploits                                                                                                                                                                                                                                               
+Linux version 4.9.0-8-amd64 (debian-kernel@lists.debian.org) (gcc version 6.3.0 20170516 (Debian 6.3.0-18+deb9u1) ) #1 SMP Debian 4.9.144-3.1 (2019-02-19)                                                                                                                                                                  
+Distributor ID: Debian
+Description:    Debian GNU/Linux 9.8 (stretch)
+Release:        9.8
+Codename:       stretch
+
+╔══════════╣ Sudo version
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-version                                                                                                                                                                                                                                                  
+Sudo version 1.8.19p1                                                                                                                                                                                                                                                                                                       
+
+./linpeas.sh: 1187: ./linpeas.sh: systemctl: Permission denied
+./linpeas.sh: 1188: ./linpeas.sh: [[: not found
+./linpeas.sh: 1188: ./linpeas.sh: rpm: not found
+./linpeas.sh: 1188: ./linpeas.sh: 0: not found
+
+╔══════════╣ PATH
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-path-abuses                                                                                                                                                                                                                                          
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/system/bin:/system/sbin:/system/xbin                                                                                                                                                                                              
+New path exported: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/system/bin:/system/sbin:/system/xbin
+
+╔══════════╣ Date & uptime
+Thu Jan 12 01:39:13 EST 2023                                                                                                                                                                                                                                                                                                
+ 01:39:13 up  1:12,  0 users,  load average: 0.08, 0.02, 0.01
+
+╔══════════╣ Any sd*/disk* disk in /dev? (limit 20)
+disk                                                                                                                                                                                                                                                                                                                        
+sda
+sda1
+sda2
+
+╔══════════╣ Unmounted file-system?
+╚ Check if you can mount umounted devices                                                                                                                                                                                                                                                                                   
+sed: -e expression #1, char 227: unknown option to `s'                                                                                                                                                                                                                                                                      
+sed: couldn't flush stdout: Broken pipe
+
+╔══════════╣ Environment
+╚ Any private information inside environment variables?                                                                                                                                                                                                                                                                     
+HISTFILESIZE=0                                                                                                                                                                                                                                                                                                              
+USER=www-data
+SHLVL=1
+HOME=/var/www
+OLDPWD=/var/www/html
+_=./linpeas.sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/system/bin:/system/sbin:/system/xbin
+LANG=C
+HISTSIZE=0
+PWD=/tmp
+HISTFILE=/dev/null
+
+╔══════════╣ Searching Signature verification failed in dmesg
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#dmesg-signature-verification-failed                                                                                                                                                                                                                           
+dmesg Not Found                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Executing Linux Exploit Suggester
+╚ https://github.com/mzet-/linux-exploit-suggester                                                                                                                                                                                                                                                                          
+sed: -e expression #1, char 27: unknown option to `s'                                                                                                                                                                                                                                                                       
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+grep: write error: Broken pipe
+
+╔══════════╣ Executing Linux Exploit Suggester 2
+╚ https://github.com/jondonas/linux-exploit-suggester-2                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Protections
+═╣ AppArmor enabled? .............. /etc/apparmor.d                                                                                                                                                                                                                                                                         
+═╣ grsecurity present? ............ grsecurity Not Found
+═╣ PaX bins present? .............. PaX Not Found                                                                                                                                                                                                                                                                           
+═╣ Execshield enabled? ............ Execshield Not Found                                                                                                                                                                                                                                                                    
+═╣ SELinux enabled? ............... sestatus Not Found                                                                                                                                                                                                                                                                      
+═╣ Is ASLR enabled? ............... Yes                                                                                                                                                                                                                                                                                     
+═╣ Printer? ....................... No
+═╣ Is this a virtual machine? ..... Yes (vmware)                                                                                                                                                                                                                                                                            
+
+                                             ╔═══════════╗
+═════════════════════════════════════════════╣ Container ╠═════════════════════════════════════════════                                                                                                                                                                                                                     
+                                             ╚═══════════╝                                                                                                                                                                                                                                                                  
+╔══════════╣ Container related tools present
+╔══════════╣ Container details                                                                                                                                                                                                                                                                                              
+═╣ Is this a container? ........... No                                                                                                                                                                                                                                                                                      
+═╣ Any running containers? ........ No                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                            
+
+                          ╔════════════════════════════════════════════════╗
+══════════════════════════╣ Processes, Crons, Timers, Services and Sockets ╠══════════════════════════                                                                                                                                                                                                                      
+                          ╚════════════════════════════════════════════════╝                                                                                                                                                                                                                                                
+╔══════════╣ Cleaned processes
+╚ Check weird & unexpected proceses run by root: https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes                                                                                                                                                                                                      
+root          1  0.0  0.6 204364  6732 ?        Ss   00:26   0:01 /sbin/init                                                                                                                                                                                                                                                
+root        298  0.0  1.0 214052 10996 ?        Ssl  00:27   0:03 /usr/bin/vmtoolsd
+root        303  0.0  0.5  56800  5192 ?        Ss   00:27   0:00 /lib/systemd/systemd-journald
+root        332  0.0  0.3  45492  3588 ?        Ss   00:27   0:00 /lib/systemd/systemd-udevd
+systemd+    522  0.0  0.4 127284  4144 ?        Ssl  00:27   0:00 /lib/systemd/systemd-timesyncd
+root        531  0.0  0.4  37980  4176 ?        Ss   00:27   0:00 /lib/systemd/systemd-logind
+root        537  0.0  0.2  29664  2900 ?        Ss   00:27   0:00 /usr/sbin/cron -f
+root        538  0.0  1.8 153488 18228 ?        Ss   00:27   0:00 /usr/bin/VGAuthService
+message+    539  0.0  0.3  45116  3976 ?        Ss   00:27   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+root        563  0.0  0.3 250112  3156 ?        Ssl  00:27   0:00 /usr/sbin/rsyslogd -n
+root        610  0.0  2.6 229376 26492 ?        Ss   00:27   0:00 php-fpm: master process (/etc/php/7.0/fpm/php-fpm.conf)
+www-data    696  0.0  0.6 229376  6464 ?        S    00:27   0:00  _ php-fpm: pool www
+www-data    697  0.0  0.6 229376  6464 ?        S    00:27   0:00  _ php-fpm: pool www
+root        618  1.1  1.7 211532 17248 ?        Ss   00:27   0:49 python3 /root/sqli_defender.py
+root        624  0.0  0.1  14524  1796 tty1     Ss+  00:27   0:00 /sbin/agetty --noclear tty1 linux
+root        639  0.0  0.6  69952  6164 ?        Ss   00:27   0:00 /usr/sbin/sshd -D
+root        741  0.0  2.5 271396 25812 ?        Ss   00:27   0:00 /usr/sbin/apache2 -k start
+www-data   1375  0.0  2.4 273852 24976 ?        S    00:44   0:00  _ /usr/sbin/apache2 -k start
+www-data   1403  0.0  2.3 273984 23908 ?        S    00:46   0:00  _ /usr/sbin/apache2 -k start
+www-data   1406  0.0  2.4 274008 24280 ?        S    00:49   0:00  _ /usr/sbin/apache2 -k start
+www-data   1407  0.0  2.3 274040 23764 ?        S    00:49   0:00  _ /usr/sbin/apache2 -k start
+www-data   1420  0.0  2.5 276072 25092 ?        S    00:50   0:00  _ /usr/sbin/apache2 -k start
+www-data   1421  0.0  2.3 274044 23928 ?        S    00:50   0:00  _ /usr/sbin/apache2 -k start
+www-data   1427  0.0  2.5 276136 25304 ?        S    00:50   0:00  _ /usr/sbin/apache2 -k start
+www-data   1563  0.0  2.3 273868 23100 ?        S    01:13   0:00  _ /usr/sbin/apache2 -k start
+www-data   1564  0.0  2.3 273896 23624 ?        S    01:13   0:00  _ /usr/sbin/apache2 -k start
+www-data   1565  0.0  2.3 273900 23728 ?        S    01:14   0:00  _ /usr/sbin/apache2 -k start
+mysql       798  0.0  8.5 654828 85428 ?        Ssl  00:27   0:03 /usr/sbin/mysqld
+www-data   1590  0.0  0.1   3100  1664 ?        S    01:36   0:00 /tmp/tmpsecddr PYIIIIIIIIIIIIIIII7QZjAXP0A0AkAAQ2AB2BB0BBABXP8ABuJI3ZtJqNDqiKxwXc2sBcRsPjgrh0rFni8ahMK0j7ck1xwzUZR0DGE8Vbs0r1slk99q3ZsVRxRprqPWOym1csxMk0neo0t9WiPNptemaxy2Wp7p30aHcZuPSZs5MYZCTqyYzmOpmUiP1iMmZK6G82c7lyUPb05PWpoyIsZa8kDLiQM36lX0QmjmOpMUKpbXR0SkMY9qz9h2bJnPFchMK0LE9PPxwrIoxa8831Wpc0Wpmk7q30C0S0zmopAA
+www-data   1591  0.0  0.0   4276   732 ?        S    01:37   0:00  _ /bin/sh
+www-data   1592  0.0  0.6  32172  6800 ?        S    01:37   0:00      _ python -c import pty; pty.spawn("/bin/bash")
+www-data   1593  0.0  0.3  18164  3304 pts/0    Ss   01:37   0:00          _ /bin/bash
+www-data   1671  0.5  0.2   5112  2368 pts/0    S+   01:39   0:00              _ /bin/sh ./linpeas.sh
+www-data   4774  0.0  0.0   5112   924 pts/0    S+   01:39   0:00                  _ /bin/sh ./linpeas.sh
+www-data   4778  0.0  0.2  36772  2888 pts/0    R+   01:39   0:00                  |   _ ps fauxwww
+www-data   4777  0.0  0.0   5112   924 pts/0    S+   01:39   0:00                  _ /bin/sh ./linpeas.sh
+
+╔══════════╣ Binary processes permissions (non 'root root' and not belonging to current user)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes                                                                                                                                                                                                                                                     
+-rwxr-xr-x 1 root     root      1099016 May 15  2017 /bin/bash                                                                                                                                                                                                                                                              
+lrwxrwxrwx 1 root     root            4 Jan 24  2017 /bin/sh -> dash
+-rwxr-xr-x 1 root     root       121256 Feb 17  2019 /lib/systemd/systemd-journald
+-rwxr-xr-x 1 root     root       207336 Feb 17  2019 /lib/systemd/systemd-logind
+-rwxr-xr-x 1 root     root        39248 Feb 17  2019 /lib/systemd/systemd-timesyncd
+-rwxr-xr-x 1 root     root       465680 Feb 17  2019 /lib/systemd/systemd-udevd
+-rwxr-xr-x 1 root     root        57680 Mar  7  2018 /sbin/agetty
+lrwxrwxrwx 1 root     root           20 Feb 17  2019 /sbin/init -> /lib/systemd/systemd
+-rwxr-xr-x 1 root     root       152232 Jul 25  2017 /usr/bin/VGAuthService
+-rwxr-xr-x 1 root     root       224208 Mar  2  2018 /usr/bin/dbus-daemon[0m
+-rwxr-xr-x 1 root     root        48656 Jul 25  2017 /usr/bin/vmtoolsd
+-rwxr-xr-x 1 root     root       666760 Nov  3  2018 /usr/sbin/apache2
+-rwxr-xr-x 1 root     root        48616 Oct  7  2017 /usr/sbin/cron
+-rwxr-xr-x 1 root     root     17816520 Aug  8  2018 /usr/sbin/mysqld
+-rwxr-xr-x 1 root     root       651576 Jan 18  2017 /usr/sbin/rsyslogd
+-rwxr-xr-x 1 root     root       791024 Mar  1  2019 /usr/sbin/sshd
+
+╔══════════╣ Files opened by processes belonging to other users
+╚ This is usually empty because of the lack of privileges to read other user processes information                                                                                                                                                                                                                          
+COMMAND    PID  TID             USER   FD      TYPE DEVICE SIZE/OFF   NODE NAME                                                                                                                                                                                                                                             
+
+╔══════════╣ Processes with credentials in memory (root req)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#credentials-from-process-memory                                                                                                                                                                                                                               
+gdm-password Not Found                                                                                                                                                                                                                                                                                                      
+gnome-keyring-daemon Not Found                                                                                                                                                                                                                                                                                              
+lightdm Not Found                                                                                                                                                                                                                                                                                                           
+vsftpd Not Found                                                                                                                                                                                                                                                                                                            
+apache2 process found (dump creds from memory as root)                                                                                                                                                                                                                                                                      
+sshd Not Found
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Cron jobs
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#scheduled-cron-jobs                                                                                                                                                                                                                                           
+/usr/bin/crontab                                                                                                                                                                                                                                                                                                            
+incrontab Not Found
+-rw-r--r-- 1 root root     722 Oct  7  2017 /etc/crontab                                                                                                                                                                                                                                                                    
+
+/etc/cron.d:
+total 16
+drwxr-xr-x  2 root root 4096 Mar  2  2019 .
+drwxr-xr-x 80 root root 4096 May  9  2022 ..
+-rw-r--r--  1 root root  102 Oct  7  2017 .placeholder
+-rw-r--r--  1 root root  712 Jan  1  2017 php
+
+/etc/cron.daily:
+total 44
+drwxr-xr-x  2 root root 4096 Mar  4  2019 .
+drwxr-xr-x 80 root root 4096 May  9  2022 ..
+-rw-r--r--  1 root root  102 Oct  7  2017 .placeholder
+-rwxr-xr-x  1 root root  539 Nov  3  2018 apache2
+-rwxr-xr-x  1 root root 1474 Jan 18  2019 apt-compat
+-rwxr-xr-x  1 root root  355 Oct 25  2016 bsdmainutils
+-rwxr-xr-x  1 root root 1597 Jun 25  2018 dpkg
+-rwxr-xr-x  1 root root 2211 Apr 13  2014 locate
+-rwxr-xr-x  1 root root   89 May  5  2015 logrotate
+-rwxr-xr-x  1 root root 1065 Dec 13  2016 man-db
+-rwxr-xr-x  1 root root  249 May 17  2017 passwd
+
+/etc/cron.hourly:
+total 12
+drwxr-xr-x  2 root root 4096 Mar  2  2019 .
+drwxr-xr-x 80 root root 4096 May  9  2022 ..
+-rw-r--r--  1 root root  102 Oct  7  2017 .placeholder
+
+/etc/cron.monthly:
+total 12
+drwxr-xr-x  2 root root 4096 Mar  2  2019 .
+drwxr-xr-x 80 root root 4096 May  9  2022 ..
+-rw-r--r--  1 root root  102 Oct  7  2017 .placeholder
+
+/etc/cron.weekly:
+total 16
+drwxr-xr-x  2 root root 4096 Mar  2  2019 .
+drwxr-xr-x 80 root root 4096 May  9  2022 ..
+-rw-r--r--  1 root root  102 Oct  7  2017 .placeholder
+-rwxr-xr-x  1 root root  723 Dec 13  2016 man-db
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+
+╔══════════╣ Systemd PATH
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#systemd-path-relative-paths                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .service files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#services                                                                                                                                                                                                                                                      
+/etc/systemd/system/multi-user.target.wants/networking.service is executing some relative path                                                                                                                                                                                                                              
+/etc/systemd/system/network-online.target.wants/networking.service is executing some relative path
+/lib/systemd/system/emergency.service is executing some relative path
+You can't write on systemd PATH
+
+╔══════════╣ System timers
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#timers                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .timer files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#timers                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .socket files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sockets                                                                                                                                                                                                                                                       
+/lib/systemd/system/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket                                                                                                                                                                                                                          
+/lib/systemd/system/sockets.target.wants/dbus.socket is calling this writable listener: /var/run/dbus/system_bus_socket
+/lib/systemd/system/sockets.target.wants/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log
+/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout
+/lib/systemd/system/sockets.target.wants/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket
+/lib/systemd/system/syslog.socket is calling this writable listener: /run/systemd/journal/syslog
+/lib/systemd/system/systemd-journald-dev-log.socket is calling this writable listener: /run/systemd/journal/dev-log
+/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/stdout
+/lib/systemd/system/systemd-journald.socket is calling this writable listener: /run/systemd/journal/socket
+
+╔══════════╣ Unix Sockets Listening
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sockets                                                                                                                                                                                                                                                       
+/run/dbus/system_bus_socket                                                                                                                                                                                                                                                                                                 
+  └─(Read Write)
+/run/mysqld/mysqld.sock
+  └─(Read Write)
+/run/php/php7.0-fpm.sock
+  └─(Read Write)
+/run/systemd/cgroups-agent
+/run/systemd/fsck.progress
+/run/systemd/journal/dev-log
+  └─(Read Write)
+/run/systemd/journal/socket
+  └─(Read Write)
+/run/systemd/journal/stdout
+  └─(Read Write)
+/run/systemd/journal/syslog
+  └─(Read Write)
+/run/systemd/notify
+  └─(Read Write)
+/run/systemd/private
+  └─(Read Write)
+/run/udev/control
+/run/vmware/guestServicePipe
+  └─(Read Write)
+/var/run/dbus/system_bus_socket
+  └─(Read Write)
+/var/run/mysqld/mysqld.sock
+  └─(Read Write)
+/var/run/vmware/guestServicePipe
+  └─(Read Write)
+
+╔══════════╣ D-Bus config files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#d-bus                                                                                                                                                                                                                                                         
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.network1.conf (        <policy user="systemd-network">)                                                                                                                                                                                             
+Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.resolve1.conf (        <policy user="systemd-resolve">)
+
+╔══════════╣ D-Bus Service Objects list
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#d-bus                                                                                                                                                                                                                                                         
+NAME                             PID PROCESS         USER             CONNECTION    UNIT                      SESSION    DESCRIPTION                                                                                                                                                                                        
+:1.0                               1 systemd         root             :1.0          init.scope                -          -                  
+:1.1                             531 systemd-logind  root             :1.1          systemd-logind.service    -          -                  
+:1.4                            6668 busctl          www-data         :1.4          apache2.service           -          -                  
+org.freedesktop.DBus             539 dbus-daemon[0m     messagebus       org.freedesktop.DBus dbus.service              -          -                  
+org.freedesktop.hostname1          - -               -                (activatable) -                         -         
+org.freedesktop.locale1            - -               -                (activatable) -                         -         
+org.freedesktop.login1           531 systemd-logind  root             :1.1          systemd-logind.service    -          -                  
+org.freedesktop.network1           - -               -                (activatable) -                         -         
+org.freedesktop.resolve1           - -               -                (activatable) -                         -         
+org.freedesktop.systemd1           1 systemd         root             :1.0          init.scope                -          -                  
+org.freedesktop.timedate1          - -               -                (activatable) -                         -         
+
+
+                                        ╔═════════════════════╗
+════════════════════════════════════════╣ Network Information ╠════════════════════════════════════════                                                                                                                                                                                                                     
+                                        ╚═════════════════════╝                                                                                                                                                                                                                                                             
+╔══════════╣ Hostname, hosts and DNS
+jarvis                                                                                                                                                                                                                                                                                                                      
+127.0.0.1       localhost
+127.0.1.1       jarvis.htb      jarvis
+
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+nameserver 1.1.1.1
+nameserver 8.8.8.8
+htb
+
+╔══════════╣ Interfaces
+default         0.0.0.0                                                                                                                                                                                                                                                                                                     
+loopback        127.0.0.0
+link-local      169.254.0.0
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.10.10.143  netmask 255.255.255.0  broadcast 10.10.10.255
+        inet6 fe80::250:56ff:feb9:b160  prefixlen 64  scopeid 0x20<link>
+        inet6 dead:beef::250:56ff:feb9:b160  prefixlen 64  scopeid 0x0<global>
+        ether 00:50:56:b9:b1:60  txqueuelen 1000  (Ethernet)
+        RX packets 688107  bytes 106814304 (101.8 MiB)
+        RX errors 0  dropped 59  overruns 0  frame 0
+        TX packets 682057  bytes 278976044 (266.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 8913  bytes 1495900 (1.4 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8913  bytes 1495900 (1.4 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+╔══════════╣ Active Ports
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#open-ports                                                                                                                                                                                                                                                    
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -                                                                                                                                                                                                                                           
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   
+tcp6       0      0 :::64999                :::*                    LISTEN      -                   
+tcp6       0      0 :::80                   :::*                    LISTEN      -                   
+tcp6       0      0 :::22                   :::*                    LISTEN      -                   
+
+╔══════════╣ Can I sniff with tcpdump?
+No                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                            
+
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Users Information ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ My user
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#users                                                                                                                                                                                                                                                         
+uid=33(www-data) gid=33(www-data) groups=33(www-data)                                                                                                                                                                                                                                                                       
+
+╔══════════╣ Do I have PGP keys?
+/usr/bin/gpg                                                                                                                                                                                                                                                                                                                
+netpgpkeys Not Found
+netpgp Not Found                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Checking 'sudo -l', /etc/sudoers, and /etc/sudoers.d
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+Matching Defaults entries for www-data on jarvis:                                                                                                                                                                                                                                                                           
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+User www-data may run the following commands on jarvis:
+    (pepper : ALL) NOPASSWD: /var/www/Admin-Utilities/simpler.py
+
+╔══════════╣ Checking sudo tokens
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#reusing-sudo-tokens                                                                                                                                                                                                                                           
+ptrace protection is disabled (0)                                                                                                                                                                                                                                                                                           
+gdb wasn't found in PATH, this might still be vulnerable but linpeas won't be able to check it
+
+╔══════════╣ Checking Pkexec policy
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation/interesting-groups-linux-pe#pe-method-2                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Superusers
+root:x:0:0:root:/root:/bin/bash                                                                                                                                                                                                                                                                                             
+
+╔══════════╣ Users with console
+pepper:x:1000:1000:,,,:/home/pepper:/bin/bash                                                                                                                                                                                                                                                                               
+root:x:0:0:root:/root:/bin/bash
+
+╔══════════╣ All users & groups
+uid=0(root) gid=0(root) groups=0(root)                                                                                                                                                                                                                                                                                      
+uid=1(daemon[0m) gid=1(daemon[0m) groups=1(daemon[0m)
+uid=10(uucp) gid=10(uucp) groups=10(uucp)
+uid=100(systemd-timesync) gid=102(systemd-timesync) groups=102(systemd-timesync)
+uid=1000(pepper) gid=1000(pepper) groups=1000(pepper)
+uid=101(systemd-network) gid=103(systemd-network) groups=103(systemd-network)
+uid=102(systemd-resolve) gid=104(systemd-resolve) groups=104(systemd-resolve)
+uid=103(systemd-bus-proxy) gid=105(systemd-bus-proxy) groups=105(systemd-bus-proxy)
+uid=104(_apt) gid=65534(nogroup) groups=65534(nogroup)
+uid=105(messagebus) gid=110(messagebus) groups=110(messagebus)
+uid=106(mysql) gid=112(mysql) groups=112(mysql)
+uid=107(sshd) gid=65534(nogroup) groups=65534(nogroup)
+uid=13(proxy) gid=13(proxy) groups=13(proxy)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=3(sys) gid=3(sys) groups=3(sys)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=34(backup) gid=34(backup) groups=34(backup)
+uid=38(list) gid=38(list) groups=38(list)
+uid=39(irc) gid=39(irc) groups=39(irc)
+uid=4(sync) gid=65534(nogroup) groups=65534(nogroup)
+uid=41(gnats) gid=41(gnats) groups=41(gnats)
+uid=5(games) gid=60(games) groups=60(games)
+uid=6(man) gid=12(man) groups=12(man)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=7(lp) gid=7(lp) groups=7(lp)
+uid=8(mail) gid=8(mail) groups=8(mail)
+uid=9(news) gid=9(news) groups=9(news)
+
+╔══════════╣ Login now
+ 01:39:57 up  1:13,  0 users,  load average: 0.04, 0.01, 0.00                                                                                                                                                                                                                                                               
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+
+╔══════════╣ Last logons
+root     pts/1        Sat Mar  2 10:34:43 2019 - down                      (00:35)     0.0.0.0                                                                                                                                                                                                                              
+root     pts/2        Sat Mar  2 10:17:27 2019 - Sat Mar  2 10:33:50 2019  (00:16)     0.0.0.0
+root     pts/1        Sat Mar  2 10:13:56 2019 - Sat Mar  2 10:33:52 2019  (00:19)     0.0.0.0
+root     pts/0        Sat Mar  2 10:13:53 2019 - down                      (00:56)     0.0.0.0
+root     tty1         Sat Mar  2 09:29:38 2019 - down                      (01:40)     0.0.0.0
+reboot   system boot  Sat Mar  2 09:28:52 2019 - Sat Mar  2 11:10:20 2019  (01:41)     0.0.0.0
+root     tty1         Sat Mar  2 08:54:44 2019 - crash                     (00:34)     0.0.0.0
+reboot   system boot  Sat Mar  2 08:54:37 2019 - Sat Mar  2 11:10:20 2019  (02:15)     0.0.0.0
+
+wtmp begins Sat Mar  2 08:54:37 2019
+
+╔══════════╣ Last time logon each user
+Username         Port     From             Latest                                                                                                                                                                                                                                                                           
+root             tty1                      Fri Dec  2 06:20:59 -0500 2022
+pepper           pts/0    10.10.14.23      Fri Dec  2 06:22:24 -0500 2022
+
+╔══════════╣ Do not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+                                                                                                                                                                                                                                                                                                                            
+
+
+                                       ╔══════════════════════╗
+═══════════════════════════════════════╣ Software Information ╠═══════════════════════════════════════                                                                                                                                                                                                                      
+                                       ╚══════════════════════╝                                                                                                                                                                                                                                                             
+╔══════════╣ Useful software
+/usr/bin/base64                                                                                                                                                                                                                                                                                                             
+/usr/bin/curl
+/usr/bin/g++
+/usr/bin/gcc
+/usr/bin/make
+/bin/nc
+/bin/nc.traditional
+/bin/netcat
+/usr/bin/perl
+/usr/bin/php
+/bin/ping
+/usr/bin/python
+/usr/bin/python2
+/usr/bin/python2.7
+/usr/bin/python3
+/usr/bin/socat
+/usr/bin/sudo
+/usr/bin/wget
+
+╔══════════╣ Installed Compilers
+ii  g++                           4:6.3.0-4                      amd64        GNU C++ compiler                                                                                                                                                                                                                              
+ii  g++-6                         6.3.0-18+deb9u1                amd64        GNU C++ compiler
+ii  gcc                           4:6.3.0-4                      amd64        GNU C compiler
+ii  gcc-6                         6.3.0-18+deb9u1                amd64        GNU C compiler
+/usr/bin/gcc
+
+╔══════════╣ MySQL version
+mysql  Ver 15.1 Distrib 10.1.37-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2                                                                                                                                                                                                                                   
+
+═╣ MySQL connection using default root/root ........... No
+═╣ MySQL connection using root/toor ................... No                                                                                                                                                                                                                                                                  
+═╣ MySQL connection using root/NOPASS ................. No                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching mysql credentials and exec
+From '/etc/mysql/mariadb.conf.d/50-server.cnf' Mysql user: user         = mysql                                                                                                                                                                                                                                             
+Found readable /etc/mysql/my.cnf
+[client-server]
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+
+╔══════════╣ Analyzing MariaDB Files (limit 70)
+-rw-r--r-- 1 root root 869 Aug 10  2017 /etc/mysql/mariadb.cnf                                                                                                                                                                                                                                                              
+[client-server]
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+
+-rw------- 1 root root 277 Mar  2  2019 /etc/mysql/debian.cnf
+
+╔══════════╣ Analyzing Apache Files (limit 70)
+Version: Server version: Apache/2.4.25 (Debian)                                                                                                                                                                                                                                                                             
+Server built:   2018-11-03T18:46:19
+httpd Not Found
+                                                                                                                                                                                                                                                                                                                            
+══╣ PHP exec extensions
+/etc/apache2/mods-enabled/php7.0.conf-<FilesMatch ".+\.ph(p[3457]?|t|tml)$">                                                                                                                                                                                                                                                
+/etc/apache2/mods-enabled/php7.0.conf:    SetHandler application/x-httpd-php
+--
+/etc/apache2/mods-enabled/php7.0.conf-<FilesMatch ".+\.phps$">
+/etc/apache2/mods-enabled/php7.0.conf:    SetHandler application/x-httpd-php-source
+--
+/etc/apache2/mods-available/php7.0.conf-<FilesMatch ".+\.ph(p[3457]?|t|tml)$">
+/etc/apache2/mods-available/php7.0.conf:    SetHandler application/x-httpd-php
+--
+/etc/apache2/mods-available/php7.0.conf-<FilesMatch ".+\.phps$">
+/etc/apache2/mods-available/php7.0.conf:    SetHandler application/x-httpd-php-source
+drwxr-xr-x 2 root root 4096 Mar  4  2019 /etc/apache2/sites-enabled
+drwxr-xr-x 2 root root 4096 Mar  4  2019 /etc/apache2/sites-enabled
+lrwxrwxrwx 1 root root 36 Mar  4  2019 /etc/apache2/sites-enabled/ban-redirect.conf -> ../sites-available/ban-redirect.conf
+lrwxrwxrwx 1 root root 35 Mar  4  2019 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf
+
+
+-rw-r--r-- 1 root root 1357 Mar  4  2019 /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:80>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        #ServerName www.example.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        DirectoryIndex index.php
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        #Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+lrwxrwxrwx 1 root root 35 Mar  4  2019 /etc/apache2/sites-enabled/000-default.conf -> ../sites-available/000-default.conf
+<VirtualHost *:80>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        #ServerName www.example.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        DirectoryIndex index.php
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        #Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+
+-rw-r--r-- 1 root root 70999 Feb 25  2019 /etc/php/7.0/apache2/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+ibase.allow_persistent = 1
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+-rw-r--r-- 1 root root 70656 Feb 25  2019 /etc/php/7.0/cli/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+ibase.allow_persistent = 1
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+-rw-r--r-- 1 root root 70999 Feb 25  2019 /etc/php/7.0/fpm/php.ini
+allow_url_fopen = On
+allow_url_include = Off
+odbc.allow_persistent = On
+ibase.allow_persistent = 1
+mysqli.allow_persistent = On
+pgsql.allow_persistent = On
+
+╔══════════╣ Analyzing Rsync Files (limit 70)
+-rw-r--r-- 1 root root 1044 Dec 10  2017 /usr/share/doc/rsync/examples/rsyncd.conf                                                                                                                                                                                                                                          
+[ftp]
+        comment = public archive
+        path = /var/www/pub
+        use chroot = yes
+        lock file = /var/lock/rsyncd
+        read only = yes
+        list = yes
+        uid = nobody
+        gid = nogroup
+        strict modes = yes
+        ignore errors = no
+        ignore nonreadable = yes
+        transfer logging = no
+        timeout = 600
+        refuse options = checksum dry-run
+        dont compress = *.gz *.tgz *.zip *.z *.rpm *.deb *.iso *.bz2 *.tbz
+
+
+╔══════════╣ Analyzing Ldap Files (limit 70)
+The password hash is from the {SSHA} to 'structural'                                                                                                                                                                                                                                                                        
+drwxr-xr-x 2 root root 4096 Mar  2  2019 /etc/ldap
+
+
+╔══════════╣ Searching ssl/ssh files
+ChallengeResponseAuthentication no                                                                                                                                                                                                                                                                                          
+UsePAM yes
+gpg-connect-agent: no running gpg-agent - starting '/usr/bin/gpg-agent'
+gpg-connect-agent: failed to create temporary file '/var/www/.gnupg/.#lk0x00005635239c3880.jarvis.7172': No such file or directory
+gpg-connect-agent: can't connect to the agent: No such file or directory
+gpg-connect-agent: error sending standard options: No agent running
+══╣ Some home ssh config file was found
+/usr/share/openssh/sshd_config                                                                                                                                                                                                                                                                                              
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding yes
+PrintMotd no
+AcceptEnv LANG LC_*
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+
+══╣ /etc/hosts.allow file found, trying to read the rules:
+/etc/hosts.allow                                                                                                                                                                                                                                                                                                            
+
+
+Searching inside /etc/ssh/ssh_config for interesting info
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+
+╔══════════╣ Analyzing PAM Auth Files (limit 70)
+drwxr-xr-x 2 root root 4096 Aug  7  2019 /etc/pam.d                                                                                                                                                                                                                                                                         
+-rw-r--r-- 1 root root 2133 Mar  1  2019 /etc/pam.d/sshd
+
+
+
+
+╔══════════╣ Analyzing Keyring Files (limit 70)
+drwxr-xr-x 3 root root 4096 May  9  2022 /usr/lib/python3/dist-packages/keyrings                                                                                                                                                                                                                                            
+drwxr-xr-x 2 root root 4096 May  9  2022 /usr/share/keyrings
+
+
+
+
+╔══════════╣ Searching uncommon passwd files (splunk)
+passwd file: /etc/pam.d/passwd                                                                                                                                                                                                                                                                                              
+passwd file: /etc/passwd
+passwd file: /usr/share/bash-completion/completions/passwd
+passwd file: /usr/share/lintian/overrides/passwd
+
+╔══════════╣ Analyzing Github Files (limit 70)
+drwxr-xr-x 2 www-data www-data 4096 Apr  7  2018 /usr/share/phpmyadmin/vendor/phpmyadmin/motranslator/.github                                                                                                                                                                                                               
+drwxr-xr-x 2 www-data www-data 4096 Apr  7  2018 /usr/share/phpmyadmin/vendor/phpmyadmin/sql-parser/.github
+
+
+
+
+╔══════════╣ Analyzing PGP-GPG Files (limit 70)
+/usr/bin/gpg                                                                                                                                                                                                                                                                                                                
+gpg Not Found
+netpgpkeys Not Found                                                                                                                                                                                                                                                                                                        
+netpgp Not Found                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+-rw-r--r-- 1 root root 5138 May 25  2017 /etc/apt/trusted.gpg.d/debian-archive-jessie-automatic.gpg
+-rw-r--r-- 1 root root 5147 May 25  2017 /etc/apt/trusted.gpg.d/debian-archive-jessie-security-automatic.gpg
+-rw-r--r-- 1 root root 2775 May 25  2017 /etc/apt/trusted.gpg.d/debian-archive-jessie-stable.gpg
+-rw-r--r-- 1 root root 7483 May 25  2017 /etc/apt/trusted.gpg.d/debian-archive-stretch-automatic.gpg
+-rw-r--r-- 1 root root 7492 May 25  2017 /etc/apt/trusted.gpg.d/debian-archive-stretch-security-automatic.gpg
+-rw-r--r-- 1 root root 2275 May 25  2017 /etc/apt/trusted.gpg.d/debian-archive-stretch-stable.gpg
+-rw-r--r-- 1 root root 3780 May 25  2017 /etc/apt/trusted.gpg.d/debian-archive-wheezy-automatic.gpg
+-rw-r--r-- 1 root root 2851 May 25  2017 /etc/apt/trusted.gpg.d/debian-archive-wheezy-stable.gpg
+-rw-r--r-- 1 root root 3452 Feb  7  2019 /usr/share/gnupg/distsigkey.gpg
+-rw-r--r-- 1 root root 36941 May 25  2017 /usr/share/keyrings/debian-archive-keyring.gpg
+-rw-r--r-- 1 root root 17538 May 25  2017 /usr/share/keyrings/debian-archive-removed-keys.gpg
+-rw-r--r-- 1 root root 3177 Aug 14  2021 /var/lib/apt/lists/ftp.debian.org_debian_dists_stretch_Release.gpg
+-----BEGIN PGP SIGNATURE-----
+iQIzBAABCAAdFiEEFukLP99l7eOqfzI8BO5yN7fUU+wFAmEXdBwACgkQBO5yN7fU
+U+xalBAAqBgcwJUbRYMn3UzcuntYnre+eYzFMKCVCYTifl+dnnYn4WwTk4MY35v2
+7C1Qs6GOKZZiP7bqRLEwEW44SalZynx/qAwa+SQn02rsMOwM5fB7bPvyWBEga3oU
+TC6kwPnorjb732Vv+eXxzuso3cm4pzU5lRdmx2CS6I/7djroJQ9d+qYlQiL9sWiW
+YthRWmhayY6HXtkSFBt2Uqx80v1fvcFbQEnVLlAL0Gg0YimL/sK5UopnCvqogQPy
+INdSOmMeeADR0ae6FeYmz54rvrl6DC4aJQmTCoIibjxC6Iuzufz8ZoNUaDGzfSdA
+o9sGXTaczuqJU7TD59CtRfAYOAJDJK+L4Tbr7LH1fwXVRAYZrUTYGBD9WWEsw5N8
+xrvNtIot0JK5GEQOf8hjem7nkR7/Ak4hwfm57G/H/OtLMvvw3xE46FaYisRBEyvK
+GGludM/hgi7kN7uOqzKT4MpbV2hiqtpEbPmDhhYDiMc3JdMQT+XOOdWYSTMeHVLP
+eK3WFTJqbdfu2EZnaN8rwCmiwZ5TqR6y7Gd/0lvZUJHpHREgab7T5qZua05KHImR
+370zk8g9w7MoL0fERzSaOGCNv/u6EW1XWL03Kyiy+Te+i7cT0tAWy+AyDIeiw/lH
+5k3M4Wsu9mXtyL+gB04uCYCPQcJ2v/c9PCEjFpZOOkGgRKV1JeqJAjMEAAEIAB0W
+IQQBRtxtSgspFL3tNNtkis/WIvPROAUCYRd0HQAKCRBkis/WIvPROOzcD/0erZc9
+kGXLpodai7uocZat6Mt9vVYQl2fcAMrA3vAC9WbkVDGLmxoDc1E3pgVz5MvGgFq2
+vyfVvm6U9DjA4r1AsKMBFbs9aXrasBQFg0IIMu7uJ3d7HBvQ/LqQkA2Ysd6gdVQ9
+oViRrwh+p/UZUWFPOQkHpyxfDnjkpfkxBlx5kQg8IEpUS1E0CIKRoAKrbUS0nZ0D
+LW9ErEjh19JSoKkLsi6rM819/QZTH6Cz2jo0Fvb8nJ8Sil7tdvnfgHEqtEITQMLr
+mW9wifuv5gbrQGuS4iPUfiEBsmVf7/m9oBeBi7F6LZD9WbZBId4Rw0m+0G9q5PRW
+CouSbAuq9Rkf60x/Pr7dF6m54u1YMxTMSmEm3R3Iu94e6XyAXHbPgZbTl5c0eTsD
+HEFviqPEjZ2Q/5vRoQ6MB17s91dgtK2FaSWn4+5EaosL+1o39qxOivSKNcqvy8WS
+q4JNNjy6nIPoN4wGbB/iwYxtnEudF4uRxI8D4a2yhRcy3MBURQ9nObNJLT4c9Evv
+FhasCkm3khSP1il5iN0Z0cQiYAq0vRJMR3SCRgVE5NbmH4hnFl/oihtQ063W6Cwy
+FtjbPhVUDcChunMa1J51sA1DpnE2p7KPBpW4b6okyxD0+Hpr24yTiCXQQaB0Xfsh
+OwXBy+xPayaZDfylg3hvY/749hFtHs5WMxulpIkCMwQAAQgAHRYhBKcjaIbzzMqt
+FIon+A6YQE04b6HZBQJhF4LbAAoJEA6YQE04b6HZraEP/jpiJnTs5uPB6hsm1IBq
+Yile+WC2+cjyzjfD4P/xOAFskt5fjOv+3CzojJ95EC1c+brFev+6skOjjH10sd9Q
+S/eEYV9aPkweKR13GAcm+sEXY+PK7iu4u0uV1grBzTxndVzzkGSafk2zMC4uZOBf
+xyQMx4Or/9Og3FODEDlMChKFc4qdhNzS74ZOHJuw698nExAZMuq5q3v/g+AOnOew
+CXKAHzoUjH4a4PNuIvHD5HESHMjSZNv+r+3JmYRyze3vfjKyN5yPf9fmAt9EqQ2w
+ufS6g7fk7zsnd0PkDPZ678ZKes1NJojcqxAyBvofhrJ+jseLfN/3W5uJEdiruUrL
+JfwRXbhcSURsK4L8EwYPrF6WhkcW4vxvDZ8Z7QPpYpXY4PqUpSrf4HVAb5n+XXu3
+KcMlrCtxSgpBVLlZ7N0BGe6vWi8YdbhI+dv4PcxPjVL7lDL/Mvkd89QzjPQKEwBz
+EKIEPJy3M707TXwIgrXfpKZVcaTHHTa3bqshGKAAejAbFmT3e55FKvkjvND8Pz6X
+hE3qOnEHBaliH78p6dI/hGllOMNuUkXCxSYnP/BTPPZKlqXMzbw6hY4TJz+tPfHT
+K3j7sN9kOXIJ8BjtpEuYtwP9efEU48jlug9pM0owXT1/F/HZ7aoIF+lQ6lDe28Wv
+kIlg3xXNkgjuzQp5Z/O3WWBhiQJUBAABCAA+FiEEBn48RWuuJArO6I9v7w84Khp7
+ZQAFAmEXfkMgHGRlYmlhbi1yZWxlYXNlQGxpc3RzLmRlYmlhbi5vcmcACgkQ7w84
+Khp7ZQC/5Q/+J2+hRDcLgym8flL4tcTnQPYfi9UOlFOhWfk6XDiqpFL36sRTBqxo
+RGgIpRxLbjmBDFiIoj26avG2xQyIsRqkpFg/1ycGec+cxnT1OE+NhFNdvlofvWsh
+p5W5RRg0UK3badGa1b8Nh9eUqPa+d5rGTDR86FiWOYogSVWQJNpD1Xvsa1gwJkcO
+vFsARwgWYSme50ScGIDoli6I3C+rx/ZeV/XEi6cz020pwYCMI6b6DHTjdOrbmJb1
+2CfuDhjk3xXdTY163QdYV+mjwn8ITKu0tK+qJtsyXlNZcBUYRWD4XQ2wkxIRof96
+ds0psT32vd+ODnv4qK64xy4zCbDBOjyKKxN2hC/1u8QA+ppQ+44xjz72yH1qOJNc
+PDIv6oKjvRTPLQb2IFJIhOF0ceW8g2awVqpxWv7S6ahWNBILXm51XMS8PP4U6zjy
+4WMlW8a5vaMAFlFLeEPT4R7NEkJQm3hvMZMMQh7NYq1qdoBerjoagOI5xx/eFD/h
+Ll1/dQpHDS+OCNwf8dq8spDVHrWKSux8Wa2cSj2M7Xopd5Yh0uybcEL0JXrxEOLv
+OY/0ZS5ettn/Rbgrg15BrMJDt/0SDOj05SRphmFv5s/JtFB0j7IaBQkISPTNIX9j
+yFYIxOZCWiiSY3m7GmrwdgcukP+U0z3fX994DgtJGWJsj/3qH9NOwZY=
+=0n9J
+-----END PGP SIGNATURE-----
+
+
+╔══════════╣ Kubernetes information
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing FTP Files (limit 70)
+                                                                                                                                                                                                                                                                                                                            
+
+-rw-r--r-- 1 root root 69 Feb 25  2019 /etc/php/7.0/mods-available/ftp.ini
+-rw-r--r-- 1 root root 69 Feb 25  2019 /usr/share/php7.0-common/common/ftp.ini
+
+
+
+
+
+
+╔══════════╣ Analyzing Windows Files Files (limit 70)
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lrwxrwxrwx 1 root root 22 Mar  2  2019 /etc/alternatives/my.cnf -> /etc/mysql/mariadb.cnf
+lrwxrwxrwx 1 root root 24 Mar  2  2019 /etc/mysql/my.cnf -> /etc/alternatives/my.cnf
+-rw-r--r-- 1 root root 83 Mar  2  2019 /var/lib/dpkg/alternatives/my.cnf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔══════════╣ Analyzing Other Interesting Files Files (limit 70)
+-rw-r--r-- 1 root root 3526 May 15  2017 /etc/skel/.bashrc                                                                                                                                                                                                                                                                  
+-rw-r--r-- 1 pepper pepper 3526 Mar  2  2019 /home/pepper/.bashrc
+
+
+
+
+
+-rw-r--r-- 1 root root 675 May 15  2017 /etc/skel/.profile
+-rw-r--r-- 1 pepper pepper 675 Mar  2  2019 /home/pepper/.profile
+
+
+
+
+
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Interesting Files ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+strace Not Found                                                                                                                                                                                                                                                                                                            
+-rwsr-xr-x 1 root root 31K Aug 21  2018 /bin/fusermount                                                                                                                                                                                                                                                                     
+-rwsr-xr-x 1 root root 44K Mar  7  2018 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 60K Nov 10  2016 /bin/ping
+-rwsr-x--- 1 root pepper 171K Feb 17  2019 /bin/systemctl
+-rwsr-xr-x 1 root root 31K Mar  7  2018 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 40K May 17  2017 /bin/su
+-rwsr-xr-x 1 root root 40K May 17  2017 /usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 59K May 17  2017 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 75K May 17  2017 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 40K May 17  2017 /usr/bin/chsh
+-rwsr-xr-x 1 root root 138K Jun  5  2017 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 49K May 17  2017 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 10K Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 431K Mar  1  2019 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-- 1 root messagebus 42K Mar  2  2018 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+-rwxr-sr-x 1 root shadow 35K May 27  2017 /sbin/unix_chkpwd                                                                                                                                                                                                                                                                 
+-rwxr-sr-x 1 root ssh 351K Mar  1  2019 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root crontab 40K Oct  7  2017 /usr/bin/crontab
+-rwxr-sr-x 1 root mail 19K Jan 17  2017 /usr/bin/dotlockfile
+-rwxr-sr-x 1 root shadow 71K May 17  2017 /usr/bin/chage
+-rwxr-sr-x 1 root tty 27K Mar  7  2018 /usr/bin/wall
+-rwxr-sr-x 1 root shadow 23K May 17  2017 /usr/bin/expiry
+-rwxr-sr-x 1 root tty 15K Apr 12  2017 /usr/bin/bsd-write
+-rwxr-sr-x 1 root utmp 10K Feb 18  2016 /usr/lib/x86_64-linux-gnu/utempter/utempter
+
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#ld-so                                                                                                                                                                                                                                                         
+/etc/ld.so.conf                                                                                                                                                                                                                                                                                                             
+include /etc/ld.so.conf.d/*.conf
+
+/etc/ld.so.conf.d
+  /etc/ld.so.conf.d/fakeroot-x86_64-linux-gnu.conf
+/usr/lib/x86_64-linux-gnu/libfakeroot
+  /etc/ld.so.conf.d/libc.conf
+/usr/local/lib
+  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+  /etc/ld.so.conf.d/zz_i386-biarch-compat.conf
+/lib32
+/usr/lib32
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#capabilities                                                                                                                                                                                                                                                  
+Current capabilities:                                                                                                                                                                                                                                                                                                       
+CapInh: 0000000000000000
+CapPrm: 0000000000000000
+CapEff: 0000000000000000
+CapBnd: 0000003fffffffff
+CapAmb: 0000000000000000
+
+Shell capabilities:
+capsh Not Found
+CapInh: 0000000000000000                                                                                                                                                                                                                                                                                                    
+CapPrm: 0000000000000000
+CapEff: 0000000000000000
+CapBnd: 0000003fffffffff
+CapAmb: 0000000000000000
+
+Files with capabilities (limited to 50):
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#acls                                                                                                                                                                                                                                                          
+files with acls in searched folders Not Found                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#script-binaries-in-path                                                                                                                                                                                                                                       
+/usr/bin/gettext.sh                                                                                                                                                                                                                                                                                                         
+
+╔══════════╣ Unexpected in root
+/vmlinuz                                                                                                                                                                                                                                                                                                                    
+/vmlinuz.old
+/initrd.img.old
+/initrd.img
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#profiles-files                                                                                                                                                                                                                                                
+total 12                                                                                                                                                                                                                                                                                                                    
+drwxr-xr-x  2 root root 4096 Mar  2  2019 .
+drwxr-xr-x 80 root root 4096 May  9  2022 ..
+-rw-r--r--  1 root root  663 Apr 12  2016 bash_completion.sh
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#init-init-d-systemd-and-rc-d                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                            
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No                                                                                                                                                                                                                                                                                
+═╣ Credentials in fstab/mtab? ........... No                                                                                                                                                                                                                                                                                
+═╣ Can I read shadow files? ............. No                                                                                                                                                                                                                                                                                
+═╣ Can I read shadow plists? ............ No                                                                                                                                                                                                                                                                                
+═╣ Can I write shadow plists? ........... No                                                                                                                                                                                                                                                                                
+═╣ Can I read opasswd file? ............. No                                                                                                                                                                                                                                                                                
+═╣ Can I write in network-scripts? ...... No                                                                                                                                                                                                                                                                                
+═╣ Can I read root folder? .............. No                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/                                                                                                                                                                                                                                                                                                                      
+/home/pepper/user.txt
+/home/pepper/.bash_history
+/home/pepper/Web/Logs/10.10.16.7.txt
+/root/
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+/run/php                                                                                                                                                                                                                                                                                                                    
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+/var/www/html/tmpuczdn.php                                                                                                                                                                                                                                                                                                  
+/var/www/html/tmpbhkbn.php
+/var/log/syslog
+/var/log/auth.log
+/var/log/daemon.log
+/var/log/kern.log
+/var/log/messages
+/tmp/tmpsecddr
+
+╔══════════╣ Writable log files (logrotten) (limit 100)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#logrotate-exploitation                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Files inside /var/www (limit 20)
+total 16                                                                                                                                                                                                                                                                                                                    
+drwxr-xr-x  4 root   root   4096 Mar  4  2019 .
+drwxr-xr-x 12 root   root   4096 Mar  2  2019 ..
+drwxr-xr-x  2 pepper pepper 4096 Mar  4  2019 Admin-Utilities
+drwxrwxrwx  9 root   root   4096 Jan 12 01:36 html
+
+╔══════════╣ Files inside others home (limit 20)
+/home/pepper/.bashrc                                                                                                                                                                                                                                                                                                        
+/home/pepper/user.txt
+/home/pepper/.profile
+/home/pepper/Web/Logs/10.10.16.7.txt
+/home/pepper/.bash_logout
+
+╔══════════╣ Searching installed mail applications
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Mails (limit 50)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Backup folders
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Backup files (limited 100)
+-rw-r--r-- 1 root root 159 Mar  2  2019 /var/lib/sgml-base/supercatalog.old                                                                                                                                                                                                                                                 
+-rwxrwxrwx 1 root root 680 Dec  8  2018 /var/www/html/fonts/flaticon/backup.txt
+-rw-r--r-- 1 root root 7896 Feb 19  2019 /lib/modules/4.9.0-8-amd64/kernel/drivers/net/team/team_mode_activebackup.ko
+-rw-r--r-- 1 root root 20 Jul 25  2017 /etc/vmware-tools/tools.conf.old
+-rw-r--r-- 1 root root 673 Mar  2  2019 /etc/xml/xml-core.xml.old
+-rw-r--r-- 1 root root 610 Mar  2  2019 /etc/xml/catalog.old
+-rw-r--r-- 1 root root 292 Jan 12 00:27 /run/blkid/blkid.tab.old
+-rwxr-xr-x 1 root root 18148040 Aug  8  2018 /usr/bin/mariabackup
+-rwxr-xr-x 1 root root 21282 Aug  8  2018 /usr/bin/wsrep_sst_xtrabackup
+-rwxr-xr-x 1 root root 32879 Aug  8  2018 /usr/bin/wsrep_sst_mariabackup
+-rwxr-xr-x 1 root root 40835 Aug  8  2018 /usr/bin/wsrep_sst_xtrabackup-v2
+-rw-r--r-- 1 root root 303 May 15  2018 /usr/share/doc/hdparm/changelog.old.gz
+-rw-r--r-- 1 root root 7867 Nov  7  2016 /usr/share/doc/telnet/README.telnet.old.gz
+-rw-r--r-- 1 root root 331845 Mar 13  2017 /usr/share/doc/manpages/Changes.old.gz
+-rw-r--r-- 1 root root 348 Aug  8  2018 /usr/share/man/man1/wsrep_sst_mariabackup.1.gz
+-rw-r--r-- 1 root root 357 Aug  8  2018 /usr/share/man/man1/wsrep_sst_xtrabackup-v2.1.gz
+-rw-r--r-- 1 root root 351 Aug  8  2018 /usr/share/man/man1/wsrep_sst_xtrabackup.1.gz
+-rw-r--r-- 1 root root 31664 Jul 25  2017 /usr/lib/open-vm-tools/plugins/vmsvc/libvmbackup.so
+
+╔══════════╣ Searching tables inside readable .db/.sql/.sqlite files (limit 100)
+Found: /var/lib/apt/listchanges.db: Berkeley DB (Hash, version 9, native byte-order)                                                                                                                                                                                                                                        
+
+
+╔══════════╣ Web files?(output limit)
+/var/www/:                                                                                                                                                                                                                                                                                                                  
+total 16K
+drwxr-xr-x  4 root   root   4.0K Mar  4  2019 .
+drwxr-xr-x 12 root   root   4.0K Mar  2  2019 ..
+drwxr-xr-x  2 pepper pepper 4.0K Mar  4  2019 Admin-Utilities
+drwxrwxrwx  9 root   root   4.0K Jan 12 01:36 html
+
+/var/www/Admin-Utilities:
+total 16K
+drwxr-xr-x 2 pepper pepper 4.0K Mar  4  2019 .
+
+╔══════════╣ All hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+-rw-r--r-- 1 pepper pepper 220 Mar  2  2019 /home/pepper/.bash_logout                                                                                                                                                                                                                                                       
+-rwxrwxrwx 1 root root 10244 Dec  8  2018 /var/www/html/sass/bootstrap/.DS_Store
+-rwxrwxrwx 1 root root 6148 Dec  8  2018 /var/www/html/sass/.DS_Store
+-rwxrwxrwx 1 root root 6148 Dec  8  2018 /var/www/html/images/.DS_Store
+-rwxrwxrwx 1 root root 6148 Dec  8  2018 /var/www/html/fonts/flaticon/.DS_Store
+-rwxrwxrwx 1 root root 6148 Dec  8  2018 /var/www/html/fonts/bootstrap/.DS_Store
+-rwxrwxrwx 1 root root 6148 Dec  8  2018 /var/www/html/fonts/icomoon/.DS_Store
+-rwxrwxrwx 1 root root 8196 Dec  8  2018 /var/www/html/fonts/.DS_Store
+-rwxrwxrwx 1 root root 6148 Dec  8  2018 /var/www/html/js/.DS_Store
+-rwxrwxrwx 1 root root 6148 Dec  8  2018 /var/www/html/css/.DS_Store
+-rw-r--r-- 1 root root 220 May 15  2017 /etc/skel/.bash_logout
+-rw------- 1 root root 0 Mar  2  2019 /etc/.pwd.lock
+-rw-r--r-- 1 root root 0 Jan 12 00:27 /run/network/.ifstate.lock
+-rw-r--r-- 1 root root 230 Feb  5  2017 /usr/share/doc/python-cliapp/html/.buildinfo
+-rwxr-xr-x 1 www-data www-data 1332 Apr  7  2018 /usr/share/phpmyadmin/.eslintrc.json
+-rwxr-xr-x 1 www-data www-data 24 Apr  7  2018 /usr/share/phpmyadmin/.eslintignore
+-rwxr-xr-x 1 www-data www-data 84 Apr  7  2018 /usr/share/phpmyadmin/vendor/phpmyadmin/sql-parser/.weblate
+-rwxr-xr-x 1 www-data www-data 240 Apr  7  2018 /usr/share/phpmyadmin/vendor/paragonie/constant_time_encoding/.travis.yml
+-rwxr-xr-x 1 www-data www-data 706 Apr  7  2018 /usr/share/phpmyadmin/vendor/pragmarx/google2fa/.travis.yml
+-rwxr-xr-x 1 www-data www-data 946 Apr  7  2018 /usr/share/phpmyadmin/vendor/pragmarx/google2fa/.scrutinizer.yml
+-rwxr-xr-x 1 www-data www-data 423 Apr  7  2018 /usr/share/phpmyadmin/vendor/google/recaptcha/.travis.yml
+-rwxr-xr-x 1 www-data www-data 250 Apr  7  2018 /usr/share/phpmyadmin/vendor/bacon/bacon-qr-code/.travis.yml
+-rwxr-xr-x 1 www-data www-data 555 Apr  7  2018 /usr/share/phpmyadmin/vendor/twig/extensions/.travis.yml
+-rwxr-xr-x 1 www-data www-data 1152 Apr  7  2018 /usr/share/phpmyadmin/vendor/twig/twig/.travis.yml
+-rwxr-xr-x 1 www-data www-data 512 Apr  7  2018 /usr/share/phpmyadmin/vendor/twig/twig/.php_cs.dist
+-rwxr-xr-x 1 www-data www-data 224 Apr  7  2018 /usr/share/phpmyadmin/vendor/twig/twig/.editorconfig
+-rwxr-xr-x 1 www-data www-data 274 Apr  7  2018 /usr/share/phpmyadmin/.editorconfig
+
+╔══════════╣ Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders (limit 70)
+-rwxrwxrwx 1 www-data www-data 765818 Jan  6 21:11 /tmp/linpeas.sh                                                                                                                                                                                                                                                          
+-rwxr-xr-x 1 www-data www-data 3516 Jan 12 01:36 /tmp/tmpsecddr
+-rwxr-xr-x 1 www-data www-data 3516 Jan 12 01:33 /tmp/tmpsexxvy
+-rw-r--r-- 1 root root 1784 Aug  7  2019 /var/backups/apt.extended_states.1.gz
+-rw-r--r-- 1 root root 172 Mar  2  2019 /var/backups/dpkg.statoverride.0
+-rw-r--r-- 1 root root 51200 Mar  5  2019 /var/backups/alternatives.tar.0
+-rw-r--r-- 1 root root 280 Mar  2  2019 /var/backups/dpkg.diversions.0
+-rw-r--r-- 1 root root 1393 Mar  3  2019 /var/backups/apt.extended_states.4.gz
+-rw-r--r-- 1 root root 443236 Mar  4  2019 /var/backups/dpkg.status.0
+-rw-r--r-- 1 root root 1793 Mar  3  2019 /var/backups/apt.extended_states.3.gz
+-rw-r--r-- 1 root root 15810 Dec  2 06:17 /var/backups/apt.extended_states.0
+-rw-r--r-- 1 root root 1223 Mar  2  2019 /var/backups/apt.extended_states.5.gz
+-rw-r--r-- 1 root root 1729 Mar  4  2019 /var/backups/apt.extended_states.2.gz
+
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files                                                                                                                                                                                                                                                
+uniq: write error: Broken pipe                                                                                                                                                                                                                                                                                              
+/dev/mqueue
+/dev/shm
+/run/lock
+/run/lock/apache2
+/run/php
+/tmp
+/tmp/linpeas.sh
+/tmp/tmpsecddr
+/tmp/tmpsexxvy
+/usr/share/phpmyadmin
+/usr/share/phpmyadmin/.editorconfig
+/usr/share/phpmyadmin/.eslintignore
+/usr/share/phpmyadmin/.eslintrc.json
+/usr/share/phpmyadmin/CODE_OF_CONDUCT.md
+/usr/share/phpmyadmin/CONTRIBUTING.md
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/doc/html
+/usr/share/phpmyadmin/doc/html/_images
+/usr/share/phpmyadmin/doc/html/_sources
+/usr/share/phpmyadmin/doc/html/_sources/bookmarks.txt
+/usr/share/phpmyadmin/doc/html/_sources/charts.txt
+/usr/share/phpmyadmin/doc/html/_sources/config.txt
+/usr/share/phpmyadmin/doc/html/_sources/copyright.txt
+/usr/share/phpmyadmin/doc/html/_sources/credits.txt
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/doc/html/_static
+/usr/share/phpmyadmin/doc/html/_static/basic.css
+/usr/share/phpmyadmin/doc/html/_static/classic.css
+/usr/share/phpmyadmin/doc/html/_static/default.css
+/usr/share/phpmyadmin/doc/html/_static/doctools.js
+/usr/share/phpmyadmin/doc/html/_static/jquery.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/doc/html/bookmarks.html
+/usr/share/phpmyadmin/doc/html/charts.html
+/usr/share/phpmyadmin/doc/html/config.html
+/usr/share/phpmyadmin/doc/html/copyright.html
+/usr/share/phpmyadmin/doc/html/credits.html
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/error_report.php
+/usr/share/phpmyadmin/examples
+/usr/share/phpmyadmin/examples/config.manyhosts.inc.php
+/usr/share/phpmyadmin/examples/openid.php
+/usr/share/phpmyadmin/examples/signon-script.php
+/usr/share/phpmyadmin/examples/signon.php
+/usr/share/phpmyadmin/export.php
+/usr/share/phpmyadmin/favicon.ico
+/usr/share/phpmyadmin/gis_data_editor.php
+/usr/share/phpmyadmin/import.php
+/usr/share/phpmyadmin/import_status.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/js/ajax.js
+/usr/share/phpmyadmin/js/chart.js
+/usr/share/phpmyadmin/js/codemirror
+/usr/share/phpmyadmin/js/codemirror/addon
+/usr/share/phpmyadmin/js/codemirror/addon/lint
+/usr/share/phpmyadmin/js/codemirror/addon/lint/sql-lint.js
+/usr/share/phpmyadmin/js/common.js
+/usr/share/phpmyadmin/js/config.js
+/usr/share/phpmyadmin/js/console.js
+/usr/share/phpmyadmin/js/cross_framing_protection.js
+/usr/share/phpmyadmin/js/db_central_columns.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/js/designer/database.js
+/usr/share/phpmyadmin/js/designer/history.js
+/usr/share/phpmyadmin/js/designer/init.js
+/usr/share/phpmyadmin/js/designer/move.js
+/usr/share/phpmyadmin/js/designer/objects.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/js/doclinks.js
+/usr/share/phpmyadmin/js/error_report.js
+/usr/share/phpmyadmin/js/export.js
+/usr/share/phpmyadmin/js/export_output.js
+/usr/share/phpmyadmin/js/functions.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/js/jqplot/plugins
+/usr/share/phpmyadmin/js/jqplot/plugins/jqplot.byteFormatter.js
+/usr/share/phpmyadmin/js/keyhandler.js
+/usr/share/phpmyadmin/js/makegrid.js
+/usr/share/phpmyadmin/js/menu-resizer.js
+/usr/share/phpmyadmin/js/messages.php
+/usr/share/phpmyadmin/js/microhistory.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/js/transformations/image_upload.js
+/usr/share/phpmyadmin/js/transformations/json.js
+/usr/share/phpmyadmin/js/transformations/json_editor.js
+/usr/share/phpmyadmin/js/transformations/sql_editor.js
+/usr/share/phpmyadmin/js/transformations/xml.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/js/u2f.js
+/usr/share/phpmyadmin/js/vendor
+/usr/share/phpmyadmin/js/vendor/codemirror
+/usr/share/phpmyadmin/js/vendor/codemirror/LICENSE
+/usr/share/phpmyadmin/js/vendor/codemirror/addon
+/usr/share/phpmyadmin/js/vendor/codemirror/addon/hint
+/usr/share/phpmyadmin/js/vendor/codemirror/addon/hint/show-hint.css
+/usr/share/phpmyadmin/js/vendor/codemirror/addon/hint/show-hint.js
+/usr/share/phpmyadmin/js/vendor/codemirror/addon/hint/sql-hint.js
+/usr/share/phpmyadmin/js/vendor/codemirror/addon/lint
+/usr/share/phpmyadmin/js/vendor/codemirror/addon/lint/lint.css
+/usr/share/phpmyadmin/js/vendor/codemirror/addon/lint/lint.js
+/usr/share/phpmyadmin/js/vendor/codemirror/addon/runmode
+/usr/share/phpmyadmin/js/vendor/codemirror/addon/runmode/runmode.js
+/usr/share/phpmyadmin/js/vendor/codemirror/lib
+/usr/share/phpmyadmin/js/vendor/codemirror/lib/codemirror.css
+/usr/share/phpmyadmin/js/vendor/codemirror/lib/codemirror.js
+/usr/share/phpmyadmin/js/vendor/codemirror/mode
+/usr/share/phpmyadmin/js/vendor/codemirror/mode/javascript
+/usr/share/phpmyadmin/js/vendor/codemirror/mode/javascript/javascript.js
+/usr/share/phpmyadmin/js/vendor/codemirror/mode/sql
+/usr/share/phpmyadmin/js/vendor/codemirror/mode/sql/sql.js
+/usr/share/phpmyadmin/js/vendor/codemirror/mode/xml
+/usr/share/phpmyadmin/js/vendor/codemirror/mode/xml/xml.js
+/usr/share/phpmyadmin/js/vendor/jqplot
+/usr/share/phpmyadmin/js/vendor/jqplot/jquery.jqplot.js
+/usr/share/phpmyadmin/js/vendor/jqplot/plugins
+/usr/share/phpmyadmin/js/vendor/jqplot/plugins/jqplot.barRenderer.js
+/usr/share/phpmyadmin/js/vendor/jqplot/plugins/jqplot.canvasAxisLabelRenderer.js
+/usr/share/phpmyadmin/js/vendor/jqplot/plugins/jqplot.canvasTextRenderer.js
+/usr/share/phpmyadmin/js/vendor/jqplot/plugins/jqplot.categoryAxisRenderer.js
+/usr/share/phpmyadmin/js/vendor/jqplot/plugins/jqplot.cursor.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/js/vendor/jquery
+/usr/share/phpmyadmin/js/vendor/jquery/MIT-LICENSE.txt
+/usr/share/phpmyadmin/js/vendor/jquery/additional-methods.js
+/usr/share/phpmyadmin/js/vendor/jquery/jquery-migrate.js
+/usr/share/phpmyadmin/js/vendor/jquery/jquery-ui-timepicker-addon.js
+/usr/share/phpmyadmin/js/vendor/jquery/jquery-ui.min.js
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/js/vendor/js.cookie.js
+/usr/share/phpmyadmin/js/vendor/openlayers
+/usr/share/phpmyadmin/js/vendor/openlayers/OpenLayers.js
+/usr/share/phpmyadmin/js/vendor/openlayers/img
+/usr/share/phpmyadmin/js/vendor/openlayers/theme
+/usr/share/phpmyadmin/js/vendor/openlayers/theme/default
+/usr/share/phpmyadmin/js/vendor/openlayers/theme/default/google.css
+/usr/share/phpmyadmin/js/vendor/openlayers/theme/default/google.tidy.css
+/usr/share/phpmyadmin/js/vendor/openlayers/theme/default/ie6-style.css
+/usr/share/phpmyadmin/js/vendor/openlayers/theme/default/ie6-style.tidy.css
+/usr/share/phpmyadmin/js/vendor/openlayers/theme/default/img
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/js/vendor/sprintf.js
+/usr/share/phpmyadmin/js/vendor/tracekit.js
+/usr/share/phpmyadmin/js/vendor/u2f-api-polyfill.js
+/usr/share/phpmyadmin/js/vendor/zxcvbn.js
+/usr/share/phpmyadmin/js/whitelist.php
+/usr/share/phpmyadmin/libraries
+/usr/share/phpmyadmin/libraries/advisory_rules.txt
+/usr/share/phpmyadmin/libraries/certs
+/usr/share/phpmyadmin/libraries/certs/12d55845.0
+/usr/share/phpmyadmin/libraries/certs/2e5ac55d.0
+/usr/share/phpmyadmin/libraries/certs/4042bcee.0
+/usr/share/phpmyadmin/libraries/certs/6187b673.0
+/usr/share/phpmyadmin/libraries/certs/README.rst
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/check_user_privileges.inc.php
+/usr/share/phpmyadmin/libraries/classes
+/usr/share/phpmyadmin/libraries/classes/Advisor.php
+/usr/share/phpmyadmin/libraries/classes/Bookmark.php
+/usr/share/phpmyadmin/libraries/classes/BrowseForeigners.php
+/usr/share/phpmyadmin/libraries/classes/CentralColumns.php
+/usr/share/phpmyadmin/libraries/classes/Charsets.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Config/ConfigFile.php
+/usr/share/phpmyadmin/libraries/classes/Config/Descriptions.php
+/usr/share/phpmyadmin/libraries/classes/Config/Form.php
+/usr/share/phpmyadmin/libraries/classes/Config/FormDisplay.php
+/usr/share/phpmyadmin/libraries/classes/Config/FormDisplayTemplate.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/BaseForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/BaseFormList.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Page
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Page/BrowseForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Page/DbStructureForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Page/EditForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Page/ExportForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Page/ImportForm.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Setup
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Setup/ConfigForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Setup/ExportForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Setup/FeaturesForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Setup/ImportForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/Setup/MainForm.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/User
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/User/ExportForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/User/FeaturesForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/User/ImportForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/User/MainForm.php
+/usr/share/phpmyadmin/libraries/classes/Config/Forms/User/NaviForm.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Config/PageSettings.php
+/usr/share/phpmyadmin/libraries/classes/Config/ServerConfigChecks.php
+/usr/share/phpmyadmin/libraries/classes/Config/Validator.php
+/usr/share/phpmyadmin/libraries/classes/Console.php
+/usr/share/phpmyadmin/libraries/classes/Controllers
+/usr/share/phpmyadmin/libraries/classes/Controllers/Controller.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Database
+/usr/share/phpmyadmin/libraries/classes/Controllers/Database/DatabaseStructureController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/DatabaseController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Server
+/usr/share/phpmyadmin/libraries/classes/Controllers/Server/ServerBinlogController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Server/ServerCollationsController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Server/ServerDatabasesController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Server/ServerEnginesController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Server/ServerPluginsController.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Controllers/Table
+/usr/share/phpmyadmin/libraries/classes/Controllers/Table/TableChartController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Table/TableGisVisualizationController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Table/TableIndexesController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Table/TableRelationController.php
+/usr/share/phpmyadmin/libraries/classes/Controllers/Table/TableSearchController.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Controllers/TableController.php
+/usr/share/phpmyadmin/libraries/classes/Core.php
+/usr/share/phpmyadmin/libraries/classes/CreateAddField.php
+/usr/share/phpmyadmin/libraries/classes/Database
+/usr/share/phpmyadmin/libraries/classes/Database/DatabaseList.php
+/usr/share/phpmyadmin/libraries/classes/Database/Designer
+/usr/share/phpmyadmin/libraries/classes/Database/Designer.php
+/usr/share/phpmyadmin/libraries/classes/Database/Designer/Common.php
+/usr/share/phpmyadmin/libraries/classes/Database/MultiTableQuery.php
+/usr/share/phpmyadmin/libraries/classes/Database/Qbe.php
+/usr/share/phpmyadmin/libraries/classes/Database/Search.php
+/usr/share/phpmyadmin/libraries/classes/DatabaseInterface.php
+/usr/share/phpmyadmin/libraries/classes/Dbi
+/usr/share/phpmyadmin/libraries/classes/Dbi/DbiDummy.php
+/usr/share/phpmyadmin/libraries/classes/Dbi/DbiExtension.php
+/usr/share/phpmyadmin/libraries/classes/Dbi/DbiMysql.php
+/usr/share/phpmyadmin/libraries/classes/Dbi/DbiMysqli.php
+/usr/share/phpmyadmin/libraries/classes/Di
+/usr/share/phpmyadmin/libraries/classes/Di/AliasItem.php
+/usr/share/phpmyadmin/libraries/classes/Di/Container.php
+/usr/share/phpmyadmin/libraries/classes/Di/ContainerException.php
+/usr/share/phpmyadmin/libraries/classes/Di/FactoryItem.php
+/usr/share/phpmyadmin/libraries/classes/Di/Item.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Display
+/usr/share/phpmyadmin/libraries/classes/Display/ChangePassword.php
+/usr/share/phpmyadmin/libraries/classes/Display/CreateTable.php
+/usr/share/phpmyadmin/libraries/classes/Display/Export.php
+/usr/share/phpmyadmin/libraries/classes/Display/GitRevision.php
+/usr/share/phpmyadmin/libraries/classes/Display/Import.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Encoding.php
+/usr/share/phpmyadmin/libraries/classes/Engines
+/usr/share/phpmyadmin/libraries/classes/Engines/Bdb.php
+/usr/share/phpmyadmin/libraries/classes/Engines/Berkeleydb.php
+/usr/share/phpmyadmin/libraries/classes/Engines/Binlog.php
+/usr/share/phpmyadmin/libraries/classes/Engines/Innobase.php
+/usr/share/phpmyadmin/libraries/classes/Engines/Innodb.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Error.php
+/usr/share/phpmyadmin/libraries/classes/ErrorHandler.php
+/usr/share/phpmyadmin/libraries/classes/ErrorReport.php
+/usr/share/phpmyadmin/libraries/classes/Export.php
+/usr/share/phpmyadmin/libraries/classes/File.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Gis/GisFactory.php
+/usr/share/phpmyadmin/libraries/classes/Gis/GisGeometry.php
+/usr/share/phpmyadmin/libraries/classes/Gis/GisGeometryCollection.php
+/usr/share/phpmyadmin/libraries/classes/Gis/GisLineString.php
+/usr/share/phpmyadmin/libraries/classes/Gis/GisMultiLineString.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Header.php
+/usr/share/phpmyadmin/libraries/classes/Import.php
+/usr/share/phpmyadmin/libraries/classes/Index.php
+/usr/share/phpmyadmin/libraries/classes/IndexColumn.php
+/usr/share/phpmyadmin/libraries/classes/InsertEdit.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Navigation/Navigation.php
+/usr/share/phpmyadmin/libraries/classes/Navigation/NavigationHeader.php
+/usr/share/phpmyadmin/libraries/classes/Navigation/NavigationTree.php
+/usr/share/phpmyadmin/libraries/classes/Navigation/NodeFactory.php
+/usr/share/phpmyadmin/libraries/classes/Navigation/Nodes
+/usr/share/phpmyadmin/libraries/classes/Navigation/Nodes/Node.php
+/usr/share/phpmyadmin/libraries/classes/Navigation/Nodes/NodeColumn.php
+/usr/share/phpmyadmin/libraries/classes/Navigation/Nodes/NodeColumnContainer.php
+/usr/share/phpmyadmin/libraries/classes/Navigation/Nodes/NodeDatabase.php
+/usr/share/phpmyadmin/libraries/classes/Navigation/Nodes/NodeDatabaseChild.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Normalization.php
+/usr/share/phpmyadmin/libraries/classes/OpenDocument.php
+/usr/share/phpmyadmin/libraries/classes/Operations.php
+/usr/share/phpmyadmin/libraries/classes/OutputBuffering.php
+/usr/share/phpmyadmin/libraries/classes/ParseAnalyze.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Plugins/Auth
+/usr/share/phpmyadmin/libraries/classes/Plugins/Auth/AuthenticationConfig.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Auth/AuthenticationCookie.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Auth/AuthenticationHttp.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Auth/AuthenticationSignon.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/AuthenticationPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Export
+/usr/share/phpmyadmin/libraries/classes/Plugins/Export/ExportCodegen.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Export/ExportCsv.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Export/ExportExcel.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Export/ExportHtmlword.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Export/ExportJson.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Plugins/Export/Helpers/Pdf.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Export/Helpers/TableProperty.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Export/README
+/usr/share/phpmyadmin/libraries/classes/Plugins/ExportPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/IOTransformationsPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import/AbstractImportCsv.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import/ImportCsv.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import/ImportLdi.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import/ImportMediawiki.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import/ImportOds.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import/Upload/UploadApc.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import/Upload/UploadNoplugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import/Upload/UploadProgress.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Import/Upload/UploadSession.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/ImportPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Dia
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Dia/Dia.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Dia/DiaRelationSchema.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Dia/RelationStatsDia.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Dia/TableStatsDia.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Eps
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Eps/Eps.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Eps/EpsRelationSchema.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Eps/RelationStatsEps.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Eps/TableStatsEps.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/ExportRelationSchema.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Pdf
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Pdf/Pdf.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Pdf/PdfRelationSchema.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Pdf/RelationStatsPdf.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Pdf/TableStatsPdf.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/RelationStats.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/SchemaDia.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/SchemaEps.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/SchemaPdf.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/SchemaSvg.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Svg/RelationStatsSvg.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Svg/Svg.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Svg/SvgRelationSchema.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/Svg/TableStatsSvg.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Schema/TableStats.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/SchemaPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Abs
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Abs/Bool2TextTransformationsPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Abs/CodeMirrorEditorTransformationPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Abs/DateFormatTransformationsPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Abs/DownloadTransformationsPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Abs/ExternalTransformationsPlugin.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Input
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Input/Image_JPEG_Upload.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Input/Text_Plain_FileUpload.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Input/Text_Plain_Iptobinary.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Input/Text_Plain_JsonEditor.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Input/Text_Plain_RegexValidation.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Output
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Output/Application_Octetstream_Download.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Output/Application_Octetstream_Hex.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Output/Image_JPEG_Inline.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Output/Image_JPEG_Link.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Output/Image_PNG_Inline.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/README
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/TEMPLATE
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/TEMPLATE_ABSTRACT
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Text_Plain_Link.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/Transformations/Text_Plain_Longtoipv4.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Plugins/TransformationsInterface.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/TransformationsPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/TwoFactor
+/usr/share/phpmyadmin/libraries/classes/Plugins/TwoFactor/Application.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/TwoFactor/Invalid.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/TwoFactor/Key.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/TwoFactor/Simple.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/TwoFactorPlugin.php
+/usr/share/phpmyadmin/libraries/classes/Plugins/UploadInterface.php
+/usr/share/phpmyadmin/libraries/classes/Properties
+/usr/share/phpmyadmin/libraries/classes/Properties/Options
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Groups
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Groups/OptionsPropertyMainGroup.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Groups/OptionsPropertyRootGroup.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Groups/OptionsPropertySubgroup.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Items
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Items/BoolPropertyItem.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Items/DocPropertyItem.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Items/HiddenPropertyItem.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Items/MessageOnlyPropertyItem.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/Items/NumberPropertyItem.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/OptionsPropertyGroup.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/OptionsPropertyItem.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Options/OptionsPropertyOneItem.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Plugins
+/usr/share/phpmyadmin/libraries/classes/Properties/Plugins/ExportPluginProperties.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Plugins/ImportPluginProperties.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Plugins/PluginPropertyItem.php
+/usr/share/phpmyadmin/libraries/classes/Properties/Plugins/SchemaPluginProperties.php
+/usr/share/phpmyadmin/libraries/classes/Properties/PropertyItem.php
+/usr/share/phpmyadmin/libraries/classes/RecentFavoriteTable.php
+/usr/share/phpmyadmin/libraries/classes/Relation.php
+/usr/share/phpmyadmin/libraries/classes/RelationCleanup.php
+/usr/share/phpmyadmin/libraries/classes/Replication.php
+/usr/share/phpmyadmin/libraries/classes/ReplicationGui.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Rte/Events.php
+/usr/share/phpmyadmin/libraries/classes/Rte/Export.php
+/usr/share/phpmyadmin/libraries/classes/Rte/Footer.php
+/usr/share/phpmyadmin/libraries/classes/Rte/General.php
+/usr/share/phpmyadmin/libraries/classes/Rte/Routines.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Sanitize.php
+/usr/share/phpmyadmin/libraries/classes/SavedSearches.php
+/usr/share/phpmyadmin/libraries/classes/Scripts.php
+/usr/share/phpmyadmin/libraries/classes/Server
+/usr/share/phpmyadmin/libraries/classes/Server/Privileges.php
+/usr/share/phpmyadmin/libraries/classes/Server/Select.php
+/usr/share/phpmyadmin/libraries/classes/Server/Status
+/usr/share/phpmyadmin/libraries/classes/Server/Status.php
+/usr/share/phpmyadmin/libraries/classes/Server/Status/Advisor.php
+/usr/share/phpmyadmin/libraries/classes/Server/Status/Data.php
+/usr/share/phpmyadmin/libraries/classes/Server/Status/Monitor.php
+/usr/share/phpmyadmin/libraries/classes/Server/Status/Processes.php
+/usr/share/phpmyadmin/libraries/classes/Server/Status/Queries.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Server/UserGroups.php
+/usr/share/phpmyadmin/libraries/classes/Server/Users.php
+/usr/share/phpmyadmin/libraries/classes/Session.php
+/usr/share/phpmyadmin/libraries/classes/Sql.php
+/usr/share/phpmyadmin/libraries/classes/SqlQueryForm.php
+/usr/share/phpmyadmin/libraries/classes/StorageEngine.php
+/usr/share/phpmyadmin/libraries/classes/SubPartition.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/Twig/CharsetsExtension.php
+/usr/share/phpmyadmin/libraries/classes/Twig/CoreExtension.php
+/usr/share/phpmyadmin/libraries/classes/Twig/I18n
+/usr/share/phpmyadmin/libraries/classes/Twig/I18n/NodeTrans.php
+/usr/share/phpmyadmin/libraries/classes/Twig/I18n/TokenParserTrans.php
+/usr/share/phpmyadmin/libraries/classes/Twig/I18nExtension.php
+/usr/share/phpmyadmin/libraries/classes/Twig/IndexExtension.php
+/usr/share/phpmyadmin/libraries/classes/Twig/MessageExtension.php
+/usr/share/phpmyadmin/libraries/classes/Twig/PartitionExtension.php
+/usr/share/phpmyadmin/libraries/classes/Twig/PhpFunctionsExtension.php
+#)You_can_write_even_more_files_inside_last_directory
+
+/usr/share/phpmyadmin/libraries/classes/TwoFactor.php
+/usr/share/phpmyadmin/libraries/classes/Types.php
+/usr/share/phpmyadmin/libraries/classes/Url.php
+/usr/share/phpmyadmin/libraries/classes/UserPassword.php
+/usr/share/phpmyadmin/libraries/classes/UserPreferences.php
+#)You_can_write_even_more_files_inside_last_directory
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files                                                                                                                                                                                                                                                
+  Group www-data:                                                                                                                                                                                                                                                                                                           
+/tmp/linpeas.sh                                                                                                                                                                                                                                                                                                             
+
+╔══════════╣ Searching passwords in history files
+Binary file /usr/share/phpmyadmin/js/vendor/openlayers/theme/default/img/navigation_history.png matches                                                                                                                                                                                                                     
+
+╔══════════╣ Searching passwords in config PHP files
+$cfg['Servers'][$i]['AllowNoPassword'] = false;                                                                                                                                                                                                                                                                             
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+$cfg['ShowChgPassword'] = true;
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/bin/systemd-ask-password                                                                                                                                                                                                                                                                                                   
+/bin/systemd-tty-ask-password-agent
+/etc/pam.d/common-password
+/usr/lib/git-core/git-credential
+/usr/lib/git-core/git-credential-cache
+/usr/lib/git-core/git-credential-cache--daemon
+/usr/lib/git-core/git-credential-store
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/lib/grub/i386-pc/password.mod
+/usr/lib/grub/i386-pc/password_pbkdf2.mod
+/usr/lib/python3/dist-packages/keyring/__pycache__/credentials.cpython-35.pyc
+/usr/lib/python3/dist-packages/keyring/credentials.py
+/usr/lib/x86_64-linux-gnu/mariadb18/plugin/mysql_clear_password.so
+/usr/lib/x86_64-linux-gnu/mariadb18/plugin/simple_password_check.so
+/usr/share/doc/apache2-doc/manual/da/misc/password_encryptions.html
+/usr/share/doc/apache2-doc/manual/de/misc/password_encryptions.html
+/usr/share/doc/apache2-doc/manual/en/misc/password_encryptions.html
+/usr/share/doc/apache2-doc/manual/es/misc/password_encryptions.html
+/usr/share/doc/apache2-doc/manual/fr/misc/password_encryptions.html
+/usr/share/doc/apache2-doc/manual/ja/misc/password_encryptions.html
+/usr/share/doc/apache2-doc/manual/ko/misc/password_encryptions.html
+/usr/share/doc/apache2-doc/manual/pt-br/misc/password_encryptions.html
+/usr/share/doc/apache2-doc/manual/tr/misc/password_encryptions.html
+/usr/share/doc/apache2-doc/manual/zh-cn/misc/password_encryptions.html
+/usr/share/doc/git/contrib/credential
+/usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring.c
+/usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret.c
+/usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+/usr/share/doc/git/contrib/credential/osxkeychain/git-credential-osxkeychain.c
+/usr/share/doc/git/contrib/credential/wincred/git-credential-wincred.c
+/usr/share/man/man1/git-credential-cache--daemon.1.gz
+/usr/share/man/man1/git-credential-cache.1.gz
+/usr/share/man/man1/git-credential-store.1.gz
+/usr/share/man/man1/git-credential.1.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/man/man7/gitcredentials.7.gz
+/usr/share/man/man8/systemd-ask-password-console.path.8.gz
+/usr/share/man/man8/systemd-ask-password-console.service.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.path.8.gz
+/usr/share/man/man8/systemd-ask-password-wall.service.8.gz
+  #)There are more creds/passwds files in the previous parent folder
+
+/usr/share/pam/common-password.md5sums
+/usr/share/phpmyadmin/user_password.php
+/var/cache/debconf/passwords.dat
+/var/lib/pam/password
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching passwords inside logs (limit 70)
+2019-03-02 13:48:58 configure base-passwd:amd64 3.5.43 3.5.43                                                                                                                                                                                                                                                               
+2019-03-02 13:48:58 install base-passwd:amd64 <none> 3.5.43
+2019-03-02 13:48:58 status half-configured base-passwd:amd64 3.5.43
+2019-03-02 13:48:58 status half-installed base-passwd:amd64 3.5.43
+2019-03-02 13:48:58 status installed base-passwd:amd64 3.5.43
+2019-03-02 13:48:58 status unpacked base-passwd:amd64 3.5.43
+2019-03-02 13:49:01 status half-configured base-passwd:amd64 3.5.43
+2019-03-02 13:49:01 status half-installed base-passwd:amd64 3.5.43
+2019-03-02 13:49:01 status unpacked base-passwd:amd64 3.5.43
+2019-03-02 13:49:01 upgrade base-passwd:amd64 3.5.43 3.5.43
+2019-03-02 13:49:04 install passwd:amd64 <none> 1:4.4-4.1
+2019-03-02 13:49:04 status half-installed passwd:amd64 1:4.4-4.1
+2019-03-02 13:49:04 status unpacked passwd:amd64 1:4.4-4.1
+2019-03-02 13:49:05 configure base-passwd:amd64 3.5.43 <none>
+2019-03-02 13:49:05 status half-configured base-passwd:amd64 3.5.43
+2019-03-02 13:49:05 status unpacked base-passwd:amd64 3.5.43
+2019-03-02 13:49:06 configure pass
+wd:amd64 1:4.4-4.1 <none>                                                                                                                                                                                                                                                                                                   
+2019-03-02 13:49:06 status half-configured passwd:amd64 1:4.4-4.1
+2019-03-02 13:49:06 status installed base-passwd:amd64 3.5.43
+2019-03-02 13:49:06 status installed passwd:amd64 1:4.4-4.1
+2019-03-02 13:49:06 status unpacked passwd:amd64 1:4.4-4.1
+Description: Set up users and passwords

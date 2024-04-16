@@ -1,0 +1,2142 @@
+ADVISORY: This script should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own computers and/or with the computer owner's permission.
+
+Linux Privesc Checklist: https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist
+ LEGEND:
+  RED/YELLOW: 95% a PE vector
+  RED: You should take a look to it
+  LightCyan: Users with console
+  Blue: Users without console & mounted devs
+  Green: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMagenta: Your username
+
+ Starting linpeas. Caching Writable Folders...
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Basic information ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+OS: Linux version 5.4.0-40-generic (buildd@lcy01-amd64-011) (gcc version 9.3.0 (Ubuntu 9.3.0-10ubuntu2)) #44-Ubuntu SMP Tue Jun 23 00:01:04 UTC 2020
+User & Groups: uid=998(git) gid=998(git) groups=998(git)
+Hostname: gitlab.example.com
+Writable folder: /dev/shm
+[-] No network discovery capabilities (fping or ping not found)
+[-] No port scan capabilities (nc not found)                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                            
+
+Caching directories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . uniq: write error: Broken pipe
+DONE
+                                                                                                                                                                                                                                                                                                                            
+                                        ╔════════════════════╗
+════════════════════════════════════════╣ System Information ╠════════════════════════════════════════                                                                                                                                                                                                                      
+                                        ╚════════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ Operative system
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#kernel-exploits                                                                                                                                                                                                                                               
+Linux version 5.4.0-40-generic (buildd@lcy01-amd64-011) (gcc version 9.3.0 (Ubuntu 9.3.0-10ubuntu2)) #44-Ubuntu SMP Tue Jun 23 00:01:04 UTC 2020                                                                                                                                                                            
+lsb_release Not Found
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Sudo version
+sudo Not Found                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                            
+Failed to connect to bus: No such file or directory
+./linpeas.sh: 1188: ./linpeas.sh: [[: not found
+./linpeas.sh: 1188: ./linpeas.sh: rpm: not found
+./linpeas.sh: 1188: ./linpeas.sh: 0: not found
+
+╔══════════╣ PATH
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-path-abuses                                                                                                                                                                                                                                          
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/bin:/opt/gitlab/bin:/opt/gitlab/embedded/bin:/bin:/usr/bin                                                                                                                                                                                                                         
+New path exported: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/bin:/opt/gitlab/bin:/opt/gitlab/embedded/bin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/sbin
+
+╔══════════╣ Date & uptime
+Fri Jan 13 07:52:04 UTC 2023                                                                                                                                                                                                                                                                                                
+ 07:52:04 up  1:04,  0 users,  load average: 0.33, 0.30, 0.95
+
+╔══════════╣ Any sd*/disk* disk in /dev? (limit 20)
+sda                                                                                                                                                                                                                                                                                                                         
+sda1
+sda2
+sda3
+
+╔══════════╣ Unmounted file-system?
+╚ Check if you can mount umounted devices                                                                                                                                                                                                                                                                                   
+sed: -e expression #1, char 142: unknown option to `s'                                                                                                                                                                                                                                                                      
+
+╔══════════╣ Environment
+╚ Any private information inside environment variables?                                                                                                                                                                                                                                                                     
+GITLAB_PATH_OUTSIDE_HOOK=/opt/gitlab/embedded/lib/ruby/gems/2.4.0/bin:/opt/gitlab/bin:/opt/gitlab/embedded/bin:/bin:/usr/bin                                                                                                                                                                                                
+HISTFILESIZE=0
+BUNDLER_VERSION=1.16.2
+SHLVL=1
+SIDEKIQ_MEMORY_KILLER_MAX_RSS=2000000
+RUBYOPT=-rbundler/setup
+HOME=/var/opt/gitlab
+OLDPWD=/var/opt/gitlab/gitlab-rails/working
+BUNDLER_ORIG_BUNDLER_VERSION=BUNDLER_ENVIRONMENT_PRESERVER_INTENTIONALLY_NIL
+EXECJS_RUNTIME=Disabled
+ICU_DATA=/opt/gitlab/embedded/share/icu/current
+RUBYLIB=/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bundler-1.16.2/lib
+_=./linpeas.sh
+RACK_ENV=production
+PATH=/opt/gitlab/embedded/lib/ruby/gems/2.4.0/bin:/opt/gitlab/bin:/opt/gitlab/embedded/bin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/sbin
+BUNDLER_ORIG_MANPATH=BUNDLER_ENVIRONMENT_PRESERVER_INTENTIONALLY_NIL
+GID=998
+BUNDLE_BIN_PATH=/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bundler-1.16.2/exe/bundle
+prometheus_multiproc_dir=/dev/shm/gitlab/sidekiq
+LD_PRELOAD=/opt/gitlab/embedded/lib/libjemalloc.so
+HISTSIZE=0
+UID=998
+GIT_TERMINAL_PROMPT=0
+BUNDLER_ORIG_BUNDLER_ORIG_MANPATH=BUNDLER_ENVIRONMENT_PRESERVER_INTENTIONALLY_NIL
+BUNDLER_ORIG_RUBYOPT=BUNDLER_ENVIRONMENT_PRESERVER_INTENTIONALLY_NIL
+BUNDLER_ORIG_BUNDLE_BIN_PATH=BUNDLER_ENVIRONMENT_PRESERVER_INTENTIONALLY_NIL
+GEM_HOME=/opt/gitlab/embedded/lib/ruby/gems/2.4.0
+RAILS_ENV=production
+BUNDLER_ORIG_RB_USER_INSTALL=BUNDLER_ENVIRONMENT_PRESERVER_INTENTIONALLY_NIL
+BUNDLE_GEMFILE=/opt/gitlab/embedded/service/gitlab-rails/Gemfile
+BUNDLER_ORIG_GEM_HOME=BUNDLER_ENVIRONMENT_PRESERVER_INTENTIONALLY_NIL
+PWD=/tmp
+GEM_PATH=/opt/gitlab/embedded/lib/ruby/gems/2.4.0:/var/opt/gitlab/.gem/ruby/2.4.0
+PYTHONPATH=/opt/gitlab/embedded/lib/python3.4/site-packages
+BUNDLER_ORIG_PATH=/opt/gitlab/bin:/opt/gitlab/embedded/bin:/bin:/usr/bin
+BUNDLER_ORIG_GEM_PATH=BUNDLER_ENVIRONMENT_PRESERVER_INTENTIONALLY_NIL
+TZ=:/etc/localtime
+BUNDLER_ORIG_BUNDLE_GEMFILE=/opt/gitlab/embedded/service/gitlab-rails/Gemfile
+HISTFILE=/dev/null
+MANPATH=/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/unicorn-5.1.0/man
+prometheus_run_dir=/dev/shm/gitlab/sidekiq
+BUNDLER_ORIG_RUBYLIB=BUNDLER_ENVIRONMENT_PRESERVER_INTENTIONALLY_NIL
+
+╔══════════╣ Searching Signature verification failed in dmesg
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#dmesg-signature-verification-failed                                                                                                                                                                                                                           
+dmesg Not Found                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Executing Linux Exploit Suggester
+╚ https://github.com/mzet-/linux-exploit-suggester                                                                                                                                                                                                                                                                          
+sed: -e expression #1, char 27: unknown option to `s'                                                                                                                                                                                                                                                                       
+grep: write error: Broken pipe
+
+╔══════════╣ Executing Linux Exploit Suggester 2
+╚ https://github.com/jondonas/linux-exploit-suggester-2                                                                                                                                                                                                                                                                     
+Can't locate Getopt/Std.pm in @INC (you may need to install the Getopt::Std module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.22.1 /usr/local/share/perl/5.22.1 /usr/lib/x86_64-linux-gnu/perl5/5.22 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.22 /usr/share/perl/5.22 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base .) at - line 4.
+BEGIN failed--compilation aborted at - line 4.
+
+╔══════════╣ Protections
+═╣ AppArmor enabled? .............. AppArmor Not Found                                                                                                                                                                                                                                                                      
+═╣ grsecurity present? ............ grsecurity Not Found                                                                                                                                                                                                                                                                    
+═╣ PaX bins present? .............. PaX Not Found                                                                                                                                                                                                                                                                           
+═╣ Execshield enabled? ............ Execshield Not Found                                                                                                                                                                                                                                                                    
+═╣ SELinux enabled? ............... sestatus Not Found                                                                                                                                                                                                                                                                      
+═╣ Is ASLR enabled? ............... Yes                                                                                                                                                                                                                                                                                     
+═╣ Printer? ....................... No
+═╣ Is this a virtual machine? ..... Yes (docker)                                                                                                                                                                                                                                                                            
+
+                                             ╔═══════════╗
+═════════════════════════════════════════════╣ Container ╠═════════════════════════════════════════════                                                                                                                                                                                                                     
+                                             ╚═══════════╝                                                                                                                                                                                                                                                                  
+╔══════════╣ Container related tools present
+╔══════════╣ Container details                                                                                                                                                                                                                                                                                              
+═╣ Is this a container? ........... docker                                                                                                                                                                                                                                                                                  
+═╣ Any running containers? ........ No
+╔══════════╣ Docker Container details                                                                                                                                                                                                                                                                                       
+═╣ Am I inside Docker group ....... No                                                                                                                                                                                                                                                                                      
+═╣ Looking and enumerating Docker Sockets
+═╣ Docker version ................. Not Found                                                                                                                                                                                                                                                                               
+═╣ Vulnerable to CVE-2019-5736 .... Not Found                                                                                                                                                                                                                                                                               
+═╣ Vulnerable to CVE-2019-13139 ... Not Found                                                                                                                                                                                                                                                                               
+═╣ Rootless Docker? ................ No                                                                                                                                                                                                                                                                                     
+
+╔══════════╣ Container & breakout enumeration
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation/docker-breakout                                                                                                                                                                                                                                               
+═╣ Container ID ................... gitlab.example.com═╣ Container Full ID .............. a4b61b1d50c277c638fdd83ff7609cc4029aeeef09d501f4f20e360bc859ccda                                                                                                                                                                  
+═╣ Vulnerable to CVE-2019-5021 .. No
+                                                                                                                                                                                                                                                                                                                            
+
+╔══════════╣ Container Capabilities
+Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,37+i                                                                                          
+Bounding set =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,37                                                                                         
+Securebits: 00/0x0/1'b0
+ secure-noroot: no (unlocked)
+ secure-no-suid-fixup: no (unlocked)
+ secure-keep-caps: no (unlocked)
+uid=998(git)
+gid=998(git)
+groups=998(git)
+
+╔══════════╣ Privilege Mode
+Privilege Mode is disabled                                                                                                                                                                                                                                                                                                  
+
+╔══════════╣ Interesting Files Mounted
+overlay on / type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/6QOM7GBAOFGDXLS73Y5B7J2XXK:/var/lib/docker/overlay2/l/PZB5MARGIAOF6N5AAJNTVUFS52:/var/lib/docker/overlay2/l/4KSUGTOLFYSBJFJQH2NUGVL54R:/var/lib/docker/overlay2/l/PJ4IKL6MDRM2ZSGFRAXCVHVLUR:/var/lib/docker/overlay2/l/XLLFVBBMKEEE672BOIVTSZ5XQZ:/var/lib/docker/overlay2/l/33JTQXWWPTNINADNR6R3YM47KY:/var/lib/docker/overlay2/l/XG5BUSKVZNINSBJD2J7MMLU5A3:/var/lib/docker/overlay2/l/ZI5Y7RO6WUTDK3DQVTUTOA2ZWI:/var/lib/docker/overlay2/l/SRZJCUXAPFOW35HRDPW7OHQWXN:/var/lib/docker/overlay2/l/SLR2WWC4VRYMZRPZ6EHZQSLNYS:/var/lib/docker/overlay2/l/SJBEI24D42KKTO5Z54GMKQPPXO,upperdir=/var/lib/docker/overlay2/70124a306b6b95b09774248b4be5342935b0b3640974e5d2b40225362aa89b39/diff,workdir=/var/lib/docker/overlay2/70124a306b6b95b09774248b4be5342935b0b3640974e5d2b40225362aa89b39/work,xino=off)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev type tmpfs (rw,nosuid,size=65536k,mode=755)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=666)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /sys/fs/cgroup type tmpfs (rw,nosuid,nodev,noexec,relatime,mode=755)
+cgroup on /sys/fs/cgroup/systemd type cgroup (rw,nosuid,nodev,noexec,relatime,xattr,name=systemd)
+cgroup on /sys/fs/cgroup/freezer type cgroup (rw,nosuid,nodev,noexec,relatime,freezer)
+cgroup on /sys/fs/cgroup/net_cls,net_prio type cgroup (rw,nosuid,nodev,noexec,relatime,net_cls,net_prio)
+cgroup on /sys/fs/cgroup/cpu,cpuacct type cgroup (rw,nosuid,nodev,noexec,relatime,cpu,cpuacct)
+cgroup on /sys/fs/cgroup/pids type cgroup (rw,nosuid,nodev,noexec,relatime,pids)
+cgroup on /sys/fs/cgroup/memory type cgroup (rw,nosuid,nodev,noexec,relatime,memory)
+cgroup on /sys/fs/cgroup/devices type cgroup (rw,nosuid,nodev,noexec,relatime,devices)
+cgroup on /sys/fs/cgroup/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset)
+cgroup on /sys/fs/cgroup/rdma type cgroup (rw,nosuid,nodev,noexec,relatime,rdma)
+cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)
+cgroup on /sys/fs/cgroup/perf_event type cgroup (rw,nosuid,nodev,noexec,relatime,perf_event)
+cgroup on /sys/fs/cgroup/blkio type cgroup (rw,nosuid,nodev,noexec,relatime,blkio)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+/dev/sda2 on /root_pass type ext4 (rw,relatime)
+/dev/sda2 on /home/dude type ext4 (rw,relatime)
+/dev/sda2 on /opt/backup type ext4 (rw,relatime)
+/dev/sda2 on /etc/gitlab type ext4 (rw,relatime)
+/dev/sda2 on /etc/resolv.conf type ext4 (rw,relatime)
+/dev/sda2 on /etc/hostname type ext4 (rw,relatime)
+/dev/sda2 on /etc/hosts type ext4 (rw,relatime)
+shm on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k)
+/dev/sda2 on /var/log/gitlab type ext4 (rw,relatime)
+/dev/sda2 on /var/opt/gitlab type ext4 (rw,relatime)
+
+╔══════════╣ Possible Entrypoints
+-rwxrwxrwx 1 git git 748K Jan  7 02:11 /tmp/linpeas.sh                                                                                                                                                                                                                                                                      
+
+
+
+                          ╔════════════════════════════════════════════════╗
+══════════════════════════╣ Processes, Crons, Timers, Services and Sockets ╠══════════════════════════                                                                                                                                                                                                                      
+                          ╚════════════════════════════════════════════════╝                                                                                                                                                                                                                                                
+╔══════════╣ Cleaned processes
+╚ Check weird & unexpected proceses run by root: https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes                                                                                                                                                                                                      
+root           1  0.0  0.0  18044  2620 ?        Ss   06:47   0:00 /bin/bash /assets/wrapper                                                                                                                                                                                                                                
+root          17  0.0  0.0   4388  1100 ?        S    06:47   0:00 runsvdir -P /opt/gitlab/service log: ...........................................................................................................................................................................................................................................................................................................................................................................................................
+root          21  0.0  0.0   4236   608 ?        Ss   06:47   0:00  _ runsv sshd
+root          22  0.0  0.0   4380   592 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/sshd
+root          23  0.0  0.1  65504  4576 ?        S    06:47   0:00  |   _ /usr/sbin/sshd -D -f /assets/sshd_config -e
+root         466  0.0  0.0   4236   644 ?        Ss   06:47   0:00  _ runsv nginx
+root         481  0.0  0.0   4380   660 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/nginx
+root         492  0.0  0.1  42808  5784 ?        Ss   06:47   0:00  |   _ nginx: master process /opt/gitlab/embedded/sbin/nginx -p /var/opt/gitlab/nginx
+gitlab-+     568  0.1  0.1  47060  7908 ?        S    06:47   0:05  |       _ nginx: worker process
+gitlab-+     570  0.1  0.2  47060  8316 ?        S    06:47   0:05  |       _ nginx: worker process
+gitlab-+     573  0.2  0.2  47060  8312 ?        S    06:47   0:11  |       _ nginx: worker process
+gitlab-+     574  0.2  0.2  47060  8308 ?        S    06:47   0:09  |       _ nginx: worker process
+gitlab-+     575  0.0  0.0  42808  3200 ?        S    06:47   0:00  |       _ nginx: cache manager process
+root         467  0.0  0.0   4236   696 ?        Ss   06:47   0:00  _ runsv gitaly
+root         480  0.0  0.0   4380   804 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/gitaly
+git          482  1.1  0.6 896980 25388 ?        Ssl  06:47   0:42  |   _ /opt/gitlab/embedded/bin/gitaly /var/opt/gitlab/gitaly/config.toml
+git          614  0.4  1.6 2371104 64896 ?       Sl   06:47   0:18  |       _ ruby /opt/gitlab/embedded/service/gitaly-ruby/bin/gitaly-ruby 482 /tmp/gitaly-ruby881876968/socket.0
+git          616  0.4  2.0 2378908 81176 ?       Sl   06:47   0:17  |       _ ruby /opt/gitlab/embedded/service/gitaly-ruby/bin/gitaly-ruby 482 /tmp/gitaly-ruby881876968/socket.1
+root         468  0.0  0.0   4236   644 ?        Ss   06:47   0:00  _ runsv redis
+root         505  0.0  0.0   4380   660 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/redis
+gitlab-+     506  1.3  0.2  49836 11884 ?        Ssl  06:47   0:53  |   _ /opt/gitlab/embedded/bin/redis-server 127.0.0.1:6379
+root         469  0.0  0.0   4236   660 ?        Ss   06:47   0:00  _ runsv redis-exporter
+root         493  0.0  0.0   4380   756 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/redis-exporter
+gitlab-+     502  0.0  0.2 235548 10400 ?        Ssl  06:47   0:01  |   _ /opt/gitlab/embedded/bin/redis_exporter --web.listen-address=localhost:9121 --redis.addr=unix:///var/opt/gitlab/redis/redis.socket
+root         470  0.0  0.0   4236   660 ?        Ss   06:47   0:00  _ runsv postgres-exporter
+root         490  0.0  0.0   4380   748 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/postgres-exporter
+gitlab-+     496  0.1  0.3 387564 12888 ?        Ssl  06:47   0:05  |   _ /opt/gitlab/embedded/bin/postgres_exporter --web.listen-address=localhost:9187 --extend.query-path=/var/opt/gitlab/postgres-exporter/queries.yaml
+root         471  0.0  0.0   4236   648 ?        Ss   06:47   0:00  _ runsv gitlab-workhorse
+root         494  0.0  0.0   4380   704 ?        S    06:47   0:03  |   _ svlogd -tt /var/log/gitlab/gitlab-workhorse
+git          503  1.6  0.6 605816 24384 ?        Ssl  06:47   1:01  |   _ /opt/gitlab/embedded/bin/gitlab-workhorse -listenNetwork unix -listenUmask 0 -listenAddr /var/opt/gitlab/gitlab-workhorse/socket -authBackend http://localhost:8080 -authSocket /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket -documentRoot /opt/gitlab/embedded/service/gitlab-rails/public -pprofListenAddr  -prometheusListenAddr localhost:9229 -secretPath /opt/gitlab/embedded/service/gitlab-rails/.gitlab_workhorse_secret -config config.toml
+root         472  0.0  0.0   4236   640 ?        Ss   06:47   0:00  _ runsv sidekiq
+root         491  0.0  0.0   4380   672 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/sidekiq
+git        11892  0.1  0.3  48196 12468 ?        Ss   07:48   0:00  |       _ python3 shell.py
+git        11894  0.0  0.0  18320  1844 ?        S    07:48   0:00  |       |   _ /bin/sh -i
+git        12173  0.1  0.2  44432 10288 ?        S    07:50   0:00  |       |       _ python3 -c import pty; pty.spawn("/bin/bash")
+git        12174  0.0  0.1  30120  4040 pts/0    Ss   07:50   0:00  |       |           _ /bin/bash
+git        12319  0.7  0.1  20368  4040 pts/0    S+   07:51   0:00  |       |               _ /bin/sh ./linpeas.sh
+git        14865  0.0  0.0  20368  1732 pts/0    S+   07:52   0:00  |       |                   _ /bin/sh ./linpeas.sh
+git        14867  0.0  0.0  45808  3688 pts/0    R+   07:52   0:00  |       |                   |   _ ps fauxwww
+git        14869  0.0  0.0  20368  1732 pts/0    S+   07:52   0:00  |       |                   _ /bin/sh ./linpeas.sh
+root         473  0.0  0.0   4236   668 ?        Ss   06:47   0:00  _ runsv node-exporter
+root         486  0.0  0.0   4380   652 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/node-exporter
+gitlab-+     487  0.1  0.3  21164 14408 ?        Ssl  06:47   0:06  |   _ /opt/gitlab/embedded/bin/node_exporter --web.listen-address=localhost:9100 --collector.textfile.directory=/var/opt/gitlab/node-exporter/textfile_collector
+root         474  0.0  0.0   4236   656 ?        Ss   06:47   0:00  _ runsv postgresql
+root         485  0.0  0.0   4380   668 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/postgresql
+gitlab-+     488  0.0  0.4  50080 17892 ?        Ss   06:47   0:00  |   _ /opt/gitlab/embedded/bin/postgres -D /var/opt/gitlab/postgresql/data
+gitlab-+     599  0.0  0.1  50184  6096 ?        Ss   06:47   0:00  |       _ postgres: checkpointer process   
+gitlab-+     600  0.0  0.1  50080  5792 ?        Ss   06:47   0:01  |       _ postgres: writer process   
+gitlab-+     601  0.0  0.0  50080  3940 ?        Ss   06:47   0:01  |       _ postgres: wal writer process   
+gitlab-+     602  0.0  0.1  50632  6724 ?        Ss   06:47   0:00  |       _ postgres: autovacuum launcher process   
+gitlab-+     603  0.0  0.1  33136  4736 ?        Ss   06:47   0:01  |       _ postgres: stats collector process   
+root         475  0.0  0.0   4236   668 ?        Ss   06:47   0:00  _ runsv alertmanager
+root         501  0.0  0.0   4380   704 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/alertmanager
+gitlab-+     513  0.1  0.2 621608  9028 ?        Ssl  06:47   0:05  |   _ /opt/gitlab/embedded/bin/alertmanager --web.listen-address=localhost:9093 --storage.path=/var/opt/gitlab/alertmanager/data --config.file=/var/opt/gitlab/alertmanager/alertmanager.yml
+root         476  0.0  0.0   4236   692 ?        Ss   06:47   0:00  _ runsv prometheus
+root         483  0.0  0.0   4380   660 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/prometheus
+gitlab-+     484 23.5  1.9 805104 78900 ?        Ssl  06:47  15:08  |   _ /opt/gitlab/embedded/bin/prometheus --web.listen-address=localhost:9090 --storage.tsdb.path=/var/opt/gitlab/prometheus/data --config.file=/var/opt/gitlab/prometheus/prometheus.yml
+root         477  0.0  0.0   4236   788 ?        Ss   06:47   0:00  _ runsv logrotate
+root         510  0.0  0.0   4380   668 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/logrotate
+root       11743  0.0  0.0   4500   732 ?        Ss   07:47   0:00  |   _ /bin/sh /opt/gitlab/embedded/bin/gitlab-logrotate-wrapper
+root       11747  0.0  0.0   4372   672 ?        S    07:47   0:00  |       _ sleep 600
+root         478  0.0  0.0   4236   664 ?        Ss   06:47   0:00  _ runsv unicorn
+root         504  0.0  0.0   4380   752 ?        S    06:47   0:00  |   _ svlogd -tt /var/log/gitlab/unicorn
+git          514  0.0  0.0  18164  3012 ?        Ss   06:47   0:03  |   _ /bin/bash /opt/gitlab/embedded/bin/gitlab-unicorn-wrapper
+git        14812  0.0  0.0   4372   660 ?        S    07:52   0:00  |       _ sleep 1
+root         479  0.0  0.0   4236   692 ?        Ss   06:47   0:00  _ runsv gitlab-monitor
+root         489  0.0  0.0   4380   704 ?        S    06:47   0:00      _ svlogd -tt /var/log/gitlab/gitlab-monitor
+git          495  1.1  0.9 443960 39476 ?        Ssl  06:47   0:44      _ /opt/gitlab/embedded/bin/ruby /opt/gitlab/embedded/bin/gitlab-mon web -c /var/opt/gitlab/gitlab-monitor/gitlab-monitor.yml
+root         463  0.0  0.0  18028  2564 ?        S    06:47   0:00 /bin/bash /opt/gitlab/bin/gitlab-ctl tail
+root         464  0.0  0.4  97528 16848 ?        Sl   06:47   0:03  _ /opt/gitlab/embedded/bin/ruby /opt/gitlab/embedded/bin/omnibus-ctl gitlab /opt/gitlab/embedded/service/omnibus-ctl* tail
+root         604  0.0  0.0   4500   752 ?        S    06:47   0:00      _ sh -c find -L /var/log/gitlab -type f -not -path '*/sasl/*' | grep -E -v '(config|lock|@|gzip|tgz|gz)' | xargs tail --follow=name --retry
+root         607  0.0  0.0   4672  1180 ?        S    06:47   0:00          _ xargs tail --follow=name --retry
+root         608  0.0  0.0   4404   704 ?        S    06:47   0:02              _ tail --follow=name --retry /var/log/gitlab/nginx/current /var/log/gitlab/nginx/error.log /var/log/gitlab/nginx/gitlab_error.log /var/log/gitlab/nginx/gitlab_access.log /var/log/gitlab/nginx/access.log /var/log/gitlab/gitaly/current /var/log/gitlab/gitaly/state /var/log/gitlab/redis/current /var/log/gitlab/redis/state /var/log/gitlab/redis-exporter/current /var/log/gitlab/redis-exporter/state /var/log/gitlab/postgres-exporter/current /var/log/gitlab/postgres-exporter/state /var/log/gitlab/gitlab-shell/gitlab-shell.log /var/log/gitlab/gitlab-workhorse/current /var/log/gitlab/gitlab-workhorse/state /var/log/gitlab/sidekiq/current /var/log/gitlab/sidekiq/state /var/log/gitlab/node-exporter/current /var/log/gitlab/node-exporter/state /var/log/gitlab/postgresql/current /var/log/gitlab/postgresql/state /var/log/gitlab/gitlab-rails/application.log /var/log/gitlab/gitlab-rails/grpc.log /var/log/gitlab/gitlab-rails/sidekiq_exporter.log /var/log/gitlab/gitlab-rails/gitlab-rails-db-migrate-2022-04-05-12-11-07.log /var/log/gitlab/gitlab-rails/gitlab-rails-db-migrate-2022-04-05-16-15-31.log /var/log/gitlab/gitlab-rails/gitlab-rails-db-migrate-2020-07-08-08-52-42.log /var/log/gitlab/gitlab-rails/api_json.log /var/log/gitlab/gitlab-rails/gitlab-rails-db-migrate-2022-04-05-14-34-11.log /var/log/gitlab/gitlab-rails/production_json.log /var/log/gitlab/gitlab-rails/sidekiq.log /var/log/gitlab/gitlab-rails/production.log /var/log/gitlab/gitlab-rails/gitlab-rails-db-migrate-2022-04-05-15-15-09.log /var/log/gitlab/gitlab-rails/gitlab-rails-db-migrate-2020-12-04-14-12-34.log /var/log/gitlab/gitlab-rails/gitlab-rails-db-migrate-2022-04-05-13-48-40.log /var/log/gitlab/alertmanager/current /var/log/gitlab/alertmanager/state /var/log/gitlab/prometheus/current /var/log/gitlab/prometheus/state /var/log/gitlab/sshd/current /var/log/gitlab/logrotate/current /var/log/gitlab/logrotate/state /var/log/gitlab/unicorn/current /var/log/gitlab/unicorn/state /var/log/gitlab/unicorn/unicorn_stdout.log /var/log/gitlab/unicorn/unicorn_stderr.log /var/log/gitlab/gitlab-monitor/current /var/log/gitlab/gitlab-monitor/state
+git          634  4.0  9.7 694912 394948 ?       Sl   06:48   2:37 unicorn master -D -E production -c /var/opt/gitlab/gitlab-rails/etc/unicorn.rb /opt/gitlab/embedded/service/gitlab-rails/config.ru
+
+╔══════════╣ Binary processes permissions (non 'root root' and not belonging to current user)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#processes                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Files opened by processes belonging to other users
+╚ This is usually empty because of the lack of privileges to read other user processes information                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Processes with credentials in memory (root req)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#credentials-from-process-memory                                                                                                                                                                                                                               
+gdm-password Not Found                                                                                                                                                                                                                                                                                                      
+gnome-keyring-daemon Not Found                                                                                                                                                                                                                                                                                              
+lightdm Not Found                                                                                                                                                                                                                                                                                                           
+vsftpd Not Found                                                                                                                                                                                                                                                                                                            
+apache2 Not Found                                                                                                                                                                                                                                                                                                           
+sshd Not Found                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Cron jobs
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#scheduled-cron-jobs                                                                                                                                                                                                                                           
+crontab Not Found                                                                                                                                                                                                                                                                                                           
+incrontab Not Found                                                                                                                                                                                                                                                                                                         
+/etc/cron.daily:                                                                                                                                                                                                                                                                                                            
+total 24
+drwxr-xr-x 2 root root 4096 Apr  5  2022 .
+drwxr-xr-x 1 root root 4096 Jan 13 06:47 ..
+-rwxr-xr-x 1 root root 1474 Oct  9  2018 apt-compat
+-rwxr-xr-x 1 root root 1597 Nov 26  2015 dpkg
+-rwxr-xr-x 1 root root  249 Nov 12  2015 passwd
+
+/etc/cron.weekly:
+total 16
+drwxr-xr-x 2 root root 4096 Apr  5  2022 .
+drwxr-xr-x 1 root root 4096 Jan 13 06:47 ..
+-rwxr-xr-x 1 root root   86 Apr 13  2016 fstrim
+
+╔══════════╣ Systemd PATH
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#systemd-path-relative-paths                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .service files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#services                                                                                                                                                                                                                                                      
+/lib/systemd/system/emergency.service is executing some relative path                                                                                                                                                                                                                                                       
+/lib/systemd/system/rescue.service is executing some relative path
+You can't write on systemd PATH
+
+╔══════════╣ System timers
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#timers                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .timer files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#timers                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing .socket files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sockets                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Unix Sockets Listening
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sockets                                                                                                                                                                                                                                                       
+sed: -e expression #1, char 0: no previous regular expression                                                                                                                                                                                                                                                               
+/tmp/gitaly-ruby881876968/socket.0
+  └─(Read Write)
+/tmp/gitaly-ruby881876968/socket.1
+  └─(Read Write)
+/var/opt/gitlab/gitaly/gitaly.socket
+  └─(Read Write)
+/var/opt/gitlab/gitlab-rails/sockets/gitlab.socket
+  └─(Read Write)
+/var/opt/gitlab/gitlab-workhorse/socket
+  └─(Read Write)
+/var/opt/gitlab/postgresql/.s.PGSQL.5432
+  └─(Read Write)
+
+╔══════════╣ D-Bus config files
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#d-bus                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ D-Bus Service Objects list
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#d-bus                                                                                                                                                                                                                                                         
+busctl Not Found                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+
+                                        ╔═════════════════════╗
+════════════════════════════════════════╣ Network Information ╠════════════════════════════════════════                                                                                                                                                                                                                     
+                                        ╚═════════════════════╝                                                                                                                                                                                                                                                             
+╔══════════╣ Hostname, hosts and DNS
+gitlab.example.com                                                                                                                                                                                                                                                                                                          
+127.0.0.1       localhost
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+172.19.0.2      gitlab.example.com gitlab
+nameserver 127.0.0.11
+options ndots:0
+example.com
+
+╔══════════╣ Interfaces
+# symbolic names for networks, see networks(5) for more information                                                                                                                                                                                                                                                         
+link-local 169.254.0.0
+
+╔══════════╣ Active Ports
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#open-ports                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Can I sniff with tcpdump?
+No                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                            
+
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Users Information ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ My user
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#users                                                                                                                                                                                                                                                         
+uid=998(git) gid=998(git) groups=998(git)                                                                                                                                                                                                                                                                                   
+
+╔══════════╣ Do I have PGP keys?
+/opt/gitlab/embedded/bin/gpg                                                                                                                                                                                                                                                                                                
+netpgpkeys Not Found
+netpgp Not Found                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Checking 'sudo -l', /etc/sudoers, and /etc/sudoers.d
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Checking sudo tokens
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#reusing-sudo-tokens                                                                                                                                                                                                                                           
+ptrace protection is enabled (1)                                                                                                                                                                                                                                                                                            
+gdb wasn't found in PATH, this might still be vulnerable but linpeas won't be able to check it
+
+╔══════════╣ Checking Pkexec policy
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation/interesting-groups-linux-pe#pe-method-2                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Superusers
+root:x:0:0:root:/root:/bin/bash                                                                                                                                                                                                                                                                                             
+
+╔══════════╣ Users with console
+git:x:998:998::/var/opt/gitlab:/bin/sh                                                                                                                                                                                                                                                                                      
+gitlab-consul:x:991:991::/var/opt/gitlab/consul:/bin/sh
+gitlab-prometheus:x:992:992::/var/opt/gitlab/prometheus:/bin/sh
+gitlab-psql:x:996:996::/var/opt/gitlab/postgresql:/bin/sh
+mattermost:x:994:994::/var/opt/gitlab/mattermost:/bin/sh
+registry:x:993:993::/var/opt/gitlab/registry:/bin/sh
+root:x:0:0:root:/root:/bin/bash
+
+╔══════════╣ All users & groups
+uid=0(root) gid=0(root) groups=0(root)                                                                                                                                                                                                                                                                                      
+uid=1(daemon[0m) gid=1(daemon[0m) groups=1(daemon[0m)
+uid=10(uucp) gid=10(uucp) groups=10(uucp)
+uid=100(systemd-timesync) gid=102(systemd-timesync) groups=102(systemd-timesync)
+uid=101(systemd-network) gid=103(systemd-network) groups=103(systemd-network)
+uid=102(systemd-resolve) gid=104(systemd-resolve) groups=104(systemd-resolve)
+uid=103(systemd-bus-proxy) gid=105(systemd-bus-proxy) groups=105(systemd-bus-proxy)
+uid=104(_apt) gid=65534(nogroup) groups=65534(nogroup)
+uid=105(sshd) gid=65534(nogroup) groups=65534(nogroup)
+uid=13(proxy) gid=13(proxy) groups=13(proxy)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=3(sys) gid=3(sys) groups=3(sys)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=34(backup) gid=34(backup) groups=34(backup)
+uid=38(list) gid=38(list) groups=38(list)
+uid=39(irc) gid=39(irc) groups=39(irc)
+uid=4(sync) gid=65534(nogroup) groups=65534(nogroup)
+uid=41(gnats) gid=41(gnats) groups=41(gnats)
+uid=5(games) gid=60(games) groups=60(games)
+uid=6(man) gid=12(man) groups=12(man)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=7(lp) gid=7(lp) groups=7(lp)
+uid=8(mail) gid=8(mail) groups=8(mail)
+uid=9(news) gid=9(news) groups=9(news)
+uid=991(gitlab-consul) gid=991(gitlab-consul) groups=991(gitlab-consul)
+uid=992(gitlab-prometheus) gid=992(gitlab-prometheus) groups=992(gitlab-prometheus)
+uid=993(registry) gid=993(registry) groups=993(registry)
+uid=994(mattermost) gid=994(mattermost) groups=994(mattermost)
+uid=996(gitlab-psql) gid=996(gitlab-psql) groups=996(gitlab-psql)
+uid=997(gitlab-redis) gid=997(gitlab-redis) groups=997(gitlab-redis)
+uid=998(git) gid=998(git) groups=998(git)
+uid=999(gitlab-www) gid=999(gitlab-www) groups=999(gitlab-www)
+
+╔══════════╣ Login now
+ 07:52:16 up  1:05,  0 users,  load average: 0.74, 0.39, 0.97                                                                                                                                                                                                                                                               
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+
+╔══════════╣ Last logons
+                                                                                                                                                                                                                                                                                                                            
+wtmp begins Tue Apr  5 12:32:23 2022
+
+╔══════════╣ Last time logon each user
+Username         Port     From             Latest                                                                                                                                                                                                                                                                           
+
+╔══════════╣ Do not forget to test 'su' as any other user with shell: without password and with their names as password (I can't do it...)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
+                                                                                                                                                                                                                                                                                                                            
+
+
+                                       ╔══════════════════════╗
+═══════════════════════════════════════╣ Software Information ╠═══════════════════════════════════════                                                                                                                                                                                                                      
+                                       ╚══════════════════════╝                                                                                                                                                                                                                                                             
+╔══════════╣ Useful software
+/usr/bin/base64                                                                                                                                                                                                                                                                                                             
+/opt/gitlab/embedded/bin/curl
+/usr/bin/perl
+/opt/gitlab/embedded/bin/python3
+/opt/gitlab/embedded/bin/ruby
+/usr/bin/wget
+
+╔══════════╣ Installed Compilers
+                                                                                                                                                                                                                                                                                                                            
+
+═╣ PostgreSQL connection to template0 using postgres/NOPASS ........ No
+═╣ PostgreSQL connection to template1 using postgres/NOPASS ........ No                                                                                                                                                                                                                                                     
+═╣ PostgreSQL connection to template0 using pgsql/NOPASS ........... No                                                                                                                                                                                                                                                     
+═╣ PostgreSQL connection to template1 using pgsql/NOPASS ........... No                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing FastCGI Files (limit 70)
+-rw-r--r-- 1 root root 1007 Nov 20  2018 /opt/gitlab/embedded/conf/fastcgi_params                                                                                                                                                                                                                                           
+
+╔══════════╣ Analyzing Ldap Files (limit 70)
+The password hash is from the {SSHA} to 'structural'                                                                                                                                                                                                                                                                        
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /etc/ldap
+
+drwxr-xr-x 3 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/net-ldap-0.16.0/lib/net/ldap
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/service/gitlab-rails/app/controllers/ldap
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/auth/ldap
+
+
+╔══════════╣ Searching ssl/ssh files
+╔══════════╣ Analyzing SSH Files (limit 70)                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                            
+-rw-r--r-- 1 root root 8 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/cookbooks/openldap/files/default/.ssh/id_rsa
+FAKE KEY
+
+
+
+-rwxr-xr-x 1 root root 909 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-shell/bin/authorized_keys
+#!/opt/gitlab/embedded/bin/ruby --disable-gems
+# Fix the PATH so that gitlab-shell can find git-upload-pack and friends.
+ENV['PATH'] = '/opt/gitlab/bin:/opt/gitlab/embedded/bin:' + ENV['PATH']
+#!/usr/bin/env ruby
+#
+# GitLab shell authorized_keys. Query GitLab API to get the authorized command for a given ssh key fingerprint
+#
+# Ex.
+#   /bin/authorized_keys BASE64-KEY
+#
+# Returns
+#   command="/bin/gitlab-shell key-#",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa AAAAB3NzaC1yc2EAAAADAQA...
+#
+key = ARGV[0]
+abort "# No key provided" if key.nil? || key.empty?
+require_relative "../lib/gitlab_init"
+require_relative "../lib/gitlab_net"
+require_relative "../lib/gitlab_keys"
+authorized_key = GitlabNet.new.authorized_key(key)
+if authorized_key.nil?
+  puts "# No key was found for #{key}"
+else
+  puts GitlabKeys.key_line("key-#{authorized_key['id']}", authorized_key["key"])
+end
+-rw------- 1 git git 0 Jul  8  2020 /var/opt/gitlab/.ssh/authorized_keys
+
+Port 22
+PermitRootLogin prohibit-password
+PubkeyAuthentication yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+UsePAM yes
+
+══╣ Possible private SSH keys were found!
+/var/opt/gitlab/gitlab-rails/etc/secrets.yml
+
+══╣ Some certificates were found (out limited):
+/opt/gitlab/embedded/lib/ruby/2.4.0/rubygems/ssl_certs/index.rubygems.org/GlobalSignRootCA.pem                                                                                                                                                                                                                              
+/opt/gitlab/embedded/lib/ruby/2.4.0/rubygems/ssl_certs/rubygems.global.ssl.fastly.net/DigiCertHighAssuranceEVRootCA.pem
+/opt/gitlab/embedded/lib/ruby/2.4.0/rubygems/ssl_certs/rubygems.org/AddTrustExternalCARoot.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/attr_encrypted-3.1.0/certs/saghaulor.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bundler-1.16.2/lib/bundler/ssl_certs/index.rubygems.org/GlobalSignRootCA.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bundler-1.16.2/lib/bundler/ssl_certs/rubygems.global.ssl.fastly.net/DigiCertHighAssuranceEVRootCA.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bundler-1.16.2/lib/bundler/ssl_certs/rubygems.org/AddTrustExternalCARoot.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/ssl/key.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/ssl/private_key.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/ssl/private_key_with_whitespace.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/trusted_certs/example.crt
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/trusted_certs/example_no_cn.crt
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/trusted_certs/intermediate.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/trusted_certs/opscode.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/trusted_certs/root.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-zero-13.1.0/spec/support/stickywicket.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-two-factor-3.0.0/certs/tinfoil-cacert.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-two-factor-3.0.0/certs/tinfoilsecurity-gems-cert.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/encryptor-3.0.0/certs/saghaulor.pem
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/eventmachine-1.0.9.1/tests/client.crt
+12319PSTORAGE_CERTSBIN
+
+══╣ Some client certificates were found:
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/dsc_lcm.pfx                                                                                                                                                                                                                                             
+
+gpg-connect-agent: no running gpg-agent - starting '/opt/gitlab/embedded/bin/gpg-agent'
+gpg-connect-agent: failed to create temporary file '/var/opt/gitlab/.gnupg/.#lk0x00007f1eede160f0.gitlab.example.com.17744': No such file or directory
+gpg-connect-agent: can't connect to the agent: No such file or directory
+gpg-connect-agent: error sending standard options: No agent running
+══╣ Some home ssh config file was found
+/usr/share/doc/openssh-client/examples/sshd_config                                                                                                                                                                                                                                                                          
+AuthorizedKeysFile      .ssh/authorized_keys
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+
+══╣ /etc/hosts.allow file found, trying to read the rules:
+/etc/hosts.allow                                                                                                                                                                                                                                                                                                            
+
+
+Searching inside /etc/ssh/ssh_config for interesting info
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
+
+╔══════════╣ Analyzing PAM Auth Files (limit 70)
+drwxr-xr-x 1 root root 4096 Apr  5  2022 /etc/pam.d                                                                                                                                                                                                                                                                         
+-rw-r--r-- 1 root root 2126 Nov 20  2018 /etc/pam.d/sshd
+
+
+╔══════════╣ Searching kerberos conf files and tickets
+╚ http://book.hacktricks.xyz/linux-unix/privilege-escalation/linux-active-directory                                                                                                                                                                                                                                         
+kadmin was found on /opt/gitlab/embedded/bin/kadmin                                                                                                                                                                                                                                                                         
+klist execution
+klist: No credentials cache found (filename: /tmp/krb5cc_998)
+ptrace protection is enabled (1), you need to disable it to search for tickets inside processes memory
+-rw-r--r-- 1 root root 369 Nov 20  2018 /opt/gitlab/embedded/share/examples/krb5/krb5.conf
+[libdefaults]
+        default_realm = ATHENA.MIT.EDU
+
+[realms]
+# use "kdc = ..." if realm admins haven't put SRV records into DNS
+        ATHENA.MIT.EDU = {
+                admin_server = kerberos.mit.edu
+        }
+        ANDREW.CMU.EDU = {
+                admin_server = kdc-01.andrew.cmu.edu
+        }
+
+[domain_realm]
+        mit.edu = ATHENA.MIT.EDU
+        csail.mit.edu = CSAIL.MIT.EDU
+        .ucsc.edu = CATS.UCSC.EDU
+
+[logging]
+#       kdc = CONSOLE
+tickets kerberos Not Found
+klist Not Found                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                            
+
+
+╔══════════╣ Analyzing Redis Files (limit 70)
+-rw-r--r-- 1 gitlab-redis root 46866 Jul  8  2020 /var/opt/gitlab/redis/redis.conf                                                                                                                                                                                                                                          
+bind 127.0.0.1
+port 6379
+tcp-backlog 511
+unixsocketperm 777
+timeout 60
+tcp-keepalive 300
+daemonize no
+pidfile "/var/run/redis_6379.pid"
+loglevel notice
+logfile ""
+databases 16
+save 900 1
+save 300 10
+save 60 10000
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+rdbchecksum yes
+dbfilename "dump.rdb"
+dir "/var/opt/gitlab/redis"
+slave-serve-stale-data yes
+slave-read-only yes
+repl-disable-tcp-nodelay no
+slave-priority 100
+maxclients 10000
+maxmemory 0
+maxmemory-policy noeviction
+maxmemory-samples 5
+appendonly no
+appendfsync everysec
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+lua-time-limit 5000
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+notify-keyspace-events ""
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+set-max-intset-entries 512
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+activerehashing yes
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+hz 10
+aof-rewrite-incremental-fsync yes
+
+╔══════════╣ Analyzing Cloud Credentials Files (limit 70)
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/lib/doorkeeper/oauth/client_credentials                                                                                                                                                                             
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/spec/lib/oauth/client_credentials
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/service/gitlab-rails/lib/gitlab/ci/build/credentials
+
+
+
+
+
+
+
+
+
+
+╔══════════╣ Analyzing Keyring Files (limit 70)
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /usr/share/keyrings                                                                                                                                                                                                                                                                
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /var/lib/apt/keyrings
+
+
+
+
+╔══════════╣ Searching uncommon passwd files (splunk)
+passwd file: /etc/pam.d/passwd                                                                                                                                                                                                                                                                                              
+passwd file: /etc/passwd
+passwd file: /usr/share/lintian/overrides/passwd
+
+╔══════════╣ Searching GitLab related files
+gitlab-rails was found. Trying to dump users...                                                                                                                                                                                                                                                                             
+{"id"=>1,
+ "email"=>"admin@example.com",
+ "encrypted_password"=>
+  "$2a$10$.Kc4bwq3BqLCEzAGJVIJFeK4emNnucvAqk1vCv4Yp45yy2nmrFa.2",
+ "reset_password_token"=>nil,
+ "reset_password_sent_at"=>nil,
+ "remember_created_at"=>nil,
+ "sign_in_count"=>0,
+ "current_sign_in_at"=>nil,
+ "last_sign_in_at"=>nil,
+ "current_sign_in_ip"=>nil,
+ "last_sign_in_ip"=>nil,
+ "created_at"=>Wed, 08 Jul 2020 08:53:02 UTC +00:00,
+ "updated_at"=>Wed, 08 Jul 2020 08:53:02 UTC +00:00,
+ "name"=>"Administrator",
+ "admin"=>true,
+ "projects_limit"=>100000,
+ "skype"=>"",
+ "linkedin"=>"",
+ "twitter"=>"",
+ "bio"=>nil,
+ "failed_attempts"=>0,
+ "locked_at"=>nil,
+ "username"=>"root",
+ "can_create_group"=>true,
+ "can_create_team"=>false,
+ "state"=>"active",
+ "color_scheme_id"=>1,
+ "password_expires_at"=>nil,
+ "created_by_id"=>nil,
+ "last_credential_check_at"=>nil,
+ "avatar"=>nil,
+ "confirmation_token"=>nil,
+ "confirmed_at"=>Wed, 08 Jul 2020 08:53:02 UTC +00:00,
+ "confirmation_sent_at"=>nil,
+ "unconfirmed_email"=>nil,
+ "hide_no_ssh_key"=>false,
+ "website_url"=>"",
+ "notification_email"=>"admin@example.com",
+ "hide_no_password"=>false,
+ "password_automatically_set"=>false,
+ "location"=>nil,
+ "encrypted_otp_secret"=>nil,
+ "encrypted_otp_secret_iv"=>nil,
+ "encrypted_otp_secret_salt"=>nil,
+ "otp_required_for_login"=>false,
+ "otp_backup_codes"=>nil,
+ "public_email"=>"",
+ "dashboard"=>0,
+ "project_view"=>2,
+ "consumed_timestep"=>nil,
+ "layout"=>0,
+ "hide_project_limit"=>false,
+ "unlock_token"=>nil,
+ "otp_grace_period_started_at"=>nil,
+ "external"=>false,
+ "incoming_email_token"=>"25kxfqca2ooawuog93yw1u9d2",
+ "organization"=>nil,
+ "require_two_factor_authentication_from_group"=>false,
+ "two_factor_grace_period"=>48,
+ "ghost"=>nil,
+ "last_activity_on"=>nil,
+ "notified_of_own_activity"=>false,
+ "preferred_language"=>"en",
+ "theme_id"=>1,
+ "accepted_term_id"=>nil,
+ "feed_token"=>nil,
+ "private_profile"=>nil,
+ "include_private_contributions"=>nil,
+ "commit_email"=>nil}
+{"id"=>6,
+ "email"=>"123@gmail.com",
+ "encrypted_password"=>
+  "$2a$10$owMyfHnS0g7.o3UCHF4et.JIXup.KT55UMDWm6yU2gH7hw3Rj7/VC",
+ "reset_password_token"=>nil,
+ "reset_password_sent_at"=>nil,
+ "remember_created_at"=>nil,
+ "sign_in_count"=>9,
+ "current_sign_in_at"=>Fri, 13 Jan 2023 07:48:33 UTC +00:00,
+ "last_sign_in_at"=>Fri, 13 Jan 2023 07:46:23 UTC +00:00,
+ "current_sign_in_ip"=>"10.10.16.9",
+ "last_sign_in_ip"=>"10.10.16.9",
+ "created_at"=>Fri, 13 Jan 2023 07:00:08 UTC +00:00,
+ "updated_at"=>Fri, 13 Jan 2023 07:48:33 UTC +00:00,
+ "name"=>"123",
+ "admin"=>false,
+ "projects_limit"=>100000,
+ "skype"=>"",
+ "linkedin"=>"",
+ "twitter"=>"",
+ "bio"=>nil,
+ "failed_attempts"=>0,
+ "locked_at"=>nil,
+ "username"=>"123",
+ "can_create_group"=>true,
+ "can_create_team"=>false,
+ "state"=>"active",
+ "color_scheme_id"=>1,
+ "password_expires_at"=>nil,
+ "created_by_id"=>nil,
+ "last_credential_check_at"=>nil,
+ "avatar"=>nil,
+ "confirmation_token"=>nil,
+ "confirmed_at"=>Fri, 13 Jan 2023 07:00:07 UTC +00:00,
+ "confirmation_sent_at"=>nil,
+ "unconfirmed_email"=>nil,
+ "hide_no_ssh_key"=>false,
+ "website_url"=>"",
+ "notification_email"=>"123@gmail.com",
+ "hide_no_password"=>false,
+ "password_automatically_set"=>false,
+ "location"=>nil,
+ "encrypted_otp_secret"=>nil,
+ "encrypted_otp_secret_iv"=>nil,
+ "encrypted_otp_secret_salt"=>nil,
+ "otp_required_for_login"=>false,
+ "otp_backup_codes"=>nil,
+ "public_email"=>"",
+ "dashboard"=>0,
+ "project_view"=>2,
+ "consumed_timestep"=>nil,
+ "layout"=>0,
+ "hide_project_limit"=>false,
+ "unlock_token"=>nil,
+ "otp_grace_period_started_at"=>nil,
+ "external"=>false,
+ "incoming_email_token"=>"8x87p1ubavqvdr0l6dhqf8vj7",
+ "organization"=>nil,
+ "require_two_factor_authentication_from_group"=>false,
+ "two_factor_grace_period"=>48,
+ "ghost"=>nil,
+ "last_activity_on"=>Fri, 13 Jan 2023,
+ "notified_of_own_activity"=>false,
+ "preferred_language"=>"en",
+ "theme_id"=>1,
+ "accepted_term_id"=>nil,
+ "feed_token"=>"TfeRysSer6ymULdVY3RN",
+ "private_profile"=>nil,
+ "include_private_contributions"=>nil,
+ "commit_email"=>nil}
+{"id"=>3,
+ "email"=>"mitroglou@ready.com",
+ "encrypted_password"=>
+  "$2a$10$4vZAglOnEdNEe1SoNj1IE.RfotOt9gPnOXBEihjd7QBhsUmgmAdLi",
+ "reset_password_token"=>nil,
+ "reset_password_sent_at"=>nil,
+ "remember_created_at"=>nil,
+ "sign_in_count"=>1,
+ "current_sign_in_at"=>Wed, 08 Jul 2020 09:10:23 UTC +00:00,
+ "last_sign_in_at"=>Wed, 08 Jul 2020 09:10:23 UTC +00:00,
+ "current_sign_in_ip"=>"172.19.0.1",
+ "last_sign_in_ip"=>"172.19.0.1",
+ "created_at"=>Wed, 08 Jul 2020 09:10:23 UTC +00:00,
+ "updated_at"=>Wed, 08 Jul 2020 09:10:23 UTC +00:00,
+ "name"=>"mitroglou",
+ "admin"=>false,
+ "projects_limit"=>100000,
+ "skype"=>"",
+ "linkedin"=>"",
+ "twitter"=>"",
+ "bio"=>nil,
+ "failed_attempts"=>0,
+ "locked_at"=>nil,
+ "username"=>"mitroglou",
+ "can_create_group"=>true,
+ "can_create_team"=>false,
+ "state"=>"active",
+ "color_scheme_id"=>1,
+ "password_expires_at"=>nil,
+ "created_by_id"=>nil,
+ "last_credential_check_at"=>nil,
+ "avatar"=>nil,
+ "confirmation_token"=>nil,
+ "confirmed_at"=>Wed, 08 Jul 2020 09:10:23 UTC +00:00,
+ "confirmation_sent_at"=>nil,
+ "unconfirmed_email"=>nil,
+ "hide_no_ssh_key"=>false,
+ "website_url"=>"",
+ "notification_email"=>"mitroglou@ready.com",
+ "hide_no_password"=>false,
+ "password_automatically_set"=>false,
+ "location"=>nil,
+ "encrypted_otp_secret"=>nil,
+ "encrypted_otp_secret_iv"=>nil,
+ "encrypted_otp_secret_salt"=>nil,
+ "otp_required_for_login"=>false,
+ "otp_backup_codes"=>nil,
+ "public_email"=>"",
+ "dashboard"=>0,
+ "project_view"=>2,
+ "consumed_timestep"=>nil,
+ "layout"=>0,
+ "hide_project_limit"=>false,
+ "unlock_token"=>nil,
+ "otp_grace_period_started_at"=>nil,
+ "external"=>false,
+ "incoming_email_token"=>"5qndapiw0f0d4jeebwmemiwvx",
+ "organization"=>nil,
+ "require_two_factor_authentication_from_group"=>false,
+ "two_factor_grace_period"=>48,
+ "ghost"=>nil,
+ "last_activity_on"=>nil,
+ "notified_of_own_activity"=>false,
+ "preferred_language"=>"en",
+ "theme_id"=>1,
+ "accepted_term_id"=>nil,
+ "feed_token"=>"9SYsUnsrUxskjbfdxvT2",
+ "private_profile"=>nil,
+ "include_private_contributions"=>nil,
+ "commit_email"=>nil}
+{"id"=>2,
+ "email"=>"dude@ready.com",
+ "encrypted_password"=>
+  "$2a$10$NOMTXhO31vqykicMa6zj3O.F5PIyI9q/S4c.v22eMSfXNDdtpI2Mm",
+ "reset_password_token"=>nil,
+ "reset_password_sent_at"=>nil,
+ "remember_created_at"=>nil,
+ "sign_in_count"=>2,
+ "current_sign_in_at"=>Thu, 09 Jul 2020 15:08:35 UTC +00:00,
+ "last_sign_in_at"=>Wed, 08 Jul 2020 08:54:58 UTC +00:00,
+ "current_sign_in_ip"=>"172.19.0.1",
+ "last_sign_in_ip"=>"172.19.0.1",
+ "created_at"=>Wed, 08 Jul 2020 08:54:57 UTC +00:00,
+ "updated_at"=>Thu, 09 Jul 2020 15:08:35 UTC +00:00,
+ "name"=>"dude",
+ "admin"=>false,
+ "projects_limit"=>100000,
+ "skype"=>"",
+ "linkedin"=>"",
+ "twitter"=>"",
+ "bio"=>nil,
+ "failed_attempts"=>0,
+ "locked_at"=>nil,
+ "username"=>"dude",
+ "can_create_group"=>true,
+ "can_create_team"=>false,
+ "state"=>"active",
+ "color_scheme_id"=>1,
+ "password_expires_at"=>nil,
+ "created_by_id"=>nil,
+ "last_credential_check_at"=>nil,
+ "avatar"=>nil,
+ "confirmation_token"=>nil,
+ "confirmed_at"=>Wed, 08 Jul 2020 08:54:57 UTC +00:00,
+ "confirmation_sent_at"=>nil,
+ "unconfirmed_email"=>nil,
+ "hide_no_ssh_key"=>false,
+ "website_url"=>"",
+ "notification_email"=>"dude@ready.com",
+ "hide_no_password"=>false,
+ "password_automatically_set"=>false,
+ "location"=>nil,
+ "encrypted_otp_secret"=>nil,
+ "encrypted_otp_secret_iv"=>nil,
+ "encrypted_otp_secret_salt"=>nil,
+ "otp_required_for_login"=>false,
+ "otp_backup_codes"=>nil,
+ "public_email"=>"",
+ "dashboard"=>0,
+ "project_view"=>2,
+ "consumed_timestep"=>nil,
+ "layout"=>0,
+ "hide_project_limit"=>false,
+ "unlock_token"=>nil,
+ "otp_grace_period_started_at"=>nil,
+ "external"=>false,
+ "incoming_email_token"=>"1deat2ahoquhwq9qt5hu5ys3",
+ "organization"=>nil,
+ "require_two_factor_authentication_from_group"=>false,
+ "two_factor_grace_period"=>48,
+ "ghost"=>nil,
+ "last_activity_on"=>Thu, 09 Jul 2020,
+ "notified_of_own_activity"=>false,
+ "preferred_language"=>"en",
+ "theme_id"=>1,
+ "accepted_term_id"=>nil,
+ "feed_token"=>"iLHFeaXaW7oT9Ef7NUPS",
+ "private_profile"=>nil,
+ "include_private_contributions"=>nil,
+ "commit_email"=>nil}
+{"id"=>4,
+ "email"=>"test@test.gr",
+ "encrypted_password"=>
+  "$2a$10$7xK1UPcwvjWIo4ioCz28GeFSt.NR00AHsY2AF.gWzaWwikRVXCTXa",
+ "reset_password_token"=>nil,
+ "reset_password_sent_at"=>nil,
+ "remember_created_at"=>nil,
+ "sign_in_count"=>1,
+ "current_sign_in_at"=>Tue, 01 Dec 2020 12:26:46 UTC +00:00,
+ "last_sign_in_at"=>Tue, 01 Dec 2020 12:26:46 UTC +00:00,
+ "current_sign_in_ip"=>"10.10.14.5",
+ "last_sign_in_ip"=>"10.10.14.5",
+ "created_at"=>Tue, 01 Dec 2020 12:26:44 UTC +00:00,
+ "updated_at"=>Tue, 01 Dec 2020 12:26:47 UTC +00:00,
+ "name"=>"test",
+ "admin"=>false,
+ "projects_limit"=>100000,
+ "skype"=>"",
+ "linkedin"=>"",
+ "twitter"=>"",
+ "bio"=>nil,
+ "failed_attempts"=>0,
+ "locked_at"=>nil,
+ "username"=>"test",
+ "can_create_group"=>true,
+ "can_create_team"=>false,
+ "state"=>"active",
+ "color_scheme_id"=>1,
+ "password_expires_at"=>nil,
+ "created_by_id"=>nil,
+ "last_credential_check_at"=>nil,
+ "avatar"=>nil,
+ "confirmation_token"=>nil,
+ "confirmed_at"=>Tue, 01 Dec 2020 12:26:43 UTC +00:00,
+ "confirmation_sent_at"=>nil,
+ "unconfirmed_email"=>nil,
+ "hide_no_ssh_key"=>false,
+ "website_url"=>"",
+ "notification_email"=>"test@test.gr",
+ "hide_no_password"=>false,
+ "password_automatically_set"=>false,
+ "location"=>nil,
+ "encrypted_otp_secret"=>nil,
+ "encrypted_otp_secret_iv"=>nil,
+ "encrypted_otp_secret_salt"=>nil,
+ "otp_required_for_login"=>false,
+ "otp_backup_codes"=>nil,
+ "public_email"=>"",
+ "dashboard"=>0,
+ "project_view"=>2,
+ "consumed_timestep"=>nil,
+ "layout"=>0,
+ "hide_project_limit"=>false,
+ "unlock_token"=>nil,
+ "otp_grace_period_started_at"=>nil,
+ "external"=>false,
+ "incoming_email_token"=>"2i44vq3s8gjw3onnr1z1rpfh9",
+ "organization"=>nil,
+ "require_two_factor_authentication_from_group"=>false,
+ "two_factor_grace_period"=>48,
+ "ghost"=>nil,
+ "last_activity_on"=>nil,
+ "notified_of_own_activity"=>false,
+ "preferred_language"=>"en",
+ "theme_id"=>1,
+ "accepted_term_id"=>nil,
+ "feed_token"=>"EqyEf_Buycz_dXqx1Lr5",
+ "private_profile"=>nil,
+ "include_private_contributions"=>nil,
+ "commit_email"=>nil}
+{"id"=>5,
+ "email"=>"eb8a31bc5f2e4f8284c5a18b115cef77@mail.htb",
+ "encrypted_password"=>
+  "$2a$10$.aOidQ2aprnoXvfDNyNfGOuMLqcLkPljHsPeV8j7BZA4GU.5p1ZXm",
+ "reset_password_token"=>nil,
+ "reset_password_sent_at"=>nil,
+ "remember_created_at"=>nil,
+ "sign_in_count"=>1,
+ "current_sign_in_at"=>Mon, 07 Dec 2020 16:49:39 UTC +00:00,
+ "last_sign_in_at"=>Mon, 07 Dec 2020 16:49:39 UTC +00:00,
+ "current_sign_in_ip"=>"10.10.14.5",
+ "last_sign_in_ip"=>"10.10.14.5",
+ "created_at"=>Mon, 07 Dec 2020 16:49:39 UTC +00:00,
+ "updated_at"=>Mon, 07 Dec 2020 16:49:40 UTC +00:00,
+ "name"=>"whatever",
+ "admin"=>false,
+ "projects_limit"=>100000,
+ "skype"=>"",
+ "linkedin"=>"",
+ "twitter"=>"",
+ "bio"=>nil,
+ "failed_attempts"=>0,
+ "locked_at"=>nil,
+ "username"=>"eb8a31bc5f2e4f8284c5a18b115cef77",
+ "can_create_group"=>true,
+ "can_create_team"=>false,
+ "state"=>"active",
+ "color_scheme_id"=>1,
+ "password_expires_at"=>nil,
+ "created_by_id"=>nil,
+ "last_credential_check_at"=>nil,
+ "avatar"=>nil,
+ "confirmation_token"=>nil,
+ "confirmed_at"=>Mon, 07 Dec 2020 16:49:39 UTC +00:00,
+ "confirmation_sent_at"=>nil,
+ "unconfirmed_email"=>nil,
+ "hide_no_ssh_key"=>false,
+ "website_url"=>"",
+ "notification_email"=>"eb8a31bc5f2e4f8284c5a18b115cef77@mail.htb",
+ "hide_no_password"=>false,
+ "password_automatically_set"=>false,
+ "location"=>nil,
+ "encrypted_otp_secret"=>nil,
+ "encrypted_otp_secret_iv"=>nil,
+ "encrypted_otp_secret_salt"=>nil,
+ "otp_required_for_login"=>false,
+ "otp_backup_codes"=>nil,
+ "public_email"=>"",
+ "dashboard"=>0,
+ "project_view"=>2,
+ "consumed_timestep"=>nil,
+ "layout"=>0,
+ "hide_project_limit"=>false,
+ "unlock_token"=>nil,
+ "otp_grace_period_started_at"=>nil,
+ "external"=>false,
+ "incoming_email_token"=>"14hz3b0vannodneugjfdubkjs",
+ "organization"=>nil,
+ "require_two_factor_authentication_from_group"=>false,
+ "two_factor_grace_period"=>48,
+ "ghost"=>nil,
+ "last_activity_on"=>nil,
+ "notified_of_own_activity"=>false,
+ "preferred_language"=>"en",
+ "theme_id"=>1,
+ "accepted_term_id"=>nil,
+ "feed_token"=>"Hye-xUsUXke-x2c6Vm76",
+ "private_profile"=>nil,
+ "include_private_contributions"=>nil,
+ "commit_email"=>nil}
+If you have enough privileges, you can make an account under your control administrator by running: gitlab-rails runner 'user = User.find_by(email: "youruser@example.com"); user.admin = TRUE; user.save!'
+Alternatively, you could change the password of any user by running: gitlab-rails runner 'user = User.find_by(email: "admin@example.com"); user.password = "pass_peass_pass"; user.password_confirmation = "pass_peass_pass"; user.save!'
+
+Found /opt/gitlab/embedded/service/gitlab-rails/config/gitlab.yml
+  repositories:
+    # Paths where repositories can be stored. Give the canonicalized absolute pathname.
+    # NOTE: REPOS PATHS MUST NOT CONTAIN ANY SYMLINK!!!
+    storages: {"default":{"path":"/var/opt/gitlab/git-data/repositories","gitaly_address":"unix:/var/opt/gitlab/gitaly/gitaly.socket"}}
+
+--
+  repositories:
+    storages:
+      default: { "path": "tmp/tests/repositories/" }
+  gitlab_shell:
+    path: tmp/tests/gitlab-shell/
+
+Found /opt/gitlab/embedded/service/gitlab-rails/config/secrets.yml
+---
+production:
+  db_key_base: eaa32eb7018961f9b101a330b8a905b771973ece8667634e289a0383c2ecff650bb4e7b1a6034c066af2f37ea3ee103227655c33bc17c123c99f421ee0776429
+  secret_key_base: b7c70c02d37e37b14572f5387919b00206d2916098e3c54147f9c762d6bef2788a82643d0c32ab1cdb315753d6a4e59271cddf9b41f37c814dd7d256b7a2f353
+  otp_key_base: b30e7b1e7e65c31d70385c47bc5bf48cbe774e39492280df7428ce6f66bc53ec494d2fbcbf9b49ec204b3ba741261b43cdaf7a191932f13df1f5bd6018458e56
+  openid_connect_signing_key: |
+    -----BEGIN RSA PRIVATE KEY-----
+    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
+    -----END RSA PRIVATE KEY-----
+
+Found /var/opt/gitlab/gitlab-rails/etc/gitlab.yml
+  repositories:
+    # Paths where repositories can be stored. Give the canonicalized absolute pathname.
+    # NOTE: REPOS PATHS MUST NOT CONTAIN ANY SYMLINK!!!
+    storages: {"default":{"path":"/var/opt/gitlab/git-data/repositories","gitaly_address":"unix:/var/opt/gitlab/gitaly/gitaly.socket"}}
+
+--
+  repositories:
+    storages:
+      default: { "path": "tmp/tests/repositories/" }
+  gitlab_shell:
+    path: tmp/tests/gitlab-shell/
+
+Found /var/opt/gitlab/gitlab-rails/etc/secrets.yml
+---
+production:
+  db_key_base: eaa32eb7018961f9b101a330b8a905b771973ece8667634e289a0383c2ecff650bb4e7b1a6034c066af2f37ea3ee103227655c33bc17c123c99f421ee0776429
+  secret_key_base: b7c70c02d37e37b14572f5387919b00206d2916098e3c54147f9c762d6bef2788a82643d0c32ab1cdb315753d6a4e59271cddf9b41f37c814dd7d256b7a2f353
+  otp_key_base: b30e7b1e7e65c31d70385c47bc5bf48cbe774e39492280df7428ce6f66bc53ec494d2fbcbf9b49ec204b3ba741261b43cdaf7a191932f13df1f5bd6018458e56
+  openid_connect_signing_key: |
+    -----BEGIN RSA PRIVATE KEY-----
+    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
+    -----END RSA PRIVATE KEY-----
+
+
+╔══════════╣ Analyzing Github Files (limit 70)
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/cookbooks/compat_resource/.github                                                                                                                                                                                                                             
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/browser-2.5.3/.github
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/.github
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/ffi-1.9.25/ext/ffi_c/libffi/.github
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/omniauth-1.8.1/.github
+drwxr-xr-x 2 root root 4096 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/sidekiq-5.2.1/.github
+drwxr-xr-x 2 root root 4096 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/sidekiq-5.2.3/.github
+drwxr-xr-x 2 root root 4096 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/specinfra-2.76.2/.github
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/service/gitlab-rails/.github
+
+-rw-r--r-- 1 git git 287 Jul  8  2020 /var/opt/gitlab/.gitconfig
+
+
+
+╔══════════╣ Analyzing PGP-GPG Files (limit 70)
+/opt/gitlab/embedded/bin/gpg                                                                                                                                                                                                                                                                                                
+gpg Not Found
+netpgpkeys Not Found                                                                                                                                                                                                                                                                                                        
+netpgp Not Found                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            
+-rw-r--r-- 1 root root 12255 Nov 13  2018 /etc/apt/trusted.gpg
+-rw-r--r-- 1 root root 3146 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/gpgme-2.0.13/test/files/testkey_pub.gpg
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.11 (Darwin)
+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
+=T/Ce
+-----END PGP PUBLIC KEY BLOCK-----
+-rw-r--r-- 1 root root 3274 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/gpgme-2.0.13/test/files/testkey_sec.gpg
+-----BEGIN PGP PRIVATE KEY BLOCK-----
+Version: GnuPG v1.4.11 (Darwin)
+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
+=kQA4
+-----END PGP PRIVATE KEY BLOCK-----
+-rw-r--r-- 1 root root 3267 Nov 20  2018 /opt/gitlab/embedded/share/gnupg/distsigkey.gpg
+-rw-r--r-- 1 root root 12335 May 19  2012 /usr/share/keyrings/ubuntu-archive-keyring.gpg
+-rw-r--r-- 1 root root 0 May 19  2012 /usr/share/keyrings/ubuntu-archive-removed-keys.gpg
+-rw-r--r-- 1 root root 1227 May 19  2012 /usr/share/keyrings/ubuntu-master-keyring.gpg
+-rw-r--r-- 1 root root 12335 Nov 13  2018 /var/lib/apt/keyrings/ubuntu-archive-keyring.gpg
+
+
+╔══════════╣ Searching docker files (limit 70)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-docker-socket                                                                                                                                                                                                                                        
+-rw-r--r-- 1 root root 904 Apr  5  2022 /opt/backup/docker-compose.yml                                                                                                                                                                                                                                                      
+-rw-r--r-- 1 root root 412 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/flipper-0.13.0/Dockerfile
+-rw-r--r-- 1 root root 674 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/flipper-0.13.0/docker-compose.yml
+-rw-r--r-- 1 root root 418 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/ci/docker-image/Dockerfile
+-rw-r--r-- 1 root root 802 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/sidekiq-cron-0.6.0/Dockerfile
+-rw-r--r-- 1 root root 430 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/sidekiq-cron-0.6.0/docker-compose.yml
+-rw-r--r-- 1 root root 38 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/docker-compose.yml
+total 76
+-rw-r--r-- 1 root root  410 Nov 20  2018 Binary-alpine.Dockerfile
+-rw-r--r-- 1 root root  649 Nov 20  2018 Binary-scratch.Dockerfile
+-rw-r--r-- 1 root root  332 Nov 20  2018 Binary.Dockerfile
+-rw-r--r-- 1 root root 2377 Nov 20  2018 CONTRIBUTING.md
+-rw-r--r-- 1 root root  290 Nov 20  2018 Golang-alpine.Dockerfile
+-rw-r--r-- 1 root root  502 Nov 20  2018 Golang-scratch.Dockerfile
+-rw-r--r-- 1 root root  205 Nov 20  2018 Golang.Dockerfile
+-rw-r--r-- 1 root root   54 Nov 20  2018 HTTPd.Dockerfile
+-rw-r--r-- 1 root root 1278 Nov 20  2018 LICENSE
+-rw-r--r-- 1 root root  341 Nov 20  2018 Node-alpine.Dockerfile
+-rw-r--r-- 1 root root  231 Nov 20  2018 Node.Dockerfile
+-rw-r--r-- 1 root root  111 Nov 20  2018 OpenJDK-alpine.Dockerfile
+-rw-r--r-- 1 root root  319 Nov 20  2018 OpenJDK.Dockerfile
+-rw-r--r-- 1 root root  480 Nov 20  2018 PHP.Dockerfile
+-rw-r--r-- 1 root root  443 Nov 20  2018 Python-alpine.Dockerfile
+-rw-r--r-- 1 root root  531 Nov 20  2018 Python.Dockerfile
+-rw-r--r-- 1 root root  199 Nov 20  2018 Python2.Dockerfile
+-rw-r--r-- 1 root root  687 Nov 20  2018 Ruby-alpine.Dockerfile
+-rw-r--r-- 1 root root  643 Nov 20  2018 Ruby.Dockerfile
+
+╔══════════╣ Kubernetes information
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Analyzing Env Files (limit 70)
+-rw-r--r-- 1 root root 257 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/google-api-client-0.23.4/samples/cli/.env                                                                                                                                                                                             
+GOOGLE_API_KEY=AIzaSyC6GvjvPlEzJpTW2bW2t0MPHQTfltTosHk
+GOOGLE_CLIENT_ID=479164972499-i7j6av7bp2s4on5ltb7pj2lb2iu5a8gi.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=JBotCTG5biFWGz43jdQSZaa3
+GOOGLE_APPLICATION_CREDENTIALS=~/Downloads/ruby-samples-cred.json
+-rw-r--r-- 1 root root 136 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/google-api-client-0.23.4/samples/web/.env
+GOOGLE_CLIENT_ID=479164972499-snopeoggfam8j6ku1i9g2kljb3c4hov6.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=CoRocezZGyCv2Kb0uJ-js0rD
+
+╔══════════╣ Analyzing Strapi Files (limit 70)
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bootstrap_form-2.7.0/test/dummy/config/environments                                                                                                                                                                                  
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/object_loader/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/test/rails_app/config/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/spec/dummy/config/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/graphiql-rails-1.4.10/test/dummy/config/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/graphql-1.8.1/spec/dummy/config/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/hashie-forbidden_attributes-0.1.1/test/dummy/config/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/mousetrap-rails-1.4.6/spec/dummy/config/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/peek-1.0.1/test/dummy/config/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/premailer-rails-1.9.7/example/config/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/railties-4.2.10/lib/rails/generators/rails/app/templates/config/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/service/gitlab-rails/app/views/projects/environments
+
+
+
+
+
+
+drwxr-xr-x 2 root root 4096 Apr  5  2022 /opt/gitlab/embedded/service/gitlab-rails/config/environments
+
+
+
+
+
+
+drwxr-xr-x 4 root root 4096 Apr  5  2022 /opt/gitlab/embedded/service/gitlab-rails/public/assets/environments
+
+
+
+
+
+
+
+╔══════════╣ Analyzing Windows Files Files (limit 70)
+                                                                                                                                                                                                                                                                                                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-rw-r--r-- 1 root root 321 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/omniauth_crowd-2.2.3/spec/fixtures/groups.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+╔══════════╣ Analyzing Other Interesting Files Files (limit 70)
+-rw-r--r-- 1 root root 3771 Aug 31  2015 /etc/skel/.bashrc                                                                                                                                                                                                                                                                  
+
+
+
+
+
+-rw-r--r-- 1 root root 655 May 16  2017 /etc/skel/.profile
+-rw------- 1 gitlab-psql root 52 Jul  8  2020 /var/opt/gitlab/postgresql/.profile
+
+
+
+
+
+
+                                         ╔═══════════════════╗
+═════════════════════════════════════════╣ Interesting Files ╠═════════════════════════════════════════                                                                                                                                                                                                                     
+                                         ╚═══════════════════╝                                                                                                                                                                                                                                                              
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+strings Not Found                                                                                                                                                                                                                                                                                                           
+strace Not Found                                                                                                                                                                                                                                                                                                            
+-rwsr-xr-x 1 root root 419K Nov  5  2018 /usr/lib/openssh/ssh-keysign                                                                                                                                                                                                                                                       
+-rwsr-xr-x 1 root root 74K May 16  2017 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 53K May 16  2017 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 40K May 16  2017 /usr/bin/chsh
+-rwsr-xr-x 1 root root 49K May 16  2017 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 39K May 16  2017 /usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 40K May 16  2018 /bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 27K May 16  2018 /bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 40K May 16  2017 /bin/su
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid                                                                                                                                                                                                                                                 
+-rwxr-sr-x 1 root tty 27K May 16  2018 /usr/bin/wall                                                                                                                                                                                                                                                                        
+-rwxr-sr-x 1 root shadow 23K May 16  2017 /usr/bin/expiry
+-rwxr-sr-x 1 root shadow 61K May 16  2017 /usr/bin/chage
+-rwxr-sr-x 1 root ssh 351K Nov  5  2018 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root shadow 35K Apr  9  2018 /sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root shadow 35K Apr  9  2018 /sbin/unix_chkpwd
+
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#ld-so                                                                                                                                                                                                                                                         
+/etc/ld.so.conf                                                                                                                                                                                                                                                                                                             
+include /etc/ld.so.conf.d/*.conf
+
+/etc/ld.so.conf.d
+  /etc/ld.so.conf.d/libc.conf
+/usr/local/lib
+  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#capabilities                                                                                                                                                                                                                                                  
+Current capabilities:                                                                                                                                                                                                                                                                                                       
+Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,37+i
+CapInh: 0000003fffffffff
+CapPrm: 0000000000000000
+CapEff: 0000000000000000
+CapBnd: 0000003fffffffff
+CapAmb: 0000000000000000
+
+Shell capabilities:
+0x0000000000000000=
+CapInh: 0000003fffffffff
+CapPrm: 0000000000000000
+CapEff: 0000000000000000
+CapBnd: 0000003fffffffff
+CapAmb: 0000000000000000
+
+Files with capabilities (limited to 50):
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#acls                                                                                                                                                                                                                                                          
+files with acls in searched folders Not Found                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ .sh files in path
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#script-binaries-in-path                                                                                                                                                                                                                                       
+/opt/gitlab/embedded/bin/jemalloc.sh                                                                                                                                                                                                                                                                                        
+
+╔══════════╣ Unexpected in root
+/root_pass                                                                                                                                                                                                                                                                                                                  
+/.dockerenv
+/assets
+/RELEASE
+
+╔══════════╣ Files (scripts) in /etc/profile.d/
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#profiles-files                                                                                                                                                                                                                                                
+total 12                                                                                                                                                                                                                                                                                                                    
+drwxr-xr-x 2 root root 4096 Apr  5  2022 .
+drwxr-xr-x 1 root root 4096 Jan 13 06:47 ..
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#init-init-d-systemd-and-rc-d                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                            
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No                                                                                                                                                                                                                                                                                
+═╣ Credentials in fstab/mtab? ........... No                                                                                                                                                                                                                                                                                
+═╣ Can I read shadow files? ............. No                                                                                                                                                                                                                                                                                
+═╣ Can I read shadow plists? ............ No                                                                                                                                                                                                                                                                                
+═╣ Can I write shadow plists? ........... No                                                                                                                                                                                                                                                                                
+═╣ Can I read opasswd file? ............. No                                                                                                                                                                                                                                                                                
+═╣ Can I write in network-scripts? ...... No                                                                                                                                                                                                                                                                                
+═╣ Can I read root folder? .............. No                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/                                                                                                                                                                                                                                                                                                                      
+/home/dude
+/root/
+/var/opt/gitlab
+/var/opt/gitlab/nginx
+/var/opt/gitlab/gitaly/config.toml
+/var/opt/gitlab/gitaly/VERSION
+/var/opt/gitlab/trusted-certs-directory-hash
+/var/opt/gitlab/gitlab-shell/config.yml
+/var/opt/gitlab/public_attributes.json
+/var/opt/gitlab/bootstrapped
+/var/opt/gitlab/gitlab-workhorse/config.toml
+/var/opt/gitlab/gitlab-workhorse/VERSION
+/var/opt/gitlab/node-exporter
+/var/opt/gitlab/gitlab-rails/REVISION
+/var/opt/gitlab/gitlab-rails/RUBY_VERSION
+/var/opt/gitlab/gitlab-rails/VERSION
+/var/opt/gitlab/gitlab-rails/upgrade-status/db-migrate-873248b1f0d3a7a5535771a3a1635803-98f8423
+/var/opt/gitlab/gitlab-rails/etc/gitlab_shell_secret
+/var/opt/gitlab/gitlab-rails/etc/gitlab_workhorse_secret
+/var/opt/gitlab/gitlab-rails/etc/secrets.yml
+/var/opt/gitlab/gitlab-rails/etc/rack_attack.rb
+/var/opt/gitlab/gitlab-rails/etc/gitlab.yml
+/var/opt/gitlab/gitlab-rails/etc/resque.yml
+/var/opt/gitlab/gitlab-rails/etc/database.yml
+/var/opt/gitlab/gitlab-rails/etc/unicorn.rb
+/var/opt/gitlab/logrotate
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+/opt/gitlab/etc/gitlab-rails                                                                                                                                                                                                                                                                                                
+/opt/gitlab/etc/gitlab-workhorse
+/var/opt/gitlab/gitaly
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+-rw-r----- 1 root git 601 Jul  8  2020 /var/opt/gitlab/gitaly/config.toml                                                                                                                                                                                                                                                   
+-rw-r----- 1 root git 1064 Jul  8  2020 /var/opt/gitlab/gitlab-shell/config.yml
+-rw-r----- 1 root git 52 Jul  8  2020 /var/opt/gitlab/gitlab-workhorse/config.toml
+-rw-r----- 1 root git 17681 Jul  8  2020 /var/opt/gitlab/gitlab-rails/etc/gitlab.yml
+-rw-r----- 1 root git 527 Jul  8  2020 /var/opt/gitlab/gitlab-rails/etc/database.yml
+
+╔══════════╣ Modified interesting files in the last 5mins (limit 100)
+/var/opt/gitlab/redis/dump.rdb                                                                                                                                                                                                                                                                                              
+/var/log/gitlab/gitaly/current
+/var/log/gitlab/gitlab-workhorse/current
+/var/log/gitlab/sidekiq/current
+/var/log/gitlab/gitlab-rails/sidekiq_exporter.log
+/var/log/gitlab/gitlab-rails/production_json.log
+/var/log/gitlab/gitlab-rails/production.log
+/var/log/gitlab/unicorn/unicorn_stderr.log
+/var/log/gitlab/gitlab-monitor/current
+
+╔══════════╣ Writable log files (logrotten) (limit 100)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#logrotate-exploitation                                                                                                                                                                                                                                        
+logrotate Not Found                                                                                                                                                                                                                                                                                                         
+./linpeas.sh: 3877: [: ImPOsSiBleeElastWlogFolder: unexpected operator                                                                                                                                                                                                                                                      
+./linpeas.sh: 3877: [: ImPOsSiBleeElastWlogFolder: unexpected operator
+./linpeas.sh: 3877: [: ImPOsSiBleeElastWlogFolder: unexpected operator
+Writable: /var/log/gitlab/gitlab-shell/gitlab-shell.log.7.gz
+Writable: /var/log/gitlab/gitlab-shell/gitlab-shell.log
+Writable: /var/log/gitlab/gitlab-shell/gitlab-shell.log.1.gz
+Writable: /var/log/gitlab/gitlab-rails/production_json.log.9.gz
+Writable: /var/log/gitlab/gitlab-rails/production_json.log.1.gz
+Writable: /var/log/gitlab/gitlab-rails/production_json.log.2.gz
+Writable: /var/log/gitlab/unicorn/unicorn_stdout.log.9.gz
+Writable: /var/log/gitlab/unicorn/unicorn_stderr.log.4.gz
+Writable: /var/log/gitlab/unicorn/unicorn_stderr.log.2.gz
+
+╔══════════╣ Files inside /var/opt/gitlab (limit 20)
+total 100                                                                                                                                                                                                                                                                                                                   
+drwxr-xr-x 20 root              root       4096 Jan 13 06:47 .
+drwxr-xr-x  1 root              root       4096 Apr  5  2022 ..
+drwxr-xr-x  2 git               git        4096 Apr  5  2022 .bundle
+-rw-r--r--  1 git               git         287 Jul  8  2020 .gitconfig
+drwx------  2 git               git        4096 Apr  5  2022 .ssh
+drwxr-x---  3 gitlab-prometheus root       4096 Jan 13 06:47 alertmanager
+drwx------  2 git               root       4096 Apr  5  2022 backups
+-rw-------  1 root              root         38 Jul  8  2020 bootstrapped
+drwx------  3 git               root       4096 Apr  5  2022 git-data
+drwx------  2 git               root       4096 Jan 13 06:48 gitaly
+drwxr-xr-x  3 git               root       4096 Apr  5  2022 gitlab-ci
+drwxr-xr-x  2 git               root       4096 Jan 13 06:47 gitlab-monitor
+drwxr-xr-x  9 git               root       4096 Jan 13 06:47 gitlab-rails
+drwx------  2 git               root       4096 Jan 13 06:47 gitlab-shell
+drwxr-x---  2 git               gitlab-www 4096 Jan 13 06:47 gitlab-workhorse
+drwx------  3 root              root       4096 Jan 13 06:57 logrotate
+drwxr-x---  9 root              gitlab-www 4096 Jan 13 06:47 nginx
+drwxr-xr-x  3 root              root       4096 Apr  5  2022 node-exporter
+drwx------  2 gitlab-psql       root       4096 Jan 13 06:47 postgres-exporter
+drwxr-xr-x  3 gitlab-psql       root       4096 Jan 13 06:47 postgresql
+drwxr-x---  4 gitlab-prometheus root       4096 Jan 13 06:47 prometheus
+-rw-r--r--  1 root              root        191 Jan 13 06:47 public_attributes.json
+
+╔══════════╣ Files inside others home (limit 20)
+/home/dude/user.txt                                                                                                                                                                                                                                                                                                         
+
+╔══════════╣ Searching installed mail applications
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Mails (limit 50)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Backup folders
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Backup files (limited 100)
+-rw-r--r-- 1 root root 26343 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/doc/raketasks/backup_restore.md                                                                                                                                                                                                         
+-rw-r--r-- 1 root root 139 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/db/migrate/20150331183602_add_devise_two_factor_backupable_to_users.rb
+-rw-r--r-- 1 root root 7998 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/tasks/gitlab/backup.rake
+-rw-r--r-- 1 root root 53 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup.rb
+-rwxr-xr-x 1 root root 83232 Nov 20  2018 /opt/gitlab/embedded/postgresql/9.6.8/bin/pg_basebackup
+-rw-r--r-- 1 root root 763 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/lib/fog/compute/google/requests/set_target_pool_backup.rb
+-rw-r--r-- 1 root root 540 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/lib/fog/google/requests/sql/get_backup_run.rb
+-rw-r--r-- 1 root root 745 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/lib/fog/google/requests/sql/list_backup_runs.rb
+-rw-r--r-- 1 root root 669 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/lib/fog/google/requests/sql/insert_backup_run.rb
+-rw-r--r-- 1 root root 890 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/lib/fog/google/requests/sql/restore_instance_backup.rb
+-rw-r--r-- 1 root root 509 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/lib/fog/google/requests/sql/delete_backup_run.rb
+-rw-r--r-- 1 root root 1170 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/lib/fog/google/models/sql/backup_runs.rb
+-rw-r--r-- 1 root root 997 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/lib/fog/google/models/sql/backup_run.rb
+-rw-r--r-- 1 root root 567 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-two-factor-3.0.0/spec/devise/models/two_factor_backupable_spec.rb
+-rw-r--r-- 1 root root 1755 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-two-factor-3.0.0/lib/devise_two_factor/models/two_factor_backupable.rb
+-rw-r--r-- 1 root root 895 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-two-factor-3.0.0/lib/devise_two_factor/strategies/two_factor_backupable.rb
+-rw-r--r-- 1 root root 2789 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-two-factor-3.0.0/lib/devise_two_factor/spec_helpers/two_factor_backupable_shared_examples.rb
+-rw-r--r-- 1 root root 1027 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/examples/volume/backups.rb
+-rw-r--r-- 1 root root 107 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v2/requests/get_backup_details.rb
+-rw-r--r-- 1 root root 110 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v2/requests/list_backups_detailed.rb
+-rw-r--r-- 1 root root 103 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v2/requests/restore_backup.rb
+-rw-r--r-- 1 root root 102 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v2/requests/delete_backup.rb
+-rw-r--r-- 1 root root 101 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v2/requests/list_backups.rb
+-rw-r--r-- 1 root root 102 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v2/requests/create_backup.rb
+-rw-r--r-- 1 root root 391 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v2/models/backups.rb
+-rw-r--r-- 1 root root 293 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v2/models/backup.rb
+-rw-r--r-- 1 root root 789 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/requests/get_backup_details.rb
+-rw-r--r-- 1 root root 1152 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/requests/list_backups_detailed.rb
+-rw-r--r-- 1 root root 416 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/requests/restore_backup.rb
+-rw-r--r-- 1 root root 454 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/requests/delete_backup.rb
+-rw-r--r-- 1 root root 302 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/requests/list_backups.rb
+-rw-r--r-- 1 root root 1178 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/requests/create_backup.rb
+-rw-r--r-- 1 root root 601 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/models/backups.rb
+-rw-r--r-- 1 root root 1062 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/models/backup.rb
+-rw-r--r-- 1 root root 107 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v1/requests/get_backup_details.rb
+-rw-r--r-- 1 root root 110 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v1/requests/list_backups_detailed.rb
+-rw-r--r-- 1 root root 103 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v1/requests/restore_backup.rb
+-rw-r--r-- 1 root root 102 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v1/requests/delete_backup.rb
+-rw-r--r-- 1 root root 101 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v1/requests/list_backups.rb
+-rw-r--r-- 1 root root 102 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v1/requests/create_backup.rb
+-rw-r--r-- 1 root root 391 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v1/models/backups.rb
+-rw-r--r-- 1 root root 293 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/volume/openstack/v1/models/backup.rb
+-rw-r--r-- 1 root root 5169 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/unit/util/backup_spec.rb
+-rw-r--r-- 1 root root 3187 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/lib/chef/util/backup.rb
+-rw-r--r-- 1 root root 1499 Nov 20  2018 /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/unicorn-5.1.0/.CHANGELOG.old
+-rw-r--r-- 1 root root 846 Apr  5  2022 /run/blkid/blkid.tab.old
+
+╔══════════╣ Searching tables inside readable .db/.sql/.sqlite files (limit 100)
+Found: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bootstrap_form-2.7.0/test/dummy/db/test.sqlite3                                                                                                                                                                                                                        
+Found: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/apt/var/www/apt/db/checksums.db
+Found: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/apt/var/www/apt/db/contents.cache.db
+Found: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/apt/var/www/apt/db/packages.db
+Found: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/apt/var/www/apt/db/references.db
+Found: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/apt/var/www/apt/db/release.caches.db
+Found: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/mini_mime-1.0.1/lib/db/content_type_mime.db
+Found: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/mini_mime-1.0.1/lib/db/ext_mime.db
+Found: /opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/mousetrap-rails-1.4.6/spec/dummy/db/test.sqlite3
+
+
+╔══════════╣ Web files?(output limit)
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ All hidden files (not in /sys/ or the ones listed in the previous check) (limit 70)
+-rw-r--r-- 1 root root 220 Aug 31  2015 /etc/skel/.bash_logout                                                                                                                                                                                                                                                              
+-rw------- 1 root root 0 Nov 13  2018 /etc/.pwd.lock
+
+╔══════════╣ Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders (limit 70)
+-rwxrwxrwx 1 git git 765818 Jan  7 02:11 /tmp/linpeas.sh                                                                                                                                                                                                                                                                    
+-rw-r--r-- 1 root root 81492 Apr  5  2022 /opt/backup/gitlab.rb
+-rw-r--r-- 1 root root 904 Apr  5  2022 /opt/backup/docker-compose.yml
+-rw-r--r-- 1 root root 15150 Apr  5  2022 /opt/backup/gitlab-secrets.json
+-rw-r--r-- 1 gitlab-psql gitlab-psql 655 May 16  2017 /opt/gitlab/embedded/cookbooks/cache/backup/var/opt/gitlab/postgresql/.profile.chef-20220405161522.916245
+-rw-r--r-- 1 root root 4887 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/repository.rb
+-rw-r--r-- 1 root root 8107 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/manager.rb
+-rw-r--r-- 1 root root 248 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/builds.rb
+-rw-r--r-- 1 root root 944 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/helper.rb
+-rw-r--r-- 1 root root 248 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/artifacts.rb
+-rw-r--r-- 1 root root 253 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/uploads.rb
+-rw-r--r-- 1 root root 237 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/lfs.rb
+-rw-r--r-- 1 root root 240 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/pages.rb
+-rw-r--r-- 1 root root 244 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/registry.rb
+-rw-r--r-- 1 root root 3973 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/database.rb
+-rw-r--r-- 1 root root 2689 Nov 20  2018 /opt/gitlab/embedded/service/gitlab-rails/lib/backup/files.rb
+
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files                                                                                                                                                                                                                                                
+/assets/download-package                                                                                                                                                                                                                                                                                                    
+/assets/gitlab.rb
+/assets/setup
+/assets/sshd_config
+/assets/update-permissions
+#)You_can_write_even_more_files_inside_last_directory
+
+/dev/mqueue
+/dev/shm
+/dev/shm/gitlab/sidekiq
+/dev/shm/gitlab/sidekiq/counter_process_id_497-0.db
+/dev/shm/gitlab/sidekiq/gauge_livesum_process_id_497-0.db
+/dev/shm/gitlab/sidekiq/histogram_process_id_497-0.db
+/dev/shm/gitlab/unicorn
+/dev/shm/gitlab/unicorn/counter_process_id_634-0.db
+/dev/shm/gitlab/unicorn/counter_worker_id_0-0.db
+/dev/shm/gitlab/unicorn/counter_worker_id_1-0.db
+/dev/shm/gitlab/unicorn/counter_worker_id_2-0.db
+/dev/shm/gitlab/unicorn/counter_worker_id_3-0.db
+#)You_can_write_even_more_files_inside_last_directory
+
+/home/dude/user.txt
+/opt/gitlab/embedded/service/gitlab-rails/db/schema.rb
+/opt/gitlab/etc/gitlab-rails
+/opt/gitlab/etc/gitlab-workhorse
+/opt/gitlab/var/unicorn
+/opt/gitlab/var/unicorn/unicorn.pid
+/run/lock
+/tmp
+/tmp/gitaly-ruby881876968
+/tmp/linpeas.sh
+/var/log/gitlab
+/var/log/gitlab/gitaly
+/var/log/gitlab/gitlab-monitor
+/var/log/gitlab/gitlab-rails
+/var/log/gitlab/gitlab-rails/api_json.log
+/var/log/gitlab/gitlab-rails/api_json.log.1.gz
+/var/log/gitlab/gitlab-rails/api_json.log.2.gz
+/var/log/gitlab/gitlab-rails/api_json.log.3.gz
+/var/log/gitlab/gitlab-rails/api_json.log.4.gz
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/log/gitlab/gitlab-shell
+/var/log/gitlab/gitlab-shell/gitlab-shell.log
+/var/log/gitlab/gitlab-shell/gitlab-shell.log.1.gz
+/var/log/gitlab/gitlab-shell/gitlab-shell.log.2.gz
+/var/log/gitlab/gitlab-shell/gitlab-shell.log.3.gz
+/var/log/gitlab/gitlab-shell/gitlab-shell.log.4.gz
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/log/gitlab/gitlab-workhorse
+/var/log/gitlab/sidekiq
+/var/log/gitlab/unicorn
+/var/log/gitlab/unicorn/unicorn_stderr.log
+/var/log/gitlab/unicorn/unicorn_stderr.log.1.gz
+/var/log/gitlab/unicorn/unicorn_stderr.log.2.gz
+/var/log/gitlab/unicorn/unicorn_stderr.log.3.gz
+/var/log/gitlab/unicorn/unicorn_stderr.log.4.gz
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/tmp
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 500)
+╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#writable-files                                                                                                                                                                                                                                                
+  Group git:                                                                                                                                                                                                                                                                                                                
+/tmp/linpeas.sh                                                                                                                                                                                                                                                                                                             
+
+╔══════════╣ Searching passwords in history files
+            @response = { 'DescribeAlarmHistoryResult' => {'AlarmHistoryItems' => []}, 'ResponseMetadata' => {} }                                                                                                                                                                                                           
+            @alarm_history_item = {}
+              @alarm_history_item[name] = value
+              @alarm_history_item[name] = Time.parse value
+              @response['ResponseMetadata'][name] = value
+              @response['ResponseMetadata'][name] = value
+              @response['DescribeAlarmHistoryResult']['AlarmHistoryItems']  << @alarm_history_item
+            @spot_price = {}
+            @response = { 'spotPriceHistorySet' => [] }
+              @spot_price[name] = value
+              @response['spotPriceHistorySet'] << @spot_price
+              @spot_price = {}
+              @response[name] = value
+              @spot_price[name] = value.to_f
+              @spot_price[name] = Time.parse(value)
+  @spot_price_history_format = {
+    tests("#describe_spot_price_history").formats(@spot_price_history_format) do
+      @stats   = stats
+      @items   = { _seq_: 1  }
+      @threads = { _seq_: "A" }
+      @stats   = stats
+      @items   = { _seq_: 1  }
+      @threads = { _seq_: "A" }
+      @stats   = stats
+      @items   = { _seq_: 1  }
+      @threads = { _seq_: "A" }
+Binary file /opt/gitlab/embedded/service/gitlab-rails/doc/user/project/wiki/img/wiki_page_history.png matches
+Binary file /opt/gitlab/embedded/service/gitlab-rails/doc/user/search/img/search_history.gif matches
+
+╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+/bin/systemd-ask-password                                                                                                                                                                                                                                                                                                   
+/bin/systemd-tty-ask-password-agent
+/etc/pam.d/common-password
+/opt/gitlab/LICENSES/ruby_bundler-omniauth-multipassword-0.4.2-LICENSE
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/actionview-4.2.10/lib/action_view/helpers/tags/password_field.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/activemodel-4.2.10/lib/active_model/secure_password.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bcrypt-3.1.12/lib/bcrypt/password.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bcrypt-3.1.12/spec/bcrypt/password_spec.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/bundler-1.16.2/lib/bundler/uri_credentials_filter.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/lib/chef/http/auth_credentials.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/lib/chef/util/powershell/ps_credential.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/data/ssl/chef-rspec.key
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-13.6.4/spec/unit/util/powershell/ps_credential_spec.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/chef-config-13.11.3/lib/chef-config/mixin/credentials.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/app/controllers/devise/passwords_controller.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/app/views/devise/mailer/password_change.html.erb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/app/views/devise/mailer/reset_password_instructions.html.erb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/app/views/devise/passwords
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/lib/generators/templates/controllers/passwords_controller.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/lib/generators/templates/markerb/password_change.markerb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/lib/generators/templates/markerb/reset_password_instructions.markerb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/lib/generators/templates/simple_form_for/passwords
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/test/controllers/passwords_controller_test.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/devise-4.4.3/test/mailers/reset_password_instructions_test.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/lib/doorkeeper/oauth/client/credentials.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/lib/doorkeeper/oauth/client_credentials
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/lib/doorkeeper/oauth/client_credentials_request.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/lib/doorkeeper/oauth/password_access_token_request.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/lib/doorkeeper/request/client_credentials.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/lib/doorkeeper/request/password.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/spec/dummy/db/migrate/20120312140401_add_password_to_users.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/spec/lib/oauth/client/credentials_spec.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/spec/lib/oauth/client_credentials
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/spec/lib/oauth/client_credentials_integration_spec.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/spec/lib/oauth/client_credentials_request_spec.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/spec/lib/oauth/password_access_token_request_spec.rb
+  #)There are more creds/passwds files in the previous parent folder
+
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-4.3.2/spec/requests/flows/password_spec.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/doorkeeper-openid_connect-1.5.0/lib/doorkeeper/openid_connect/oauth/password_access_token_request.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/eventmachine-1.0.9.1/tests/client.key
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/excon-0.62.0/tests/data/127.0.0.1.cert.key
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/excon-0.62.0/tests/data/excon.cert.key
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-aws-2.0.1/lib/fog/aws/credential_fetcher.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-aws-2.0.1/lib/fog/aws/parsers/compute/get_password_data.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-aws-2.0.1/lib/fog/aws/parsers/iam/get_account_password_policy.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-aws-2.0.1/lib/fog/aws/requests/compute/get_password_data.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-aws-2.0.1/lib/fog/aws/requests/iam/delete_account_password_policy.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-aws-2.0.1/lib/fog/aws/requests/iam/get_account_password_policy.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-aws-2.0.1/lib/fog/aws/requests/iam/update_account_password_policy.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-aws-2.0.1/tests/credentials_tests.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-core-1.45.0/lib/fog/core/credentials.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-core-1.45.0/spec/credentials_spec.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-google-1.7.1/ci/credentials.yml.template
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/compute/openstack/requests/change_server_password.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/compute/openstack/requests/get_server_password.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v2/models/ec2_credential.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v2/models/ec2_credentials.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v2/requests/create_ec2_credential.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v2/requests/delete_ec2_credential.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v2/requests/get_ec2_credential.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v2/requests/list_ec2_credentials.rb
+  #)There are more creds/passwds files in the previous parent folder
+
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v3/models/os_credentials.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v3/requests/create_os_credential.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v3/requests/delete_os_credential.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v3/requests/get_os_credential.rb
+/opt/gitlab/embedded/lib/ruby/gems/2.4.0/gems/fog-openstack-0.1.21/lib/fog/identity/openstack/v3/requests/list_os_credentials.rb
+  #)There are more creds/passwds files in the previous parent folder
+
+╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+                                                                                                                                                                                                                                                                                                                            
+╔══════════╣ Searching passwords inside logs (limit 70)
+grep: write error: Broken pipe                                                                                                                                                                                                                                                                                              
+  Parameters: {";"=>nil, "..:..:..:..:..:..:..:etc:passwd:"=>nil, "unmatched_route"=>"content/base/build/explorer/none"}
+  Parameters: {";"=>nil, "/etc/passwd"=>nil, "unmatched_route"=>"content/base/build/explorer/none"}
+  Parameters: {";"=>nil, "/etc/passwd"=>nil, "unmatched_route"=>"fi"}
+  Parameters: {";"=>nil, "dir"=>";cat /etc/passwd", "unmatched_route"=>"directory"}
+  Parameters: {";"=>nil, "file"=>"", "cat /etc/passwd|"=>nil, "unmatched_route"=>"shop/member_html"}
+  Parameters: {";"=>nil, "file"=>"", "cat /etc/passwd|"=>nil, "unmatched_route"=>"shop/normal_html"}
+  Parameters: {";"=>nil, "file"=>"|cat /etc/passwd|", "unmatched_route"=>"shop/member_html"}
+  Parameters: {";"=>nil, "file"=>"|cat /etc/passwd|", "unmatched_route"=>"shop/normal_html"}
+  Parameters: {";"=>nil, "screen"=>"/etc/passwd", "unmatched_route"=>"mylog"}
+  Parameters: {";"=>nil, "screen"=>"/etc/passwd", "unmatched_route"=>"php/mylog"}
+  Parameters: {";"=>nil, "unmatched_route"=>"~nobody/etc/passwd"}
+  Parameters: {";"=>nil, "user"=>"administrator", "password"=>"[FILTERED]", "unmatched_route"=>"proxy/ssllogin"}
+  Parameters: {";"=>nil, "what"=>"../../../../../../../../../../../../etc/passwd\u0000", "unmatched_route"=>"3rdparty/phpMyAdmin/export"}
+  Parameters: {";"=>nil, "what"=>"../../../../../../../../../../../../etc/passwd\u0000", "unmatched_route"=>"3rdparty/phpmyadmin/export"}
+  Parameters: {";"=>nil, "what"=>"../../../../../../../../../../../../etc/passwd\u0000", "unmatched_route"=>"phpMyAdmin/export"}
+  Parameters: {";"=>nil, "what"=>"../../../../../../../../../../../../etc/passwd\u0000", "unmatched_route"=>"phpmyadmin/export"}
+  Parameters: {";"=>nil, "what"=>"../../../../../../../../../../../../etc/passwd\u0000", "unmatched_route"=>"pma/export"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "../../../../../../../../../../etc/passwd"=>nil, "unmatched_route"=>"page"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "../../../../../../etc/passwd"=>nil, "unmatched_route"=>"cgi-bin/pfdisplay"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "AnalyseSite"=>"/etc/passwd", "NumLoops"=>"1", "unmatched_route"=>"ezhttpbench"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "NS-query-pat"=>"../../../../../../../../../../etc/passwd"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "ONLY"=>"../../../../../etc/passwd\u0000", "unmatched_route"=>"typo3/dev/translations"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "cat /etc/passwd"=>nil, "unmatched_route"=>"albums/userpics/Copperminer.jpg"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "command"=>"remove ", "unmatched_route"=>"csPassword"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "conf"=>"../../../../../../../etc/passwd ", "unmatched_route"=>"shoutbox/expanded"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "data"=>"Download", "unmatched_route"=>"cgi-bin/handler/netsonar;cat /etc/passwd|"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "download"=>"/etc/passwd", "unmatched_route"=>"index"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "errPagePath"=>"/etc/passwd", "unmatched_route"=>"PSUser/PSCOErrPage"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "f"=>"../../../../../../../../../etc/passwd", "unmatched_route"=>"phpwebfilemgr/index"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "file"=>"../../../../../../../bin/cat /etc/passwd\u0000|", "unmatched_route"=>"logbook"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "file"=>"/../../../../../etc/passwd", "unmatched_route"=>"edittag/edittag"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "file"=>"/etc/passwd", "unmatched_route"=>"tmp_view"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "file"=>"/etc/passwd", "unmatched_route"=>"viewpage"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "filnavn"=>"/etc/passwd", "unmatched_route"=>"phptonuke"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "login"=>"root", "password"=>"[FILTERED]", "unmatched_route"=>"goform/CheckLogin"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"../../../../../../../../../etc/passwd", "unmatched_route"=>"forum-ra"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"../../../../../../../../../etc/passwd\u0000", "unmatched_route"=>"forum-ra"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"../../../../../../../../../etc/passwd\u0000", "unmatched_route"=>"modif_infos"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"/../../../../../../../../../etc/passwd", "unmatched_route"=>"modif_infos"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"/../../../../../../etc/passwd", "unmatched_route"=>"forum-ra_professionnel"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"/../../../etc/passwd", "unmatched_route"=>"forum-ra_professionnel"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"/etc/passwd", "unmatched_route"=>"forum-ra"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"/etc/passwd", "unmatched_route"=>"forum-ra_professionnel"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"/etc/passwd", "unmatched_route"=>"modif_infos"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"/etc/passwd\u0000", "unmatched_route"=>"forum-ra"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"/etc/passwd\u0000", "unmatched_route"=>"forum-ra_professionnel"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"/etc/passwd\u0000", "unmatched_route"=>"modif_infos"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"1753", "amp"=>nil, "nn"=>"/etc/passwd", "unmatched_route"=>"forum1"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"1753", "amp"=>nil, "nn"=>"/etc/passwd\u0000", "unmatched_route"=>"forum1"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"1753", "amp"=>nil, "nn"=>"`/etc/passwd`", "unmatched_route"=>"forum1"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"`/etc/passwd`", "unmatched_route"=>"forum-ra_professionnel"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "n"=>"`/etc/passwd`", "unmatched_route"=>"modif_infos"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "newpass"=>"password", "confirm"=>"password ", "unmatched_route"=>"pvote/ch_info"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "op"=>"modload", "mainfile"=>"x", "name"=>"/etc/passwd", "unmatched_route"=>"autohtml"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "page"=>"../../../../../../../../../../etc/passwd", "unmatched_route"=>"index"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "pass"=>" ", "cat /etc/passwd"=>nil, "unmatched_route"=>"athenareg"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"................../etc/passwd"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>".../.../.../.../.../.../.../.../.../.../etc/passwd"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>".htpasswd"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>".passwd"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"bin/common/user_update_passwd"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"c32web.exe/ChangeAdminPassword"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"ca/..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\/\\\\etc/\\\\passwd"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"chat/!pwds"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"etc/passwd"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"htpasswd"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"iisadmpwd/aexp2"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"iisadmpwd/aexp2b"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"iisadmpwd/aexp3"}
+  Parameters: {"<!--#include virtual"=>"\"/index.jsp\"-->", "unmatched_route"=>"iisadmpwd/aexp4"}

@@ -1,0 +1,56 @@
+└─$ sudo ./nmapAutomator.sh -H ready.htb -t All
+[sudo] password for kali: 
+
+Running all scans on ready.htb with IP 3(NXDOMAIN)
+
+
+No ping detected.. Will not use ping scans!
+
+
+Host is likely running Unknown OS!
+
+
+---------------------Starting Port Scan-----------------------
+
+
+
+PORT     STATE SERVICE
+22/tcp   open  ssh
+5080/tcp open  onscreen
+
+
+
+---------------------Starting Script Scan-----------------------
+
+
+
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 48add5b83a9fbcbef7e8201ef6bfdeae (RSA)
+|   256 b7896c0b20ed49b2c1867c2992741c1f (ECDSA)
+|_  256 18cd9d08a621a8b8b6f79f8d405154fb (ED25519)
+5080/tcp open  http    nginx
+| http-robots.txt: 53 disallowed entries (15 shown)
+| / /autocomplete/users /search /api /admin /profile 
+| /dashboard /projects/new /groups/new /groups/*/edit /users /help 
+|_/s/ /snippets/new /snippets/*/edit
+| http-title: Sign in \xC2\xB7 GitLab
+|_Requested resource was http://ready.htb:5080/users/sign_in
+|_http-trane-info: Problem with XML parsing of /evox/about
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+
+OS Detection modified to: Linux
+
+
+
+
+---------------------Starting Full Scan------------------------
+
+
+
+PORT     STATE SERVICE
+22/tcp   open  ssh
+5080/tcp open  onscreen
